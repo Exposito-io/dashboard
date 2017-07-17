@@ -1,6 +1,9 @@
 import * as React from 'react';
 import './App.css';
 
+import 'react-flex-proto/styles/flex.css';
+import 'react-blur-admin/dist/assets/styles/react-blur-admin.min.css';
+
 const logo = require('./logo.svg');
 
 class App extends React.Component<{}, {}> {
