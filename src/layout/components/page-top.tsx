@@ -1,17 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router';
-import moment from 'moment';
+import * as React from 'react'
+import { Link } from 'react-router-dom';
+import * as moment from 'moment';
 import { noop } from 'lodash';
-import Person from 'react-blur-admin/dist/assets/img/person.svg';
+import * as Person from './person.svg'
 
-import {SearchBar} from 'src/layout/components/search-bar';
+//import {SearchBar} from './search-bar';
 
 // Lib
-import eventBus from 'src/lib/event-bus';
+//import eventBus from 'src/lib/event-bus';
 import {MessagesAlert, MessagesAlertContainer, NotificationsAlert, NotificationAlert} from 'react-blur-admin';
 import {Row, Col} from 'react-flex-proto';
 
-export class PageTop extends React.Component {
+export class PageTop extends React.Component<{}, {}> {
 
   static propTypes = {
     user: React.PropTypes.object,
@@ -102,7 +102,7 @@ export class PageTop extends React.Component {
   state = {
     isMenuOpen: false,
     appName: process.env.APP_NAME,
-  }
+  } as any
 
   componentWillMount() {
 
@@ -113,7 +113,7 @@ export class PageTop extends React.Component {
   }
 
   onLogout() {
-    eventBus.emit('logout');
+    //eventBus.emit('logout');
   }
 
   renderLogo() {
@@ -134,7 +134,7 @@ export class PageTop extends React.Component {
   renderSearch() {
     return (
       <div className="search">
-        <SearchBar />
+        
       </div>
     );
   }

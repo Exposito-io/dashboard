@@ -21,8 +21,7 @@
     "react-gl-maps": "git+https://github.com/knledg/react-gl-maps.git",
     "react-router": "^2.0.1",
     "react-router-dom": "^4.1.2",
-    "react-scripts-ts": "2.4.0",
-    "react-tap-event-plugin": "^0.2.2"
+    "react-scripts-ts": "2.4.0"
   },
   "devDependencies": {
     "react-tap-event-plugin": "^2.0.1"
