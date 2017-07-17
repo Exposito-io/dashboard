@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom';
 import * as moment from 'moment';
-import { noop } from 'lodash';
-import * as Person from './person.svg'
+import *as _ from 'lodash';
+//import * as Person from './person.svg'
 
 //import {SearchBar} from './search-bar';
 
@@ -27,7 +27,7 @@ export class PageTop extends React.Component<{}, {}> {
       notifications: [{
         user: {
           name: 'Ashley',
-          picture: Person,
+          //picture: Person,
         },
         subject: 'This is a notification alert',
         timeStamp: '02/13/95 9:00',
@@ -36,7 +36,7 @@ export class PageTop extends React.Component<{}, {}> {
       {
         user: {
           name: 'Nick',
-          picture: Person,
+          //picture: Person,
         },
         subject: 'This is a notification alert',
         timeStamp: '07/13/16 12:00',
@@ -45,7 +45,7 @@ export class PageTop extends React.Component<{}, {}> {
       {
         user: {
           name: 'Matt',
-          picture: Person,
+          //picture: Person,
         },
         subject: 'This is a notification alert',
         timeStamp: '04/20/15 9:00',
@@ -54,7 +54,7 @@ export class PageTop extends React.Component<{}, {}> {
       {
         user: {
           name: 'Jon',
-          picture: Person,
+          //picture: Person,
         },
         subject: 'This is a notification alert',
         timeStamp: '07/19/16 8:00',
@@ -63,7 +63,7 @@ export class PageTop extends React.Component<{}, {}> {
       {
         user: {
           name: 'Jacob',
-          picture: Person,
+          //picture: Person,
         },
         subject: 'This is a notification alert',
         timeStamp: '05/23/16 2:00',
@@ -72,7 +72,7 @@ export class PageTop extends React.Component<{}, {}> {
       {
         user: {
           name: 'Jason',
-          picture: Person,
+          //picture: Person,
         },
         subject: 'This is a notification alert',
         timeStamp: '05/01/16 4:00',
@@ -81,7 +81,7 @@ export class PageTop extends React.Component<{}, {}> {
       messages: [{
         user: {
           name: 'Ashley',
-          picture: Person,
+          //picture: Person,
         },
         subject: 'This is a message alert',
         timeStamp: '02/13/95 9:00',
@@ -90,7 +90,7 @@ export class PageTop extends React.Component<{}, {}> {
       {
         user: {
           name: 'Nick',
-          picture: Person,
+          //picture: Person,
         },
         subject: 'This is a message alert',
         timeStamp: '07/13/16 12:00',
@@ -152,7 +152,7 @@ export class PageTop extends React.Component<{}, {}> {
     let notifications = _.assign({}, this.state.notifications);
     return _.map(notifications, (notification, index) => {
       return (
-        <NotificationAlert {...notification} key={index}/>
+        <div></div>
       );
     });
   }
@@ -177,14 +177,14 @@ export class PageTop extends React.Component<{}, {}> {
         </div>
         <Row>
           <Col padding='5px 2px'>
-            <MessagesAlertContainer mailCount={this.state.messages.length} markAllAsReadOnClick={noop} allMessagesOnClick={noop} settingsOnClick={noop} >
+            <MessagesAlertContainer mailCount={this.state.messages.length} markAllAsReadOnClick={_.noop} allMessagesOnClick={_.noop} settingsOnClick={_.noop} >
               {this.renderMessages()}
             </MessagesAlertContainer>
             <NotificationsAlert
               notificationCount={this.state.notifications.length}
-              markAllAsReadOnClick={noop}
-              allNotificationsOnClick={noop}
-              settingsOnClick={noop} >
+              markAllAsReadOnClick={_.noop}
+              allNotificationsOnClick={_.noop}
+              settingsOnClick={_.noop} >
                 {this.renderNotifications()}
             </NotificationsAlert>
           </Col>
