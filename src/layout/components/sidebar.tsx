@@ -1,6 +1,6 @@
-import _ from 'lodash';
-import React from 'react';
-import { Link } from 'react-router';
+import * as _ from 'lodash';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 export class Sidebar extends React.Component {
 
@@ -26,14 +26,15 @@ export class Sidebar extends React.Component {
   }
 
   isSelected(navItem) {
-    return this.props.location.pathname === navItem.pathname ? 'selected' : '';
+    //return this.props.location.pathname === navItem.pathname ? 'selected' : '';
+    return ''
   }
 
   renderLinks() {
     return _.map(this.state.navItems, (navItem) => {
       return (
         <li className={`al-sidebar-list-item ${this.isSelected(navItem)}`} key={navItem.pathname}>
-          <Link className="al-sidebar-list-link" to={{ pathname: navItem.pathname, query: navItem.query }}>
+          <Link className="al-sidebar-list-link" to={{ pathname: navItem.pathname /*, query: navItem.query*/ }}>
             <i className={`fa fa-${navItem.icon}`}></i>
             <span>{navItem.label}</span>
           </Link>

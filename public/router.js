@@ -16,7 +16,7 @@ import { InputDemo } from 'src/page/input-demo';
 import { NotificationsDemo } from 'src/page/notifications-demo';
 /* End Demos */
 
-import { NotFound } from 'src/page/not-found';
+import { NotFound } from 'src/page/not-found'
 
 // Redirect is got GH pages and can be deleted for forked projects
 const redirect = <Redirect from="/react-webpack-skeleton" to="/" />;

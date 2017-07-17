@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Router, Route, Redirect, browserHistory } from 'react-router';
+//import { Router, Route, Redirect, browserHistory } from 'react-router';
+import { BrowserRouter, Redirect, Route } from 'react-router-dom'
 
 import AppLayout from '../layout/app';
 import Login from '../layout/login';
@@ -23,7 +24,7 @@ const redirect = <Redirect from="/react-webpack-skeleton" to="/" />;
 
 /*
 export const AppRouter = (
-  <Router history={browserHistory}>
+  <BrowserRouter history={browserHistory}>
     {redirect}
     <Route path='/login' component={Login} />
     <Route component={AppLayout}>
@@ -38,5 +39,5 @@ export const AppRouter = (
       <Route path='/notifications-demo' component={NotificationsDemo} />
       <Route path="*" component={NotFound}/>
     </Route>
-  </Router>
+  </BrowserRouter>
 );*/
