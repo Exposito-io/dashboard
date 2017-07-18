@@ -2,14 +2,14 @@ import * as React from 'react'
 import { Link } from 'react-router-dom';
 import * as moment from 'moment';
 import *as _ from 'lodash';
-//import * as Person from './person.svg'
+// import * as Person from './person.svg'
 
-//import {SearchBar} from './search-bar';
+// import {SearchBar} from './search-bar';
 
 // Lib
-//import eventBus from 'src/lib/event-bus';
-import {MessagesAlert, MessagesAlertContainer, NotificationsAlert, NotificationAlert} from 'react-blur-admin';
-import {Row, Col} from 'react-flex-proto';
+// import eventBus from 'src/lib/event-bus';
+import { MessagesAlert, MessagesAlertContainer, NotificationsAlert, NotificationAlert } from 'react-blur-admin';
+import { Row, Col } from 'react-flex-proto';
 
 export class PageTop extends React.Component<{}, {}> {
 
@@ -27,7 +27,7 @@ export class PageTop extends React.Component<{}, {}> {
       notifications: [{
         user: {
           name: 'Ashley',
-          //picture: Person,
+          // picture: Person,
         },
         subject: 'This is a notification alert',
         timeStamp: '02/13/95 9:00',
@@ -36,7 +36,7 @@ export class PageTop extends React.Component<{}, {}> {
       {
         user: {
           name: 'Nick',
-          //picture: Person,
+          // picture: Person,
         },
         subject: 'This is a notification alert',
         timeStamp: '07/13/16 12:00',
@@ -45,7 +45,7 @@ export class PageTop extends React.Component<{}, {}> {
       {
         user: {
           name: 'Matt',
-          //picture: Person,
+          // picture: Person,
         },
         subject: 'This is a notification alert',
         timeStamp: '04/20/15 9:00',
@@ -54,7 +54,7 @@ export class PageTop extends React.Component<{}, {}> {
       {
         user: {
           name: 'Jon',
-          //picture: Person,
+          // picture: Person,
         },
         subject: 'This is a notification alert',
         timeStamp: '07/19/16 8:00',
@@ -63,7 +63,7 @@ export class PageTop extends React.Component<{}, {}> {
       {
         user: {
           name: 'Jacob',
-          //picture: Person,
+          // picture: Person,
         },
         subject: 'This is a notification alert',
         timeStamp: '05/23/16 2:00',
@@ -72,7 +72,7 @@ export class PageTop extends React.Component<{}, {}> {
       {
         user: {
           name: 'Jason',
-          //picture: Person,
+          // picture: Person,
         },
         subject: 'This is a notification alert',
         timeStamp: '05/01/16 4:00',
@@ -81,7 +81,7 @@ export class PageTop extends React.Component<{}, {}> {
       messages: [{
         user: {
           name: 'Ashley',
-          //picture: Person,
+          // picture: Person,
         },
         subject: 'This is a message alert',
         timeStamp: '02/13/95 9:00',
@@ -90,7 +90,7 @@ export class PageTop extends React.Component<{}, {}> {
       {
         user: {
           name: 'Nick',
-          //picture: Person,
+          // picture: Person,
         },
         subject: 'This is a message alert',
         timeStamp: '07/13/16 12:00',
