@@ -1,10 +1,11 @@
-import React from 'react';
-import _ from 'lodash';
+import * as React from 'react';
+import * as _ from 'lodash';
 
 import { Page, Panel, ProgressBar, Breadcrumbs } from 'react-blur-admin';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export class ProgressBars extends React.Component {
+  timer: any
 
   state = {
     percentage: _.fill(Array(16), 0),
@@ -34,7 +35,7 @@ export class ProgressBars extends React.Component {
 
     this.setState({percentage});
     if (! done ) {
-      this.timer = setTimeout(e => this.updatePercentages(), Math.random(500) + 250);
+      this.timer = setTimeout(e => this.updatePercentages(), Math.random() + 250);
     }
   }
 

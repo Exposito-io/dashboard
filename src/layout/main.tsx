@@ -4,6 +4,7 @@ import { Welcome } from '../page/welcome'
 import { About } from '../page/about'
 import { TableDemo } from '../page/table-demo'
 import { ButtonDemo } from '../page/button-demo'
+import { ProgressBars } from '../page/progress-bars'
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -17,6 +18,7 @@ const Main = () => (
       <Route exact path='/about' component={About}/>
       <Route exact path='/table-demo' component={TableDemo}/>
       <Route exact path='/button-demo' component={ButtonDemo}/>
+      <Route exact path='/progress-bars' component={ProgressBars}/>
     </Switch>
   </main>
 )
