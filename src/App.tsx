@@ -86,7 +86,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="">
         <Sidebar {...this.props} />
         <PageTop user={this.state.user} />
         <div className="al-main">
