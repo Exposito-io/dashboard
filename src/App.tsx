@@ -6,7 +6,6 @@ import 'react-blur-admin/dist/assets/styles/react-blur-admin.min.css';
 
 import { Sidebar } from './layout/components/sidebar'
 import { PageTop } from './layout/components/page-top'
-import { Welcome } from './page/welcome'
 import Main from './layout/main'
 
 const logo = require('./logo.svg');

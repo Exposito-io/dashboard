@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react'
 
-import { Page, Panel, Breadcrumbs } from 'react-blur-admin';
-import { Link } from 'react-router';
+import { Page, Panel, Breadcrumbs } from 'react-blur-admin'
+import { Link } from 'react-router-dom'
 
 export class About extends React.Component {
 
@@ -13,7 +13,7 @@ export class About extends React.Component {
         </Link>
           About
       </Breadcrumbs>
-    );
+    )
   }
 
   render() {
