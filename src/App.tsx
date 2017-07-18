@@ -87,7 +87,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="">
+      <main className="">
         <Sidebar {...this.props} />
         <PageTop user={this.state.user} />
         <div className="al-main">
@@ -107,7 +107,7 @@ class App extends React.Component {
         
         </div>
         <Notifications />
-      </div>
+      </main>
     );
   }
 }

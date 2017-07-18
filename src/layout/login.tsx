@@ -1,13 +1,13 @@
-import React from 'react';
-import { withRouter } from 'react-router';
+import * as React from 'react';
 
-class Login extends React.Component {
+export class Login extends React.Component {
   static propTypes = {
+    /*
     router: React.PropTypes.object.isRequired,
     location: React.PropTypes.shape({
       pathname: React.PropTypes.string.isRequired,
       query: React.PropTypes.object.isRequired,
-    }),
+    }),*/
   }
 
   state = {
@@ -15,7 +15,7 @@ class Login extends React.Component {
   }
 
   componentWillMount() {
-    this.lock = new Auth0Lock(process.env.AUTH0_PUB_KEY, process.env.AUTH0_DOMAIN);
+    //this.lock = new Auth0Lock(process.env.AUTH0_PUB_KEY, process.env.AUTH0_DOMAIN);
     this.setIdToken();
   }
 
@@ -24,33 +24,34 @@ class Login extends React.Component {
     if (idToken) {
       this.setState({idToken});
 
+      /*
       if (this.props.location.query && this.props.location.query.redirectUri) {
         this.props.router.replace(decodeURIComponent(this.props.location.query.redirectUri));
       } else {
         this.props.router.replace('/');
-      }
+      }*/
     }
   }
 
   getIdToken() {
     let idToken = localStorage.getItem('userToken');
-    const authHash = this.lock.parseHash(window.location.hash);
+    //const authHash = this.lock.parseHash(window.location.hash);
+    const authHash = {}
+    /*
     if (!idToken && authHash) {
       if (authHash.id_token) {
         idToken = authHash.id_token;
         localStorage.setItem('userToken', authHash.id_token);
       }
       if (authHash.error) {
-        /* eslint-disable no-console */
         console.error('Error fetching user hash: ', authHash.error);
-        /* eslint-enable no-console */
       }
-    }
+    }*/
     return idToken;
   }
 
   showLock() {
-    this.lock.show();
+    //this.lock.show();
   }
 
   render() {
@@ -63,4 +64,3 @@ class Login extends React.Component {
   }
 }
 
-export default withRouter(Login);

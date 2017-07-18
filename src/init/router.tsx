@@ -3,7 +3,7 @@ import * as React from 'react';
 import { BrowserRouter, Redirect, Route } from 'react-router-dom'
 
 import AppLayout from '../layout/app';
-import Login from '../layout/login';
+import { Login } from '../layout/login';
 
 /* Demos */
 import { Welcome } from '../page/welcome';
