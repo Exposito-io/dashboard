@@ -6,6 +6,7 @@ import 'react-blur-admin/dist/assets/styles/react-blur-admin.min.css';
 
 import { Sidebar } from './layout/components/sidebar'
 import { PageTop } from './layout/components/page-top'
+import { Notifications } from 'react-blur-admin'
 import Main from './layout/main'
 
 const logo = require('./logo.svg');
@@ -94,6 +95,7 @@ class App extends React.Component {
               <Main />
             </div>
         </div>
+        <Notifications />
       </div>
     );
   }
