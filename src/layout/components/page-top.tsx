@@ -154,9 +154,9 @@ export class PageTop extends React.Component<{}, {}> {
     let notifications = _.assign({}, this.state.notifications);
     return _.map(notifications, (notification, index) => {
       return (
-        <div></div>
-      );
-    });
+        <NotificationAlert {...notification} key={index}/>
+      )
+    })
   }
 
   renderUserSection() {

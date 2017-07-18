@@ -15,7 +15,7 @@ class App extends React.Component {
   props: any
 
   static propTypes = {
-    router: React.PropTypes.object.isRequired,
+    //router: React.PropTypes.object.isRequired,
     location: React.PropTypes.shape({
       pathname: React.PropTypes.string.isRequired,
       query: React.PropTypes.object.isRequired,
