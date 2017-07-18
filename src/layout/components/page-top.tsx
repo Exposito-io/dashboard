@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom';
 import * as moment from 'moment';
-import *as _ from 'lodash';
+import * as _ from 'lodash';
 // import * as Person from './person.svg'
 
-// import {SearchBar} from './search-bar';
+import { SearchBar } from './search-bar';
 
 // Lib
 // import eventBus from 'src/lib/event-bus';
@@ -136,7 +136,7 @@ export class PageTop extends React.Component<{}, {}> {
   renderSearch() {
     return (
       <div className="search">
-        
+         <SearchBar />
       </div>
     );
   }
