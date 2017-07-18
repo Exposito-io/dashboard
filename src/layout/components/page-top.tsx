@@ -13,6 +13,8 @@ import { Row, Col } from 'react-flex-proto';
 
 export class PageTop extends React.Component<{}, {}> {
 
+  props: any
+
   static propTypes = {
     user: React.PropTypes.object,
     location: React.PropTypes.shape({
@@ -162,14 +164,14 @@ export class PageTop extends React.Component<{}, {}> {
       <div className="user-profile clearfix">
         <div className={`al-user-profile dropdown ${this.state.isMenuOpen ? 'open' : ''}`}>
           <a className="profile-toggle-link dropdown-toggle" onClick={this.onToggleMenu.bind(this)}>
-            <img src={this.props.user && this.props.user.picture ? this.props.user.picture : Person}/>
+            <img src={this.props.user && this.props.user.picture ? this.props.user.picture : ''}/>
           </a>
           <ul className="top-dropdown-menu profile-dropdown dropdown-menu">
             <li><i className="dropdown-arr"></i></li>
             <li><Link to="/"><i className="fa fa-user"></i>Profile</Link></li>
             <li><Link to="/'"><i className="fa fa-cog"></i>Settings</Link></li>
             <li>
-              <a href={this.props.location.pathname} className="signout" onClick={e => this.onLogout()}>
+              <a href="/" className="signout" onClick={e => this.onLogout()}>
                 <i className="fa fa-power-off"></i>Sign out
               </a>
             </li>

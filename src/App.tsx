@@ -7,10 +7,14 @@ import 'react-blur-admin/dist/assets/styles/react-blur-admin.min.css';
 import { Sidebar } from './layout/components/sidebar'
 import { PageTop } from './layout/components/page-top'
 import { Welcome } from './page/welcome'
+import Main from './layout/main'
 
 const logo = require('./logo.svg');
 
 class App extends React.Component {
+
+  props: any
+
   static propTypes = {
     router: React.PropTypes.object.isRequired,
     location: React.PropTypes.shape({
@@ -86,14 +90,8 @@ class App extends React.Component {
       <div className="App">
         <Sidebar {...this.props} />
         <PageTop user={this.state.user} />
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Welcome/>
+
+        <Main />
       </div>
     );
   }
