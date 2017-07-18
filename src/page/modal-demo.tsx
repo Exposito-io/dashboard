@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 
 import { Page, Panel, Modal, Button, Breadcrumbs, Input, Select, Switch } from 'react-blur-admin';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
 import {Row, Col} from 'react-flex-proto';
@@ -15,6 +15,15 @@ export class ModalDemo extends React.Component {
     infoModal: false,
     primaryModal: false,
     switches: [true, false],
+    customizedModal1: false,
+    customizedModal2: false,
+    customizedModal3: false,
+    customizedModal4: false,
+    customizedModal5: false,
+    selectOne: false,
+    firstName: '',
+    lastName: '',
+    link: ''
   }
 
   onCloseModal(modalName) {
@@ -29,6 +38,10 @@ export class ModalDemo extends React.Component {
     let switches = _.assign({}, this.state.switches);
     switches[index] = !switches[index];
     this.setState({ switches });
+  }
+
+  onTextChange(text, e) {
+
   }
 
   renderBreadcrumbs() {
