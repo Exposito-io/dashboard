@@ -90,8 +90,11 @@ class App extends React.Component {
       <div className="App">
         <Sidebar {...this.props} />
         <PageTop user={this.state.user} />
-
-        <Main />
+        <div className="al-main">
+            <div className="al-content">
+              <Main />
+            </div>
+        </div>
       </div>
     );
   }
