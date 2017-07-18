@@ -26,8 +26,7 @@ export class Sidebar extends React.Component {
   }
 
   isSelected(navItem) {
-    //return this.props.location.pathname === navItem.pathname ? 'selected' : '';
-    return ''
+    return location.pathname === navItem.pathname ? 'selected' : ''
   }
 
   renderLinks() {
