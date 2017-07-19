@@ -9,7 +9,28 @@ import { PageTop } from './layout/components/page-top'
 import { Notifications } from 'react-blur-admin'
 import Main from './layout/main'
 
+import { ExpositoClient } from 'exposito-client'
+import { BitcoinWallet } from 'models'
+
 const logo = require('./logo.svg');
+
+setTimeout(() => {
+    //let client = new ExpositoClient({ url: 'http://localhost:3004', version: 'v0' })
+
+    let wallet = new BitcoinWallet({ coreWallet: 'fweaf', name: 'fae', organizationId: 'awef', labels: [] })
+    
+    /*
+    client.wallets.getWallets()
+    .then(wallets => {
+      console.log('wallets: ')
+      console.log(wallets)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+*/
+
+}, 10000)
 
 class App extends React.Component {
 
