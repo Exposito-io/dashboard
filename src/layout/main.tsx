@@ -19,16 +19,16 @@ import { NotFound } from '../page/not-found'
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path='/' component={Welcome}/>
-      <Route exact path='/about' component={About}/>
-      <Route exact path='/table-demo' component={TableDemo}/>
-      <Route exact path='/button-demo' component={ButtonDemo}/>
-      <Route exact path='/progress-bars' component={ProgressBars}/>
-      <Route exact path='/modal-demo' component={ModalDemo}/>
-      <Route exact path='/tabs-demo' component={TabsDemo}/>
-      <Route exact path='/notifications-demo' component={NotificationsDemo}/>
-      <Route exact path='/input-demo' component={InputDemo}/>
-      <Route exact path='*' component={NotFound}/>
+      <Route exact path="/" component={Welcome}/>
+      <Route exact path="/about" component={About}/>
+      <Route exact path="/table-demo" component={TableDemo}/>
+      <Route exact path="/button-demo" component={ButtonDemo}/>
+      <Route exact path="/progress-bars" component={ProgressBars}/>
+      <Route exact path="/modal-demo" component={ModalDemo}/>
+      <Route exact path="/tabs-demo" component={TabsDemo}/>
+      <Route exact path="/notifications-demo" component={NotificationsDemo}/>
+      <Route exact path="/input-demo" component={InputDemo}/>
+      <Route path="*" component={NotFound}/>
       
     </Switch>
   </main>

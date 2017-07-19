@@ -8,7 +8,7 @@ export class NotFound extends React.Component {
   renderBreadcrumbs() {
     return (
       <Breadcrumbs>
-        <Link to='/'>
+        <Link to="/">
           Home
         </Link>
           You're lost!
@@ -18,8 +18,8 @@ export class NotFound extends React.Component {
 
   render() {
     return (
-      <Page actionBar={this.renderBreadcrumbs()} title='404 Not Found'>
-        <Panel title='Page Not Found'>
+      <Page actionBar={this.renderBreadcrumbs()} title="404 Not Found">
+        <Panel title="Page Not Found">
           The page you were looking for wasn't found!
         </Panel>
       </Page>
