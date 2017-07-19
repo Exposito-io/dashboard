@@ -9,6 +9,7 @@ import { ModalDemo } from '../page/modal-demo'
 import { TabsDemo } from '../page/tabs-demo'
 import { InputDemo } from '../page/input-demo'
 import { NotificationsDemo } from '../page/notifications-demo'
+import { NotFound } from '../page/not-found'
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -27,6 +28,8 @@ const Main = () => (
       <Route exact path='/tabs-demo' component={TabsDemo}/>
       <Route exact path='/notifications-demo' component={NotificationsDemo}/>
       <Route exact path='/input-demo' component={InputDemo}/>
+      <Route exact path='*' component={NotFound}/>
+      
     </Switch>
   </main>
 )
