@@ -1,5 +1,5 @@
-import Autosuggest from 'react-autosuggest';
-import React from 'react';
+import * as Autosuggest from 'react-autosuggest';
+import * as React from 'react';
 import { Row, Col } from 'react-flex-proto';
 
 const suggestionExamples = [
@@ -36,6 +36,8 @@ const suggestionExamples = [
 ];
 
 export class SearchBar extends React.Component {
+  state: any
+
   constructor() {
     super();
 
@@ -58,12 +60,12 @@ export class SearchBar extends React.Component {
   onSuggestionsUpdateRequested({ value }) {
     this.setState({loading: true, suggestions: [{type: 'loading'}]});
 
-    setTimeout(function() {
+    setTimeout(() => {
       this.setState({
         suggestions: this.getSuggestions(value),
         loading: false,
       });
-    }.bind(this), 200);
+    }, 200);
   }
 
   getSuggestions(value) {

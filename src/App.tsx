@@ -6,6 +6,7 @@ import 'react-blur-admin/dist/assets/styles/react-blur-admin.min.css';
 
 import { Sidebar } from './layout/components/sidebar'
 import { PageTop } from './layout/components/page-top'
+import { Notifications } from 'react-blur-admin'
 import Main from './layout/main'
 
 const logo = require('./logo.svg');
@@ -15,7 +16,7 @@ class App extends React.Component {
   props: any
 
   static propTypes = {
-    router: React.PropTypes.object.isRequired,
+    //router: React.PropTypes.object.isRequired,
     location: React.PropTypes.shape({
       pathname: React.PropTypes.string.isRequired,
       query: React.PropTypes.object.isRequired,
@@ -86,14 +87,26 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="">
         <Sidebar {...this.props} />
         <PageTop user={this.state.user} />
         <div className="al-main">
             <div className="al-content">
               <Main />
             </div>
+            <footer className="al-footer clearfix">
+              <div className="al-footer-right">Created with <i className="ion-heart"></i></div>
+              <div className="al-footer-main clearfix">
+                <div className="al-copy">React Webpack Skeleton</div>
+                <ul className="al-share clearfix">
+                  <li><i className="socicon socicon-facebook"></i></li>
+                  <li><i className="socicon socicon-twitter"></i></li>
+                </ul>
+              </div>
+            </footer>
+        
         </div>
+        <Notifications />
       </div>
     );
   }
