@@ -9,7 +9,33 @@ import { PageTop } from './layout/components/page-top'
 import { Notifications } from 'react-blur-admin'
 import Main from './layout/main'
 
-const logo = require('./logo.svg');
+import { ExpositoClient } from 'exposito-client'
+import { BitcoinWallet } from 'models'
+
+import { ExpositoError, ErrorCode } from 'module-test'
+
+//const logo = require('./logo.svg');
+
+setTimeout(() => {
+    //let client = new ExpositoClient({ url: 'http://localhost:3004', version: 'v0' })
+
+    //let wallet = new BitcoinWallet({ coreWallet: 'fweaf', name: 'fae', organizationId: 'awef', labels: [] })
+
+    let l = new ExpositoError(ErrorCode.INVALID_PARAMS)
+    console.log(l)
+
+    /*
+    client.wallets.getWallets()
+    .then(wallets => {
+      console.log('wallets: ')
+      console.log(wallets)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+*/
+
+}, 10000)
 
 class App extends React.Component {
 
@@ -87,7 +113,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="">
+      <main className="">
         <Sidebar {...this.props} />
         <PageTop user={this.state.user} />
         <div className="al-main">
@@ -107,7 +133,7 @@ class App extends React.Component {
         
         </div>
         <Notifications />
-      </div>
+      </main>
     );
   }
 }
