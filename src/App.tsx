@@ -12,17 +12,17 @@ import Main from './layout/main'
 import { ExpositoClient } from 'exposito-client'
 import { BitcoinWallet } from 'models'
 
-import { ExpositoError, ErrorCode } from 'module-test'
+//import { ExpositoError, ErrorCode } from 'module-test'
 
 //const logo = require('./logo.svg');
 
 setTimeout(() => {
     //let client = new ExpositoClient({ url: 'http://localhost:3004', version: 'v0' })
 
-    //let wallet = new BitcoinWallet({ coreWallet: 'fweaf', name: 'fae', organizationId: 'awef', labels: [] })
+    let wallet = new BitcoinWallet({ coreWallet: 'fweaf', name: 'fae', organizationId: 'awef', labels: [] })
 
-    let l = new ExpositoError(ErrorCode.INVALID_PARAMS)
-    console.log(l)
+    //let l = new ExpositoError(ErrorCode.INVALID_PARAMS)
+    console.log(wallet)
 
     /*
     client.wallets.getWallets()
