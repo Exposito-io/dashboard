@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { Welcome } from '../page/welcome'
-import { About } from '../page/about'
+import { Dashboard } from '../page/dashboard'
+import { Instances } from '../page/instances'
+import { Wallets } from '../page/wallets'
+import { PeriodicPayments } from '../page/periodic-payments'
 import { TableDemo } from '../page/table-demo'
 import { ButtonDemo } from '../page/button-demo'
 import { ProgressBars } from '../page/progress-bars'
@@ -19,8 +21,10 @@ import { NotFound } from '../page/not-found'
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path="/" component={Welcome}/>
-      <Route exact path="/about" component={About}/>
+      <Route exact path="/" component={Dashboard}/>
+      <Route exact path="/instances" component={Instances}/>
+      <Route exact path="/wallets" component={Wallets}/>
+      <Route exact path="/periodic-payments" component={PeriodicPayments}/>
       <Route exact path="/table-demo" component={TableDemo}/>
       <Route exact path="/button-demo" component={ButtonDemo}/>
       <Route exact path="/progress-bars" component={ProgressBars}/>

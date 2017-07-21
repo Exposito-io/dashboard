@@ -16,24 +16,14 @@ import { BitcoinWallet } from 'models'
 
 //const logo = require('./logo.svg');
 
-setTimeout(() => {
-    //let client = new ExpositoClient({ url: 'http://localhost:3004', version: 'v0' })
+//document.domain = 'localhost'
 
-    let wallet = new BitcoinWallet({ coreWallet: 'fweaf', name: 'fae', organizationId: 'awef', labels: [] })
-
-    //let l = new ExpositoError(ErrorCode.INVALID_PARAMS)
-    console.log(wallet)
-
-    /*
-    client.wallets.getWallets()
-    .then(wallets => {
-      console.log('wallets: ')
-      console.log(wallets)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-*/
+setTimeout(async () => {
+    let client = new ExpositoClient({ url: 'http://localhost:3004', version: 'v0', token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OTEyNzlhMjNiMTRkOTNiZGJlZDhhNjEiLCJpYXQiOjE0OTg5NjI3ODksImV4cCI6MTUzMDQ5ODc4OX0.5JIIUnRjmLLnfFcuz2Hx4jT4_U1lCYzrDLcffwHSx_A' })
+    
+    let wallets = await client.wallets.getWallets()
+    console.log('wallets: ')
+    console.log(wallets)
 
 }, 10000)
 
