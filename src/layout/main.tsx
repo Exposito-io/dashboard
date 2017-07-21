@@ -10,6 +10,7 @@ import { ProgressBars } from '../page/progress-bars'
 import { ModalDemo } from '../page/modal-demo'
 import { TabsDemo } from '../page/tabs-demo'
 import { InputDemo } from '../page/input-demo'
+import { Contributors } from '../page/contributors'
 import { NotificationsDemo } from '../page/notifications-demo'
 import { NotFound } from '../page/not-found'
 
@@ -25,6 +26,7 @@ const Main = () => (
       <Route exact path="/instances" component={Instances}/>
       <Route exact path="/wallets" component={Wallets}/>
       <Route exact path="/periodic-payments" component={PeriodicPayments}/>
+      <Route exact path="/contributors" component={Contributors}/>
       <Route exact path="/table-demo" component={TableDemo}/>
       <Route exact path="/button-demo" component={ButtonDemo}/>
       <Route exact path="/progress-bars" component={ProgressBars}/>
