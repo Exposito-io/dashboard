@@ -1,8 +1,10 @@
 import { autorun, observable, computed } from 'mobx'
 import { Wallet } from 'models'
 import { ExpositoClient } from 'exposito-client'
+import { Store } from './store'
 
-export class WalletStore {
+
+export class WalletStore extends Store {
   
   private static instance: WalletStore
 
@@ -20,6 +22,7 @@ export class WalletStore {
 
 
   private constructor() {
+    super()
     //autorun(() => console.log(this.report));
     console.log('wallet store')
 
