@@ -18,6 +18,7 @@ import { BitcoinWallet } from 'models'
 
 //document.domain = 'localhost'
 
+/*
 setTimeout(async () => {
     let client = new ExpositoClient({ 
       url: 'http://localhost:3004', 
@@ -29,7 +30,7 @@ setTimeout(async () => {
     console.log('wallets: ')
     console.log(wallets)
 
-}, 10000)
+}, 10000)*/
 
 class App extends React.Component {
 
