@@ -3,19 +3,19 @@ import { User } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from './store'
 
-export class UserStore extends Store {
+export class PreferencesStore extends Store {
   
-  private static instance: UserStore
+  private static instance: PreferencesStore
 
-  @observable user: User
+  @observable preferences: User
 
   private client: ExpositoClient
 
 
-  static getStore(): UserStore {
+  static getStore(): PreferencesStore {
 
       if (!this.instance)
-        this.instance = new UserStore()
+        this.instance = new PreferencesStore()
 
       return this.instance
   }
