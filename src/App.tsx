@@ -2,7 +2,7 @@ import * as React from 'react';
 import './App.css';
 
 import 'react-flex-proto/styles/flex.css';
-import 'react-blur-admin/dist/assets/styles/react-blur-admin.min.css';
+import './assets/styles/react-blur-admin.min.css';
 
 import { Sidebar } from './layout/components/sidebar'
 import { PageTop } from './layout/components/page-top'
@@ -19,7 +19,11 @@ import { BitcoinWallet } from 'models'
 //document.domain = 'localhost'
 
 setTimeout(async () => {
-    let client = new ExpositoClient({ url: 'http://localhost:3004', version: 'v0', token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OTEyNzlhMjNiMTRkOTNiZGJlZDhhNjEiLCJpYXQiOjE0OTg5NjI3ODksImV4cCI6MTUzMDQ5ODc4OX0.5JIIUnRjmLLnfFcuz2Hx4jT4_U1lCYzrDLcffwHSx_A' })
+    let client = new ExpositoClient({ 
+      url: 'http://localhost:3004', 
+      version: 'v0', 
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OTEyNzlhMjNiMTRkOTNiZGJlZDhhNjEiLCJpYXQiOjE0OTg5NjI3ODksImV4cCI6MTUzMDQ5ODc4OX0.5JIIUnRjmLLnfFcuz2Hx4jT4_U1lCYzrDLcffwHSx_A' 
+    })
     
     let wallets = await client.wallets.getWallets()
     console.log('wallets: ')
@@ -29,7 +33,7 @@ setTimeout(async () => {
 
 class App extends React.Component {
 
-  props: any
+  props
 
   static propTypes = {
     //router: React.PropTypes.object.isRequired,
