@@ -1,0 +1,8 @@
+h1#logo {
+    font-family: 'Comfortaa', cursive;
+    font-size: 38px;
+    display: inline-block;
+    width: auto;
+    float: left;
+    margin-top: 10px;
+}

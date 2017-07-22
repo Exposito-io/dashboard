@@ -202,6 +202,7 @@ export class PageTop extends React.Component<{}, {}> {
     // import message cente
     return (
       <div className="page-top clearfix" scroll-position="scrolled" max-height="50">
+        <h1 id="logo">exposito</h1>        
         {this.renderLogo()}
         {this.renderHamburgerMenu()}
         {this.renderSearch()}

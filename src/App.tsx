@@ -3,6 +3,7 @@ import './App.css';
 
 import 'react-flex-proto/styles/flex.css';
 import './assets/styles/react-blur-admin.min.css';
+import './assets/styles/main.css';
 
 import { Sidebar } from './layout/components/sidebar'
 import { PageTop } from './layout/components/page-top'

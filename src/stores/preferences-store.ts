@@ -3,6 +3,8 @@ import { User } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from './store'
 
+
+
 export class PreferencesStore extends Store {
   
   private static instance: PreferencesStore
