@@ -125,12 +125,14 @@ export class PageTop extends React.Component<{}, {}> {
   }
 
   renderHamburgerMenu() {
-    return null;
+    //return null;
 
     // @todo
-    // return (
-    //   <a href className="collapse-menu-link ion-navicon" ng-click="isMenuCollapsed=!isMenuCollapsed"></a>
-    // );
+    return (
+      <div>
+       <a href="" className="collapse-menu-link ion-navicon"></a>
+      </div>
+    );
   }
 
   renderSearch() {
@@ -202,9 +204,9 @@ export class PageTop extends React.Component<{}, {}> {
     // import message cente
     return (
       <div className="page-top clearfix" scroll-position="scrolled" max-height="50">
+        {this.renderHamburgerMenu()}
         <h1 id="logo">exposito</h1>        
         {this.renderLogo()}
-        {this.renderHamburgerMenu()}
         {this.renderSearch()}
         {this.renderUserSection()}
       </div>
