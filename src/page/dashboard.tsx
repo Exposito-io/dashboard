@@ -20,7 +20,7 @@ class ObservableTodoStore {
 
   @computed get report() {
     if (this.todos.length === 0)
-      return "<none>";
+      return '<none>';
     return `Next todo: "${this.todos[0].task}". ` +
       `Progress: ${this.completedTodosCount}/${this.todos.length}`;
   }
@@ -38,7 +38,7 @@ class ObservableTodoStore {
 const observableTodoStore = new ObservableTodoStore()
 
 setInterval(() => {
-  observableTodoStore.addTodo("read MobX tutorial");
+  observableTodoStore.addTodo('read MobX tutorial');
 }, 5000)
 
 @observer
