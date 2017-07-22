@@ -6090,7 +6090,7 @@ body.badmin-transparent.mobile {
       height: 100%;
       top: 0;
       left: 0;
-      background: url("../img/blur-bg.jpg") no-repeat center center;
+      background: url("../img/darkblurbg2.jpg") no-repeat center center;
       background-size: cover;
       will-change: transform;
       z-index: -1; }
@@ -6415,7 +6415,7 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    background: url("../img/blur-bg.jpg") no-repeat center center;
+    background: url("../img/darkblurbg2.jpg") no-repeat center center;
     background-size: cover;
     will-change: transform;
     z-index: -1; }
