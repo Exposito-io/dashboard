@@ -1,23 +1,22 @@
 import { autorun, observable, computed } from 'mobx'
-import { User } from 'models'
+import { PeriodicPayment } from 'models'
 import { ExpositoClient } from 'exposito-client'
 
-export class UserStore {
+export class PeriodicPaymentStore {
   
-  private static instance: UserStore
+  private static instance: PeriodicPaymentStore
 
-  @observable user: User
+  @observable periodicPayments: PeriodicPayment[]
   @observable selectedProject
 
   private client: ExpositoClient
 
-  static getStore(): UserStore {
+  static getStore(): PeriodicPaymentStore {
       if (!this.instance)
-        this.instance = new UserStore()
+        this.instance = new PeriodicPaymentStore()
 
       return this.instance
   }
-
 
 
   private constructor() {
