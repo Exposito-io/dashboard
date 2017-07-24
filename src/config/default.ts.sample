@@ -1,0 +1,5 @@
+export class Config
+{
+    apiUrl = "http://localhost:3004"
+    apiVersion = "v1"
+}

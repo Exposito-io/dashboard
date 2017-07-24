@@ -12,26 +12,21 @@ import Main from './layout/main'
 
 import { ExpositoClient } from 'exposito-client'
 import { BitcoinWallet } from 'models'
+import config from './config'
 
-//import { ExpositoError, ErrorCode } from 'module-test'
 
-//const logo = require('./logo.svg');
-
-//document.domain = 'localhost'
-
-/*
 setTimeout(async () => {
     let client = new ExpositoClient({ 
-      url: 'http://localhost:3004', 
-      version: 'v0', 
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OTEyNzlhMjNiMTRkOTNiZGJlZDhhNjEiLCJpYXQiOjE0OTg5NjI3ODksImV4cCI6MTUzMDQ5ODc4OX0.5JIIUnRjmLLnfFcuz2Hx4jT4_U1lCYzrDLcffwHSx_A' 
-    })
+      url: config.apiUrl, 
+      version: config.apiVersion,
+      //token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OTEyNzlhMjNiMTRkOTNiZGJlZDhhNjEiLCJpYXQiOjE0OTg5NjI3ODksImV4cCI6MTUzMDQ5ODc4OX0.5JIIUnRjmLLnfFcuz2Hx4jT4_U1lCYzrDLcffwHSx_A' 
+    }) 
     
-    let wallets = await client.wallets.getWallets()
+    let projects = await client.projects.getProjects()
     console.log('wallets: ')
-    console.log(wallets)
+    console.log(projects)
 
-}, 10000)*/
+}, 10000)
 
 class App extends React.Component {
 
