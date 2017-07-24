@@ -8,8 +8,6 @@
     "@types/react": "^15.0.38",
     "@types/react-dom": "^15.5.1",
     "@types/react-router-dom": "^4.0.7",
-    "axios": "^0.9.1",
-    "classnames": "^2.2.5",
     "lodash": "^4.17.4",
     "mobx": "^3.2.1",
     "mobx-react": "^4.2.2",
@@ -19,7 +17,6 @@
     "react-blur-admin": "^0.10.0",
     "react-dom": "^15.6.1",
     "react-flex-proto": "^1.0.0",
-    "react-gl-maps": "git+https://github.com/knledg/react-gl-maps.git",
     "react-router-dom": "^4.1.2",
     "react-scripts-ts": "2.4.0",
     "react-selectize": "^2.1.0"
