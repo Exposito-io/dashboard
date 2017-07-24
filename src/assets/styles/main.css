@@ -6,3 +6,8 @@ h1#logo {
     float: left;
     margin-top: 10px;
 }
+
+.project-toggle-link {
+    line-height: 56px;
+    margin-right: 36px;
+}
