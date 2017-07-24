@@ -2,16 +2,21 @@ import * as React from 'react'
 import { Link } from 'react-router-dom';
 import * as moment from 'moment';
 import * as _ from 'lodash';
+import { observer } from 'mobx-react'
 
 var person = require('../../assets/img/person.svg')
 
-import { SearchBar } from './search-bar';
+import { SearchBar } from './search-bar'
 
 // Lib
 // import eventBus from 'src/lib/event-bus';
-import { MessagesAlert, MessagesAlertContainer, NotificationsAlert, NotificationAlert } from 'react-blur-admin';
-import { Row, Col } from 'react-flex-proto';
+import { MessagesAlert, MessagesAlertContainer, NotificationsAlert, NotificationAlert } from 'react-blur-admin'
+import { Row, Col } from 'react-flex-proto'
 
+import { ProjectStore } from '../../stores/project-store'
+
+
+@observer
 export class PageTop extends React.Component<{}, {}> {
 
   static propTypes = {
@@ -29,9 +34,13 @@ export class PageTop extends React.Component<{}, {}> {
 
   props
 
+  private projectStore: ProjectStore
 
   constructor(props) {
-    super(props);
+    super(props)
+
+    this.projectStore = ProjectStore.getStore()
+
     this.state = {
       notifications: [{
         user: {
@@ -188,10 +197,11 @@ export class PageTop extends React.Component<{}, {}> {
         <Row>
         <div className={`al-project-menu dropdown ${this.state.isProjectMenuOpen ? 'open' : ''}`}>
           <a className="project-toggle-link dropdown-toggle" onClick={this.onToggleProjectMenu}>
-            Test project <i className="fa fa-caret-down"></i>
+            Projet <i className="fa fa-caret-down"></i>
           </a>
           <ul className="top-dropdown-menu profile-dropdown dropdown-menu">
             <li><i className="dropdown-arr"></i></li>
+            {this.projectStore.availableProjects.map(project => <li key={project.id}><a className="fa fa-user">{project.name}</a></li>)}
             <li><Link to="/"><i className="fa fa-user"></i>Profile</Link></li>
             <li><Link to="/'"><i className="fa fa-cog"></i>Settings</Link></li>
             <li>
