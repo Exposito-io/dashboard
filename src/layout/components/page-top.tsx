@@ -188,7 +188,7 @@ export class PageTop extends React.Component<{}, {}> {
         <Row>
         <div className={`al-project-menu dropdown ${this.state.isProjectMenuOpen ? 'open' : ''}`}>
           <a className="project-toggle-link dropdown-toggle" onClick={this.onToggleProjectMenu}>
-            Test project <span className="fa fa-caret-down"></span>
+            Test project <i className="fa fa-caret-down"></i>
           </a>
           <ul className="top-dropdown-menu profile-dropdown dropdown-menu">
             <li><i className="dropdown-arr"></i></li>
