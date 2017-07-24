@@ -2,7 +2,8 @@ import * as React from 'react'
 import { Link } from 'react-router-dom';
 import * as moment from 'moment';
 import * as _ from 'lodash';
-// import * as Person from './person.svg'
+
+var person = require('../../assets/img/person.svg')
 
 import { SearchBar } from './search-bar';
 
@@ -13,8 +14,6 @@ import { Row, Col } from 'react-flex-proto';
 
 export class PageTop extends React.Component<{}, {}> {
 
-  props: any
-
   static propTypes = {
     user: React.PropTypes.object,
     location: React.PropTypes.shape({
@@ -22,6 +21,14 @@ export class PageTop extends React.Component<{}, {}> {
       query: React.PropTypes.object.isRequired,
     }),
   }
+
+  state = {
+    isMenuOpen: false,
+    appName: process.env.APP_NAME,
+  } as any
+
+  props
+
 
   constructor(props) {
     super(props);
@@ -101,17 +108,17 @@ export class PageTop extends React.Component<{}, {}> {
     };
   }
 
-  state = {
-    isMenuOpen: false,
-    appName: process.env.APP_NAME,
-  } as any
 
   componentWillMount() {
 
   }
 
-  onToggleMenu() {
+  onToggleMenu = () => {
     this.setState({ isMenuOpen: ! this.state.isMenuOpen });
+  }
+
+  onToggleProjectMenu = () => {
+    this.setState({ isProjectMenuOpen: ! this.state.isProjectMenuOpen });
   }
 
   onLogout() {
@@ -125,8 +132,6 @@ export class PageTop extends React.Component<{}, {}> {
   }
 
   renderHamburgerMenu() {
-    //return null;
-
     // @todo
     return (
       <div>
@@ -161,12 +166,13 @@ export class PageTop extends React.Component<{}, {}> {
     })
   }
 
+
   renderUserSection() {
     return (
       <div className="user-profile clearfix">
         <div className={`al-user-profile dropdown ${this.state.isMenuOpen ? 'open' : ''}`}>
-          <a className="profile-toggle-link dropdown-toggle" onClick={this.onToggleMenu.bind(this)}>
-            <img src={this.props.user && this.props.user.picture ? this.props.user.picture : ''}/>
+          <a className="profile-toggle-link dropdown-toggle" onClick={this.onToggleMenu}>
+            <img src={this.props.user && this.props.user.picture ? this.props.user.picture : person}/>
           </a>
           <ul className="top-dropdown-menu profile-dropdown dropdown-menu">
             <li><i className="dropdown-arr"></i></li>
@@ -180,10 +186,22 @@ export class PageTop extends React.Component<{}, {}> {
           </ul>
         </div>
         <Row>
+        <div className={`al-project-menu dropdown ${this.state.isProjectMenuOpen ? 'open' : ''}`}>
+          <a className="project-toggle-link dropdown-toggle" onClick={this.onToggleProjectMenu}>
+            Test project
+          </a>
+          <ul className="top-dropdown-menu profile-dropdown dropdown-menu">
+            <li><i className="dropdown-arr"></i></li>
+            <li><Link to="/"><i className="fa fa-user"></i>Profile</Link></li>
+            <li><Link to="/'"><i className="fa fa-cog"></i>Settings</Link></li>
+            <li>
+              <a href="/" className="signout" onClick={e => this.onLogout()}>
+                <i className="fa fa-power-off"></i>Sign out
+              </a>
+            </li>
+          </ul>
+        </div>
           <Col padding='5px 2px'>
-            <MessagesAlertContainer mailCount={this.state.messages.length} markAllAsReadOnClick={_.noop} allMessagesOnClick={_.noop} settingsOnClick={_.noop} >
-              {this.renderMessages()}
-            </MessagesAlertContainer>
             <NotificationsAlert
               notificationCount={this.state.notifications.length}
               markAllAsReadOnClick={_.noop}
@@ -191,8 +209,9 @@ export class PageTop extends React.Component<{}, {}> {
               settingsOnClick={_.noop} >
                 {this.renderNotifications()}
             </NotificationsAlert>
-          </Col>
+          </Col>          
         </Row>
+   
       </div>
     );
   }

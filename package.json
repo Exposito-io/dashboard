@@ -21,7 +21,8 @@
     "react-flex-proto": "^1.0.0",
     "react-gl-maps": "git+https://github.com/knledg/react-gl-maps.git",
     "react-router-dom": "^4.1.2",
-    "react-scripts-ts": "2.4.0"
+    "react-scripts-ts": "2.4.0",
+    "react-selectize": "^2.1.0"
   },
   "devDependencies": {
     "react-tap-event-plugin": "^2.0.1"
