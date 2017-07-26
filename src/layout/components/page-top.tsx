@@ -122,6 +122,10 @@ export class PageTop extends React.Component<{}, {}> {
 
   }
 
+  onProjectClick = (projectId: string) => {
+    console.log('Project click: ', projectId)
+  }
+
   onToggleMenu = () => {
     this.setState({ isMenuOpen: ! this.state.isMenuOpen });
   }
@@ -201,7 +205,7 @@ export class PageTop extends React.Component<{}, {}> {
           </a>
           <ul className="top-dropdown-menu profile-dropdown dropdown-menu">
             <li><i className="dropdown-arr"></i></li>
-            {this.projectStore.availableProjects.map(project => <li key={project.id}><a className="fa fa-user">{project.name}</a></li>)}
+            {this.projectStore.availableProjects.map(project => <li key={project.id}><a className="fa" onClick={() => this.onProjectClick(project.id)}>{project.name}</a></li>)}
             <li><Link to="/"><i className="fa fa-user"></i>Profile</Link></li>
             <li><Link to="/'"><i className="fa fa-cog"></i>Settings</Link></li>
             <li>
