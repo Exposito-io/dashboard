@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom';
-import * as moment from 'moment';
-import * as _ from 'lodash';
+import { Link } from 'react-router-dom'
+import * as moment from 'moment'
+import * as _ from 'lodash'
 import { observer } from 'mobx-react'
 
 var person = require('../../assets/img/person.svg')
@@ -10,11 +10,12 @@ import { SearchBar } from './search-bar'
 
 // Lib
 // import eventBus from 'src/lib/event-bus';
-import { MessagesAlert, MessagesAlertContainer, NotificationsAlert, NotificationAlert } from 'react-blur-admin'
+import { NotificationsAlert, NotificationAlert } from 'react-blur-admin'
 import { Row, Col } from 'react-flex-proto'
 
 import { ProjectStore } from '../../stores/project-store'
 import { PreferencesStore } from '../../stores/preferences-store'
+import { NotificationStore } from '../../stores/notification-store'
 
 
 @observer
@@ -37,86 +38,17 @@ export class PageTop extends React.Component<{}, {}> {
 
   private projectStore: ProjectStore
   private preferencesStore: PreferencesStore
+  private notificationStore: NotificationStore
 
   constructor(props) {
     super(props)
 
     this.projectStore = ProjectStore.getStore()
     this.preferencesStore = PreferencesStore.getStore()
+    this.notificationStore = NotificationStore.getStore()
 
     this.state = {
-      notifications: [{
-        user: {
-          name: 'Ashley',
-          // picture: Person,
-        },
-        subject: 'This is a notification alert',
-        timeStamp: '02/13/95 9:00',
-        relativeTime: moment('02/13/95').fromNow(),
-      },
-      {
-        user: {
-          name: 'Nick',
-          // picture: Person,
-        },
-        subject: 'This is a notification alert',
-        timeStamp: '07/13/16 12:00',
-        relativeTime: moment('07/13/16 12:00').fromNow(),
-      },
-      {
-        user: {
-          name: 'Matt',
-          // picture: Person,
-        },
-        subject: 'This is a notification alert',
-        timeStamp: '04/20/15 9:00',
-        relativeTime: moment('04/20/15 9:00').fromNow(),
-      },
-      {
-        user: {
-          name: 'Jon',
-          // picture: Person,
-        },
-        subject: 'This is a notification alert',
-        timeStamp: '07/19/16 8:00',
-        relativeTime: moment('07/19/16 8:00').fromNow(),
-      },
-      {
-        user: {
-          name: 'Jacob',
-          // picture: Person,
-        },
-        subject: 'This is a notification alert',
-        timeStamp: '05/23/16 2:00',
-        relativeTime: moment('05/23/16 2:00').fromNow(),
-      },
-      {
-        user: {
-          name: 'Jason',
-          // picture: Person,
-        },
-        subject: 'This is a notification alert',
-        timeStamp: '05/01/16 4:00',
-        relativeTime: moment('05/01/16 4:00').fromNow(),
-      }],
-      messages: [{
-        user: {
-          name: 'Ashley',
-          // picture: Person,
-        },
-        subject: 'This is a message alert',
-        timeStamp: '02/13/95 9:00',
-        relativeTime: moment('02/13/16').fromNow(),
-      },
-      {
-        user: {
-          name: 'Nick',
-          // picture: Person,
-        },
-        subject: 'This is a message alert',
-        timeStamp: '07/13/16 12:00',
-        relativeTime: moment('07/13/16 12:00').fromNow(),
-      }],
+      notifications: []
     }
   }
 
@@ -164,17 +96,9 @@ export class PageTop extends React.Component<{}, {}> {
     );
   }
 
-  renderMessages() {
-    let message = _.assign({}, this.state.messages);
-    return _.map(message, (messages, index) => {
-      return (
-        <MessagesAlert {...messages} key={index}/>
-      );
-    });
-  }
-
   renderNotifications() {
-    let notifications = _.assign({}, this.state.notifications);
+
+    let notifications = _.assign({}, (this.notificationStore.notifications as any).toJS())
     return _.map(notifications, (notification, index) => {
       return (
         <NotificationAlert {...notification} key={index}/>
@@ -220,7 +144,7 @@ export class PageTop extends React.Component<{}, {}> {
         </div>
           <Col padding='5px 2px'>
             <NotificationsAlert
-              notificationCount={this.state.notifications.length}
+              notificationCount={this.notificationStore.notifications.length}
               markAllAsReadOnClick={_.noop}
               allNotificationsOnClick={_.noop}
               settingsOnClick={_.noop} >
