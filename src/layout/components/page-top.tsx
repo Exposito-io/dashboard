@@ -30,8 +30,7 @@ export class PageTop extends React.Component<{}, {}> {
   }
 
   state = {
-    isMenuOpen: false,
-    appName: process.env.APP_NAME,
+    isMenuOpen: false
   } as any
 
   props
@@ -73,28 +72,6 @@ export class PageTop extends React.Component<{}, {}> {
     //eventBus.emit('logout');
   }
 
-  renderLogo() {
-    return (
-      <Link to={{ pathname: '/' }} className="al-logo clearfix">{this.state.appName}</Link>
-    );
-  }
-
-  renderHamburgerMenu() {
-    // @todo
-    return (
-      <div>
-       <a href="" className="collapse-menu-link ion-navicon"></a>
-      </div>
-    );
-  }
-
-  renderSearch() {
-    return (
-      <div className="search">
-         <SearchBar />
-      </div>
-    );
-  }
 
   renderNotifications() {
 
@@ -158,16 +135,15 @@ export class PageTop extends React.Component<{}, {}> {
   }
 
   render() {
-    // dropdown - .open
-    // @todo msg-center
-    // onClick startSearch
-    // import message cente
     return (
       <div className="page-top clearfix" scroll-position="scrolled" max-height="50">
-        {this.renderHamburgerMenu()}
-        <h1 id="logo">exposito</h1>        
-        {this.renderLogo()}
-        {this.renderSearch()}
+        <a href="" className="collapse-menu-link ion-navicon"></a>
+
+        <h1 id="logo">exposito</h1>
+
+        <div className="search">
+          <SearchBar />
+        </div>
         {this.renderUserSection()}
       </div>
     );
