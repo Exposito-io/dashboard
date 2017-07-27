@@ -14,6 +14,7 @@ import { MessagesAlert, MessagesAlertContainer, NotificationsAlert, Notification
 import { Row, Col } from 'react-flex-proto'
 
 import { ProjectStore } from '../../stores/project-store'
+import { PreferencesStore } from '../../stores/preferences-store'
 
 
 @observer
@@ -35,11 +36,13 @@ export class PageTop extends React.Component<{}, {}> {
   props
 
   private projectStore: ProjectStore
+  private preferencesStore: PreferencesStore
 
   constructor(props) {
     super(props)
 
     this.projectStore = ProjectStore.getStore()
+    this.preferencesStore = PreferencesStore.getStore()
 
     this.state = {
       notifications: [{
@@ -114,7 +117,7 @@ export class PageTop extends React.Component<{}, {}> {
         timeStamp: '07/13/16 12:00',
         relativeTime: moment('07/13/16 12:00').fromNow(),
       }],
-    };
+    }
   }
 
 
@@ -201,16 +204,16 @@ export class PageTop extends React.Component<{}, {}> {
         <Row>
         <div className={`al-project-menu dropdown ${this.state.isProjectMenuOpen ? 'open' : ''}`}>
           <a className="project-toggle-link dropdown-toggle" onClick={this.onToggleProjectMenu}>
-            Projet <i className="fa fa-caret-down"></i>
+            {this.preferencesStore.preferences.selectedProject.name} <i className="fa fa-caret-down"></i>
           </a>
           <ul className="top-dropdown-menu profile-dropdown dropdown-menu">
             <li><i className="dropdown-arr"></i></li>
-            {this.projectStore.availableProjects.map(project => <li key={project.id}><a className="fa" onClick={() => this.onProjectClick(project.id)}>{project.name}</a></li>)}
-            <li><Link to="/"><i className="fa fa-user"></i>Profile</Link></li>
-            <li><Link to="/'"><i className="fa fa-cog"></i>Settings</Link></li>
+            {this.projectStore.availableProjects.map(project => (
+              <li key={project.id}><a className="fa" onClick={() => this.onProjectClick(project.id)}>{project.name}</a></li>
+            ))}
             <li>
               <a href="/" className="signout" onClick={e => this.onLogout()}>
-                <i className="fa fa-power-off"></i>Sign out
+                <i className="fa fa-plus-circle"></i>Create Project
               </a>
             </li>
           </ul>

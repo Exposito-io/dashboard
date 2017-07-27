@@ -3,12 +3,19 @@ import { Project } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from './store'
 import config from '../config'
+import { PreferencesStore } from './preferences-store'
+
+let preferencesStore = PreferencesStore.getStore()
 
 export class ProjectStore extends Store {
 
     private static instance: ProjectStore
 
-    @observable availableProjects: Project[] = []
+    @observable allProjects: Project[] = []
+
+    @computed get availableProjects(): Project[] {
+        return this.allProjects.filter(project => project.id !== preferencesStore.preferences.selectedProject.id)
+    }
 
     private client: ExpositoClient
 
@@ -30,7 +37,7 @@ export class ProjectStore extends Store {
 
     private async init() {
         this.client = new ExpositoClient({ url: config.apiUrl, version: config.apiVersion  })
-        this.availableProjects = await this.client.projects.getProjects()
+        this.allProjects = await this.client.projects.getProjects()
         this.isLoading = false
     }
 

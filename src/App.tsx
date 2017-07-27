@@ -22,10 +22,6 @@ setTimeout(async () => {
       //token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OTEyNzlhMjNiMTRkOTNiZGJlZDhhNjEiLCJpYXQiOjE0OTg5NjI3ODksImV4cCI6MTUzMDQ5ODc4OX0.5JIIUnRjmLLnfFcuz2Hx4jT4_U1lCYzrDLcffwHSx_A' 
     }) 
     
-    let projects = await client.projects.getProjects()
-    console.log('wallets: ')
-    console.log(projects)
-
 }, 10000)
 
 class App extends React.Component {

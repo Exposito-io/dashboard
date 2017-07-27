@@ -1,5 +1,5 @@
 import { autorun, observable, computed } from 'mobx'
-import { User } from 'models'
+import { User, UserPreferences } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from './store'
 
@@ -9,7 +9,7 @@ export class PreferencesStore extends Store {
   
   private static instance: PreferencesStore
 
-  @observable preferences: User
+  @observable preferences: UserPreferences = { selectedProject: { id: '', name: '', description: '', members: [] }, selectedProjectId: ''}
 
   private client: ExpositoClient
 
@@ -24,12 +24,23 @@ export class PreferencesStore extends Store {
 
 
 
+
   private constructor() {
     super()
 
-    console.log('wallet store')
-
     this.client = new ExpositoClient()
+
+    setTimeout(() => {
+      let pref = new UserPreferences()
+      pref.selectedProject = {
+        id: '597637b500992d7e78edd894',
+        name: "Project 2",
+        description: "fawef",
+        members: []
+      }
+
+      this.preferences = pref
+    }, 100)
   }
 
 
