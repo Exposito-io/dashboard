@@ -9,7 +9,7 @@ export class PreferencesStore extends Store {
   
   private static instance: PreferencesStore
 
-  @observable preferences: UserPreferences = { selectedProject: { id: '', name: '', description: '', members: [] }, selectedProjectId: ''}
+  @observable preferences: UserPreferences = { selectedProject: {} } as UserPreferences
 
   private client: ExpositoClient
 

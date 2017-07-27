@@ -30,8 +30,9 @@ export class PageTop extends React.Component<{}, {}> {
   }
 
   state = {
-    isMenuOpen: false
-  } as any
+    isMenuOpen: false,
+    isProjectMenuOpen: false
+  }
 
   props
 
@@ -46,9 +47,6 @@ export class PageTop extends React.Component<{}, {}> {
     this.preferencesStore = PreferencesStore.getStore()
     this.notificationStore = NotificationStore.getStore()
 
-    this.state = {
-      notifications: []
-    }
   }
 
 
@@ -57,7 +55,7 @@ export class PageTop extends React.Component<{}, {}> {
   }
 
   onProjectClick = (projectId: string) => {
-    console.log('Project click: ', projectId)
+    
   }
 
   onToggleMenu = () => {
