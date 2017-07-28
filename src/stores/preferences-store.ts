@@ -1,5 +1,5 @@
 import { autorun, observable, computed } from 'mobx'
-import { User, UserPreferences } from 'models'
+import { User, UserPreferences, HostingType } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from './store'
 
@@ -36,6 +36,8 @@ export class PreferencesStore extends Store {
         id: '597637b500992d7e78edd894',
         name: "Project 2",
         description: "fawef",
+        githubProjects: [],
+        hosting: HostingType.GoogleCloud,
         members: []
       }
 

@@ -1,0 +1,47 @@
+.new-project {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 1000;
+}
+
+.new-project h2 {
+    font-weight: 300;
+    font-size: 40px;
+    position: absolute;
+    left: 5%;
+    top: 4%;
+}
+
+.new-project .form {
+    /*background: grey;*/
+    position: absolute;
+    top: calc(4% + 60px);
+    bottom: 0;
+    width: 100%;
+    max-width: 960px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.new-project input {
+	display: block;
+	margin: 0;
+	padding: 0 0 0.15em;
+	width: 100%;
+	border: none;
+	border-bottom: 2px solid rgba(0,0,0,0.2);
+	background-color: transparent;
+	color: #fffed8;
+	text-overflow: ellipsis;
+	font-weight: bold;
+	font-size: 1.5em;
+	border-radius: 0;
+}
+
+.new-project input:focus {
+	background-color: #3b3f45; /* Fixes chrome bug with placeholder */
+}
