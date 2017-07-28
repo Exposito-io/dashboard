@@ -23,7 +23,7 @@ export class NewProject extends React.Component {
         </Panel>
 
         <div className="new-project">
-            <h2>New project</h2>
+            <h2 className="main-title">New project</h2>
 
             <div className="form">
               <div className="entry">

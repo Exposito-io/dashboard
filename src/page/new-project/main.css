@@ -8,12 +8,17 @@
     z-index: 1000;
 }
 
-.new-project h2 {
+.new-project h2.main-title {
     font-weight: 300;
     font-size: 40px;
     position: absolute;
     left: 5%;
     top: 4%;
+}
+
+.new-project h2 {
+    font-weight: 300;
+    font-size: 40px;
 }
 
 .new-project .form {
@@ -33,15 +38,16 @@
 	padding: 0 0 0.15em;
 	width: 100%;
 	border: none;
-	border-bottom: 2px solid rgba(0,0,0,0.2);
+	border-bottom: 2px solid rgba(255,255,255,0.2);
 	background-color: transparent;
-	color: #fffed8;
+	color: #fff;
 	text-overflow: ellipsis;
-	font-weight: bold;
-	font-size: 1.5em;
+	font-weight: 300;
+	font-size: 60px;
 	border-radius: 0;
+    outline: 0 none;
 }
 
 .new-project input:focus {
-	background-color: #3b3f45; /* Fixes chrome bug with placeholder */
+	
 }
