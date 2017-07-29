@@ -58,3 +58,161 @@
 .new-project input:focus {
 	
 }
+
+
+
+
+.fs-form.fs-show {
+	-webkit-animation: animFadeIn 0.5s;
+	animation: animFadeIn 0.5s;
+}
+
+
+.fs-form.fs-show .fs-fields {
+	-webkit-animation: animMove 0.5s;
+	animation: animMove 0.5s;
+}
+
+.fs-form-full .fs-fields > li,
+.fs-nav-dots, 
+.fs-progress,
+.fs-numbers,
+button.fs-continue,
+.fs-message-error,
+.fs-message-final {
+	visibility: hidden;
+}
+
+.no-js .fs-form-full .fs-fields > li {
+	visibility: visible;
+}
+
+.fs-show {
+	visibility: visible !important;
+}
+
+.fs-form li.fs-current {
+	visibility: visible;
+}
+
+.fs-form li.fs-hide,
+.fs-form li.fs-show {
+	pointer-events: none;
+}
+
+/* Hide current li when navigating to next question */
+.fs-form .fs-display-next .fs-hide {
+	visibility: visible;
+}
+
+.fs-form .fs-display-next .fs-hide .fs-anim-lower,
+.fs-form .fs-display-next .fs-hide .fs-anim-upper {
+	-webkit-animation: animHideNext 0.5s cubic-bezier(0.7,0,0.3,1) forwards;
+	animation: animHideNext 0.5s cubic-bezier(0.7,0,0.3,1) forwards;
+}
+
+.fs-form .fs-display-next .fs-hide .fs-anim-lower {
+	-webkit-animation-delay: 0.1s;
+	animation-delay: 0.1s;
+}
+
+
+
+.fs-form .fs-display-next .fs-show .fs-anim-lower,
+.fs-form .fs-display-next .fs-show .fs-anim-upper {
+	-webkit-animation: animShowNext 0.5s cubic-bezier(0.7,0,0.3,1) both 0.15s;
+	animation: animShowNext 0.5s cubic-bezier(0.7,0,0.3,1) both 0.15s;
+}
+
+.fs-form .fs-display-next .fs-show .fs-anim-lower {
+	-webkit-animation-delay: 0.25s;
+	animation-delay: 0.25s;
+}
+
+
+
+
+.fs-form .fs-display-prev .fs-hide {
+	visibility: visible;
+}
+
+.fs-form .fs-display-prev .fs-hide .fs-anim-lower,
+.fs-form .fs-display-prev .fs-hide .fs-anim-upper {
+	-webkit-animation: animHidePrev 0.5s cubic-bezier(0.7,0,0.3,1) forwards;
+	animation: animHidePrev 0.5s cubic-bezier(0.7,0,0.3,1) forwards;
+}
+
+.fs-form .fs-display-prev .fs-hide .fs-anim-upper {
+	-webkit-animation-delay: 0.1s;
+	animation-delay: 0.1s;
+}
+
+
+
+.fs-form .fs-display-prev .fs-show .fs-anim-lower,
+.fs-form .fs-display-prev .fs-show .fs-anim-upper {
+	-webkit-animation: animShowPrev 0.5s cubic-bezier(0.7,0,0.3,1) both 0.15s;
+	animation: animShowPrev 0.5s cubic-bezier(0.7,0,0.3,1) both 0.15s;
+}
+
+.fs-form .fs-display-prev .fs-show .fs-anim-upper {
+	-webkit-animation-delay: 0.25s;
+	animation-delay: 0.25s;
+}
+
+
+
+
+/** Animations **/
+
+
+
+@keyframes animHideNext {
+	to { opacity: 0; -webkit-transform: translate3d(0,-500px,0); transform: translate3d(0,-500px,0); }
+}
+
+@keyframes animShowNext {
+	from { opacity: 0; -webkit-transform: translate3d(0,500px,0); transform: translate3d(0,500px,0); }
+}
+
+
+@keyframes animHidePrev {
+	to { opacity: 0; -webkit-transform: translate3d(0,500px,0); transform: translate3d(0,500px,0); }
+}
+
+@keyframes animShowPrev {
+	from { opacity: 0; -webkit-transform: translate3d(0,-500px,0); transform: translate3d(0,-500px,0); }
+}
+
+@keyframes animFadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+
+@keyframes animMove {
+	from { top: 100px; }
+}
+
+
+
+/*
+@keyframes animMoveUpFromDown {
+	from { -webkit-transform: translateY(100%); transform: translateY(100%); }
+	to { -webkit-transform: translateY(0); transform: translateY(0); }
+}
+
+@keyframes animMoveDownFromUp {
+	from { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+	to { -webkit-transform: translateY(0); transform: translateY(0); }
+}*/
+
+/*
+@keyframes animMoveUp {
+	to { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+}
+
+
+@keyframes animMoveDown {
+	to { -webkit-transform: translateY(100%); transform: translateY(100%); }
+}*/
