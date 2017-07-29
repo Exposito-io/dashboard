@@ -24,12 +24,19 @@
 .new-project .form {
     /*background: grey;*/
     position: absolute;
-    top: calc(4% + 60px);
+    /*top: calc(4% + 60px);*/
+    top: 0;
     bottom: 0;
     width: 100%;
     max-width: 960px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.new-project .entry {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
 }
 
 .new-project input {
