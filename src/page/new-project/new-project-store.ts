@@ -1,4 +1,4 @@
-import { observable, computed } from 'mobx'
+import { observable, computed, action } from 'mobx'
 
 export class NewProjectStore {
 
@@ -20,6 +20,13 @@ export class NewProjectStore {
     @computed get isLastEntry(): boolean {
         return this.currentEntryIndex === this.entryCount - 1
     }
+
+    @action nextEntry() {
+        this.currentEntryIndex = (this.currentEntryIndex + 1) % this.entryCount
+    }
     
+    @action prevEntry() {
+        this.currentEntryIndex = (this.currentEntryIndex - 1 + this.entryCount) % this.entryCount
+    }
 
 }
