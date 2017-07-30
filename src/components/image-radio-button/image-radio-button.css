@@ -1,0 +1,42 @@
+.image-radio-button {
+    display: inline-block;
+    margin: 0px 20px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.input-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+.image-radio-button input[type=radio] + label {
+    width: 220px;
+    height: 220px;
+    transition: 200ms all;
+    line-height: 220px;
+    border: 1px solid #bbb;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.image-radio-button:hover input[type=radio] + label {
+    border: 1px solid white;
+}
+
+.image-radio-button input[type=radio]:checked + label {
+  box-shadow: 0 0 8px #ccc
+
+}
+
+/* Stuff after this is only to make things more pretty */
+.image-radio-button input[type=radio] + label>img {
+  width: calc(100% - 40px);
+  height: auto;
+  margin-left: 20px;
+  vertical-align: middle;
+}
+
+.image-radio-button input[type=radio]:checked + label>img {
+
+}

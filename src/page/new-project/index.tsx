@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import { Page, Panel, Breadcrumbs } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
+import { ImageRadioButton } from '../../components/image-radio-button'
 
 import './main.css'
 
@@ -115,10 +116,20 @@ export class NewProject extends React.Component {
                 <h2 className="fs-anim-upper">Select a project name</h2>
                 <input className="fs-anim-lower" type="text" placeholder="My new app" />
               </div>
+
               <div className="entry">
                 <h2 className="fs-anim-upper">Select a cloud provider</h2>
-                <input className="fs-anim-lower" type="text" placeholder="My new app" />
-              </div>              
+                <div className="fs-anim-lower">
+                  <ImageRadioButton inputId="aws" img={require('./images/aws.png')}></ImageRadioButton>
+                  <ImageRadioButton inputId="gcloud" img={require('./images/gcloud-white.png')}></ImageRadioButton>
+                  <ImageRadioButton inputId="digital-ocean" img={require('./images/digital-ocean.png')}></ImageRadioButton>
+                </div>
+              </div>     
+
+              <div className="entry">
+                <h2 className="fs-anim-upper">Select your project's equity</h2>
+                <input className="fs-anim-lower" type="text" placeholder="Add a Github repo or an Exposito user" />
+              </div>                          
             </div>
 
             <button className="prev-btn btn btn-default btn-md" onClick={this.prevEntry}>Previous</button>            
