@@ -9,20 +9,23 @@ export class NewProject extends React.Component {
 
   isAnimating: boolean = false
   isLastStep: boolean = false
-  currentEntry: HTMLElement
+  currentEntryIndex: number = 0
   fieldsList: HTMLElement
+  entries: Element[]
+  get currentEntry(): Element { return this.entries[this.currentEntryIndex]}
 
   constructor(props: any) {
     super(props)
 
     //setTimeout(() => this.init(), 1000)
 
-    setTimeout(() => this.nextEntry(), 2000)
+    //setTimeout(() => this.nextEntry(), 2000)
   }
 
   componentDidMount() {
-    this.currentEntry = document.getElementById('entry1')
     this.fieldsList = document.getElementById('field-list')   
+    this.entries = Array.from(this.fieldsList.getElementsByClassName('entry'))
+    this.currentEntry.classList.add('fs-current')
   }
 
   renderBreadcrumbs() {
@@ -33,9 +36,37 @@ export class NewProject extends React.Component {
     )
   }
 
-  nextEntry() {
+  nextEntry = () => {
+    if (this.isAnimating)
+      return
+
+    this.isAnimating = true
+
+    let nextEntry = this.getNextEntry()
+
     this.fieldsList.classList.add('fs-display-next')
+    this.currentEntry.classList.remove('fs-current')
     this.currentEntry.classList.add('fs-hide')
+
+    nextEntry.classList.add('fs-current')
+    nextEntry.classList.add('fs-show')
+
+
+    setTimeout(() => {
+      this.fieldsList.classList.remove('fs-display-next')
+      this.currentEntry.classList.remove('fs-hide')
+      nextEntry.classList.remove('fs-show')
+
+      this.currentEntryIndex = (this.currentEntryIndex + 1) % this.entries.length
+      this.isAnimating = false
+    }, 700)
+  }
+
+
+
+  getNextEntry() {
+    let length = this.entries.length
+    return this.entries[(this.currentEntryIndex + 1) % length]
   }
 
   render() {
@@ -49,11 +80,17 @@ export class NewProject extends React.Component {
             <h2 className="main-title">New project</h2>
 
             <div className="form fs-fields" id="field-list">
-              <div className="entry" id="entry1">
+              <div className="entry">
                 <h2 className="fs-anim-upper">Select a project name</h2>
                 <input className="fs-anim-lower" type="text" placeholder="My new app" />
               </div>
+              <div className="entry">
+                <h2 className="fs-anim-upper">Select a cloud provider</h2>
+                <input className="fs-anim-lower" type="text" placeholder="My new app" />
+              </div>              
             </div>
+
+            <button className="next-btn btn btn-default btn-md" onClick={this.nextEntry}>Next</button>            
         </div>
       </Page>
     );

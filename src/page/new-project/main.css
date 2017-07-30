@@ -60,6 +60,13 @@
 }
 
 
+.next-btn {
+    position: absolute;
+    bottom: 4%;
+    right: 5%;
+}
+
+
 
 
 .fs-form.fs-show {
@@ -73,7 +80,7 @@
 	animation: animMove 0.5s;
 }
 
-.fs-form-full .fs-fields > li,
+.fs-form .fs-fields .entry,
 .fs-nav-dots, 
 .fs-progress,
 .fs-numbers,
@@ -83,15 +90,11 @@ button.fs-continue,
 	visibility: hidden;
 }
 
-.no-js .fs-form-full .fs-fields > li {
-	visibility: visible;
-}
-
 .fs-show {
 	visibility: visible !important;
 }
 
-.fs-form li.fs-current {
+.fs-form .entry.fs-current {
 	visibility: visible;
 }
 
@@ -158,6 +161,10 @@ button.fs-continue,
 .fs-form .fs-display-prev .fs-show .fs-anim-upper {
 	-webkit-animation-delay: 0.25s;
 	animation-delay: 0.25s;
+}
+
+.fs-form li.fs-current {
+	visibility: visible;
 }
 
 
