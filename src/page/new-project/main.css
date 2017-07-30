@@ -60,11 +60,18 @@
 }
 
 
+.prev-btn {
+    position: absolute;
+    bottom: 4%;
+    left: 5%;
+}
+
 .next-btn {
     position: absolute;
     bottom: 4%;
     right: 5%;
 }
+
 
 
 

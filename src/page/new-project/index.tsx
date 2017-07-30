@@ -36,6 +36,33 @@ export class NewProject extends React.Component {
     )
   }
 
+
+  prevEntry = () => {
+    if (this.isAnimating)
+      return
+
+    this.isAnimating = true
+
+    let prevEntry = this.getNextEntry()
+
+    this.fieldsList.classList.add('fs-display-prev')
+    this.currentEntry.classList.remove('fs-current')
+    this.currentEntry.classList.add('fs-hide')
+
+    prevEntry.classList.add('fs-current')
+    prevEntry.classList.add('fs-show')
+
+
+    setTimeout(() => {
+      this.fieldsList.classList.remove('fs-display-prev')
+      this.currentEntry.classList.remove('fs-hide')
+      prevEntry.classList.remove('fs-show')
+
+      this.currentEntryIndex = Math.abs((this.currentEntryIndex - 1) % this.entries.length)
+      this.isAnimating = false
+    }, 700)
+  }
+
   nextEntry = () => {
     if (this.isAnimating)
       return
@@ -63,6 +90,10 @@ export class NewProject extends React.Component {
   }
 
 
+  getPrevEntry() {
+    let length = this.entries.length
+    return this.entries[(this.currentEntryIndex - 1) % length]
+  }
 
   getNextEntry() {
     let length = this.entries.length
@@ -90,6 +121,7 @@ export class NewProject extends React.Component {
               </div>              
             </div>
 
+            <button className="prev-btn btn btn-default btn-md" onClick={this.prevEntry}>Previous</button>            
             <button className="next-btn btn btn-default btn-md" onClick={this.nextEntry}>Next</button>            
         </div>
       </Page>
