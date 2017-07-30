@@ -2,21 +2,25 @@ import * as React from 'react'
 
 import { Page, Panel, Breadcrumbs } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
+import { observer } from 'mobx-react'
 import { ImageRadioButton } from '../../components/image-radio-button'
 import { setRef } from '../../lib/tools'
+import { NewProjectStore } from './new-project-store'
 
 import './main.css'
 
 
+const store = new NewProjectStore()
+
+@observer
 export class NewProject extends React.Component {
 
   isAnimating: boolean = false
   isLastStep: boolean = false
-  currentEntryIndex: number = 0
   fieldsList: HTMLElement
   projectNameInput
   entries: Element[]
-  get currentEntry(): Element { return this.entries[this.currentEntryIndex]}
+  get currentEntry(): Element { return this.entries[store.currentEntryIndex]}
 
   constructor(props: any) {
     super(props)
@@ -30,6 +34,7 @@ export class NewProject extends React.Component {
     this.entries = Array.from(this.fieldsList.getElementsByClassName('entry'))
     this.currentEntry.classList.add('fs-current')
     this.projectNameInput.focus()
+    store.entryCount = this.entries.length
   }
 
   renderBreadcrumbs() {
@@ -62,7 +67,7 @@ export class NewProject extends React.Component {
       this.currentEntry.classList.remove('fs-hide')
       prevEntry.classList.remove('fs-show')
 
-      this.currentEntryIndex = (this.currentEntryIndex - 1 + this.entries.length) % this.entries.length
+      store.currentEntryIndex = (store.currentEntryIndex - 1 + this.entries.length) % this.entries.length
       this.isAnimating = false
     }, 700)
   }
@@ -88,7 +93,7 @@ export class NewProject extends React.Component {
       this.currentEntry.classList.remove('fs-hide')
       nextEntry.classList.remove('fs-show')
 
-      this.currentEntryIndex = (this.currentEntryIndex + 1) % this.entries.length
+      store.currentEntryIndex = (store.currentEntryIndex + 1) % this.entries.length
       this.isAnimating = false
     }, 700)
   }
@@ -96,12 +101,12 @@ export class NewProject extends React.Component {
 
   getPrevEntry() {
     let length = this.entries.length
-    return this.entries[(this.currentEntryIndex - 1 + length) % length]
+    return this.entries[(store.currentEntryIndex - 1 + length) % length]
   }
 
   getNextEntry() {
     let length = this.entries.length
-    return this.entries[(this.currentEntryIndex + 1) % length]
+    return this.entries[(store.currentEntryIndex + 1) % length]
   }
 
   render() {
@@ -143,8 +148,16 @@ export class NewProject extends React.Component {
               </div>                          
             </div>
 
-            <button className="prev-btn btn btn-default btn-md" onClick={this.prevEntry}>Previous</button>            
-            <button className="next-btn btn btn-default btn-md" onClick={this.nextEntry}>Next</button>            
+            <button 
+              className={`prev-btn btn btn-default btn-md ${store.isFirstEntry ? 'hidden' : ''}`} 
+              onClick={this.prevEntry}>
+              Previous
+            </button>            
+            <button 
+              className={`next-btn btn btn-default btn-md ${store.isLastEntry ? 'hidden' : ''}`}
+              onClick={this.nextEntry}>
+              Next
+            </button>            
         </div>
       </Page>
     );
