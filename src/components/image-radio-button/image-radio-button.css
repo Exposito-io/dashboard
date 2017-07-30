@@ -16,7 +16,7 @@
     transition: 200ms border, 200ms box-shadow;
     line-height: 220px;
     border: 1px solid #bbb;
-    border-radius: 20px;
+    border-radius: 40px;
     cursor: pointer;
 }
 

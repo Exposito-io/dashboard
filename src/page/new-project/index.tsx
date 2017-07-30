@@ -61,7 +61,7 @@ export class NewProject extends React.Component {
       this.currentEntry.classList.remove('fs-hide')
       prevEntry.classList.remove('fs-show')
 
-      this.currentEntryIndex = Math.abs((this.currentEntryIndex - 1) % this.entries.length)
+      this.currentEntryIndex = (this.currentEntryIndex - 1 + this.entries.length) % this.entries.length
       this.isAnimating = false
     }, 700)
   }
@@ -95,7 +95,7 @@ export class NewProject extends React.Component {
 
   getPrevEntry() {
     let length = this.entries.length
-    return this.entries[Math.abs((this.currentEntryIndex - 1) % length)]
+    return this.entries[(this.currentEntryIndex - 1 + length) % length]
   }
 
   getNextEntry() {
