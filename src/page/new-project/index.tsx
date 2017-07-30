@@ -3,8 +3,10 @@ import * as React from 'react'
 import { Page, Panel, Breadcrumbs } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
 import { ImageRadioButton } from '../../components/image-radio-button'
+import { setRef } from '../../lib/tools'
 
 import './main.css'
+
 
 export class NewProject extends React.Component {
 
@@ -25,7 +27,6 @@ export class NewProject extends React.Component {
   }
 
   componentDidMount() {
-    this.fieldsList = document.getElementById('field-list')   
     this.entries = Array.from(this.fieldsList.getElementsByClassName('entry'))
     this.currentEntry.classList.add('fs-current')
     this.projectNameInput.focus()
@@ -113,10 +114,15 @@ export class NewProject extends React.Component {
         <div className="new-project fs-form">
             <h2 className="main-title">New project</h2>
 
-            <div className="form fs-fields" id="field-list">
+            <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
               <div className="entry">
                 <h2 className="fs-anim-upper">Select a project name</h2>
-                <input ref={input => this.projectNameInput = input} className="fs-anim-lower" type="text" placeholder="My new app" />
+                <input 
+                  ref={setRef(this, 'projectNameInput')} 
+                  className="fs-anim-lower" 
+                  type="text" 
+                  placeholder="My new app" 
+                />
               </div>
 
               <div className="entry">
