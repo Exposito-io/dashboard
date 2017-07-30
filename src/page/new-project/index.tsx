@@ -12,6 +12,7 @@ export class NewProject extends React.Component {
   isLastStep: boolean = false
   currentEntryIndex: number = 0
   fieldsList: HTMLElement
+  projectNameInput
   entries: Element[]
   get currentEntry(): Element { return this.entries[this.currentEntryIndex]}
 
@@ -27,6 +28,7 @@ export class NewProject extends React.Component {
     this.fieldsList = document.getElementById('field-list')   
     this.entries = Array.from(this.fieldsList.getElementsByClassName('entry'))
     this.currentEntry.classList.add('fs-current')
+    this.projectNameInput.focus()
   }
 
   renderBreadcrumbs() {
@@ -44,7 +46,7 @@ export class NewProject extends React.Component {
 
     this.isAnimating = true
 
-    let prevEntry = this.getNextEntry()
+    let prevEntry = this.getPrevEntry()
 
     this.fieldsList.classList.add('fs-display-prev')
     this.currentEntry.classList.remove('fs-current')
@@ -93,7 +95,7 @@ export class NewProject extends React.Component {
 
   getPrevEntry() {
     let length = this.entries.length
-    return this.entries[(this.currentEntryIndex - 1) % length]
+    return this.entries[Math.abs((this.currentEntryIndex - 1) % length)]
   }
 
   getNextEntry() {
@@ -114,7 +116,7 @@ export class NewProject extends React.Component {
             <div className="form fs-fields" id="field-list">
               <div className="entry">
                 <h2 className="fs-anim-upper">Select a project name</h2>
-                <input className="fs-anim-lower" type="text" placeholder="My new app" />
+                <input ref={input => this.projectNameInput = input} className="fs-anim-lower" type="text" placeholder="My new app" />
               </div>
 
               <div className="entry">
@@ -122,7 +124,10 @@ export class NewProject extends React.Component {
                 <div className="fs-anim-lower">
                   <ImageRadioButton inputId="aws" img={require('./images/aws.png')}></ImageRadioButton>
                   <ImageRadioButton inputId="gcloud" img={require('./images/gcloud-white.png')}></ImageRadioButton>
-                  <ImageRadioButton inputId="digital-ocean" img={require('./images/digital-ocean.png')}></ImageRadioButton>
+                  <ImageRadioButton 
+                    inputId="digital-ocean" 
+                    img={require('./images/digital-ocean.png')}>
+                  </ImageRadioButton>
                 </div>
               </div>     
 

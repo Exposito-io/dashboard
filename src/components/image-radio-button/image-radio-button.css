@@ -13,7 +13,7 @@
 .image-radio-button input[type=radio] + label {
     width: 220px;
     height: 220px;
-    transition: 200ms all;
+    transition: 200ms border, 200ms box-shadow;
     line-height: 220px;
     border: 1px solid #bbb;
     border-radius: 20px;
