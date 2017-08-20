@@ -23,6 +23,21 @@ export class JobManager {
         this.jobCompleteCallbacks.get(queue).push(fn)
     }
 
+    unsubscribe(queue: string, fn: Function) {
+        let callbacks = this.jobCompleteCallbacks.get(queue)
+
+        if (callbacks && callbacks.length > 0) {
+            let filteredCallbacks = callbacks.filter(f => f !== fn)
+
+            if (filteredCallbacks.length !== callbacks.length) {
+                this.jobCompleteCallbacks.set(queue, filteredCallbacks)
+
+                if (filteredCallbacks.length === 0)
+                    this.socketUnsubscribe(queue)
+            }
+        }
+    }
+
 
 
     private socketSubscribe(queue: string) {
@@ -30,8 +45,12 @@ export class JobManager {
         this.sock.on(`job-complete:${queue}`, data => this.onJobComplete(queue, data))        
     }
 
+    private socketUnsubscribe(queue: string) {
+        this.sock.emit('unsubscribe', { queue })
+    }
 
-    private onJobComplete(queue: string, data) {
+
+    private onJobComplete(queue: string, data: any) {
         let callbacks = this.jobCompleteCallbacks.get(queue)
 
         if (callbacks && callbacks.length > 0) {
