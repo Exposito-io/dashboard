@@ -1,4 +1,9 @@
 
+/**
+ * JobManager launches an event when a job is
+ * completed on a specific queue. To receive a 
+ * notification, use the subscribe method
+ */
 export class JobManager {
 
     private jobCompleteCallbacks: Map<string, Function[]> = new Map()
@@ -14,6 +19,13 @@ export class JobManager {
     }
 
 
+    /**
+     * Will call the fn function each time a job
+     * is completed on the specified job queue
+     * 
+     * @param queue
+     * @param fn 
+     */
     subscribe(queue: string, fn: Function) {
         if (!this.jobCompleteCallbacks.has(queue)) {
             this.jobCompleteCallbacks.set(queue, [])
@@ -23,6 +35,14 @@ export class JobManager {
         this.jobCompleteCallbacks.get(queue).push(fn)
     }
 
+
+    /**
+     * Will stop receiving job-complete notifications 
+     * on the specified job queue
+     * 
+     * @param queue 
+     * @param fn 
+     */
     unsubscribe(queue: string, fn: Function) {
         let callbacks = this.jobCompleteCallbacks.get(queue)
 
