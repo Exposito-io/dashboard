@@ -10,14 +10,14 @@ export class JobManager {
      */
     constructor(io: any) {
         this.sock = io('/jobs')
+
     }
 
 
     subscribe(queue: string, fn: Function) {
         if (!this.jobCompleteCallbacks.has(queue)) {
             this.jobCompleteCallbacks.set(queue, [])
-            this.sock.emit('subscribe', { queue: queue })
-            this.sock.on('job-complete')
+            this.socketSubscribe(queue)
         }
 
         this.jobCompleteCallbacks.get(queue).push(fn)
@@ -25,13 +25,21 @@ export class JobManager {
 
 
 
-    private socketSubscribe() {
-        let k
+    private socketSubscribe(queue: string) {
+        this.sock.emit('subscribe', { queue })
+        this.sock.on(`job-complete:${queue}`, data => this.onJobComplete(queue, data))        
     }
 
 
-    private onJobComplete(data) {
-        let l
+    private onJobComplete(queue: string, data) {
+        let callbacks = this.jobCompleteCallbacks.get(queue)
+
+        if (callbacks && callbacks.length > 0) {
+            for (let cb of callbacks) {
+                if (typeof cb === 'function')
+                    cb(data)
+            }
+        }
     }
 
 
