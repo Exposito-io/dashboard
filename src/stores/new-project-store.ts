@@ -47,8 +47,17 @@ export class NewProjectStore extends Store {
     private parseResults(users: any[], repos: any[]) {
         let results = []
 
-        results.push(users)
-        results.push(repos)
+        results = results.concat(users.map(user => ({
+            id: user._id,
+            name: user.name,
+            email: user.email
+        })))
+
+        results = results.concat(repos.map(repo => ({
+            id: repo.id,
+            name: repo.name,
+            fullName: repo.full_name
+        })))
 
         return results
     }

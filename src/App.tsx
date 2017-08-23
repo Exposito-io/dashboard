@@ -74,24 +74,24 @@ class App extends React.Component {
 
   setUser() {
     if (! this.state.idToken) {
-      return null;
+      return null
     }
 
     return this.lock.getProfile(this.state.idToken, (err, user) => {
-      return err ? this.onLogout() : this.setState({user});
+      return err ? this.onLogout() : this.setState({user})
     });
   }
 
   getIdToken() {
     let idToken = localStorage.getItem('userToken');
-    const authHash = this.lock.parseHash(window.location.hash);
+    const authHash = this.lock.parseHash(window.location.hash)
     if (!idToken && authHash) {
       if (authHash.id_token) {
-        idToken = authHash.id_token;
-        localStorage.setItem('userToken', authHash.id_token);
+        idToken = authHash.id_token
+        localStorage.setItem('userToken', authHash.id_token)
       }
       if (authHash.error) {
-        return this.onLogout();
+        return this.onLogout()
       }
     }
     return idToken;

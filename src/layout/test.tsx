@@ -11,6 +11,7 @@ setTimeout(() => {
   store.search('mathew')
 }, 5000)
 
+;(window as any).store = store
 
 @observer
 export class TestPage extends React.Component {
@@ -23,7 +24,11 @@ export class TestPage extends React.Component {
 
 
   render() {
-    return <div>{JSON.stringify(store.searchResults)}</div> 
+    return <div>
+      {
+        store.searchResults.map(result => <div key={result.id}>{result.name}</div>)
+      }
+    </div> 
   }
 }
 
