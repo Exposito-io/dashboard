@@ -37,15 +37,31 @@ export class NewProjectStore extends Store {
      * @param query 
      */
     @action async search(query: string) {
-        let results = await this.client.users.find(query)
-        this.searchResults = results
+        let results = await Promise.all([this.client.users.find(query), this.client.github.findRepos(query)])
+        
+        this.searchResults = this.parseResults(results[0], results[1])
     }
 
 
 
+    private parseResults(users: any[], repos: any[]) {
+        let results = []
+
+        results.push(users)
+        results.push(repos)
+
+        return results
+    }
+
     private constructor() {
         super()
         this.init()
+
+        /*
+        setTimeout(async () => {
+            var results = await this.client.github.findRepos('mathew')
+            console.log(results)
+        },6000)*/
     }
 
 
