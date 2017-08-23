@@ -1,0 +1,7 @@
+body {
+    background: white !important;
+}
+
+body::before {
+    background: white;
+}
