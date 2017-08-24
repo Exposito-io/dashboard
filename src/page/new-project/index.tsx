@@ -8,6 +8,7 @@ import { ImageRadioButton } from '../../components/image-radio-button'
 import { setRef } from '../../lib/tools'
 import { LayoutStore } from './layout-store'
 import { NewProjectStore } from '../../stores/new-project-store'
+import { Searchbar } from './components/searchbar'
 
 import './main.css'
 
@@ -77,6 +78,7 @@ export class NewProject extends React.Component {
     }, 700)
   }
 
+
   nextEntry = () => {
     if (this.isAnimating)
       return
@@ -115,12 +117,6 @@ export class NewProject extends React.Component {
   }
 
 
-  handleSearchQueryChange(event) {
-    if (event.target.value.length > 2) {
-      debounce(() => store.search(event.target.value), 250)
-    }
-  }
-
 
   render() {
     return (
@@ -157,12 +153,7 @@ export class NewProject extends React.Component {
 
               <div className="entry">
                 <h2 className="fs-anim-upper">Select your project's equity</h2>
-                <input onChange={value => this.handleSearchQueryChange} className="fs-anim-lower" type="text" placeholder="Add a Github repo or an Exposito user" />
-                <ul className="search-results">
-                  {
-                    store.searchResults.map(result => <li key={result.id}>{result.name}</li>)
-                  }
-                </ul>
+                <Searchbar></Searchbar>
               </div>                          
             </div>
 
@@ -178,6 +169,6 @@ export class NewProject extends React.Component {
             </button>            
         </div>
       </Page>
-    );
+    )
   }
 }
