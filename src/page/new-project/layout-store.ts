@@ -1,6 +1,6 @@
 import { observable, computed, action } from 'mobx'
 
-export class NewProjectStore {
+export class LayoutStore {
 
     /**
      * Total number of entries

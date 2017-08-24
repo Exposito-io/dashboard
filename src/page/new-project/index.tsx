@@ -1,16 +1,21 @@
 import * as React from 'react'
+import { debounce } from 'lodash'
 
 import { Page, Panel, Breadcrumbs } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react'
 import { ImageRadioButton } from '../../components/image-radio-button'
 import { setRef } from '../../lib/tools'
-import { NewProjectStore } from './new-project-store'
+import { LayoutStore } from './layout-store'
+import { NewProjectStore } from '../../stores/new-project-store'
 
 import './main.css'
 
 
-const store = new NewProjectStore()
+const layoutStore = new LayoutStore()
+const store = NewProjectStore.getStore()
+
+
 
 @observer
 export class NewProject extends React.Component {
@@ -20,7 +25,7 @@ export class NewProject extends React.Component {
   fieldsList: HTMLElement
   projectNameInput
   entries: Element[]
-  get currentEntry(): Element { return this.entries[store.currentEntryIndex]}
+  get currentEntry(): Element { return this.entries[layoutStore.currentEntryIndex]}
 
   constructor(props: any) {
     super(props)
@@ -34,7 +39,7 @@ export class NewProject extends React.Component {
     this.entries = Array.from(this.fieldsList.getElementsByClassName('entry'))
     this.currentEntry.classList.add('fs-current')
     this.projectNameInput.focus()
-    store.entryCount = this.entries.length
+    layoutStore.entryCount = this.entries.length
   }
 
   renderBreadcrumbs() {
@@ -67,7 +72,7 @@ export class NewProject extends React.Component {
       this.currentEntry.classList.remove('fs-hide')
       prevEntry.classList.remove('fs-show')
 
-      store.prevEntry()
+      layoutStore.prevEntry()
       this.isAnimating = false
     }, 700)
   }
@@ -93,7 +98,7 @@ export class NewProject extends React.Component {
       this.currentEntry.classList.remove('fs-hide')
       nextEntry.classList.remove('fs-show')
 
-      store.nextEntry()
+      layoutStore.nextEntry()
       this.isAnimating = false
     }, 700)
   }
@@ -101,13 +106,21 @@ export class NewProject extends React.Component {
 
   getPrevEntry() {
     let length = this.entries.length
-    return this.entries[(store.currentEntryIndex - 1 + length) % length]
+    return this.entries[(layoutStore.currentEntryIndex - 1 + length) % length]
   }
 
   getNextEntry() {
     let length = this.entries.length
-    return this.entries[(store.currentEntryIndex + 1) % length]
+    return this.entries[(layoutStore.currentEntryIndex + 1) % length]
   }
+
+
+  handleSearchQueryChange(event) {
+    if (event.target.value.length > 2) {
+      debounce(() => store.search(event.target.value), 250)
+    }
+  }
+
 
   render() {
     return (
@@ -144,17 +157,22 @@ export class NewProject extends React.Component {
 
               <div className="entry">
                 <h2 className="fs-anim-upper">Select your project's equity</h2>
-                <input className="fs-anim-lower" type="text" placeholder="Add a Github repo or an Exposito user" />
+                <input onChange={value => this.handleSearchQueryChange} className="fs-anim-lower" type="text" placeholder="Add a Github repo or an Exposito user" />
+                <ul className="search-results">
+                  {
+                    store.searchResults.map(result => <li key={result.id}>{result.name}</li>)
+                  }
+                </ul>
               </div>                          
             </div>
 
             <button 
-              className={`prev-btn btn btn-default btn-md ${store.isFirstEntry ? 'hidden' : ''}`} 
+              className={`prev-btn btn btn-default btn-md ${layoutStore.isFirstEntry ? 'hidden' : ''}`} 
               onClick={this.prevEntry}>
               Previous
             </button>            
             <button 
-              className={`next-btn btn btn-default btn-md ${store.isLastEntry ? 'hidden' : ''}`}
+              className={`next-btn btn btn-default btn-md ${layoutStore.isLastEntry ? 'hidden' : ''}`}
               onClick={this.nextEntry}>
               Next
             </button>            
