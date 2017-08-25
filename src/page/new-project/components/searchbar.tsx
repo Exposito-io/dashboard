@@ -33,6 +33,7 @@ export class Searchbar extends React.Component {
 
     @bind
     onSearchResultClick(searchResult) {
+        store.addShareholder(searchResult)
         console.log('search result clicked', searchResult)
     }
 

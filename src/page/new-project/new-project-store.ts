@@ -1,5 +1,6 @@
 import { autorun, observable, computed, action } from 'mobx'
 import { Project, CreateProjectShareholdersDistributionParams } from 'models'
+import { debounce } from 'lodash-decorators'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../stores/store'
 import { SearchResultType } from './search-result-type'
@@ -20,6 +21,7 @@ export class NewProjectStore extends Store {
 
     @observable projectName: string
 
+    @observable searchQuery: string
     @observable searchResults: any[]
 
     @observable newProjectParams: CreateProjectShareholdersDistributionParams
@@ -36,6 +38,14 @@ export class NewProjectStore extends Store {
             this.instance = new NewProjectStore()
 
         return this.instance
+    }
+
+
+
+    @action 
+    //@debounce(500)
+    changeSearchQuery(query: string) {
+        this.searchQuery = query
     }
 
 
