@@ -8,7 +8,7 @@ import { observer } from 'mobx-react'
 import { ImageRadioButton } from '../../components/image-radio-button'
 import { setRef } from '../../lib/tools'
 import { LayoutStore } from './layout-store'
-import { NewProjectStore } from '../../stores/new-project-store'
+import { NewProjectStore } from './new-project-store'
 import { Searchbar } from './components/searchbar'
 
 import './main.css'
