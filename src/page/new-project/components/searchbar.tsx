@@ -21,7 +21,6 @@ export class Searchbar extends React.Component {
     constructor(props: any) {
         super(props)
 
-
     }
 
     @debounce(500)
@@ -32,8 +31,9 @@ export class Searchbar extends React.Component {
     }
 
 
-    onItemClick(event) {
-
+    @bind
+    onSearchResultClick(searchResult) {
+        console.log('search result clicked', searchResult)
     }
 
 
@@ -41,6 +41,7 @@ export class Searchbar extends React.Component {
         return (
             <div>
                 <input
+                    id="searchbar"
                     ref={setRef(this, 'searchBar')}
                     onChange={e => this.handleSearchQueryChange()}
                     className="fs-anim-lower"
@@ -50,8 +51,11 @@ export class Searchbar extends React.Component {
                 <div className="search-results">
                     {
                         store.searchResults.map(result => {
-                            return <SearchResult key={result.id} onClick={this.onItemClick} result={result}>
-                            </SearchResult>
+                            return <SearchResult 
+                                        key={result.id} 
+                                        onClick={this.onSearchResultClick} 
+                                        result={result}>
+                                   </SearchResult>
                         })
                     }
                 </div>

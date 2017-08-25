@@ -1,5 +1,6 @@
 import * as React from 'react'
-
+import { bind } from 'lodash-decorators'
+import { SearchResultType } from '../search-result-type'
 
 
 
@@ -13,15 +14,16 @@ export class SearchResult extends React.Component {
 
     }
 
-
+    //@bind
     onItemClick(event) {
-
+        if (typeof this.props.onClick === 'function')
+            this.props.onClick(this.props.result)
     }
 
 
     render() {
         return (
-            <div>
+            <div onClick={e => this.onItemClick(e)}>
                 {this.props.result.name}
             </div>
         )
