@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { debounce } from 'lodash'
+
+
 
 import { Page, Panel, Breadcrumbs } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
@@ -30,16 +31,12 @@ export class NewProject extends React.Component {
 
   constructor(props: any) {
     super(props)
-
-    //setTimeout(() => this.init(), 1000)
-
-    //setTimeout(() => this.nextEntry(), 2000)
   }
 
   componentDidMount() {
     this.entries = Array.from(this.fieldsList.getElementsByClassName('entry'))
     this.currentEntry.classList.add('fs-current')
-    this.projectNameInput.focus()
+    //this.projectNameInput.focus()
     layoutStore.entryCount = this.entries.length
   }
 
@@ -127,8 +124,9 @@ export class NewProject extends React.Component {
 
         <div className="new-project fs-form">
             <h2 className="main-title">New project</h2>
-
+            
             <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
+              {/*
               <div className="entry">
                 <h2 className="fs-anim-upper">Select a project name</h2>
                 <input 
@@ -138,7 +136,7 @@ export class NewProject extends React.Component {
                   placeholder="My new app" 
                 />
               </div>
-
+              
               <div className="entry">
                 <h2 className="fs-anim-upper">Select a cloud provider</h2>
                 <div className="fs-anim-lower">
@@ -149,7 +147,7 @@ export class NewProject extends React.Component {
                     img={require('./images/digital-ocean.png')}>
                   </ImageRadioButton>
                 </div>
-              </div>     
+              </div> */}    
 
               <div className="entry">
                 <h2 className="fs-anim-upper">Select your project's equity</h2>
