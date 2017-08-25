@@ -8,6 +8,7 @@
     "@types/react": "^15.0.38",
     "@types/react-dom": "^15.5.1",
     "@types/react-router-dom": "^4.0.7",
+    "bignumber.js": "^4.0.2",
     "lodash": "^4.17.4",
     "lodash-decorators": "^4.4.1",
     "mobx": "^3.2.1",
@@ -24,6 +25,7 @@
     "rx": "^4.1.0"
   },
   "devDependencies": {
+    "@types/bignumber.js": "^4.0.3",
     "@types/lodash-decorators": "^4.0.0",
     "@types/rx": "^4.1.1",
     "react-tap-event-plugin": "^2.0.1"

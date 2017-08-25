@@ -4,6 +4,7 @@ import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../stores/store'
 import { SearchResultType } from './search-result-type'
 import config from '../../config'
+import * as BigNumber from 'bignumber.js'
 
 import { PreferencesStore } from '../../stores/preferences-store'
 
@@ -23,6 +24,9 @@ export class NewProjectStore extends Store {
 
     @observable newProjectParams: CreateProjectShareholdersDistributionParams
 
+    @observable totalTokenCount: string
+    
+
     private client: ExpositoClient
 
 
@@ -32,6 +36,32 @@ export class NewProjectStore extends Store {
             this.instance = new NewProjectStore()
 
         return this.instance
+    }
+
+
+    @action addShareholder(searchResult) {
+        let tokens = this.calculateAssignableTokens()
+
+        switch (searchResult.type) {
+            case SearchResultType.ExpositoUser:
+                this.newProjectParams.shareholders.push({
+                    shares: tokens,
+                    userId: ''
+                })
+                break
+            case SearchResultType.GithubRepo:
+                this.newProjectParams.shareholders.push({
+                    githubProject: searchResult.fullName,
+                    shares: tokens
+                })
+                break
+        }
+    }
+
+
+    @action removeShareholder(shareholder) {
+        let index = this.newProjectParams.shareholders.indexOf(shareholder)
+        this.newProjectParams.shareholders.splice(index, 1)
     }
 
 
@@ -52,6 +82,7 @@ export class NewProjectStore extends Store {
         this.projectName = ""
         this.searchResults = []
         this.newProjectParams = new CreateProjectShareholdersDistributionParams()
+        this.totalTokenCount = '100000000'
     }
 
 
@@ -82,6 +113,15 @@ export class NewProjectStore extends Store {
         this.init()
     }
 
+
+    private calculateAssignableTokens(): string {
+        let total = new BigNumber(this.totalTokenCount)
+
+        for (let shareholder of this.newProjectParams.shareholders) 
+            total = total.minus(new BigNumber(shareholder.shares))        
+
+        return total.toString()
+    }
 
 
     private async init() {
