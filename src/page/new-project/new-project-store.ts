@@ -1,5 +1,5 @@
 import { autorun, observable, computed, action } from 'mobx'
-import { Project } from 'models'
+import { Project, CreateProjectShareholdersDistributionParams } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../stores/store'
 import { SearchResultType } from './search-result-type'
@@ -17,9 +17,11 @@ export class NewProjectStore extends Store {
 
     private static instance: NewProjectStore
 
-    @observable projectName: string = ""
+    @observable projectName: string
 
-    @observable searchResults: any[] = []
+    @observable searchResults: any[]
+
+    @observable newProjectParams: CreateProjectShareholdersDistributionParams
 
     private client: ExpositoClient
 
@@ -46,6 +48,13 @@ export class NewProjectStore extends Store {
 
 
 
+    @action reset() {
+        this.projectName = ""
+        this.searchResults = []
+        this.newProjectParams = new CreateProjectShareholdersDistributionParams()
+    }
+
+
     private parseResults(users: any[], repos: any[]) {
         let results = []
 
@@ -66,6 +75,8 @@ export class NewProjectStore extends Store {
         return results
     }
 
+
+
     private constructor() {
         super()
         this.init()
@@ -75,6 +86,7 @@ export class NewProjectStore extends Store {
 
     private async init() {
         this.client = new ExpositoClient({ url: config.apiUrl, version: config.apiVersion  })
+        this.reset()
         this.isLoading = false
     }
 

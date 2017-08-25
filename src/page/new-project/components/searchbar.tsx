@@ -3,7 +3,7 @@ import { bind, debounce } from 'lodash-decorators'
 import { setRef } from '../../../lib/tools'
 
 import { observer } from 'mobx-react'
-import { NewProjectStore } from '../../../stores/new-project-store'
+import { NewProjectStore } from '../new-project-store'
 
 import { SearchResult } from './search-result'
 
