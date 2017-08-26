@@ -29,6 +29,9 @@ export class ShareholderRepo extends React.Component<Props> {
         if (this.repo.isWaitingForRepoStats) {
             jobManager.subscribe('repo-stats', this.onRepoStatsComplete)
         }
+        else {
+            console.log(`Repo already available: ${this.repo.githubProject}`)
+        }
     }
 
     
