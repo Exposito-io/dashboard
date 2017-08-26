@@ -1,5 +1,6 @@
 import * as React from 'react'
 import * as BigNumber from 'bignumber.js'
+import { bind } from 'lodash-decorators'
 
 import { observer } from 'mobx-react'
 import { NewProjectStore } from '../new-project-store'
@@ -12,16 +13,22 @@ import { JobManager } from '../../../lib/job-manager'
 const store = NewProjectStore.getStore()
 const jobManager = JobManager.getManager((window as any).io)
 
-
+type Props = {
+    repo: GithubShareholdersDescriptionView
+}
 
 @observer
-export class ShareholderRepo extends React.Component<{ repo: GithubShareholdersDescriptionView }> {
+export class ShareholderRepo extends React.Component<Props> {
 
     repo: GithubShareholdersDescriptionView
 
-    constructor(props: any) {
+    constructor(props: Props) {
         super(props)
         this.repo = props.repo
+
+        if (this.repo.isWaitingForRepoStats) {
+            jobManager.subscribe('repo-stats', this.onRepoStatsComplete)
+        }
     }
 
     
@@ -31,6 +38,13 @@ export class ShareholderRepo extends React.Component<{ repo: GithubShareholdersD
 
             </div>
         )
+    }
+
+
+    @bind
+    private onRepoStatsComplete(data) {
+        // TODO
+        console.log('repo-stats completed', data)
     }
 
     /**

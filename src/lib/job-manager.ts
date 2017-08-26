@@ -6,7 +6,7 @@
  */
 export class JobManager {
 
-    private instance: JobManager
+    private static instance: JobManager
     private jobCompleteCallbacks: Map<string, Function[]> = new Map()
     private sock: any
 
@@ -85,10 +85,10 @@ export class JobManager {
 
 
     static getManager(io: any) {
-        if (this.instance == null)
-            this.instance = new JobManager()
+        if (JobManager.instance == null)
+            JobManager.instance = new JobManager(io)
 
-        return this.instance
+        return JobManager.instance
     }
 
 
