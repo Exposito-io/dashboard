@@ -4,9 +4,9 @@ import * as BigNumber from 'bignumber.js'
 import { observer } from 'mobx-react'
 import { NewProjectStore } from '../new-project-store'
 import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../shareholders'
-import { ShareholderUser } from './shareholder-user'
 import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
 
+import { JobManager } from '../../../lib/job-manager'
 
 
 const store = NewProjectStore.getStore()
@@ -14,36 +14,20 @@ const store = NewProjectStore.getStore()
 
 
 @observer
-export class Shareholders extends React.Component {
+export class ShareholderUser extends React.Component {
 
-    
+    user: ShareholderDescription
 
     constructor(props: any) {
         super(props)
-
+        this.user = props.user
     }
 
     // TODO: get shareholder data from database
     render() {
         return (
-            <div className="shareholders">
-                {store.shareholders.map(shareholder => {
-                    if (ShareholderDescriptionView.is(shareholder)) {
-                        return <ShareholderUser 
-                                  user={shareholder as ShareholderDescriptionView}>
-                               </ShareholderUser>                    
-                    }
-                    else if (GithubShareholdersDescription.validate(shareholder)) {
-                        let s = shareholder as GithubShareholdersDescriptionView
-                        return <div>
-                                    {s.githubProject}
-                               </div>
-                    }
-                    else {
-                        return <div></div>
-                    }
+            <div className="shareholder-user">
 
-                })}
             </div>
         )
     }
