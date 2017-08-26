@@ -67,7 +67,8 @@ export class NewProjectStore extends Store {
                     name: user.name,
                     image: user.image,
                     email: user.email,
-                    shares: tokens
+                    shares: tokens,
+                    isWaitingForData: false
                 })
                 break
 

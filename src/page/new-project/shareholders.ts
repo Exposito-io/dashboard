@@ -6,6 +6,7 @@ export class ShareholderDescriptionView extends ShareholderDescription {
     name: string
     image: string
     email: string
+    isWaitingForData: boolean
 
     static is(params: any) {
         return params.userId != null 

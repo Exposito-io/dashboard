@@ -10,23 +10,24 @@ import { JobManager } from '../../../lib/job-manager'
 
 
 const store = NewProjectStore.getStore()
+const jobManager = JobManager.getManager((window as any).io)
 
 
 
 @observer
-export class ShareholderUser extends React.Component<{ user: ShareholderDescriptionView }> {
+export class ShareholderRepo extends React.Component<{ repo: GithubShareholdersDescriptionView }> {
 
-    user: ShareholderDescriptionView
+    repo: GithubShareholdersDescriptionView
 
     constructor(props: any) {
         super(props)
-        this.user = props.user
+        this.repo = props.repo
     }
 
     
     render() {
         return (
-            <div className={`shareholder-user ${this.user.isWaitingForData ?  'loading' : ''}`}>
+            <div className={`shareholder-repo ${this.repo.isWaitingForRepoStats ?  'loading' : ''}`}>
 
             </div>
         )

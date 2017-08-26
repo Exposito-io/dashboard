@@ -23,7 +23,6 @@ export class Shareholders extends React.Component {
 
     }
 
-    // TODO: get shareholder data from database
     render() {
         return (
             <div className="shareholders">
