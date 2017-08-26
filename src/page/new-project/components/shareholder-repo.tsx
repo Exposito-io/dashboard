@@ -11,7 +11,7 @@ import { JobManager } from '../../../lib/job-manager'
 
 
 const store = NewProjectStore.getStore()
-const jobManager = JobManager.getManager((window as any).io)
+const jobManager = JobManager.getManager()
 
 type Props = {
     repo: GithubShareholdersDescriptionView

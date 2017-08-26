@@ -5,6 +5,7 @@ import { observer } from 'mobx-react'
 import { NewProjectStore } from '../new-project-store'
 import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../shareholders'
 import { ShareholderUser } from './shareholder-user'
+import { ShareholderRepo } from './shareholder-repo'
 import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
 
 
@@ -28,15 +29,18 @@ export class Shareholders extends React.Component {
             <div className="shareholders">
                 {store.shareholders.map(shareholder => {
                     if (ShareholderDescriptionView.is(shareholder)) {
+                        let s = shareholder as ShareholderDescriptionView
                         return <ShareholderUser 
-                                  user={shareholder as ShareholderDescriptionView}>
+                                  key={s.userId}
+                                  user={s}>
                                </ShareholderUser>                    
                     }
                     else if (GithubShareholdersDescription.validate(shareholder)) {
                         let s = shareholder as GithubShareholdersDescriptionView
-                        return <div>
-                                    {s.githubProject}
-                               </div>
+                        return <ShareholderRepo
+                                   key={s.githubProject}
+                                   repo={s} >
+                               </ShareholderRepo>
                     }
                     else {
                         return <div></div>

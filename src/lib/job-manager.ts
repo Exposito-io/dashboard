@@ -1,3 +1,8 @@
+import * as io from 'socket.io-client'
+import config from '../config'
+
+
+
 
 /**
  * JobManager launches an event when a job is
@@ -9,6 +14,14 @@ export class JobManager {
     private static instance: JobManager
     private jobCompleteCallbacks: Map<string, Function[]> = new Map()
     private sock: any
+
+
+    static getManager() {
+        if (JobManager.instance == null)
+            JobManager.instance = new JobManager()
+
+        return JobManager.instance
+    }    
 
 
     /**
@@ -55,9 +68,8 @@ export class JobManager {
      * 
      * @param io SocketIO client instance
      */
-    private constructor(io: any) {
-        this.sock = io('/jobs')
-
+    private constructor() {
+        this.sock = io(`${config.apiUrl}/jobs`)
     }    
 
 
@@ -84,12 +96,7 @@ export class JobManager {
     }
 
 
-    static getManager(io: any) {
-        if (JobManager.instance == null)
-            JobManager.instance = new JobManager(io)
 
-        return JobManager.instance
-    }
 
 
 }
