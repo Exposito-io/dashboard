@@ -7,6 +7,7 @@ import { debounce } from 'lodash-decorators'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../stores/store'
 import { SearchResultType } from './search-result-type'
+import { getGithubRepoFromFullName, isQueueJob } from '../../lib/tools'
 import config from '../../config'
 import * as BigNumber from 'bignumber.js'
 
@@ -66,18 +67,33 @@ export class NewProjectStore extends Store {
                     name: user.name,
                     image: user.image,
                     email: user.email,
-                    shares: tokens,
-                    type: searchResult.type
+                    shares: tokens
                 })
                 break
 
             case SearchResultType.GithubRepo:
-                this.shareholders.push({
-                    githubProject: searchResult.fullName,
-                    description: '',
-                    shares: tokens,
-                    type: searchResult.type
-                })
+
+                let repo = await this.client.github.getRepoStats(getGithubRepoFromFullName(searchResult.fullName))
+
+                // Repo stats are beeing calculated
+                if (isQueueJob(repo)) {
+                    this.shareholders.push({
+                        githubProject: searchResult.fullName,
+                        description: '',
+                        shares: tokens,
+                        isWaitingForRepoStats: true
+                    })
+                }
+                // Repo stats are already in server cache
+                else {
+                    this.shareholders.push({
+                        githubProject: searchResult.fullName,
+                        description: '',
+                        shares: tokens,
+                        isWaitingForRepoStats: false,
+                        stats: repo
+                    })                    
+                }
                 break
             
             default: break
@@ -85,9 +101,9 @@ export class NewProjectStore extends Store {
     }
 
 
-    @action removeShareholder(shareholder) {
-        let index = this.newProjectParams.shareholders.indexOf(shareholder)
-        this.newProjectParams.shareholders.splice(index, 1)
+    @action removeShareholder(shareholder: ShareholderDescriptionView | GithubShareholdersDescriptionView) {
+        let index = this.shareholders.indexOf(shareholder)
+        this.shareholders.splice(index, 1)
     }
 
 

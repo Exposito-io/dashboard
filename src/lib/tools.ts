@@ -26,3 +26,13 @@ export function getGithubRepoFromFullName(fullName: string): { owner: string, re
         repo: parts[1]
     }
 }
+
+
+/**
+ * Returns true if the argument is a queue job
+ * @param obj 
+ */
+export function isQueueJob(obj: any): boolean {
+    return obj.id != null
+        && obj.data != null
+}
