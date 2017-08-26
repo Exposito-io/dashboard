@@ -30,7 +30,7 @@ export class ShareholderRepo extends React.Component<Props> {
             jobManager.subscribe('repo-stats', this.onRepoStatsComplete)
         }
         else {
-            console.log(`Repo already available: ${this.repo.githubProject}`)
+            console.log(`Repo stats already available: ${this.repo.githubProject}`)
         }
     }
 
@@ -38,7 +38,7 @@ export class ShareholderRepo extends React.Component<Props> {
     render() {
         return (
             <div className={`shareholder-repo ${this.repo.isWaitingForRepoStats ?  'loading' : ''}`}>
-
+                
             </div>
         )
     }

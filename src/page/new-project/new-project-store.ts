@@ -60,10 +60,10 @@ export class NewProjectStore extends Store {
 
         switch (searchResult.type) {
             case SearchResultType.ExpositoUser:
-                let user = await this.client.users.getById(searchResult.userId)
+                let user = await this.client.users.getById(searchResult.id)
 
                 this.shareholders.push({
-                    userId: searchResult.userId,
+                    userId: searchResult.id,
                     name: user.name,
                     image: user.image,
                     email: user.email,

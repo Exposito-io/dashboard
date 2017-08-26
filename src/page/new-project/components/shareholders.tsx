@@ -43,6 +43,7 @@ export class Shareholders extends React.Component {
                                </ShareholderRepo>
                     }
                     else {
+                        console.log('wrong shareholder data', shareholder)
                         return <div></div>
                     }
 
