@@ -6,17 +6,9 @@
  */
 export class JobManager {
 
+    private instance: JobManager
     private jobCompleteCallbacks: Map<string, Function[]> = new Map()
     private sock: any
-
-    /**
-     * 
-     * @param io SocketIO client instance
-     */
-    constructor(io: any) {
-        this.sock = io('/jobs')
-
-    }
 
 
     /**
@@ -59,6 +51,16 @@ export class JobManager {
     }
 
 
+    /**
+     * 
+     * @param io SocketIO client instance
+     */
+    private constructor(io: any) {
+        this.sock = io('/jobs')
+
+    }    
+
+
 
     private socketSubscribe(queue: string) {
         this.sock.emit('subscribe', { queue })
@@ -82,7 +84,12 @@ export class JobManager {
     }
 
 
-    
+    static getManager(io: any) {
+        if (this.instance == null)
+            this.instance = new JobManager()
+
+        return this.instance
+    }
 
 
 }
