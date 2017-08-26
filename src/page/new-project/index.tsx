@@ -1,7 +1,5 @@
 import * as React from 'react'
 
-
-
 import { Page, Panel, Breadcrumbs } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react'
@@ -10,6 +8,7 @@ import { setRef } from '../../lib/tools'
 import { LayoutStore } from './layout-store'
 import { NewProjectStore } from './new-project-store'
 import { Searchbar } from './components/searchbar'
+import { Shareholders } from './components/shareholders'
 
 import './main.css'
 
@@ -152,6 +151,7 @@ export class NewProject extends React.Component {
               <div className="entry">
                 <h2 className="fs-anim-upper">Select your project's equity</h2>
                 <Searchbar></Searchbar>
+                <Shareholders></Shareholders>
               </div>                          
             </div>
 

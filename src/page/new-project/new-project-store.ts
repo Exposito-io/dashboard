@@ -1,5 +1,7 @@
 import { autorun, observable, computed, action } from 'mobx'
-import { Project, CreateProjectShareholdersDistributionParams } from 'models'
+import { Project, CreateProjectShareholdersDistributionParams, 
+         ShareholderDescription, InvitedShareholderDescription, 
+         GithubShareholdersDescription } from 'models'
 import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from './shareholders'
 import { debounce } from 'lodash-decorators'
 import { ExpositoClient } from 'exposito-client'
@@ -27,6 +29,7 @@ export class NewProjectStore extends Store {
 
 
     @observable newProjectParams: CreateProjectShareholdersDistributionParams
+    @observable shareholders: (ShareholderDescriptionView | GithubShareholdersDescriptionView)[]
 
     @observable totalTokenCount: string
     
@@ -58,20 +61,26 @@ export class NewProjectStore extends Store {
             case SearchResultType.ExpositoUser:
                 let user = await this.client.users.getById(searchResult.userId)
 
-                this.newProjectParams.shareholders.push({
+                this.shareholders.push({
                     userId: searchResult.userId,
+                    name: user.name,
                     image: user.image,
                     email: user.email,
                     shares: tokens,
+                    type: searchResult.type
                 })
                 break
 
             case SearchResultType.GithubRepo:
-                this.newProjectParams.shareholders.push({
+                this.shareholders.push({
                     githubProject: searchResult.fullName,
-                    shares: tokens
+                    description: '',
+                    shares: tokens,
+                    type: searchResult.type
                 })
                 break
+            
+            default: break
         }
     }
 
@@ -99,6 +108,7 @@ export class NewProjectStore extends Store {
         this.projectName = ""
         this.searchResults = []
         this.newProjectParams = new CreateProjectShareholdersDistributionParams()
+        this.shareholders = []
         this.totalTokenCount = '100000000'
     }
 

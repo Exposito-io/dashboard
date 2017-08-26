@@ -3,6 +3,7 @@ import * as BigNumber from 'bignumber.js'
 
 import { observer } from 'mobx-react'
 import { NewProjectStore } from '../new-project-store'
+import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../shareholders'
 import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
 
 
@@ -14,8 +15,6 @@ const store = NewProjectStore.getStore()
 @observer
 export class Shareholders extends React.Component {
 
-    private searchBar: HTMLInputElement
-
     constructor(props: any) {
         super(props)
 
@@ -24,15 +23,19 @@ export class Shareholders extends React.Component {
     // TODO: get shareholder data from database
     render() {
         return (
-            <div>
-                {store.newProjectParams.shareholders.map(shareholder => {
+            <div className="shareholders">
+                {store.shareholders.map(shareholder => {
                     if (ShareholderDescription.validate(shareholder)) {
+                        let s = shareholder as ShareholderDescriptionView
                         return <div>
-                                   {shareholder}
+                                   {s.name}
                                </div>
                     }
                     else if (GithubShareholdersDescription.validate(shareholder)) {
-                        return <div></div>
+                        let s = shareholder as GithubShareholdersDescriptionView
+                        return <div>
+                                    {s.githubProject}
+                               </div>
                     }
                     else {
                         return <div></div>
