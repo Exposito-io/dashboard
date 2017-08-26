@@ -3,11 +3,11 @@ import * as BigNumber from 'bignumber.js'
 import { bind } from 'lodash-decorators'
 
 import { observer } from 'mobx-react'
-import { NewProjectStore } from '../new-project-store'
-import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../shareholders'
+import { NewProjectStore } from '../../new-project-store'
+import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../../shareholders'
 import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
 
-import { JobManager } from '../../../lib/job-manager'
+import { JobManager } from '../../../../lib/job-manager'
 
 
 const store = NewProjectStore.getStore()

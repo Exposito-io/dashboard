@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { bind } from 'lodash-decorators'
-import { SearchResultType } from '../search-result-type'
+import { SearchResultType } from '../../search-result-type'
 
 
 

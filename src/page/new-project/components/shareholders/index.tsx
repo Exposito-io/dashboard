@@ -2,10 +2,10 @@ import * as React from 'react'
 import * as BigNumber from 'bignumber.js'
 
 import { observer } from 'mobx-react'
-import { NewProjectStore } from '../new-project-store'
-import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../shareholders'
-import { ShareholderUser } from './shareholder-user'
-import { ShareholderRepo } from './shareholder-repo'
+import { NewProjectStore } from '../../new-project-store'
+import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../../shareholders'
+import { ShareholderUser } from '../shareholder-user'
+import { ShareholderRepo } from '../shareholder-repo'
 import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
 
 
