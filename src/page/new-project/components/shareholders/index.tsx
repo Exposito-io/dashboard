@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as BigNumber from 'bignumber.js'
 
+import { Panel } from 'react-blur-admin'
 import { observer } from 'mobx-react'
 import { NewProjectStore } from '../../new-project-store'
 import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../../shareholders'
@@ -8,7 +9,7 @@ import { ShareholderUser } from '../shareholder-user'
 import { ShareholderRepo } from '../shareholder-repo'
 import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
 
-
+import './shareholders.css'
 
 const store = NewProjectStore.getStore()
 
@@ -26,7 +27,7 @@ export class Shareholders extends React.Component {
 
     render() {
         return (
-            <div className="shareholders">
+            <Panel className="new-project-shareholders">
                 {store.shareholders.map(shareholder => {
                     if (ShareholderDescriptionView.is(shareholder)) {
                         let s = shareholder as ShareholderDescriptionView
@@ -48,7 +49,7 @@ export class Shareholders extends React.Component {
                     }
 
                 })}
-            </div>
+            </Panel>
         )
     }
 

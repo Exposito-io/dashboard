@@ -1,0 +1,8 @@
+.new-project-shareholders {
+    background: url('./new-project-panel-background.png');
+    max-height: 0;
+    overflow: auto;
+    transition: max-height 0.4s var(--ease-out-quart);
+    background-size: auto !important;    
+    padding: 0;
+}
