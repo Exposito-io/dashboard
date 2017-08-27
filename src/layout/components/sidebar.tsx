@@ -17,14 +17,7 @@ export class Sidebar extends React.Component {
       { pathname: '/instances', label: 'Instances', icon: 'server' },
       { pathname: '/wallets', label: 'Wallets', icon: 'home' },
       { pathname: '/periodic-payments', label: 'Periodic Payments', icon: 'credit-card' },
-      { pathname: '/contributors', label: 'Contributors', icon: 'credit-card' },
-      { pathname: '/table-demo', label: 'Tables', icon: 'table' },
-      { pathname: '/button-demo', label: 'Buttons', icon: 'dot-circle-o' },
-      { pathname: '/progress-bars', label: 'Progress Bars', icon: 'spinner'},
-      { pathname: '/modal-demo', label: 'Modals', icon: 'clipboard' },
-      { pathname: '/tabs-demo', label: 'Tabs', icon: 'list-ul' },
-      { pathname: '/input-demo', label: 'Inputs', icon: 'check-square' },
-      { pathname: '/notifications-demo', label: 'Notifications', icon: 'exclamation' },
+      { pathname: '/contributors', label: 'Contributors', icon: 'credit-card' }
     ],
   }
 
