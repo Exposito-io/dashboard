@@ -174,6 +174,11 @@ export class NewProject extends React.Component {
               onClick={this.nextEntry}>
               Next
             </button>            
+            <button 
+              className={`next-btn btn btn-default btn-md ${!layoutStore.isLastEntry ? 'hidden' : ''}`}
+              onClick={this.nextEntry}>
+              Create Project
+            </button>                        
         </div>
       </Page>
     )
