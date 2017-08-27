@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { bind } from 'bind-decorator'
 import { Page, Panel, Breadcrumbs } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react'
@@ -24,7 +25,8 @@ export class NewProject extends React.Component {
   isAnimating: boolean = false
   isLastStep: boolean = false
   fieldsList: HTMLElement
-  projectNameInput
+  projectNameInput: HTMLInputElement
+  projectDescInput: HTMLTextAreaElement
   entries: Element[]
   get currentEntry(): Element { return this.entries[layoutStore.currentEntryIndex]}
 
@@ -126,7 +128,7 @@ export class NewProject extends React.Component {
             
             <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
               
-              {/*
+              {/**/}
               <div className="entry project-description">
                 <h2 className="fs-anim-upper">Enter your project info</h2>
                 <input 
@@ -137,14 +139,14 @@ export class NewProject extends React.Component {
                 />
                 <br />
                 <textarea 
-                  style={{marginTop: '60px'}}
+                  onKeyDown={this.autoResize}
                   ref={setRef(this, 'projectDescInput')} 
-                  className="fs-anim-lower" 
+                  className="project-desc fs-anim-lower" 
                   placeholder="Project description" 
                 >                
                 </textarea>
               </div>
-              */}
+              {/**/}
               {/*
               <div className="entry">
                 <h2 className="fs-anim-upper">Select a cloud provider</h2>
@@ -183,5 +185,16 @@ export class NewProject extends React.Component {
         </div>
       </Page>
     )
+  }
+
+
+  @bind private autoResize() {
+      setTimeout(() => {
+        let height = this.projectDescInput.scrollHeight
+
+        this.projectDescInput.style.cssText = 'height:auto;'
+        this.projectDescInput.style.cssText = `height: ${height}px`
+      })  
+
   }
 }
