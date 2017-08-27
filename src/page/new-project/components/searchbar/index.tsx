@@ -1,11 +1,16 @@
 import * as React from 'react'
-import { bind, debounce } from 'lodash-decorators'
-import { setRef } from '../../../lib/tools'
+import { Panel } from 'react-blur-admin'
+import { debounce } from 'lodash-decorators'
+import { bind } from 'bind-decorator'
+import { setRef } from '../../../../lib/tools'
 
 import { observer } from 'mobx-react'
-import { NewProjectStore } from '../new-project-store'
+import { NewProjectStore } from '../../new-project-store'
 
-import { SearchResult } from './search-result'
+import { SearchResult } from '../search-result'
+
+
+import './searchbar.css'
 
 
 
@@ -31,25 +36,25 @@ export class Searchbar extends React.Component {
     }
 
 
-    @bind
+    @bind 
     onSearchResultClick(searchResult) {
         store.addShareholder(searchResult)
+        this.searchBar.value = ''
         console.log('search result clicked', searchResult)
     }
 
 
     render() {
         return (
-            <div>
+            <div className={`new-project-search ${store.hasSearchResults ? 'has-results' : ''}`}>
                 <input
-                    id="searchbar"
                     ref={setRef(this, 'searchBar')}
                     onChange={e => this.handleSearchQueryChange()}
                     className="fs-anim-lower"
                     type="text"
                     placeholder="Add a Github repo or an Exposito user"
                 />
-                <div className="search-results">
+                <Panel className="search-results">
                     {
                         store.searchResults.map(result => {
                             return <SearchResult 
@@ -59,7 +64,7 @@ export class Searchbar extends React.Component {
                                    </SearchResult>
                         })
                     }
-                </div>
+                </Panel>
             </div>
         )
     }

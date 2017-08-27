@@ -26,8 +26,8 @@ export class NewProjectStore extends Store {
     @observable projectName: string
 
     @observable searchQuery: string
-    @observable searchResults: any[]
-
+    @observable searchResults: any[] = []
+    @computed get hasSearchResults() { return this.searchResults.length > 0 }
 
     @observable newProjectParams: CreateProjectShareholdersDistributionParams
     @observable shareholders: (ShareholderDescriptionView | GithubShareholdersDescriptionView)[]
@@ -99,6 +99,8 @@ export class NewProjectStore extends Store {
             
             default: break
         }
+
+        this.searchResults = []
     }
 
 

@@ -1,0 +1,17 @@
+.new-project-search .panel.panel-blur.search-results {
+    border-radius: 0 0 5px 5px;
+    margin-top: -1px;
+    background: url('./new-project-panel-background.png');
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    background-size: auto !important;
+}
+
+.new-project-search.has-results .panel.panel-blur.search-results {
+    max-height: 300px;
+}
+
+.new-project-search .panel.panel-blur.search-results .panel-body {
+    padding: 0 15px;
+}
