@@ -28,17 +28,21 @@ export class SearchResult extends React.Component {
         return (
             <div className="new-project-search-result" onClick={e => this.onItemClick(e)}>
                 {
+                    
                     Switch({
-                        [SearchResultType.ExpositoUser]: () => {
+                        [SearchResultType.ExpositoUser]: () => {                            
                             return <div>
-                                      <i className="ico" style={{backgroundImage: this.props.result.image}}></i>
+                                      <i className="ico" style={{backgroundImage: `url(${this.props.result.image}`}}></i>
                                       <span className="desc">{this.props.result.name}</span>
                                    </div>
                         },
                         [SearchResultType.GithubRepo]: () => {
                             return <div>
                                       <i className="ico github"></i>
-                                      <span className="desc">{this.props.result.fullName}</span>
+                                      <span className="desc">
+                                          {this.props.result.fullName}<br/>
+                                          <span className="description">{this.props.result.description}</span>
+                                      </span>
                                    </div>
                         }
                     }, this.props.result.type)

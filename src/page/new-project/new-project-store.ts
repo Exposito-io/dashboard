@@ -140,6 +140,7 @@ export class NewProjectStore extends Store {
             type: SearchResultType.ExpositoUser,
             id: user._id,
             name: user.name,
+            image: user.image,
             email: user.email
         })))
 
@@ -147,6 +148,7 @@ export class NewProjectStore extends Store {
             type: SearchResultType.GithubRepo,
             id: repo.id,
             name: repo.name,
+            description: repo.description,
             fullName: repo.full_name
         })))
 

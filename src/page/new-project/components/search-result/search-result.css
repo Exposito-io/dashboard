@@ -18,8 +18,8 @@
 }
 
 .new-project-search-result i.ico {
-    width: 36px;
-    height: 36px;
+    width: 50px;
+    height: 50px;
     display: inline-block;
     border-radius: 100%;
     background-size: cover;
@@ -37,6 +37,12 @@
     vertical-align: middle;
     font-size: 20px;
     font-weight: 300;
-    margin-left: 10px;
+    margin-left: 12px;
     letter-spacing: 0.3px;
+    line-height: 22px;
+}
+
+.new-project-search-result .description {
+    font-size: 15px;
+    color: #eee;
 }
