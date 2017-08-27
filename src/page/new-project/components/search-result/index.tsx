@@ -32,13 +32,13 @@ export class SearchResult extends React.Component {
                         [SearchResultType.ExpositoUser]: () => {
                             return <div>
                                       <i className="ico" style={{backgroundImage: this.props.result.image}}></i>
-                                      <span>{this.props.result.name}</span>
+                                      <span className="desc">{this.props.result.name}</span>
                                    </div>
                         },
                         [SearchResultType.GithubRepo]: () => {
                             return <div>
                                       <i className="ico github"></i>
-                                      <span>{this.props.result.fullName}</span>
+                                      <span className="desc">{this.props.result.fullName}</span>
                                    </div>
                         }
                     }, this.props.result.type)

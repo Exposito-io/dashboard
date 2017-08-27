@@ -8,6 +8,7 @@
     overflow: auto;
     transition: max-height 0.4s var(--ease-out-quart);
     background-size: auto !important;
+    box-shadow: 0 1px 6px rgba(250, 250, 250, 0.06);
 }
 
 .new-project-search.has-results.has-focus .panel.panel-blur.search-results {
