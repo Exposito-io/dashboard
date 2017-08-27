@@ -40,11 +40,15 @@
     transform: translateY(-50%);
 }
 
+.new-project .entry.project-description {
+	top: 50%;
+}
+
 .new-project input {
 	font-family: Roboto, sans-serif;
 	display: block;
 	margin: 0;
-	padding: 0 0 4px;
+	padding: 0 0 4px 0;
 	width: 100%;
 	border: none;
 	border-bottom: 2px solid rgba(255,255,255,0.2);
@@ -57,12 +61,30 @@
     outline: 0 none;
 }
 
-.new-project input::placeholder {
+.new-project input::placeholder,
+.new-project textarea::placeholder {
 	font-size: 40px !important;
 }
 
 .new-project input:focus {
 	
+}
+
+
+.new-project textarea {
+	font-family: Roboto, sans-serif;
+    padding: 12px 4px 4px 0px;
+    width: 100%;
+	height: 200px;
+	border: none;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    background-color: transparent;
+    color: #fff;
+	font-weight: 300;
+	font-size: 50px;
+	resize: none;
+	outline: 0 none;
+	display: inline-block;
 }
 
 

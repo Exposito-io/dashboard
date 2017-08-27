@@ -126,7 +126,7 @@ export class NewProject extends React.Component {
             
             <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
               
-              <div className="entry">
+              <div className="entry project-description">
                 <h2 className="fs-anim-upper">Enter your project info</h2>
                 <input 
                   ref={setRef(this, 'projectNameInput')} 
@@ -134,13 +134,14 @@ export class NewProject extends React.Component {
                   type="text" 
                   placeholder="Project name" 
                 />
-                <br /><br /><br />
-                <input 
+                <br />
+                <textarea 
+                  style={{marginTop: '60px'}}
                   ref={setRef(this, 'projectDescInput')} 
                   className="fs-anim-lower" 
-                  type="text" 
                   placeholder="Project description" 
-                />                
+                >                
+                </textarea>
               </div>
               
               {/*
