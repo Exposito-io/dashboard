@@ -16,6 +16,7 @@
 
 .new-project-search .search-input-wrap {
     position: relative;
+    margin-top: 40px;
 }
 
 .new-project-search .search-input-wrap:after {
@@ -23,10 +24,23 @@
     content: "\f4a4";
     display: inline-block;
     position: absolute;
-    right: 18px;
+    left: 4px;
     top: 50%;
     font-size: 42px;
     transform: translateY(-50%);
+    color: #bbb;
+}
+
+.new-project-search input {
+    padding-left: 50px !important;
+    font-size: 50px !important;
+    font-weight: 300 !important;
+    font-family: Roboto, sans-serif !important;
+    padding-bottom: 4px !important;
+}
+
+.new-project-search input::placeholder {
+    font-size: 40px !important;
 }
 
 .new-project-search.has-results.has-focus .panel.panel-blur.search-results {

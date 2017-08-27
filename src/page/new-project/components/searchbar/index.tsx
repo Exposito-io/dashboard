@@ -64,6 +64,7 @@ export class Searchbar extends React.Component {
                         onFocus={this.onFocus}
                         onBlur={this.onFocusOut}
                         className="fs-anim-lower"
+                        placeholder="Add a user or a Github repo"
                         type="text"
                     />
                 </div>
