@@ -18,7 +18,8 @@
 
 .new-project h2 {
     font-weight: 300;
-    font-size: 40px;
+	font-size: 40px;
+	margin-bottom: 50px;
 }
 
 .new-project .form {
@@ -40,9 +41,10 @@
 }
 
 .new-project input {
+	font-family: Roboto, sans-serif;
 	display: block;
 	margin: 0;
-	padding: 0 0 0.15em;
+	padding: 0 0 4px;
 	width: 100%;
 	border: none;
 	border-bottom: 2px solid rgba(255,255,255,0.2);
@@ -50,9 +52,13 @@
 	color: #fff;
 	text-overflow: ellipsis;
 	font-weight: 300;
-	font-size: 60px;
+	font-size: 50px;
 	border-radius: 0;
     outline: 0 none;
+}
+
+.new-project input::placeholder {
+	font-size: 40px !important;
 }
 
 .new-project input:focus {

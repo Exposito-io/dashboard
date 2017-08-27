@@ -125,17 +125,18 @@ export class NewProject extends React.Component {
             <h2 className="main-title">New project</h2>
             
             <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
-              {/*
+              
               <div className="entry">
-                <h2 className="fs-anim-upper">Select a project name</h2>
+                <h2 className="fs-anim-upper">Enter your project info</h2>
                 <input 
                   ref={setRef(this, 'projectNameInput')} 
                   className="fs-anim-lower" 
                   type="text" 
-                  placeholder="My new app" 
+                  placeholder="Project name" 
                 />
               </div>
               
+              {/*
               <div className="entry">
                 <h2 className="fs-anim-upper">Select a cloud provider</h2>
                 <div className="fs-anim-lower">
