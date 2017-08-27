@@ -147,9 +147,9 @@ export class NewProject extends React.Component {
                   </ImageRadioButton>
                 </div>
               </div> */}    
-
+              
               <div className="entry">
-                <h2 className="fs-anim-upper">Select your project's equity</h2>
+                <h2 className="fs-anim-upper">Customize your project's equity</h2>
                 <Searchbar></Searchbar>
                 <Shareholders></Shareholders>
               </div>                          

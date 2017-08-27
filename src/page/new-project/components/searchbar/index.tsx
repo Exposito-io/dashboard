@@ -57,15 +57,16 @@ export class Searchbar extends React.Component {
     render() {
         return (
             <div className={`new-project-search ${store.hasSearchResults ? 'has-results' : ''} ${store.searchHasFocus ? 'has-focus' : ''}`}>
-                <input
-                    ref={setRef(this, 'searchBar')}
-                    onChange={e => this.handleSearchQueryChange()}
-                    onFocus={this.onFocus}
-                    onBlur={this.onFocusOut}
-                    className="fs-anim-lower"
-                    type="text"
-                    placeholder="Add a Github repo or an Exposito user"
-                />
+                <div className="search-input-wrap">
+                    <input
+                        ref={setRef(this, 'searchBar')}
+                        onChange={e => this.handleSearchQueryChange()}
+                        onFocus={this.onFocus}
+                        onBlur={this.onFocusOut}
+                        className="fs-anim-lower"
+                        type="text"
+                    />
+                </div>
                 <Panel className="search-results">
                     {
                         store.searchResults.map(result => {
