@@ -41,7 +41,7 @@
 .new-project-search-result .desc {
     display: inline-block;
     vertical-align: middle;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 300;
     margin-left: 12px;
     letter-spacing: 0.3px;
@@ -52,4 +52,21 @@
     font-size: 15px;
     color: #eee;
     white-space: nowrap;
+}
+
+.new-project-search-result .user-name {
+    display: inline-block;
+    font-weight: 300;
+}
+
+.new-project-search-result .owner {
+    display: inline-block;
+    color: #bbb;
+    margin-right: 2px;
+}
+
+.new-project-search-result .repo-name {
+    display: inline-block;
+    font-weight: 300;
+    margin-left: 2px;
 }

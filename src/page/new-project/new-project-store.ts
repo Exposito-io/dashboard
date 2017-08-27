@@ -144,13 +144,18 @@ export class NewProjectStore extends Store {
             email: user.email
         })))
 
-        results = results.concat(repos.map(repo => ({
-            type: SearchResultType.GithubRepo,
-            id: repo.id,
-            name: repo.name,
-            description: repo.description,
-            fullName: repo.full_name
-        })))
+        results = results.concat(repos.map(repo => {
+            let repoInfo = getGithubRepoFromFullName(repo.full_name)
+
+            return {
+                type: SearchResultType.GithubRepo,
+                id: repo.id,
+                owner: repoInfo.owner,
+                name: repo.name,
+                description: repo.description,
+                fullName: repo.full_name
+            }
+        }))
 
         return results
     }

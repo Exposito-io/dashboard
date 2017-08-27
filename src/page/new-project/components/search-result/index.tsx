@@ -30,18 +30,24 @@ export class SearchResult extends React.Component {
                 {
                     
                     Switch({
-                        [SearchResultType.ExpositoUser]: () => {                            
+                        [SearchResultType.ExpositoUser]: () => {   
+                            let user = this.props.result                         
                             return <div>
-                                      <i className="ico" style={{backgroundImage: `url(${this.props.result.image}`}}></i>
-                                      <span className="desc">{this.props.result.name}</span>
+                                      <i className="ico" style={{backgroundImage: `url(${user.image}`}}></i>
+                                      <span className="desc">
+                                          <span className="user-name">{user.name}</span>
+                                      </span>
                                    </div>
                         },
                         [SearchResultType.GithubRepo]: () => {
+                            let repo = this.props.result
                             return <div>
                                       <i className="ico github"></i>
                                       <span className="desc">
-                                          {this.props.result.fullName}<br/>
-                                          <span className="description">{this.props.result.description}</span>
+                                          <span className="owner">{repo.owner}</span> 
+                                          / 
+                                          <span className="repo-name">{repo.name}</span><br/>
+                                          <span className="description">{repo.description}</span>
                                       </span>
                                    </div>
                         }
