@@ -28,6 +28,7 @@ export class NewProjectStore extends Store {
     @observable searchQuery: string
     @observable searchResults: any[] = []
     @computed get hasSearchResults() { return this.searchResults.length > 0 }
+    @observable searchHasFocus: boolean
 
     @observable newProjectParams: CreateProjectShareholdersDistributionParams
     @observable shareholders: (ShareholderDescriptionView | GithubShareholdersDescriptionView)[]

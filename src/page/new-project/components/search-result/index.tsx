@@ -2,7 +2,7 @@ import * as React from 'react'
 import { bind } from 'lodash-decorators'
 import { SearchResultType } from '../../search-result-type'
 
-
+import './search-result.css'
 
 export class SearchResult extends React.Component {
 
@@ -23,7 +23,7 @@ export class SearchResult extends React.Component {
 
     render() {
         return (
-            <div onClick={e => this.onItemClick(e)}>
+            <div className="new-project-search-result" onClick={e => this.onItemClick(e)}>
                 {this.props.result.name}
             </div>
         )

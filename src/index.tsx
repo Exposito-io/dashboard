@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import './assets/styles/easing.css'
 import './index.css';
 import { Login } from './layout/login'
 import { TestPage } from './layout/test'

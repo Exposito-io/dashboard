@@ -35,21 +35,33 @@ export class Searchbar extends React.Component {
         }
     }
 
+    @bind onFocus() {
+        store.searchHasFocus = true
+    }
 
-    @bind 
-    onSearchResultClick(searchResult) {
+
+    @bind onFocusOut() {
+        store.searchHasFocus = false
+    }
+
+
+    @bind onSearchResultClick(searchResult) {
         store.addShareholder(searchResult)
         this.searchBar.value = ''
         console.log('search result clicked', searchResult)
     }
 
+    
+
 
     render() {
         return (
-            <div className={`new-project-search ${store.hasSearchResults ? 'has-results' : ''}`}>
+            <div className={`new-project-search ${store.hasSearchResults ? 'has-results' : ''} ${store.searchHasFocus ? 'has-focus' : ''}`}>
                 <input
                     ref={setRef(this, 'searchBar')}
                     onChange={e => this.handleSearchQueryChange()}
+                    onFocus={this.onFocus}
+                    onBlur={this.onFocusOut}
                     className="fs-anim-lower"
                     type="text"
                     placeholder="Add a Github repo or an Exposito user"
