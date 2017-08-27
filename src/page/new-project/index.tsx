@@ -134,6 +134,13 @@ export class NewProject extends React.Component {
                   type="text" 
                   placeholder="Project name" 
                 />
+                <br /><br /><br />
+                <input 
+                  ref={setRef(this, 'projectDescInput')} 
+                  className="fs-anim-lower" 
+                  type="text" 
+                  placeholder="Project description" 
+                />                
               </div>
               
               {/*

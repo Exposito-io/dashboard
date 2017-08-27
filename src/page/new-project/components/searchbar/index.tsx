@@ -57,7 +57,7 @@ export class Searchbar extends React.Component {
     render() {
         return (
             <div className={`new-project-search ${store.hasSearchResults ? 'has-results' : ''} ${store.searchHasFocus ? 'has-focus' : ''}`}>
-                <div className="search-input-wrap">
+                <div className="search-input-wrap fs-anim-lower">
                     <input
                         ref={setRef(this, 'searchBar')}
                         onChange={e => this.handleSearchQueryChange()}
