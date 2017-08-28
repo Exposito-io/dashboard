@@ -1,9 +1,11 @@
 import * as React from 'react'
+import { Panel } from 'react-blur-admin'
 import { PieChart, Pie } from 'recharts'
 import { bind } from 'bind-decorator'
 import { setRef } from '../../../../lib/tools'
 
 import { observer } from 'mobx-react'
+
 import { NewProjectStore } from '../../new-project-store'
 
 
@@ -33,16 +35,18 @@ export class EquityChart extends React.Component {
 
     render() {
         return (
-            <PieChart width={200} height={200}>
-                <Pie 
-                    activeIndex={[]} 
-                    data={data02}
-                    innerRadius={40} 
-                    outerRadius={80} 
-                    fill="#82ca9d"
-                    activeShape={1}
-                />
-            </PieChart>
+            <Panel className="equity-chart">
+                <PieChart width={200} height={200}>
+                    <Pie 
+                        activeIndex={[]} 
+                        data={data02}
+                        innerRadius={40} 
+                        outerRadius={80} 
+                        fill="#82ca9d"
+                        activeShape={1}
+                    />
+                </PieChart>
+            </Panel>
         )
 
     }

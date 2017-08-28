@@ -21,6 +21,7 @@ export class InvitedShareholderDescriptionView extends InvitedShareholderDescrip
 
 
 export class GithubShareholdersDescriptionView extends GithubShareholdersDescription {
+    name: string
     description: string
 
     /**
