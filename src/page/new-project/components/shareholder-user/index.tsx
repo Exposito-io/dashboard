@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as BigNumber from 'bignumber.js'
 
+import { setRef } from '../../../../lib/tools'
 import { ProgressBar } from 'react-blur-admin'
 import { observer } from 'mobx-react'
 import { NewProjectStore } from '../../new-project-store'
@@ -19,6 +20,7 @@ const store = NewProjectStore.getStore()
 export class ShareholderUser extends React.Component<{ user: ShareholderDescriptionView }> {
 
     user: ShareholderDescriptionView
+    el: HTMLDivElement
 
     constructor(props: any) {
         super(props)
@@ -26,11 +28,16 @@ export class ShareholderUser extends React.Component<{ user: ShareholderDescript
         this.user = props.user
     }
 
+
+    componentDidMount() {
+        setTimeout(() => this.el.classList.add('show'), 1)
+    }
+
     
     render() {
-        console.log('pct: ', this.pct())
         return (
-            <div className={`shareholder-user ${this.user.isWaitingForData ?  'loading' : ''}`}>
+            <div ref={setRef(this, 'el')} 
+                 className={`shareholder shareholder-user ${this.user.isWaitingForData ?  'loading' : ''}`}>
                 <i className="ico" style={{backgroundImage: `url(${this.user.image}`}}></i>
                 <div className="info">
                     <span className="name">{this.user.name}</span>

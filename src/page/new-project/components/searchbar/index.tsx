@@ -41,7 +41,7 @@ export class Searchbar extends React.Component {
 
 
     @bind onFocusOut() {
-        store.searchHasFocus = false
+        setTimeout(() => store.searchHasFocus = false, 100)
     }
 
 
@@ -59,7 +59,7 @@ export class Searchbar extends React.Component {
             <div className={`new-project-search 
                              ${store.hasSearchResults ? 'has-results' : ''} 
                              ${store.searchHasFocus ? 'has-focus' : ''}`}>
-                             
+
                 <div className="search-input-wrap fs-anim-lower">
                     <input
                         ref={setRef(this, 'searchBar')}

@@ -172,7 +172,7 @@ export class NewProjectStore extends Store {
     private calculateAssignableTokens(): string {
         let total = new BigNumber(this.totalTokenCount)
 
-        for (let shareholder of this.newProjectParams.shareholders) 
+        for (let shareholder of this.shareholders) 
             total = total.minus(new BigNumber(shareholder.shares))        
 
         return total.toString()

@@ -11,6 +11,7 @@
     height: 360px;    
     max-height: 0;
     font-family: Roboto, sans-serif;
+    
 }
 
 
@@ -36,7 +37,7 @@
     display: inline-block;
     margin-left: 14px;
     vertical-align: middle;
-    width: 380px;
+    width: 528px;
     position: relative;
 }
 
@@ -67,4 +68,15 @@
     /*transform: translateY(-52%);*/
     font-size: 26px;
     font-weight: 300;
+}
+
+
+.new-project-shareholders .shareholder {
+    margin-top: 16px;
+    transition: opacity 0.5s ease-in 0.1s;
+    opacity: 0;
+}
+
+.new-project-shareholders .shareholder.show {
+    opacity: 1;
 }

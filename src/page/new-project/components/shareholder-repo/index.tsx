@@ -2,6 +2,9 @@ import * as React from 'react'
 import * as BigNumber from 'bignumber.js'
 import { bind } from 'lodash-decorators'
 
+import { setRef } from '../../../../lib/tools'
+import { ProgressBar } from 'react-blur-admin'
+
 import { observer } from 'mobx-react'
 import { NewProjectStore } from '../../new-project-store'
 import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../../shareholders'
@@ -21,6 +24,7 @@ type Props = {
 export class ShareholderRepo extends React.Component<Props> {
 
     repo: GithubShareholdersDescriptionView
+    el: HTMLDivElement
 
     constructor(props: Props) {
         super(props)
@@ -34,11 +38,24 @@ export class ShareholderRepo extends React.Component<Props> {
         }
     }
 
+
+    componentDidMount() {
+        setTimeout(() => this.el.classList.add('show'), 1)
+    }
+
     
     render() {
         return (
-            <div className={`shareholder-repo ${this.repo.isWaitingForRepoStats ?  'loading' : ''}`}>
-                
+            <div ref={setRef(this, 'el')} 
+                className={`shareholder shareholder-repo ${this.repo.isWaitingForRepoStats ?  'loading' : ''}`}>
+                <i className="ico github"></i>
+                <div className="info">
+                    <span className="name">{this.repo.githubProject}</span>
+                    <span className="pct">{this.pct().toFixed(0)}%</span><br/>
+                    
+                    <ProgressBar percentage={this.pct()} striped={true}></ProgressBar>
+
+                </div>                 
             </div>
         )
     }
@@ -50,17 +67,18 @@ export class ShareholderRepo extends React.Component<Props> {
         console.log('repo-stats completed', data)
     }
 
+
     /**
      * Returns the shareholder tokens in percentage of
      * the total token number
      * @param shareholder 
      */
-    private pct(shareholder) {
+    private pct() {
         let total = new BigNumber(store.totalTokenCount)
-        let shareholderTokens = new BigNumber(shareholder.shares)
+        let shareholderTokens = new BigNumber(this.repo.shares)
 
-        return shareholderTokens.dividedBy(total).toFixed(0)
-    }    
+        return shareholderTokens.dividedBy(total).toNumber() * 100
+    } 
 
 }
 
