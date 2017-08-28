@@ -10,6 +10,7 @@ import { LayoutStore } from './layout-store'
 import { NewProjectStore } from './new-project-store'
 import { Searchbar } from './components/searchbar'
 import { Shareholders } from './components/shareholders'
+import { EquityChart } from './components/equity-chart'
 
 import './main.css'
 
@@ -164,6 +165,7 @@ export class NewProject extends React.Component {
                 <h2 className="fs-anim-upper">Customize your project's equity</h2>
                 <Searchbar></Searchbar>
                 <Shareholders></Shareholders>
+                <EquityChart></EquityChart>
               </div>                          
             </div>
 

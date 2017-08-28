@@ -33,12 +33,10 @@ export class EquityChart extends React.Component {
 
     render() {
         return (
-            <PieChart width={400} height={400}>
+            <PieChart width={200} height={200}>
                 <Pie 
                     activeIndex={[]} 
                     data={data02}
-                    cx={500} 
-                    cy={200} 
                     innerRadius={40} 
                     outerRadius={80} 
                     fill="#82ca9d"
