@@ -56,7 +56,10 @@ export class Searchbar extends React.Component {
 
     render() {
         return (
-            <div className={`new-project-search ${store.hasSearchResults ? 'has-results' : ''} ${store.searchHasFocus ? 'has-focus' : ''}`}>
+            <div className={`new-project-search 
+                             ${store.hasSearchResults ? 'has-results' : ''} 
+                             ${store.searchHasFocus ? 'has-focus' : ''}`}>
+                             
                 <div className="search-input-wrap fs-anim-lower">
                     <input
                         ref={setRef(this, 'searchBar')}
@@ -64,7 +67,7 @@ export class Searchbar extends React.Component {
                         onFocus={this.onFocus}
                         onBlur={this.onFocusOut}
                         className="fs-anim-lower"
-                        placeholder="Add a user or a Github repo"
+                        placeholder="Add a user or a GitHub repository"
                         type="text"
                     />
                 </div>

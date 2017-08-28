@@ -3,12 +3,13 @@
     width: 100%;    
     border-radius: 0 0 5px 5px;
     margin-top: -1px;
-    background: url('./new-project-panel-background.png');
+    background: url('./new-project-panel-background2.png');
     max-height: 0;
     overflow: auto;
     transition: max-height 0.4s var(--ease-out-quart);
     background-size: auto !important;
     box-shadow: 0 1px 6px rgba(250, 250, 250, 0.06);
+    z-index: 11;
 }
 
 .new-project-search input {

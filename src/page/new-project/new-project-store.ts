@@ -32,6 +32,7 @@ export class NewProjectStore extends Store {
 
     @observable newProjectParams: CreateProjectShareholdersDistributionParams
     @observable shareholders: (ShareholderDescriptionView | GithubShareholdersDescriptionView)[]
+    @computed get hasShareholders() { return this.shareholders.length > 0 }
 
     @observable totalTokenCount: string
     
@@ -65,8 +66,8 @@ export class NewProjectStore extends Store {
 
                 this.shareholders.push({
                     userId: searchResult.id,
-                    name: user.name,
-                    image: user.image,
+                    name: searchResult.name,
+                    image: searchResult.image,
                     email: user.email,
                     shares: tokens,
                     isWaitingForData: false

@@ -27,7 +27,9 @@ export class Shareholders extends React.Component {
 
     render() {
         return (
-            <Panel className="new-project-shareholders">
+            <Panel className={`new-project-shareholders 
+                               ${store.hasShareholders ? 'has-shareholders' : ''}`}>
+                               
                 {store.shareholders.map(shareholder => {
                     if (ShareholderDescriptionView.is(shareholder)) {
                         let s = shareholder as ShareholderDescriptionView

@@ -128,7 +128,7 @@ export class NewProject extends React.Component {
             
             <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
               
-              {/**/}
+              {/*
               <div className="entry project-description">
                 <h2 className="fs-anim-upper">Enter your project info</h2>
                 <input 
@@ -146,7 +146,7 @@ export class NewProject extends React.Component {
                 >                
                 </textarea>
               </div>
-              {/**/}
+              */}
               {/*
               <div className="entry">
                 <h2 className="fs-anim-upper">Select a cloud provider</h2>
