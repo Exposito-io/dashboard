@@ -1,0 +1,8 @@
+.equity-chart {
+    position: absolute;
+    right: -290px;
+    top: 34px;
+    display: inline-block;
+    border-radius: 100%;
+    background: rgba(13,13,13,0.8);    
+}

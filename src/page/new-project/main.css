@@ -209,6 +209,9 @@ button.fs-continue,
 }
 
 
+.equity-container {
+	position: relative;
+}
 
 
 /** Animations **/

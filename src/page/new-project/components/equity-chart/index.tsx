@@ -9,10 +9,6 @@ import { observer } from 'mobx-react'
 import { NewProjectStore } from '../../new-project-store'
 
 
-const data01 = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
-                  {name: 'Group C', value: 300}, {name: 'Group D', value: 200},
-                  {name: 'Group E', value: 278}, {name: 'Group F', value: 189}]
-
 const data02 = [{name: 'Group A', value: 2400}, {name: 'Group B', value: 4567},
                   {name: 'Group C', value: 1398}, {name: 'Group D', value: 9800},
                   {name: 'Group E', value: 3908}, {name: 'Group F', value: 4800}];
@@ -20,7 +16,7 @@ const data02 = [{name: 'Group A', value: 2400}, {name: 'Group B', value: 4567},
 
 const store = NewProjectStore.getStore()
 
-
+import './equity-chart.css'
 
 @observer
 export class EquityChart extends React.Component {
@@ -35,18 +31,18 @@ export class EquityChart extends React.Component {
 
     render() {
         return (
-            <Panel className="equity-chart">
-                <PieChart width={200} height={200}>
+            <div className="equity-chart">
+                <PieChart width={304} height={304}>
                     <Pie 
                         activeIndex={[]} 
-                        data={data02}
-                        innerRadius={40} 
-                        outerRadius={80} 
+                        data={store.equityChartData}
+                        innerRadius={100} 
+                        outerRadius={140} 
                         fill="#82ca9d"
                         activeShape={1}
                     />
                 </PieChart>
-            </Panel>
+            </div>
         )
 
     }

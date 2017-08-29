@@ -37,11 +37,11 @@ export class NewProjectStore extends Store {
     @computed get equityChartData() {
         let chartData = this.shareholders.map(shareholder => ({
             name: shareholder.name,
-            shares: parseInt(shareholder.shares, 10)
+            value: parseInt(shareholder.shares, 10)
         }))
 
         let totalAllocated = chartData.reduce((total: BigNumber.BigNumber, shareholder) => {
-            return total.add(new BigNumber(shareholder.shares))
+            return total.add(new BigNumber(shareholder.value))
         }, new BigNumber(0))
 
         let unallocated = new BigNumber(this.totalTokenCount).minus(totalAllocated)
@@ -49,7 +49,7 @@ export class NewProjectStore extends Store {
         if (unallocated.greaterThan(0)) {
             chartData.push({
                 name: 'Unallocated',
-                shares: unallocated.toNumber()
+                value: unallocated.toNumber()
             })
         }
 
@@ -103,6 +103,7 @@ export class NewProjectStore extends Store {
                 // Repo stats are beeing calculated
                 if (isQueueJob(repo)) {
                     this.shareholders.push({
+                        name: searchResult.fullName,
                         githubProject: searchResult.fullName,
                         description: '',
                         shares: tokens,
@@ -112,6 +113,7 @@ export class NewProjectStore extends Store {
                 // Repo stats are already in server cache
                 else {
                     this.shareholders.push({
+                        name: searchResult.fullName,
                         githubProject: searchResult.fullName,
                         description: '',
                         shares: tokens,
