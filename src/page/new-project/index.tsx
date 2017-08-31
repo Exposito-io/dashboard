@@ -129,7 +129,7 @@ export class NewProject extends React.Component {
             
             <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
               
-              {/**/}
+              {/*
               <div className="entry project-description">
                 <h2 className="fs-anim-upper">Enter your project info</h2>
                 <input 

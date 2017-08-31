@@ -31,33 +31,49 @@ export class EquityChart extends React.Component {
         return (
             <div className="equity-chart">
                 { store.hasShareholders ?  
-                    <PieChart width={304} height={304}>
-                        <Pie 
-                            activeIndex={[]} 
-                            data={store.equityChartData}
-                            innerRadius={98} 
-                            outerRadius={140} 
-                            fill="#82ca9d"
-                            activeShape={1}
-                            border={'none'}
-                            stroke="none"
-                        >
-                        {
-                            store.equityChartData.map((entry, i) => {
-                                if (entry.name === 'Unallocated')
-                                    return <Cell fill={UNALLOCATED_COLOR}/>
-                                else
-                                    return <Cell fill={COLORS[i % COLORS.length]}/>
-                            })          
-                        }                    
-                        </Pie>
-                    </PieChart>
+                    <div>
+                        <PieChart width={304} height={304}>
+                            <Pie 
+                                activeIndex={[]} 
+                                data={store.equityChartData}
+                                innerRadius={98} 
+                                outerRadius={140} 
+                                fill="#82ca9d"
+                                activeShape={1}
+                                border={'none'}
+                                stroke="none"
+                            >
+                            {
+                                store.equityChartData.map((entry, i) => {
+                                    if (entry.name === 'Unallocated')
+                                        return <Cell fill={UNALLOCATED_COLOR}/>
+                                    else
+                                        return <Cell fill={COLORS[i % COLORS.length]}/>
+                                })          
+                            }                    
+                            </Pie>
+                        </PieChart>
+                        <span className="total-tokens">
+                            {this.numberFormat(store.totalTokenCount)} <br/>
+                            tokens
+                        </span>
+                    </div>
                     :
                     ''
                 }
             </div>
         )
 
+    }
+
+
+    numberFormat(_number) {
+        _number = typeof _number != "undefined" && _number > 0 ? _number : "";
+        _number = _number.replace(new RegExp("^(\\d{" + (_number.length%3? _number.length%3:0) + "})(\\d{3})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1 ").trim();
+        
+        _number = _number.replace(/\s/g, ',');
+        
+        return _number;
     }
 
 
