@@ -51,6 +51,21 @@ export class Shareholders extends React.Component {
                     }
 
                 })}
+
+                {
+                    store.unallocatedTokens.greaterThan(0) ?
+                    <ShareholderUser user={{
+                        name: 'Unallocated', 
+                        email: '', 
+                        image: 'https://cdn1.iconfinder.com/data/icons/navigation-and-ui-menu/32/caution_attention_required_circle-512.png', 
+                        userId: '',
+                        isWaitingForData: false, 
+                        shares: store.unallocatedTokens.toString()}} 
+                    > 
+                    </ShareholderUser>
+                    :
+                    ''
+                }
             </Panel>
         )
     }

@@ -34,22 +34,26 @@ export class NewProjectStore extends Store {
     @observable shareholders: (ShareholderDescriptionView | GithubShareholdersDescriptionView)[]
     @computed get hasShareholders() { return this.shareholders.length > 0 }
 
+    @computed get unallocatedTokens(): BigNumber.BigNumber {
+        let totalAllocated = this.shareholders.reduce((total: BigNumber.BigNumber, shareholder) => {
+            return total.add(new BigNumber(shareholder.shares))
+        }, new BigNumber(0))
+
+        return new BigNumber(this.totalTokenCount).minus(totalAllocated)
+    }
+
     @computed get equityChartData() {
         let chartData = this.shareholders.map(shareholder => ({
             name: shareholder.name,
             value: parseInt(shareholder.shares, 10)
         }))
 
-        let totalAllocated = chartData.reduce((total: BigNumber.BigNumber, shareholder) => {
-            return total.add(new BigNumber(shareholder.value))
-        }, new BigNumber(0))
 
-        let unallocated = new BigNumber(this.totalTokenCount).minus(totalAllocated)
 
-        if (unallocated.greaterThan(0)) {
+        if (this.unallocatedTokens.greaterThan(0)) {
             chartData.push({
                 name: 'Unallocated',
-                value: unallocated.toNumber()
+                value: this.unallocatedTokens.toNumber()
             })
         }
 
