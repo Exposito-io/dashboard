@@ -21,3 +21,13 @@
     line-height: 32px;
     font-weight: 300;
 }
+
+.equity-chart .total-tokens input {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: 300;    
+    text-align: center;
+    display: inline-block;
+    width: calc(100% - 60px);
+}

@@ -3,6 +3,7 @@ import { Panel } from 'react-blur-admin'
 import { PieChart, Pie, Cell } from 'recharts'
 import { bind } from 'bind-decorator'
 import { setRef } from '../../../../lib/tools'
+import * as NumberFormat from 'react-number-format'
 
 import { observer } from 'mobx-react'
 
@@ -54,7 +55,11 @@ export class EquityChart extends React.Component {
                             </Pie>
                         </PieChart>
                         <span className="total-tokens">
-                            {this.numberFormat(store.totalTokenCount)} <br/>
+                            <NumberFormat 
+                                value={store.totalTokenCount} 
+                                displayType={'input'} 
+                                thousandSeparator={true} 
+                            /><br/>
                             tokens
                         </span>
                     </div>
@@ -64,16 +69,6 @@ export class EquityChart extends React.Component {
             </div>
         )
 
-    }
-
-
-    numberFormat(_number) {
-        _number = typeof _number != "undefined" && _number > 0 ? _number : "";
-        _number = _number.replace(new RegExp("^(\\d{" + (_number.length%3? _number.length%3:0) + "})(\\d{3})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1 ").trim();
-        
-        _number = _number.replace(/\s/g, ',');
-        
-        return _number;
     }
 
 
