@@ -77,6 +77,26 @@
     opacity: 0;
 }
 
-.new-project-shareholders .shareholder.show {
+.new-project-shareholders .shareholder.show,
+.new-project-shareholders .shareholder.show .shareholder {
     opacity: 1;
+}
+
+
+
+/** Github authors **/
+.new-project-shareholders .shareholder.developer {
+    padding-left: 40px;
+}
+
+.new-project-shareholders .shareholder.developer .info {
+    width: 488px;
+}
+
+.new-project-shareholders .shareholder.developer .name {
+    font-size: 24px;
+}
+
+.new-project-shareholders .shareholder.developer .pct {
+    font-size: 24px;
 }

@@ -55,7 +55,22 @@ export class ShareholderRepo extends React.Component<Props> {
                     
                     <ProgressBar percentage={this.pct()} striped={true}></ProgressBar>
 
-                </div>                 
+                </div>  
+
+                {
+                    this.repo.stats.authors.map(author => {
+                        return <div className="shareholder developer">
+                            <i className="ico github" style={{backgroundImage: `url(${author.name})`}}></i>
+                            <div className="info">
+                                <span className="name">{author.name}</span>
+                                <span className="pct">{this.pct().toFixed(0)}%</span><br/>
+                                
+                                <ProgressBar percentage={this.pct()} striped={true}></ProgressBar>
+
+                            </div>                             
+                        </div>
+                    })
+                }               
             </div>
         )
     }
