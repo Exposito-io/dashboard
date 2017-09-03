@@ -5,7 +5,12 @@ import { bind } from 'lodash-decorators'
 import { setRef } from '../../../../lib/tools'
 import { ProgressBar } from 'react-blur-admin'
 
+import Slider from 'react-rangeslider'
+
+import 'react-rangeslider/lib/index.css'
+
 import { observer } from 'mobx-react'
+import * as Spinner from 'react-spinkit'
 import { NewProjectStore } from '../../new-project-store'
 import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../../shareholders'
 import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
@@ -53,14 +58,26 @@ export class ShareholderRepo extends React.Component<Props> {
                     <span className="name">{this.repo.githubProject}</span>
                     <span className="pct">{this.pct().toFixed(0)}%</span><br/>
                     
-                    <ProgressBar percentage={this.pct()} striped={true}></ProgressBar>
+                    <Slider
+                        min={0}
+                        max={100}
+                        value={this.pct()}
+                    />
+                    {/*<ProgressBar percentage={this.pct()} striped={true}></ProgressBar>*/}
 
                 </div>  
 
+                <div className="loading-container">
+                    <Spinner 
+                        className="spinner" 
+                        name="ball-scale-ripple-multiple" 
+                        color="white">
+                    </Spinner>
+                </div>
                 {
-                    this.repo.stats.authors.map(author => {
+                    this.repo.stats && this.repo.stats.authors.map(author => {
                         return <div className="shareholder developer">
-                            <i className="ico github" style={{backgroundImage: `url(${author.name})`}}></i>
+                            <i className="ico github" style={{backgroundImage: `url(${author.image})`}}></i>
                             <div className="info">
                                 <span className="name">{author.name}</span>
                                 <span className="pct">{this.pct().toFixed(0)}%</span><br/>

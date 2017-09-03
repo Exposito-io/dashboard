@@ -60,6 +60,40 @@
     background-color: white;
 }
 
+.new-project-shareholders .rangeslider {
+    margin: 12px 0 0 0;
+}
+
+.new-project-shareholders .rangeslider-horizontal {
+    height: 4px;
+}
+
+.new-project-shareholders .rangeslider-horizontal .rangeslider__handle {
+    width: 10px;
+    height: 24px;
+    border-radius: 30px;
+    top: -10px;
+    margin-left: 0px;
+    opacity: 0;
+    transition: opacity 0.45s var(--ease-in-quad);
+}
+
+.new-project-shareholders .info:hover .rangeslider-horizontal .rangeslider__handle { 
+    opacity: 1;
+}
+
+.new-project-shareholders .rangeslider-horizontal .rangeslider__tooltip {
+    margin-left: -18px;
+}
+
+.new-project-shareholders .rangeslider-horizontal .rangeslider__handle:after {
+    display: none;
+}
+
+.new-project-shareholders .rangeslider-horizontal .rangeslider__fill {
+    background-color: white;
+}
+
 .new-project-shareholders .pct {
     position: absolute;
     display: inline-block;
@@ -80,6 +114,23 @@
 .new-project-shareholders .shareholder.show,
 .new-project-shareholders .shareholder.show .shareholder {
     opacity: 1;
+}
+
+.new-project-shareholders .shareholder .loading-container {
+    height: 64px;
+    display: none;
+    position: relative;
+}
+
+.new-project-shareholders .shareholder.loading .loading-container {
+    display: block;
+}
+
+.new-project-shareholders .shareholder .loading-container .spinner {
+    margin-top: 30px;
+    display: block;
+    left: 50%;
+    width: 250px;
 }
 
 

@@ -22,9 +22,11 @@
     "react-dom": "^15.6.1",
     "react-flex-proto": "^1.0.0",
     "react-number-format": "^2.0.4",
+    "react-rangeslider": "^2.1.0",
     "react-router-dom": "^4.1.2",
     "react-scripts-ts": "2.4.0",
     "react-selectize": "^2.1.0",
+    "react-spinkit": "^3.0.0",
     "recharts": "^1.0.0-alpha.4",
     "rx": "^4.1.0",
     "socket.io-client": "^2.0.3"
@@ -32,6 +34,7 @@
   "devDependencies": {
     "@types/bignumber.js": "^4.0.3",
     "@types/lodash-decorators": "^4.0.0",
+    "@types/react-spinkit": "^3.0.2",
     "@types/recharts": "^0.22.4",
     "@types/rx": "^4.1.1",
     "@types/socket.io-client": "^1.4.30",
