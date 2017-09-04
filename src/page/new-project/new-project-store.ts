@@ -27,6 +27,7 @@ export class NewProjectStore extends Store {
 
     @observable searchQuery: string
     @observable searchResults: any[] = []
+
     @computed get hasSearchResults() { return this.searchResults.length > 0 }
     @observable searchHasFocus: boolean
 
@@ -149,6 +150,18 @@ export class NewProjectStore extends Store {
         let results = await Promise.all([this.client.users.find(query), this.client.github.findRepos(query)])
         
         this.searchResults = this.parseResults(results[0], results[1])
+    }
+
+
+    @action setSharesPct(shareholder: ShareholderDescriptionView | GithubShareholdersDescriptionView, 
+                        value: number): void {
+        let totalTokens = new BigNumber(this.totalTokenCount)
+        let tokensValue = totalTokens.mul(value / 100)
+
+        if (tokensValue.lessThanOrEqualTo(this.unallocatedTokens.plus(shareholder.shares)))
+            shareholder.shares = tokensValue.toString()
+        else
+            shareholder.shares = this.unallocatedTokens.plus(shareholder.shares).toString()
     }
 
 

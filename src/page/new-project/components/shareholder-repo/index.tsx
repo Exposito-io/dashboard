@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as BigNumber from 'bignumber.js'
-import { bind } from 'lodash-decorators'
+import { bind } from 'bind-decorator'
 
 import { setRef } from '../../../../lib/tools'
 import { ProgressBar } from 'react-blur-admin'
@@ -48,6 +48,12 @@ export class ShareholderRepo extends React.Component<Props> {
         setTimeout(() => this.el.classList.add('show'), 1)
     }
 
+    @bind
+    onValueChange(value, e) {
+        console.log('v', value)
+        store.setSharesPct(this.repo, value)
+    }
+
     
     render() {
         return (
@@ -62,6 +68,7 @@ export class ShareholderRepo extends React.Component<Props> {
                         min={0}
                         max={100}
                         value={this.pct()}
+                        onChange={this.onValueChange}
                     />
                     {/*<ProgressBar percentage={this.pct()} striped={true}></ProgressBar>*/}
 
