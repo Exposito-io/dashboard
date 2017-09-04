@@ -87,6 +87,7 @@
 
 .new-project-shareholders .rangeslider-horizontal .rangeslider__tooltip {
     margin-left: -18px;
+    display: none;
 }
 
 .new-project-shareholders .rangeslider-horizontal .rangeslider__handle:after {
