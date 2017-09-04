@@ -286,9 +286,9 @@ button.btn.btn-default {
 
 button.btn.btn-create {
 	border-width: 1px;
-	background-color: #2978A0;
+	background-color: rgb(12, 61, 86);
 	color: white;
-	border-color: #2978A0;
+	border-color: rgb(12, 61, 86);
 	text-shadow: 0 1px 1px rgba(0,0,0,0.2);
 	transition: background-color 0.3s ease-out,
 				color 0.3s ease-out;   
@@ -310,6 +310,6 @@ button.btn.btn-default:hover {
 }
 
 button.btn.btn-create:hover {
-	background-color: #6f94a7;
+	background-color: #2978A0;
 	color: white;
 }
