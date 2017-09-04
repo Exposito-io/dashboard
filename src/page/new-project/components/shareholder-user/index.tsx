@@ -1,12 +1,18 @@
 import * as React from 'react'
 import * as BigNumber from 'bignumber.js'
 
+import { bind } from 'bind-decorator'
+
 import { setRef } from '../../../../lib/tools'
 import { ProgressBar } from 'react-blur-admin'
 import { observer } from 'mobx-react'
 import { NewProjectStore } from '../../new-project-store'
 import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../../shareholders'
 import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
+
+import Slider from 'react-rangeslider'
+
+import 'react-rangeslider/lib/index.css'
 
 import { JobManager } from '../../../../lib/job-manager'
 
@@ -33,6 +39,12 @@ export class ShareholderUser extends React.Component<{ user: ShareholderDescript
         setTimeout(() => this.el.classList.add('show'), 1)
     }
 
+
+    @bind
+    onValueChange(value, e) {
+        store.setSharesPct(this.user, value)
+    }    
+
     
     render() {
         return (
@@ -43,7 +55,12 @@ export class ShareholderUser extends React.Component<{ user: ShareholderDescript
                     <span className="name">{this.user.name}</span>
                     <span className="pct">{this.pct().toFixed(0)}%</span><br/>
                     
-                    <ProgressBar percentage={this.pct()} striped={true}></ProgressBar>
+                    <Slider
+                        min={0}
+                        max={100}
+                        value={this.pct()}
+                        onChange={this.onValueChange}
+                    />
 
                 </div> 
             </div>

@@ -53,7 +53,6 @@ export class ShareholderRepo extends React.Component<Props> {
 
     @bind
     onValueChange(value, e) {
-        console.log('v', value)
         store.setSharesPct(this.repo, value)
     }
 
