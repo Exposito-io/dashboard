@@ -121,11 +121,11 @@ export class NewProject extends React.Component {
     return (
       <Page actionBar={this.renderBreadcrumbs()} title='New Project'>
         <Panel title='Create a new project'>
-          Lorem Ipsum
+          
         </Panel>
 
         <div className="new-project fs-form">
-            <h2 className="main-title">New project</h2>
+            <h2 className="main-title"><i className="logo"></i>New project</h2>
             
             <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
               
