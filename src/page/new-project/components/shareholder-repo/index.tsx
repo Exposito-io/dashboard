@@ -13,7 +13,10 @@ import { observer } from 'mobx-react'
 import * as Spinner from 'react-spinkit'
 import { NewProjectStore } from '../../new-project-store'
 import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../../shareholders'
-import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
+import { ShareholderDescription, 
+         InvitedShareholderDescription, 
+         GithubShareholdersDescription, 
+         RepoAuthor } from 'models'
 
 import { JobManager } from '../../../../lib/job-manager'
 
@@ -62,12 +65,12 @@ export class ShareholderRepo extends React.Component<Props> {
                 <i className="ico github"></i>
                 <div className="info">
                     <span className="name">{this.repo.githubProject}</span>
-                    <span className="pct">{this.pct().toFixed(0)}%</span><br/>
+                    <span className="pct main">{this.repo.pct.toFixed(0)}%</span><br/>
                     
                     <Slider
                         min={0}
                         max={100}
-                        value={this.pct()}
+                        value={this.repo.pct}
                         onChange={this.onValueChange}
                     />
                     {/*<ProgressBar percentage={this.pct()} striped={true}></ProgressBar>*/}
@@ -87,9 +90,9 @@ export class ShareholderRepo extends React.Component<Props> {
                             <i className="ico github" style={{backgroundImage: `url(${author.image})`}}></i>
                             <div className="info">
                                 <span className="name">{author.name}</span>
-                                <span className="pct">{this.pct().toFixed(0)}%</span><br/>
+                                <span className="pct">{this.authorPct(author).toFixed(0)}%</span><br/>
                                 
-                                <ProgressBar percentage={this.pct()} striped={true}></ProgressBar>
+                                <ProgressBar percentage={this.authorPct(author)} striped={true}></ProgressBar>
 
                             </div>                             
                         </div>
@@ -107,18 +110,11 @@ export class ShareholderRepo extends React.Component<Props> {
     }
 
 
-    /**
-     * Returns the shareholder tokens in percentage of
-     * the total token number
-     * @param shareholder 
-     */
-    private pct() {
-        let total = new BigNumber(store.totalTokenCount)
-        let shareholderTokens = new BigNumber(this.repo.shares)
+    private authorPct(author: RepoAuthor): number {
+        let pctOfCode = new BigNumber(author.linesOfCode).dividedBy(this.repo.stats.totalLinesOfCode).toNumber()
 
-        return shareholderTokens.dividedBy(total).toNumber() * 100
-    } 
-
+        return pctOfCode * this.repo.pct
+    }
 }
 
 

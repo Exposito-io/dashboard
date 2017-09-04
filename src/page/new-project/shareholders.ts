@@ -7,6 +7,7 @@ export class ShareholderDescriptionView extends ShareholderDescription {
     image: string
     email: string
     isWaitingForData: boolean
+    pct?: number
 
     static is(params: any) {
         return params.userId != null 
@@ -23,6 +24,7 @@ export class InvitedShareholderDescriptionView extends InvitedShareholderDescrip
 export class GithubShareholdersDescriptionView extends GithubShareholdersDescription {
     name: string
     description: string
+    pct: number
 
     /**
      * true if stats for this repo never have been 

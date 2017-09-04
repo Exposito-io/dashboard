@@ -112,16 +112,23 @@ export class NewProjectStore extends Store {
                         githubProject: searchResult.fullName,
                         description: '',
                         shares: tokens,
+                        pct: this.calculatePct(tokens),
                         isWaitingForRepoStats: true
                     })
                 }
                 // Repo stats are already in server cache
                 else {
+                    repo.authors = repo.authors
+                                       .filter(author => new BigNumber(author.linesOfCode).greaterThan(0))
+                                       .sort((a, b) => (new BigNumber(b.linesOfCode).sub(a.linesOfCode).toNumber()))
+                                       
+
                     this.shareholders.push({
                         name: searchResult.fullName,
                         githubProject: searchResult.fullName,
                         description: '',
                         shares: tokens,
+                        pct: this.calculatePct(tokens),
                         isWaitingForRepoStats: false,
                         stats: repo
                     })                    
@@ -154,7 +161,7 @@ export class NewProjectStore extends Store {
 
 
     @action setSharesPct(shareholder: ShareholderDescriptionView | GithubShareholdersDescriptionView, 
-                        value: number): void {
+                         value: number): void {
         let totalTokens = new BigNumber(this.totalTokenCount)
         let tokensValue = totalTokens.mul(value / 100)
 
@@ -162,6 +169,8 @@ export class NewProjectStore extends Store {
             shareholder.shares = tokensValue.toString()
         else
             shareholder.shares = this.unallocatedTokens.plus(shareholder.shares).toString()
+
+        shareholder.pct = this.calculatePct(shareholder.shares)
     }
 
 
@@ -172,6 +181,32 @@ export class NewProjectStore extends Store {
         this.newProjectParams = new CreateProjectShareholdersDistributionParams()
         this.shareholders = []
         this.totalTokenCount = '100000000'
+    }
+
+
+
+
+    private constructor() {
+        super()
+        this.init()
+    }
+
+
+    private calculateAssignableTokens(): string {
+        let total = new BigNumber(this.totalTokenCount)
+
+        for (let shareholder of this.shareholders) 
+            total = total.minus(new BigNumber(shareholder.shares))        
+
+        return total.toString()
+    }
+
+
+    private calculatePct(tokens: string): number {
+        return new BigNumber(tokens)
+                    .dividedBy(this.totalTokenCount)
+                    .mul(100)
+                    .toNumber()
     }
 
 
@@ -200,24 +235,7 @@ export class NewProjectStore extends Store {
         }))
 
         return results
-    }
-
-
-
-    private constructor() {
-        super()
-        this.init()
-    }
-
-
-    private calculateAssignableTokens(): string {
-        let total = new BigNumber(this.totalTokenCount)
-
-        for (let shareholder of this.shareholders) 
-            total = total.minus(new BigNumber(shareholder.shares))        
-
-        return total.toString()
-    }
+    }    
 
 
     private async init() {

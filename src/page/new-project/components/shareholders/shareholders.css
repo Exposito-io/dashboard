@@ -39,6 +39,8 @@
     vertical-align: middle;
     width: 528px;
     position: relative;
+    height: 50px;
+    padding-top: 8px;    
 }
 
 .new-project-shareholders .name {
@@ -108,7 +110,7 @@
 
 .new-project-shareholders .shareholder {
     margin-top: 16px;
-    transition: opacity 0.5s ease-in 0.1s;
+    transition: opacity 0.4s ease-in 0.1s;
     opacity: 0;
 }
 
@@ -116,6 +118,16 @@
 .new-project-shareholders .shareholder.show .shareholder {
     opacity: 1;
 }
+
+.new-project-shareholders .shareholder .pct.main {
+    opacity: 0.2;
+    transition: opacity 0.4s ease-in 0.1s;
+}
+
+.new-project-shareholders .shareholder .info:hover .pct.main {
+    opacity: 1;
+}
+
 
 .new-project-shareholders .shareholder .loading-container {
     height: 64px;
@@ -146,9 +158,9 @@
 }
 
 .new-project-shareholders .shareholder.developer .name {
-    font-size: 24px;
+    /*font-size: 24px;*/
 }
 
 .new-project-shareholders .shareholder.developer .pct {
-    font-size: 24px;
+    
 }
