@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as BigNumber from 'bignumber.js'
 import { bind } from 'bind-decorator'
 
-import { setRef } from '../../../../lib/tools'
+import { setRef, toFixed } from '../../../../lib/tools'
 import { ProgressBar } from 'react-blur-admin'
 
 import Slider from 'react-rangeslider'
@@ -64,15 +64,14 @@ export class ShareholderRepo extends React.Component<Props> {
                 <i className="ico github"></i>
                 <div className="info">
                     <span className="name">{this.repo.githubProject}</span>
-                    <span className="pct main">{this.repo.pct.toFixed(0)}%</span><br/>
+                    <span className="pct main">{toFixed(this.pct(), 0)}%</span><br/>
                     
                     <Slider
                         min={0}
                         max={100}
-                        value={this.repo.pct}
+                        value={this.pct()}
                         onChange={this.onValueChange}
                     />
-                    {/*<ProgressBar percentage={this.pct()} striped={true}></ProgressBar>*/}
 
                 </div>  
 
@@ -89,7 +88,7 @@ export class ShareholderRepo extends React.Component<Props> {
                             <i className="ico github" style={{backgroundImage: `url(${author.image})`}}></i>
                             <div className="info">
                                 <span className="name">{author.name}</span>
-                                <span className="pct">{this.authorPct(author).toFixed(0)}%</span><br/>
+                                <span className="pct">{toFixed(this.authorPct(author), 0)}%</span><br/>
                                 
                                 <ProgressBar percentage={this.authorPct(author)} striped={true}></ProgressBar>
 
@@ -108,11 +107,21 @@ export class ShareholderRepo extends React.Component<Props> {
         console.log('repo-stats completed', data)
     }
 
+    /**
+     * Returns the shareholder tokens in percentage of
+     * the total token number
+     */
+    private pct() {
+        let total = new BigNumber(store.totalTokenCount)
+        let shareholderTokens = new BigNumber(this.repo.shares)
+
+        return shareholderTokens.dividedBy(total).toNumber() * 100
+    }   
 
     private authorPct(author: RepoAuthor): number {
         let pctOfCode = new BigNumber(author.linesOfCode).dividedBy(this.repo.stats.totalLinesOfCode).toNumber()
 
-        return pctOfCode * this.repo.pct
+        return pctOfCode * this.pct()
     }
 }
 

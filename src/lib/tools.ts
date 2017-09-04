@@ -36,3 +36,13 @@ export function isQueueJob(obj: any): boolean {
     return obj.id != null
         && obj.data != null
 }
+
+/**
+ * Same as number.toFixed function, but
+ * with rounding
+ * @param num 
+ * @param precision 
+ */
+export function toFixed(num: number, precision: number) {
+    return (+(Math.round(+(num + 'e' + precision)) + 'e' + -precision)).toFixed(precision);
+}

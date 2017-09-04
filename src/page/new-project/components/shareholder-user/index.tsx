@@ -10,6 +10,8 @@ import { NewProjectStore } from '../../new-project-store'
 import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../../shareholders'
 import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
 
+import { toFixed } from '../../../../lib/tools'
+
 import Slider from 'react-rangeslider'
 
 import 'react-rangeslider/lib/index.css'
@@ -53,7 +55,7 @@ export class ShareholderUser extends React.Component<{ user: ShareholderDescript
                 <i className="ico" style={{backgroundImage: `url(${this.user.image}`}}></i>
                 <div className="info">
                     <span className="name">{this.user.name}</span>
-                    <span className="pct">{this.pct().toFixed(0)}%</span><br/>
+                    <span className="pct">{toFixed(this.pct(), 0)}%</span><br/>
                     
                     <Slider
                         min={0}
@@ -70,7 +72,6 @@ export class ShareholderUser extends React.Component<{ user: ShareholderDescript
     /**
      * Returns the shareholder tokens in percentage of
      * the total token number
-     * @param shareholder 
      */
     private pct() {
         let total = new BigNumber(store.totalTokenCount)
