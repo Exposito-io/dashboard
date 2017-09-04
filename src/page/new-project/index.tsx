@@ -161,7 +161,7 @@ export class NewProject extends React.Component {
                 </div>
               </div> */}    
               
-              <div className="entry">
+              <div className="entry equity">
                 <h2 className="fs-anim-upper">Customize your project's equity</h2>
                 <Searchbar></Searchbar>
                 <div className="equity-container">

@@ -36,12 +36,18 @@
 
 .new-project .entry {
     position: absolute;
-    top: 48%;
-    transform: translateY(-50%);
+	top: 48%;
+	margin-left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .new-project .entry.project-description {
-	top: 50%;
+	top: 44%;
+	width: 520px;
+}
+
+.new-project .entry.equity {
+	width: 680px;
 }
 
 .new-project input {
