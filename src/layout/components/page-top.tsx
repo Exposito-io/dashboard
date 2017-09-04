@@ -51,7 +51,9 @@ export class PageTop extends React.Component<{}, {}> {
 
 
   componentWillMount() {
-
+    document.body.addEventListener('click', e => {
+      this.closeMenus()
+    })
   }
 
   onProjectClick = (projectId: string) => {
@@ -59,11 +61,15 @@ export class PageTop extends React.Component<{}, {}> {
   }
 
   onToggleMenu = () => {
-    this.setState({ isMenuOpen: ! this.state.isMenuOpen });
+    this.setState({ isMenuOpen: ! this.state.isMenuOpen })
   }
 
   onToggleProjectMenu = () => {
-    this.setState({ isProjectMenuOpen: ! this.state.isProjectMenuOpen });
+    this.setState({ isProjectMenuOpen: ! this.state.isProjectMenuOpen })
+  }
+
+  closeMenus() {
+    this.setState({ isMenuOpen: false, isProjectMenuOpen: false })
   }
 
   onLogout() {
