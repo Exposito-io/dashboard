@@ -111,9 +111,9 @@ export class PageTop extends React.Component<{}, {}> {
               <li key={project.id}><a className="fa" onClick={() => this.onProjectClick(project.id)}>{project.name}</a></li>
             ))}
             <li>
-              <a href="/" className="signout" onClick={e => this.onLogout()}>
+              <Link to="/new-project" className="signout">
                 <i className="fa fa-plus-circle"></i>Create Project
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
