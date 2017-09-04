@@ -28,7 +28,7 @@ export class Shareholders extends React.Component {
 
     render() {
         return (
-            <Panel className={`new-project-shareholders 
+            <Panel className={`new-project-shareholders fs-anim-lower
                                ${store.hasShareholders ? 'has-shareholders' : ''}`}>
                                
                 {store.shareholders.map(shareholder => {
@@ -55,8 +55,7 @@ export class Shareholders extends React.Component {
 
                 {
                     store.unallocatedTokens.greaterThan(0) ?
-                    <ShareholderUnallocated> 
-                    </ShareholderUnallocated>                 
+                    <ShareholderUnallocated></ShareholderUnallocated>                 
                     :
                     ''
                 }

@@ -30,7 +30,7 @@ export class EquityChart extends React.Component {
 
     render() {
         return (
-            <div className="equity-chart">
+            <div className="equity-chart fs-anim-lower">
                 { store.hasShareholders ?  
                     <div>
                         <PieChart width={304} height={304}>
