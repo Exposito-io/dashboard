@@ -129,7 +129,7 @@ export class NewProject extends React.Component {
             
             <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
               
-              {/*
+              {/**/}
               <div className="entry project-description">
                 <h2 className="fs-anim-upper">Enter your project info</h2>
                 <input 
@@ -172,17 +172,17 @@ export class NewProject extends React.Component {
             </div>
 
             <button 
-              className={`prev-btn btn btn-default btn-md ${layoutStore.isFirstEntry ? 'hidden' : ''}`} 
+              className={`prev-btn btn btn-default btn-lg ${layoutStore.isFirstEntry ? 'hidden' : ''}`} 
               onClick={this.prevEntry}>
               Previous
             </button>            
             <button 
-              className={`next-btn btn btn-default btn-md ${layoutStore.isLastEntry ? 'hidden' : ''}`}
+              className={`next-btn btn btn-default btn-lg ${layoutStore.isLastEntry ? 'hidden' : ''}`}
               onClick={this.nextEntry}>
               Next
             </button>            
             <button 
-              className={`next-btn btn btn-default btn-md ${!layoutStore.isLastEntry ? 'hidden' : ''}`}
+              className={`next-btn btn btn-create btn-lg ${!layoutStore.isLastEntry ? 'hidden' : ''}`}
               onClick={this.nextEntry}>
               Create Project
             </button>                        

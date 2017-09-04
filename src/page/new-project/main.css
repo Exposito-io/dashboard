@@ -96,13 +96,13 @@
 
 .prev-btn {
     position: absolute;
-    bottom: 4%;
+    bottom: 6%;
     left: 5%;
 }
 
 .next-btn {
     position: absolute;
-    bottom: 4%;
+    bottom: 6%;
     right: 5%;
 }
 
@@ -267,3 +267,49 @@ button.fs-continue,
 @keyframes animMoveDown {
 	to { -webkit-transform: translateY(100%); transform: translateY(100%); }
 }*/
+
+
+.btn {
+	border-radius: 16px;
+	font-family: Roboto, sans-serif;
+    font-weight: 300;
+}
+
+button.btn.btn-default {
+    border-width: 1px;
+    color: #d6d6d6;
+    background: transparent;
+	border-color: #d6d6d6;
+	transition: background-color 0.3s ease-out,
+				color 0.3s ease-out;    
+}
+
+button.btn.btn-create {
+	border-width: 1px;
+	background-color: #2978A0;
+	color: white;
+	border-color: #2978A0;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+	transition: background-color 0.3s ease-out,
+				color 0.3s ease-out;   
+}
+
+.btn-lg, .btn-group-lg > .btn {
+	padding: 14px 20px;
+	font-size: 23px;
+	min-width: 200px;
+}
+
+.btn:hover {
+	transform: none;
+}
+
+button.btn.btn-default:hover {
+	background-color: rgba(255,255,255,0.8);
+	color: #111;
+}
+
+button.btn.btn-create:hover {
+	background-color: #6f94a7;
+	color: white;
+}
