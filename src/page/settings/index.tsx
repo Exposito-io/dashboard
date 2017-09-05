@@ -23,14 +23,14 @@ export class SettingsPage extends React.Component {
         <Link to="/">
           Home
         </Link>
-          Home
+          Settings
       </Breadcrumbs>
     )
   }
 
   render() {
     return (
-      <Page actionBar={this.renderBreadcrumbs()} title="Home">
+      <Page actionBar={this.renderBreadcrumbs()} title="Settings">
         <Panel title="The Team">
           Lorem Ipsum
         </Panel>
