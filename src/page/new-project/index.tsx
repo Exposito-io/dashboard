@@ -125,7 +125,7 @@ export class NewProject extends React.Component {
         </Panel>
 
         <div className="new-project fs-form">
-            <h2 className="main-title"><i className="logo"></i>New project</h2>
+            <h2 className="main-title"><Link to="/"><i className="logo"></i></Link>New project</h2>
             
             <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
               
@@ -174,12 +174,12 @@ export class NewProject extends React.Component {
             <button 
               className={`prev-btn btn btn-default btn-lg ${layoutStore.isFirstEntry ? 'hidden' : ''}`} 
               onClick={this.prevEntry}>
-              Previous
+              « Previous
             </button>            
             <button 
               className={`next-btn btn btn-default btn-lg ${layoutStore.isLastEntry ? 'hidden' : ''}`}
               onClick={this.nextEntry}>
-              Next
+              Next »
             </button>            
             <button 
               className={`next-btn btn btn-create btn-lg ${!layoutStore.isLastEntry ? 'hidden' : ''}`}

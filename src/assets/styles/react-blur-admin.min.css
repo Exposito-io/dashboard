@@ -8451,11 +8451,12 @@ a.collapse-menu-link {
         color: #ffffff; }
 
 a.al-sidebar-list-link {
+  font-family: Roboto, sans-serif;
   display: block;
   height: 42px;
   padding-left: 18px;
   text-shadow: none;
-  font-size: 13px;
+  font-size: 14px;
   text-decoration: none;
   color: #ffffff;
   line-height: 42px;
