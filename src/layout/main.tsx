@@ -4,22 +4,11 @@ import { Dashboard } from '../page/dashboard'
 import { Instances } from '../page/instances'
 import { Wallets } from '../page/wallets'
 import { PeriodicPayments } from '../page/periodic-payments'
-import { TableDemo } from '../page/table-demo'
-import { ButtonDemo } from '../page/button-demo'
-import { ProgressBars } from '../page/progress-bars'
-import { ModalDemo } from '../page/modal-demo'
-import { TabsDemo } from '../page/tabs-demo'
-import { InputDemo } from '../page/input-demo'
 import { Contributors } from '../page/contributors'
 import { NewProject } from '../page/new-project'
-import { NotificationsDemo } from '../page/notifications-demo'
 import { NotFound } from '../page/not-found'
 
-// The Main component renders one of the three provided
-// Routes (provided that one matches). Both the /roster
-// and /schedule routes will match any pathname that starts
-// with /roster or /schedule. The / route will only match
-// when the pathname is exactly the string "/"
+
 const Main = () => (
   <main>
     <Switch>
@@ -29,13 +18,6 @@ const Main = () => (
       <Route exact path="/periodic-payments" component={PeriodicPayments}/>
       <Route exact path="/contributors" component={Contributors}/>
       <Route exact path="/new-project" component={NewProject}/>
-      <Route exact path="/table-demo" component={TableDemo}/>
-      <Route exact path="/button-demo" component={ButtonDemo}/>
-      <Route exact path="/progress-bars" component={ProgressBars}/>
-      <Route exact path="/modal-demo" component={ModalDemo}/>
-      <Route exact path="/tabs-demo" component={TabsDemo}/>
-      <Route exact path="/notifications-demo" component={NotificationsDemo}/>
-      <Route exact path="/input-demo" component={InputDemo}/>
       <Route path="*" component={NotFound}/>
       
     </Switch>
