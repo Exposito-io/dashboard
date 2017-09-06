@@ -124,7 +124,10 @@ export class NewProject extends React.Component {
           
         </Panel>
 
-        <div className="new-project fs-form">
+        <div className={`new-project 
+                         fs-form 
+                         ${store.isSubmitting ? 'submitting' : ''}
+                         ${store.isSubmitted ? '' : ''}`}>
             <h2 className="main-title"><Link to="/"><i className="logo"></i></Link>New project</h2>
             
             <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
@@ -183,7 +186,7 @@ export class NewProject extends React.Component {
             </button>            
             <button 
               className={`next-btn btn btn-create btn-lg ${!layoutStore.isLastEntry ? 'hidden' : ''}`}
-              onClick={this.nextEntry}>
+              onClick={() => store.submit()}>
               Create Project
             </button>                        
         </div>

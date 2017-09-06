@@ -43,8 +43,11 @@ i.logo {
     width: 100%;
     max-width: 960px;
     left: 50%;
-    transform: translateX(-50%);
+	transform: translateX(-50%);
+	opacity: 1;
 }
+
+
 
 .new-project .entry {
     position: absolute;
@@ -330,4 +333,17 @@ button.btn.btn-default:hover {
 button.btn.btn-create:hover {
 	background-color: #2978A0;
 	color: white;
+}
+
+
+
+/*** Submitting ***/
+
+.new-project.submitting .form {
+	transition: opacity 0.4s ease-out;
+	opacity: 0;
+}
+
+.new-project.submitting button {
+	opacity: 0;
 }

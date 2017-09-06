@@ -43,6 +43,9 @@ export class NewProjectStore extends Store {
         return new BigNumber(this.totalTokenCount).minus(totalAllocated)
     }
 
+    @observable isSubmitting: boolean = false
+    @observable isSubmitted: boolean = false
+
     @computed get equityChartData() {
         let chartData = this.shareholders.map(shareholder => ({
             name: shareholder.name,
@@ -171,6 +174,10 @@ export class NewProjectStore extends Store {
             shareholder.shares = this.unallocatedTokens.plus(shareholder.shares).toString()
 
         shareholder.pct = this.calculatePct(shareholder.shares)
+    }
+
+    @action submit() {
+        this.isSubmitting = true
     }
 
 
