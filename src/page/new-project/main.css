@@ -236,8 +236,8 @@ button.fs-continue,
 
 .main-loading-container {
 	position: absolute;
-	left: 50%;
-	top: 46%;
+	left: calc(50% + 9px);
+	top: calc(46% + 4px);
 	opacity: 0;
 	z-index: -1;
 }
@@ -250,6 +250,22 @@ button.fs-continue,
 .main-loading-container .ball-scale-ripple-multiple {
 	transform: translateY(-40px);
 }
+
+
+
+.success-container {
+	display: inline-block;
+	left: 50%;
+	top: calc(43%);
+	position: absolute;
+	/*
+	opacity: 0;
+	z-index: -1;	
+	transform: translate(-50%, -50%);*/
+
+}
+
+
 
 
 /** Animations **/
@@ -356,17 +372,26 @@ button.btn.btn-create:hover {
 
 /*** Submitting ***/
 
-.new-project.submitting .form {
+.new-project.submitting .form,
+.new-project.submitted .form {
 	transition: opacity 0.4s ease-out;
 	opacity: 0;
 }
 
-.new-project.submitting button {
+.new-project.submitting button,
+.new-project.submitted button {
 	opacity: 0;
 }
 
 .new-project.submitting .main-loading-container {
 	transition: opacity 1.7s var(--ease-out-cubic) 0.3s;
 	opacity: 1;
+	z-index: 1000;
+}
+
+
+.new-project.submitted .main-loading-container {
+	transition: opacity 0.3s ease-in;
+	opacity: 0;
 	z-index: 1000;
 }

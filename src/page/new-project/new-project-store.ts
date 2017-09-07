@@ -178,6 +178,15 @@ export class NewProjectStore extends Store {
 
     @action submit() {
         this.isSubmitting = true
+
+        setTimeout(() => {
+            this.submitted()
+        }, 5000)
+    }
+
+    @action submitted() {
+        this.isSubmitting = false
+        this.isSubmitted = true
     }
 
 

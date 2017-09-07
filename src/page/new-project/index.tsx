@@ -11,6 +11,7 @@ import { NewProjectStore } from './new-project-store'
 import { Searchbar } from './components/searchbar'
 import { Shareholders } from './components/shareholders'
 import { EquityChart } from './components/equity-chart'
+import { SuccessIcon } from '../../components/success-icon'
 import * as Spinner from 'react-spinkit'
 
 import './main.css'
@@ -128,7 +129,7 @@ export class NewProject extends React.Component {
         <div className={`new-project 
                          fs-form 
                          ${store.isSubmitting ? 'submitting' : ''}
-                         ${store.isSubmitted ? '' : ''}`}>
+                         ${store.isSubmitted ? 'submitted' : ''}`}>
             <h2 className="main-title"><Link to="/"><i className="logo"></i></Link>New project</h2>
             
             <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
@@ -198,7 +199,15 @@ export class NewProject extends React.Component {
                     name="ball-scale-ripple-multiple" 
                     color="white">
                 </Spinner>
-            </div>                                  
+            </div>    
+
+            { store.isSubmitted ?
+                <div className="success-container">
+                  <SuccessIcon></SuccessIcon>
+                </div>
+              :
+              null
+            }
         </div>
       </Page>
     )
