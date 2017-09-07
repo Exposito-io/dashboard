@@ -11,6 +11,7 @@ import { NewProjectStore } from './new-project-store'
 import { Searchbar } from './components/searchbar'
 import { Shareholders } from './components/shareholders'
 import { EquityChart } from './components/equity-chart'
+import * as Spinner from 'react-spinkit'
 
 import './main.css'
 
@@ -188,7 +189,16 @@ export class NewProject extends React.Component {
               className={`next-btn btn btn-create btn-lg ${!layoutStore.isLastEntry ? 'hidden' : ''}`}
               onClick={() => store.submit()}>
               Create Project
-            </button>                        
+            </button>  
+
+
+            <div className="main-loading-container">
+                <Spinner 
+                    className="spinner" 
+                    name="ball-scale-ripple-multiple" 
+                    color="white">
+                </Spinner>
+            </div>                                  
         </div>
       </Page>
     )

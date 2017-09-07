@@ -234,6 +234,23 @@ button.fs-continue,
 	position: relative;
 }
 
+.main-loading-container {
+	position: absolute;
+	left: 50%;
+	top: 46%;
+	opacity: 0;
+	z-index: -1;
+}
+
+.main-loading-container .ball-scale-ripple-multiple > div {
+	height: 80px;
+	width: 80px;
+}
+
+.main-loading-container .ball-scale-ripple-multiple {
+	transform: translateY(-40px);
+}
+
 
 /** Animations **/
 
@@ -346,4 +363,10 @@ button.btn.btn-create:hover {
 
 .new-project.submitting button {
 	opacity: 0;
+}
+
+.new-project.submitting .main-loading-container {
+	transition: opacity 1.7s var(--ease-out-cubic) 0.3s;
+	opacity: 1;
+	z-index: 1000;
 }
