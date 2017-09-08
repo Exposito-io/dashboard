@@ -202,8 +202,9 @@ export class NewProject extends React.Component {
             </div>    
 
             { store.isSubmitted ?
-                <div className="success-container">
+                <div id="success-container" className="success-container">
                   <SuccessIcon></SuccessIcon>
+                  <span>Project created</span>
                 </div>
               :
               null

@@ -10,6 +10,12 @@ export class SuccessIcon extends React.Component<{ className?: string }> {
     super(props)
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+        document.getElementById('success-container').classList.add('show')
+    }, 100) 
+  }
+
 
   render() {
     return (
