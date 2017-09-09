@@ -4,6 +4,7 @@ import { bind } from 'bind-decorator'
 
 import { setRef, toFixed } from '../../../../lib/tools'
 import { ProgressBar } from 'react-blur-admin'
+import * as ReactTooltip from 'react-tooltip'
 
 import Slider from 'react-rangeslider'
 
@@ -13,10 +14,12 @@ import { observer } from 'mobx-react'
 import * as Spinner from 'react-spinkit'
 import { NewProjectStore } from '../../new-project-store'
 import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../../shareholders'
-import { ShareholderDescription, 
-         InvitedShareholderDescription, 
-         GithubShareholdersDescription, 
-         RepoAuthor } from 'models'
+import {
+    ShareholderDescription,
+    InvitedShareholderDescription,
+    GithubShareholdersDescription,
+    RepoAuthor
+} from 'models'
 
 import { JobManager } from '../../../../lib/job-manager'
 
@@ -56,16 +59,16 @@ export class ShareholderRepo extends React.Component<Props> {
         store.setSharesPct(this.repo, value)
     }
 
-    
+
     render() {
         return (
-            <div ref={setRef(this, 'el')} 
-                className={`shareholder shareholder-repo ${this.repo.isWaitingForRepoStats ?  'loading' : ''}`}>
+            <div ref={setRef(this, 'el')}
+                className={`shareholder shareholder-repo ${this.repo.isWaitingForRepoStats ? 'loading' : ''}`}>
                 <i className="ico github"></i>
                 <div className="info">
                     <span className="name">{this.repo.githubProject}</span>
-                    <span className="pct main">{toFixed(this.pct(), 0)}%</span><br/>
-                    
+                    <span className="pct main">{toFixed(this.pct(), 0)}%</span><br />
+
                     <Slider
                         min={0}
                         max={100}
@@ -73,29 +76,39 @@ export class ShareholderRepo extends React.Component<Props> {
                         onChange={this.onValueChange}
                     />
 
-                </div>  
+                </div>
 
                 <div className="loading-container">
-                    <Spinner 
-                        className="spinner" 
-                        name="ball-scale-ripple-multiple" 
+                    <Spinner
+                        className="spinner"
+                        name="ball-scale-ripple-multiple"
                         color="white">
                     </Spinner>
                 </div>
                 {
-                    this.repo.stats && this.repo.stats.authors.map(author => {
-                        return <div className="shareholder developer">
-                            <i className="ico github" style={{backgroundImage: `url(${author.image})`}}></i>
+                    this.repo.stats && this.repo.stats.authors.map((author, i) => {
+                        return <div key={i} className="shareholder developer">
+                            <i className="ico github" style={{ backgroundImage: `url(${author.image})` }}></i>
                             <div className="info">
-                                <span className="name">{author.name}</span>
-                                <span className="pct">{toFixed(this.authorPct(author), 0)}%</span><br/>
-                                
+                                <span className="name">
+                                    {author.name}
+                                </span>
+                                <span className="pct">{toFixed(this.authorPct(author), 0)}%</span><br />
+                                <i className="info-icon fa fa-code" data-tip data-for={`info-tooltip-${i}`}></i>
+                                <ReactTooltip 
+                                    className="info-tooltip" 
+                                    id={`info-tooltip-${i}`}
+                                    place="bottom" 
+                                    effect="solid">
+                                    <strong>{author.linesOfCode}</strong> lines of code<br/>
+                                    <strong>{author.fileCount}</strong> files modified
+                                </ReactTooltip>
                                 <ProgressBar percentage={this.authorPct(author)} striped={true}></ProgressBar>
 
-                            </div>                             
+                            </div>
                         </div>
                     })
-                }               
+                }
             </div>
         )
     }
@@ -116,7 +129,7 @@ export class ShareholderRepo extends React.Component<Props> {
         let shareholderTokens = new BigNumber(this.repo.shares)
 
         return shareholderTokens.dividedBy(total).toNumber() * 100
-    }   
+    }
 
     private authorPct(author: RepoAuthor): number {
         let pctOfCode = new BigNumber(author.linesOfCode).dividedBy(this.repo.stats.totalLinesOfCode).toNumber()
