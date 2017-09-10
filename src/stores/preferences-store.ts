@@ -1,5 +1,5 @@
 import { autorun, observable, computed } from 'mobx'
-import { User, UserPreferences, HostingType } from 'models'
+import { User, UserPreferences, HostingType, NotificationPreferences } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from './store'
 
@@ -9,7 +9,9 @@ export class PreferencesStore extends Store {
   
   private static instance: PreferencesStore
 
-  @observable preferences: UserPreferences = { selectedProject: {} } as UserPreferences
+  @observable preferences: UserPreferences = { selectedProject: {}, notifications: {} } as UserPreferences
+
+  @observable notifications: NotificationPreferences = new NotificationPreferences
 
   private client: ExpositoClient
 
@@ -42,6 +44,8 @@ export class PreferencesStore extends Store {
       }
 
       this.preferences = pref
+      this.notifications = pref.notifications
+
     }, 100)
   }
 

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { autorun, observable, computed, action } from 'mobx'
+import { bind } from 'bind-decorator'
 import { observer } from 'mobx-react'
 import { Page, Panel, Breadcrumbs, Select, Switch } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
@@ -51,7 +52,13 @@ export class SettingsPage extends React.Component {
           </Col>
           <Col padding={5}>
             <Panel title="Notifications">
-              {/*<Switch type='primary' isOn={this.state.switches[0]} onChange={e => this.onSwitchChange(0)}/>*/}
+              <Switch 
+                type='primary' 
+                isOn={prefStore.notifications.n1} 
+                onChange={() => this.onSwitchChange('n1')}  
+              />
+              {/* isOn={prefStore.preferences.notifications.n1} */}
+              
             </Panel>          
           </Col>
         </Row>
@@ -73,6 +80,17 @@ export class SettingsPage extends React.Component {
         </Row>
 
       </Page>
-    );
+    )
+  }
+  
+
+  @bind
+  private onSwitchChange(notification: string) {
+    prefStore.notifications = Object.assign(
+                                {}, 
+                                prefStore.notifications, 
+                                { [notification]: !prefStore.notifications[notification] }
+                              )
+    
   }
 }
