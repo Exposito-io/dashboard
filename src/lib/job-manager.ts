@@ -87,6 +87,10 @@ export class JobManager {
     private onJobComplete(queue: string, data: any) {
         let callbacks = this.jobCompleteCallbacks.get(queue)
 
+        try {
+            data = JSON.parse(data)
+        } catch(e) {}
+
         if (callbacks && callbacks.length > 0) {
             for (let cb of callbacks) {
                 if (typeof cb === 'function')

@@ -1,7 +1,7 @@
 import { autorun, observable, computed, action } from 'mobx'
 import { Project, CreateProjectShareholdersDistributionParams, 
          ShareholderDescription, InvitedShareholderDescription, 
-         GithubShareholdersDescription } from 'models'
+         GithubShareholdersDescription, RepoStats } from 'models'
 import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from './shareholders'
 import { debounce } from 'lodash-decorators'
 import { ExpositoClient } from 'exposito-client'
@@ -10,10 +10,13 @@ import { SearchResultType } from './search-result-type'
 import { getGithubRepoFromFullName, isQueueJob } from '../../lib/tools'
 import config from '../../config'
 import * as BigNumber from 'bignumber.js'
-
+import { bind } from 'bind-decorator'
 import { PreferencesStore } from '../../stores/preferences-store'
+import { JobManager } from '../../lib/job-manager'
 
-let preferencesStore = PreferencesStore.getStore()
+
+const preferencesStore = PreferencesStore.getStore()
+const jobManager = JobManager.getManager()
 
 
 /**
@@ -32,7 +35,7 @@ export class NewProjectStore extends Store {
     @observable searchHasFocus: boolean
 
     @observable newProjectParams: CreateProjectShareholdersDistributionParams
-    @observable shareholders: (ShareholderDescriptionView | GithubShareholdersDescriptionView)[]
+    @observable.deep shareholders: (ShareholderDescriptionView | GithubShareholdersDescriptionView)[]
     @computed get hasShareholders() { return this.shareholders.length > 0 }
 
     @computed get unallocatedTokens(): BigNumber.BigNumber {
@@ -118,23 +121,12 @@ export class NewProjectStore extends Store {
                         pct: this.calculatePct(tokens),
                         isWaitingForRepoStats: true
                     })
+
+
                 }
                 // Repo stats are already in server cache
                 else {
-                    repo.authors = repo.authors
-                                       .filter(author => new BigNumber(author.linesOfCode).greaterThan(0))
-                                       .sort((a, b) => (new BigNumber(b.linesOfCode).sub(a.linesOfCode).toNumber()))
-                                       
-
-                    this.shareholders.push({
-                        name: searchResult.fullName,
-                        githubProject: searchResult.fullName,
-                        description: '',
-                        shares: tokens,
-                        pct: this.calculatePct(tokens),
-                        isWaitingForRepoStats: false,
-                        stats: repo
-                    })                    
+                    this.shareholders.push(await this.createGithubShareholdersDescriptionView(repo, tokens)) 
                 }
                 break
             
@@ -226,6 +218,40 @@ export class NewProjectStore extends Store {
     }
 
 
+    private async createGithubShareholdersDescriptionView(repo: RepoStats, tokens: string): Promise<GithubShareholdersDescriptionView> {
+        repo.authors = repo.authors
+                            .filter(author => new BigNumber(author.linesOfCode).greaterThan(0))
+                            .sort((a, b) => (new BigNumber(b.linesOfCode).sub(a.linesOfCode).toNumber()))
+                            
+
+        return {
+            name: `${repo.owner}/${repo.repo}`,
+            githubProject: `${repo.owner}/${repo.repo}`,
+            description: '',
+            shares: tokens,
+            pct: this.calculatePct(tokens),
+            isWaitingForRepoStats: false,
+            stats: repo
+        }
+    }
+
+
+    @bind
+    private async onRepoStatsComplete(data: RepoStats) {
+        console.log('NewProjectStore: repo-stats completed', data)
+        if (data) {
+
+            for(let i = 0; i< this.shareholders.length; i++) {
+                if (this.shareholders[i].name === `${data.owner}/${data.repo}`) {
+                    let shareholder = await this.createGithubShareholdersDescriptionView(data, this.shareholders[i].shares)
+                    let shareholders = this.shareholders.splice(i, 1, shareholder)
+                    //this.shareholders = this.shareholders
+                }
+            }
+        }
+    }
+
+
     private parseResults(users: any[], repos: any[]) {
         let results = []
 
@@ -256,6 +282,7 @@ export class NewProjectStore extends Store {
 
     private async init() {
         this.client = new ExpositoClient({ url: config.apiUrl, version: config.apiVersion  })
+        jobManager.subscribe('repo-stats', this.onRepoStatsComplete)
         this.reset()
         this.isLoading = false
     }
