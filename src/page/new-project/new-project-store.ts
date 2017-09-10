@@ -35,7 +35,7 @@ export class NewProjectStore extends Store {
     @observable searchHasFocus: boolean
 
     @observable newProjectParams: CreateProjectShareholdersDistributionParams
-    @observable.deep shareholders: (ShareholderDescriptionView | GithubShareholdersDescriptionView)[]
+    @observable shareholders: (ShareholderDescriptionView | GithubShareholdersDescriptionView)[]
     @computed get hasShareholders() { return this.shareholders.length > 0 }
 
     @computed get unallocatedTokens(): BigNumber.BigNumber {

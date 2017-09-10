@@ -80,7 +80,7 @@ export class ShareholderRepo extends React.Component<Props, { isVisible: boolean
                 </div>
                 {
                     this.props.repo.stats && this.props.repo.stats.authors.map((author, i) => {
-                        return <div key={i} className="shareholder developer">
+                        return <div key={i} className="shareholder developer" style={{ zIndex: 100 - i }}>
                             <i className="ico github" style={{ backgroundImage: `url(${author.image})` }}></i>
                             <div className="info">
                                 <span className="name">
