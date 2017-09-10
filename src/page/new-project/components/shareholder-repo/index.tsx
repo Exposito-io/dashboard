@@ -80,6 +80,8 @@ export class ShareholderRepo extends React.Component<Props, { isVisible: boolean
                 </div>
                 {
                     this.props.repo.stats && this.props.repo.stats.authors.map((author, i) => {
+                        {/* TODO: The zIndex is used to prevent some items to come
+                                  on top of the tooltips. We need to use a better way  */}
                         return <div key={i} className="shareholder developer" style={{ zIndex: 100 - i }}>
                             <i className="ico github" style={{ backgroundImage: `url(${author.image})` }}></i>
                             <div className="info">
