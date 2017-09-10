@@ -185,6 +185,7 @@
 /** Github authors **/
 .new-project-shareholders .shareholder.developer {
     padding-left: 40px;
+    animation: animFadeIn 0.5s forwards ease-in; 
 }
 
 .new-project-shareholders .shareholder.developer .info {
@@ -200,3 +201,8 @@
 }
 
 
+
+@keyframes animFadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
