@@ -168,17 +168,14 @@
 
 
 .new-project-shareholders .shareholder .loading-container {
-    height: 0;
     /*display: none;*/
-    display: block;
-    overflow: hidden;
+    height: 64px;
+    display: none;
     position: relative;
 }
 
 .new-project-shareholders .shareholder.loading .loading-container {
     display: block;
-    height: 64px;
-    transition: none;
 }
 
 .new-project-shareholders .shareholder .loading-container .spinner {
@@ -187,6 +184,9 @@
     left: 50%;
     width: 250px;
 }
+
+
+
 
 
 

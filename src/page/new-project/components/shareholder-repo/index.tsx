@@ -75,6 +75,7 @@ export class ShareholderRepo extends React.Component<Props, { isVisible: boolean
                     <Spinner
                         className="spinner"
                         name="ball-scale-ripple-multiple"
+                        fadeIn="none"
                         color="white">
                     </Spinner>
                 </div>
