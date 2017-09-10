@@ -1,11 +1,19 @@
 import * as React from 'react'
 import { autorun, observable, computed, action } from 'mobx'
 import { observer } from 'mobx-react'
-import { Page, Panel, Breadcrumbs } from 'react-blur-admin'
+import { Page, Panel, Breadcrumbs, Select, Switch } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
+import { Row, Col } from 'react-flex-proto'
+
+import { PreferencesStore } from '../../stores/preferences-store'
+import { UserStore } from '../../stores/user-store'
+import { ProjectStore } from '../../stores/project-store'
 
 
 
+const prefStore = PreferencesStore.getStore()
+const userStore = UserStore.getStore()
+const projectStore = ProjectStore.getStore()
 
 
 
@@ -31,9 +39,39 @@ export class SettingsPage extends React.Component {
   render() {
     return (
       <Page actionBar={this.renderBreadcrumbs()} title="Settings">
-        <Panel title="The Team">
-          Lorem Ipsum
-        </Panel>
+        <Row>
+          <Col padding={5}>
+            <Panel title="General">
+              Default Project: <Select
+                placeholder='Select a project'
+                options={projectStore.allProjects.map(project => ({ label: project.name, value: project }))}
+                onChange={value => this.setState({ selectTwo: value })}
+                value={prefStore.preferences.selectedProject} />
+            </Panel>          
+          </Col>
+          <Col padding={5}>
+            <Panel title="Notifications">
+              {/*<Switch type='primary' isOn={this.state.switches[0]} onChange={e => this.onSwitchChange(0)}/>*/}
+            </Panel>          
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <Panel title="Wallets">
+
+            </Panel>
+          </Col>
+        </Row> 
+
+        <Row>
+          <Col>
+            <Panel title="Collaborators">
+
+            </Panel>
+          </Col>
+        </Row>
+
       </Page>
     );
   }
