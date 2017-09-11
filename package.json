@@ -27,6 +27,7 @@
     "react-scripts-ts": "2.4.0",
     "react-selectize": "^2.1.0",
     "react-spinkit": "^3.0.0",
+    "react-toggle": "^4.0.1",
     "react-tooltip": "^3.3.0",
     "recharts": "^1.0.0-alpha.4",
     "rx": "^4.1.0",

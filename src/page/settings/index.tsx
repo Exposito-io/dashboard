@@ -57,7 +57,36 @@ export class SettingsPage extends React.Component {
                 isOn={prefStore.notifications.n1} 
                 onChange={() => this.onSwitchChange('n1')}  
               />
-              {/* isOn={prefStore.preferences.notifications.n1} */}
+              <span>Send a notification when a new version is deployed</span><br/>
+
+              <Switch 
+                type='primary' 
+                isOn={prefStore.notifications.n2} 
+                onChange={() => this.onSwitchChange('n2')}  
+              />
+              <span>Send a notification when a new version is deployed</span><br/>
+
+              <Switch 
+                type='primary' 
+                isOn={prefStore.notifications.n3} 
+                onChange={() => this.onSwitchChange('n3')}  
+              />
+              <span>Send a notification when a new version is deployed</span><br/>
+
+              <Switch 
+                type='primary' 
+                isOn={prefStore.notifications.n4} 
+                onChange={() => this.onSwitchChange('n4')}  
+              />
+              <span>Send a notification when a new version is deployed</span><br/>
+
+              <Switch 
+                type='primary' 
+                isOn={prefStore.notifications.n5} 
+                onChange={() => this.onSwitchChange('n5')}  
+              />
+              <span>Send a notification when a new version is deployed</span><br/>                                                        
+
               
             </Panel>          
           </Col>
