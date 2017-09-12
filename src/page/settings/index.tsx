@@ -4,11 +4,15 @@ import { bind } from 'bind-decorator'
 import { observer } from 'mobx-react'
 import { Page, Panel, Breadcrumbs, Select, Switch } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
-import { Row, Col } from 'react-flex-proto'
 
 import { PreferencesStore } from '../../stores/preferences-store'
 import { UserStore } from '../../stores/user-store'
 import { ProjectStore } from '../../stores/project-store'
+import Toggle from 'react-toggle'
+
+
+import 'react-toggle/style.css'
+import './settings.css'
 
 
 
@@ -39,9 +43,9 @@ export class SettingsPage extends React.Component {
 
   render() {
     return (
-      <Page actionBar={this.renderBreadcrumbs()} title="Settings">
-        <Row>
-          <Col padding={5}>
+      <Page actionBar={this.renderBreadcrumbs()} title="Settings" className="settings-page">
+        <div className="row">
+          <div className="col">
             <Panel title="General">
               Default Project: <Select
                 placeholder='Select a project'
@@ -49,64 +53,67 @@ export class SettingsPage extends React.Component {
                 onChange={value => this.setState({ selectTwo: value })}
                 value={prefStore.preferences.selectedProject} />
             </Panel>          
-          </Col>
-          <Col padding={5}>
+          </div>
+          <div className="col">
             <Panel title="Notifications">
-              <Switch 
-                type='primary' 
-                isOn={prefStore.notifications.n1} 
-                onChange={() => this.onSwitchChange('n1')}  
-              />
-              <span>Send a notification when a new version is deployed</span><br/>
+              <span>Send a notification when a new version is deployed</span>
+              <Toggle
+                defaultChecked={prefStore.notifications.n1}
+                icons={false}
+                onChange={() => this.onSwitchChange('n1')} 
+              /><br/>
 
-              <Switch 
-                type='primary' 
-                isOn={prefStore.notifications.n2} 
-                onChange={() => this.onSwitchChange('n2')}  
+              <span>Send a notification when a new version is deployed</span>
+              <Toggle
+                defaultChecked={prefStore.notifications.n2}
+                icons={false}
+                onChange={() => this.onSwitchChange('n2')} 
               />
-              <span>Send a notification when a new version is deployed</span><br/>
+              <br/>
 
-              <Switch 
-                type='primary' 
-                isOn={prefStore.notifications.n3} 
-                onChange={() => this.onSwitchChange('n3')}  
-              />
-              <span>Send a notification when a new version is deployed</span><br/>
 
-              <Switch 
-                type='primary' 
-                isOn={prefStore.notifications.n4} 
-                onChange={() => this.onSwitchChange('n4')}  
-              />
-              <span>Send a notification when a new version is deployed</span><br/>
+              <span>Send a notification when a new version is deployed</span>
+              <Toggle
+                defaultChecked={prefStore.notifications.n3}
+                icons={false}
+                onChange={() => this.onSwitchChange('n3')} 
+              /><br/>              
 
-              <Switch 
-                type='primary' 
-                isOn={prefStore.notifications.n5} 
-                onChange={() => this.onSwitchChange('n5')}  
-              />
-              <span>Send a notification when a new version is deployed</span><br/>                                                        
 
+              <span>Send a notification when a new version is deployed</span>
+              <Toggle
+                defaultChecked={prefStore.notifications.n4}
+                icons={false}
+                onChange={() => this.onSwitchChange('n4')} 
+              /><br/>              
+
+
+              <span>Send a notification when a new version is deployed</span>
+              <Toggle
+                defaultChecked={prefStore.notifications.n5}
+                icons={false}
+                onChange={() => this.onSwitchChange('n5')} 
+              /><br/>              
               
             </Panel>          
-          </Col>
-        </Row>
+          </div>
+        </div>
 
-        <Row>
-          <Col>
+        <div className="row">
+          <div className="col">
             <Panel title="Wallets">
 
             </Panel>
-          </Col>
-        </Row> 
+          </div>
+        </div> 
 
-        <Row>
-          <Col>
+        <div className="row">
+          <div className="col">
             <Panel title="Collaborators">
 
             </Panel>
-          </Col>
-        </Row>
+          </div>
+        </div>
 
       </Page>
     )

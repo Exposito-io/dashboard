@@ -12,3 +12,13 @@ h1#logo {
     margin-right: 36px;
     cursor: pointer;
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    flex: 1;
+    margin: 5px;
+}
