@@ -2,7 +2,7 @@ import * as React from 'react'
 
 export class Props {
     title: string
-    actionBar: string
+    actionBar
     className: string
 }
 
