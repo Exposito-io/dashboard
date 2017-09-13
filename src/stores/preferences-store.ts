@@ -6,7 +6,7 @@ import { Store } from './store'
 
 
 export class PreferencesStore extends Store {
-  
+
   private static instance: PreferencesStore
 
   @observable preferences: UserPreferences = { selectedProject: {}, notifications: {} } as UserPreferences
@@ -18,10 +18,10 @@ export class PreferencesStore extends Store {
 
   static getStore(): PreferencesStore {
 
-      if (!this.instance)
-        this.instance = new PreferencesStore()
+    if (!this.instance)
+      this.instance = new PreferencesStore()
 
-      return this.instance
+    return this.instance
   }
 
 
@@ -32,21 +32,31 @@ export class PreferencesStore extends Store {
 
     this.client = new ExpositoClient()
 
-    setTimeout(() => {
-      let pref = new UserPreferences()
-      pref.selectedProject = {
-        id: '597637b500992d7e78edd894',
-        name: "Project 2",
-        description: "fawef",
-        githubProjects: [],
-        hosting: HostingType.GoogleCloud,
-        members: []
-      }
+    //setTimeout(() => {
+    let pref = new UserPreferences()
+    pref.selectedProject = {
+      id: '597637b500992d7e78edd894',
+      name: "Project 2",
+      description: "fawef",
+      githubProjects: [],
+      hosting: HostingType.GoogleCloud,
+      members: []
+    }
+    
+    pref.notifications = {
+      n1: false,
+      n2: true,
+      n3: true,
+      n4: false,
+      n5: true,
+      n6: false,
+      n7: false
+    }
 
-      this.preferences = pref
-      this.notifications = pref.notifications
+    this.preferences = pref
+    this.notifications = pref.notifications
 
-    }, 100)
+    //}, 100)
   }
 
 

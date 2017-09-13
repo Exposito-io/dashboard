@@ -4,6 +4,14 @@
 }
 
 
+.settings-page .panel > .panel-body {
+    padding: 15px 30px;
+}
+
+.settings-page .panel-heading, .panel-footer {
+    padding: 14px 30px;
+}
+
 .settings-page .notifications .row {
     height: 42px;
 }
@@ -14,12 +22,26 @@
     width: calc(100% - 160px);
     flex-grow: 1;
     box-sizing: border-box;
-    padding-left: 30px;
+    padding-left: 14px;
 }
 
 .settings-page .notifications .row .react-toggle {
     display: block;
     flex: 1;
-    width: 50px;
+    width: 20px;
 }
 
+.settings-page .form-group {
+    border-radius: 17px;
+    overflow: hidden;
+    display: inline-block;
+    width: 300px;
+    vertical-align: middle;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.settings-page .react-toggle--checked .react-toggle-track {
+    background-color: #820263;
+    /*background-color: #2978A0;*/
+ }
