@@ -45,3 +45,13 @@
     background-color: #820263;
     /*background-color: #2978A0;*/
  }
+
+.settings-page .has-success label.custom-checkbox > span:before, .has-success label.custom-radio > span:before {
+    color: white;
+    margin-right: 8px;
+    border-radius: 3px;
+}
+
+ .settings-page .custom-checkbox {
+     font-size: 16px;
+ }

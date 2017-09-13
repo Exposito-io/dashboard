@@ -2,7 +2,7 @@ import * as React from 'react'
 import { autorun, observable, computed, action } from 'mobx'
 import { bind } from 'bind-decorator'
 import { observer } from 'mobx-react'
-import { Panel, Breadcrumbs, Select, Switch } from 'react-blur-admin'
+import { Panel, Breadcrumbs, Select, Switch, Input } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
 
 import { Page } from '../../components/page'
@@ -69,7 +69,7 @@ export class SettingsPage extends React.Component {
               </div>
 
               <div className="row">
-                <span>Send a notification when a new version is deployed</span>
+                <span>Send a notification when a transaction failed</span>
                 <Toggle
                   defaultChecked={prefStore.notifications.n2}
                   icons={false}
@@ -79,7 +79,7 @@ export class SettingsPage extends React.Component {
 
 
               <div className="row">
-              <span>Send a notification when a new version is deployed</span>
+              <span>Send a notification when a vote session is created</span>
               <Toggle
                 defaultChecked={prefStore.notifications.n3}
                 icons={false}
@@ -89,7 +89,7 @@ export class SettingsPage extends React.Component {
 
 
               <div className="row">
-              <span>Send a notification when a new version is deployed</span>
+              <span>Send a notification a large transaction is processed</span>
               <Toggle
                 defaultChecked={prefStore.notifications.n4}
                 icons={false}
@@ -99,7 +99,7 @@ export class SettingsPage extends React.Component {
 
 
               <div className="row">
-              <span>Send a notification when a new version is deployed</span>
+              <span>Send a notification when a server is down</span>
               <Toggle
                 defaultChecked={prefStore.notifications.n5}
                 icons={false}
@@ -112,17 +112,35 @@ export class SettingsPage extends React.Component {
         </div>
 
         <div className="row">
+
+          <div className="col">
+            <Panel title="Collaborators">
+              <Input
+                onValidate={e => true}
+                label='Enable voting for collaborators'
+                value={true}
+                type="checkbox"
+                onChange={e => console.log('')} />
+                
+            </Panel>
+          </div>     
+
           <div className="col">
             <Panel title="Wallets">
-
+              Default Wallet: <Select
+                placeholder='Select a wallet'
+                className="project-select"
+                options={projectStore.allProjects.map(project => ({ label: project.name, value: project }))}
+                onChange={value => this.setState({ selectTwo: value })}
+                value={prefStore.preferences.selectedProject} />
             </Panel>
           </div>
         </div> 
 
         <div className="row">
           <div className="col">
-            <Panel title="Collaborators">
-
+            <Panel title="Instances">
+              <br/><br/><br/><br/><br/>
             </Panel>
           </div>
         </div>
