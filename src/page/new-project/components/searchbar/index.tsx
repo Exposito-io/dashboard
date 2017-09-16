@@ -41,7 +41,7 @@ export class Searchbar extends React.Component {
 
 
     @bind onFocusOut() {
-        setTimeout(() => store.searchHasFocus = false, 100)
+        setTimeout(() => store.searchHasFocus = false, 200)
     }
 
 
