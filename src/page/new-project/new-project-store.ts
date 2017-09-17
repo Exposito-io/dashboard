@@ -148,13 +148,36 @@ export class NewProjectStore extends Store {
      * Search for Github repos and Exposito users
      * @param query 
      */
-    @action async search(query: string) {
+    @action async search(query: string): Promise<void> {
         let results = await Promise.all([this.client.users.find(query), this.client.github.findRepos(query)])
         
         this.searchResults = this.parseResults(results[0], results[1])
     }
 
 
+    /**
+     * Change the total token number
+     * @param amount 
+     */
+    @action setTotalTokenCount(newAmount: string): void {
+        let oldAmount = new BigNumber(this.totalTokenCount)
+
+        let percentages = this.shareholders.map(tokenholder => new BigNumber(tokenholder.shares).dividedBy(oldAmount))
+
+        this.totalTokenCount = newAmount
+
+        for (let i = 0; i < this.shareholders.length; i++) 
+            this.shareholders[i].shares = percentages[i].mul(newAmount).toFixed(0)
+        
+
+    }
+
+    /**
+     * Sets the percentage of tokens for a specific
+     * token holder
+     * @param shareholder 
+     * @param value 
+     */
     @action setSharesPct(shareholder: ShareholderDescriptionView | GithubShareholdersDescriptionView, 
                          value: number): void {
         let totalTokens = new BigNumber(this.totalTokenCount)
@@ -188,7 +211,7 @@ export class NewProjectStore extends Store {
         this.searchResults = []
         this.newProjectParams = new CreateProjectShareholdersDistributionParams()
         this.shareholders = []
-        this.totalTokenCount = '100000000'
+        this.totalTokenCount = '10000000'
     }
 
 

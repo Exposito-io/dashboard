@@ -27,6 +27,12 @@ export class EquityChart extends React.Component {
 
     }
 
+    @bind onTotalTokenAmountChange(e, values) {
+        const {formattedValue, value} = values
+        store.setTotalTokenCount(value.toString())
+
+    }
+
 
     render() {
         return (
@@ -59,6 +65,7 @@ export class EquityChart extends React.Component {
                                 value={store.totalTokenCount} 
                                 displayType={'input'} 
                                 thousandSeparator={true} 
+                                onChange={this.onTotalTokenAmountChange}
                             /><br/>
                             tokens
                         </span>
