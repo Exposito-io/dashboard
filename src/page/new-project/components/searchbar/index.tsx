@@ -28,7 +28,7 @@ export class Searchbar extends React.Component {
 
     }
 
-    @debounce(500)
+    @debounce(250)
     handleSearchQueryChange() {
         if (this.searchBar.value.length > 2) {
             store.search(this.searchBar.value)
