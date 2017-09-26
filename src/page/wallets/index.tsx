@@ -1,8 +1,14 @@
 import * as React from 'react'
 
-import { Page, Panel, Breadcrumbs } from 'react-blur-admin'
+import { bind } from 'bind-decorator'
+import { observer } from 'mobx-react'
+import { Panel, Breadcrumbs } from 'react-blur-admin'
+import { Page } from '../../components/page'
 import { Link } from 'react-router-dom'
 
+import './wallets.css'
+
+@observer
 export class Wallets extends React.Component {
 
   renderBreadcrumbs() {
@@ -18,7 +24,7 @@ export class Wallets extends React.Component {
 
   render() {
     return (
-      <Page actionBar={this.renderBreadcrumbs()} title='Wallets'>
+      <Page actionBar={this.renderBreadcrumbs()} title='Wallets' className="wallets-page">
         <Panel title='The Team'>
           Lorem Ipsum
         </Panel>

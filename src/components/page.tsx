@@ -3,7 +3,7 @@ import * as React from 'react'
 export class Props {
     title: string
     actionBar
-    className: string
+    className?: string
 }
 
 export class Page extends React.Component<Props> {
