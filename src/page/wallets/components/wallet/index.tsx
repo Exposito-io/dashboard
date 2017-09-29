@@ -3,6 +3,7 @@ import * as React from 'react'
 import { Panel } from 'react-blur-admin'
 import { bind } from 'bind-decorator'
 import { Wallet } from 'models'
+//import {}
 
 
 type Props = {
@@ -10,14 +11,14 @@ type Props = {
 }
 
 
-export class Wallets extends React.Component<Props, {}> {
+export class WalletPanel extends React.Component<Props, {}> {
 
-    
+
 
     render() {
         return (
-            <Panel title='The Team'>
-                Lorem Ipsum
+            <Panel title='' className="geger">
+                fweefwe
             </Panel>
 
         );

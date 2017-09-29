@@ -5,6 +5,15 @@ import { observer } from 'mobx-react'
 import { Panel, Breadcrumbs } from 'react-blur-admin'
 import { Page } from '../../components/page'
 import { Link } from 'react-router-dom'
+import { WalletPanel } from './components/wallet'
+import { Wallet, BitcoinWallet } from 'models'
+
+let wallet = new BitcoinWallet({
+  coreWallet: {},
+  labels: [],
+  name: 'gegergreg',
+  projectId: 'gge'
+})
 
 import './wallets.css'
 
@@ -25,9 +34,7 @@ export class Wallets extends React.Component {
   render() {
     return (
       <Page actionBar={this.renderBreadcrumbs()} title='Wallets' className="wallets-page">
-        <Panel title='The Team'>
-          Lorem Ipsum
-        </Panel>
+        <WalletPanel wallet={wallet}></WalletPanel>
       </Page>
     );
   }
