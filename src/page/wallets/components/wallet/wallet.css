@@ -30,9 +30,23 @@ body.badmin-transparent .wallet-panel.panel.panel-blur {
     margin-right: 6px;
     color: #ddd;
     font-family: 'Marvel', sans-serif;    
-    font-size: 42px;
+    font-size: 40px;
 }
 
 .wallet-panel .recharts-wrapper {
     display: block;
+}
+
+
+.wallet-panel .transactions .tx {
+    display: flex;
+}
+
+.wallet-panel .transactions .tx .source-type {
+    width: 26px;
+    height: 26px;
+}
+
+.wallet-panel .transactions .tx date {
+
 }
