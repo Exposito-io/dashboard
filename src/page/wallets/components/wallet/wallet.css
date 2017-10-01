@@ -5,13 +5,15 @@ body.badmin-transparent .wallet-panel.panel.panel-blur {
     background-color: rgba(0, 0, 0, 0.45);
 }
 
-
+.wallet-panel > .panel-body {
+    padding: 15px 0px;
+}
 
 .wallet-panel .amount-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 84px;
+    height: 70px;
     margin-bottom: 0px;
 }
 

@@ -6,7 +6,7 @@ import { Panel, Breadcrumbs } from 'react-blur-admin'
 import { Page } from '../../components/page'
 import { Link } from 'react-router-dom'
 import { WalletPanel } from './components/wallet'
-import { Wallet, BitcoinWallet, Transaction } from 'models'
+import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
 
 let wallet = new BitcoinWallet({
   coreWallet: {},
@@ -16,8 +16,21 @@ let wallet = new BitcoinWallet({
 
 })
 
-let transactions = [
+let t1 = new Transaction()
 
+let transactions: Transaction[] = [
+  {
+    creationDate: new Date('2017-02-04'),
+    endDate: new Date('2017-02-04'),
+    currency: 'BTC',
+    note: '',
+    amount: '0.5',
+    sourceType: PaymentDestination.BITCOIN_ADDRESS,
+    sourceWalletId: 'afew',
+    destination: 'awf',
+    destinationType: PaymentDestination.EXPOSITO_WALLET,
+    status: 1
+  }
 ]
 
 import './wallets.css'
