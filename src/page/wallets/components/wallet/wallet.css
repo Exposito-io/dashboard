@@ -1,0 +1,38 @@
+body.badmin-transparent .wallet-panel.panel.panel-blur {
+    width: 380px;
+    position: relative;
+    background-image: none;
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+
+
+.wallet-panel .amount-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 84px;
+    margin-bottom: 20px;
+}
+
+.wallet-panel .amount-container .amount {
+    font-size: 52px;
+ 
+}
+
+.wallet-panel .amount .amount-fmt {
+    font-family: 'Marvel', sans-serif;    
+}
+
+
+.wallet-panel .amount-container .amount .currency {
+    display: inline-block;
+    margin-right: 6px;
+    color: #ddd;
+    font-family: 'Marvel', sans-serif;    
+    font-size: 42px;
+}
+
+.wallet-panel .recharts-wrapper {
+    display: block;
+}

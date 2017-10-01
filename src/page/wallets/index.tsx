@@ -12,7 +12,8 @@ let wallet = new BitcoinWallet({
   coreWallet: {},
   labels: [],
   name: 'gegergreg',
-  projectId: 'gge'
+  projectId: 'gge',
+  
 })
 
 import './wallets.css'
