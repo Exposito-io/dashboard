@@ -25,20 +25,15 @@ import './wallets.css'
 @observer
 export class Wallets extends React.Component {
 
-  renderBreadcrumbs() {
+  renderMenu() {
     return (
-      <Breadcrumbs>
-        <Link to='/'>
-          Home
-        </Link>
-          Wallets
-      </Breadcrumbs>
+      <div></div>
     )
   }
 
   render() {
     return (
-      <Page actionBar={this.renderBreadcrumbs()} title='Wallets' className="wallets-page">
+      <Page actionBar={this.renderMenu()} title='Wallets' className="wallets-page">
         <WalletPanel wallet={wallet} transactions={transactions}></WalletPanel>
       </Page>
     );

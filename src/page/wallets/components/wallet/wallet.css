@@ -12,7 +12,7 @@ body.badmin-transparent .wallet-panel.panel.panel-blur {
     align-items: center;
     justify-content: center;
     height: 84px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .wallet-panel .amount-container .amount {
