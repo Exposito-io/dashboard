@@ -6,15 +6,19 @@ import { Panel, Breadcrumbs } from 'react-blur-admin'
 import { Page } from '../../components/page'
 import { Link } from 'react-router-dom'
 import { WalletPanel } from './components/wallet'
-import { Wallet, BitcoinWallet } from 'models'
+import { Wallet, BitcoinWallet, Transaction } from 'models'
 
 let wallet = new BitcoinWallet({
   coreWallet: {},
   labels: [],
   name: 'gegergreg',
   projectId: 'gge',
-  
+
 })
+
+let transactions = [
+
+]
 
 import './wallets.css'
 
@@ -35,7 +39,7 @@ export class Wallets extends React.Component {
   render() {
     return (
       <Page actionBar={this.renderBreadcrumbs()} title='Wallets' className="wallets-page">
-        <WalletPanel wallet={wallet}></WalletPanel>
+        <WalletPanel wallet={wallet} transactions={transactions}></WalletPanel>
       </Page>
     );
   }
