@@ -30,7 +30,7 @@ body.badmin-transparent .wallet-panel.panel.panel-blur {
 .wallet-panel .amount-container .amount .currency {
     display: inline-block;
     margin-right: 6px;
-    color: #ddd;
+    color: #ccc;
     font-family: 'Marvel', sans-serif;    
     font-size: 40px;
 }

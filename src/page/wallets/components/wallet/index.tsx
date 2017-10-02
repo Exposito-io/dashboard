@@ -65,13 +65,20 @@ export class WalletPanel extends React.Component<Props, {}> {
                     margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
                     <defs>
                         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.5} />
-                            <stop offset="30%" stopColor="#8884d8" stopOpacity={0.25} />
-                            <stop offset="100%" stopColor="#8884d8" stopOpacity={0} />
+                            <stop offset="5%" stopColor="#2978A0" stopOpacity={1} />
+                            <stop offset="50%" stopColor="#2978A0" stopOpacity={0.4} />
+                            <stop offset="100%" stopColor="#2978A0" stopOpacity={0} />
                         </linearGradient>
                     </defs>
                     {/*<CartesianGrid strokeDasharray="1 1" />*/}
-                    <Area type="linear" dataKey="pv" fill="url(#colorUv)" stroke="#8884d8" dot={false} activeDot={{ r: 0 }} />
+                    <Area 
+                        type="linear" 
+                        dataKey="pv" 
+                        fill="url(#colorUv)" 
+                        stroke="#2978A0" 
+                        dot={false} 
+                        activeDot={{ r: 0 }} 
+                    />
                 </AreaChart>
 
                 <div className="transactions">
