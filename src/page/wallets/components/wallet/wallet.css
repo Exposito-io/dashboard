@@ -9,6 +9,16 @@ body.badmin-transparent .wallet-panel.panel.panel-blur {
     padding: 15px 0px;
 }
 
+.wallet-panel .wallet-header {
+    display: flex;
+}
+
+.wallet-panel .wallet-header a {
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
 .wallet-panel .amount-container {
     display: flex;
     align-items: center;

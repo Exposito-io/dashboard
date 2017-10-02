@@ -2,9 +2,11 @@ import * as React from 'react'
 import * as _ from 'lodash'
 import * as moment from 'moment'
 import * as BigNumber from 'bignumber.js'
-
-import { Panel } from 'react-blur-admin'
 import { bind } from 'bind-decorator'
+import { Link } from 'react-router-dom'
+
+//import { Panel } from 'react-blur-admin'
+import { Panel } from '../../../../components/panel/panel'
 import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
 import * as NumberFormat from 'react-number-format'
 import { LineChart, AreaChart, Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts'
@@ -48,10 +50,25 @@ export class WalletPanel extends React.Component<Props, {}> {
                .value() 
     }
 
+    renderHeader() {
+        return (
+            <div className="wallet-header">
+                <h3 className='panel-title'>
+                    {this.wallet.name}
+                </h3>
+                <Link
+                    to="/"
+                    className="fa fa-cogs"
+                    title="Wallet settings"
+                />
+            </div>
+        )
+    }
+
     render() {
         return (
 
-            <Panel title={this.wallet.name} className="wallet-panel">
+            <Panel header={this.renderHeader()} className="wallet-panel">
                 <div className="amount-container">
                     <span className="amount">
                         <span className="currency">$</span>
