@@ -41,7 +41,12 @@ export class WalletPanel extends React.Component<Props, {}> {
 
 
     get wallet() { return this.props.wallet }
-    get transactions() { return _(this.props.transactions).sortBy('creationDate').value() }
+    get transactions() { 
+        return _(this.props.transactions)
+               .sortBy('creationDate')
+               .reverse()
+               .value() 
+    }
 
     render() {
         return (
@@ -91,7 +96,7 @@ export class WalletPanel extends React.Component<Props, {}> {
                                     backgroundImage: `url(${this.paymentTypeIcon(tx.sourceType)})`
                                 }}
                             />
-                            <span className="date">{moment(tx.creationDate).format('MMM DD')}</span>
+                            <span className="date">{moment(tx.endDate).format('MMM DD')}</span>
                             <span className="note">{tx.note}</span>
                             <i className={`amount-change`}></i>
                             <span className={`amount ${this.getAmountClass(tx.amount)}`}>
