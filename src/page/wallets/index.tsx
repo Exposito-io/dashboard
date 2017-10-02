@@ -24,7 +24,7 @@ let transactions: Transaction[] = [
     endDate: new Date('2017-02-04'),
     currency: 'BTC',
     note: 'Transfer from personnal account',
-    amount: '0.5',
+    amount: '0.53123',
     sourceType: PaymentDestination.BITCOIN_ADDRESS,
     sourceWalletId: 'afew',
     destination: 'awf',
@@ -42,7 +42,7 @@ let transactions: Transaction[] = [
     destination: 'awf',
     destinationType: PaymentDestination.EXPOSITO_WALLET,
     status: 1
-  },  
+  }, /* 
   {
     creationDate: new Date('2017-03-14'),
     endDate: new Date('2017-03-14'),
@@ -54,7 +54,7 @@ let transactions: Transaction[] = [
     destination: 'awf',
     destinationType: PaymentDestination.EXPOSITO_WALLET,
     status: 1
-  }, 
+  }, */
   {
     creationDate: new Date('2017-04-03'),
     endDate: new Date('2017-04-03'),
@@ -83,8 +83,34 @@ export class Wallets extends React.Component {
   render() {
     return (
       <Page actionBar={this.renderMenu()} title='Wallets' className="wallets-page">
-        <WalletPanel wallet={wallet} transactions={transactions}></WalletPanel>
+        <div className="wallets-container">
+          <WalletPanel wallet={wallet} transactions={transactions}></WalletPanel>
+          {this.renderAddButton()}
+        </div>
       </Page>
-    );
+    )
+  }
+
+  private renderAddButton() {
+    return (
+      <div className="add-btn">
+        <div className="content">
+          <span>New Wallet</span>
+          <svg 
+            className="plus-icon"
+            height="16px" 
+            /*style="enable-background:new 0 0 16 16;" */
+            version="1.1" 
+            viewBox="0 0 16 16" 
+            width="16px" 
+            x="0px" 
+            /*xml:space="preserve" */
+            xmlns="http://www.w3.org/2000/svg"  
+            y="0px">
+              <path d="M15,6h-5V1c0-0.55-0.45-1-1-1H7C6.45,0,6,0.45,6,1v5H1C0.45,6,0,6.45,0,7v2c0,0.55,0.45,1,1,1h5v5c0,0.55,0.45,1,1,1h2  c0.55,0,1-0.45,1-1v-5h5c0.55,0,1-0.45,1-1V7C16,6.45,15.55,6,15,6z"/>
+          </svg>
+        </div>
+      </div>
+    )
   }
 }

@@ -3,6 +3,8 @@ body.badmin-transparent .wallet-panel.panel.panel-blur {
     position: relative;
     background-image: none;
     background-color: rgba(0, 0, 0, 0.45);
+    height: 434px;
+    margin-right: 40px;
 }
 
 .wallet-panel > .panel-body {
@@ -61,6 +63,7 @@ body.badmin-transparent .wallet-panel.panel.panel-blur {
     display: flex;
     padding: 4px 14px;
     align-items: center;
+    margin: 2px 0;
 }
 
 
@@ -94,20 +97,34 @@ body.badmin-transparent .wallet-panel.panel.panel-blur {
 
 .wallet-panel .transactions .tx .amount {
     justify-content: right;
-    font-size: 24px;
+    font-size: 20px;
     font-family: 'Marvel', sans-serif;  
-
+    flex-shrink: 0;
 
 }
 
+.wallet-panel .transactions .tx .amount .currency {
+    font-size: 18px;
+    display: inline-block;
+    margin: 0 4px;
+}
+
 .wallet-panel .transactions .tx .amount.pos {
-    color: green;
+    color: #45b745;
 }
 
 .wallet-panel .transactions .tx .amount.pos:before {
     content: '+';
+    display: inline-block;
+    margin-right: 4px;
 }
 
 .wallet-panel .transactions .tx .amount.neg {
-    color: red;
+    color: #F77878;
 }
+
+
+
+
+
+

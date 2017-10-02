@@ -4,7 +4,7 @@ import * as moment from 'moment'
 import * as BigNumber from 'bignumber.js'
 import { bind } from 'bind-decorator'
 import { Link } from 'react-router-dom'
-
+import { Money, Currencies } from 'ts-money'
 //import { Panel } from 'react-blur-admin'
 import { Panel } from '../../../../components/panel/panel'
 import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
@@ -30,7 +30,7 @@ const data = [
     { name: 'Page G', uv: 3490, pv: 3900, amt: 2100 },
     { name: 'Page G', uv: 3490, pv: 4000, amt: 2100 },
     { name: 'Page G', uv: 3490, pv: 5000, amt: 2100 },
-];
+]
 
 
 type Props = {
@@ -78,7 +78,6 @@ export class WalletPanel extends React.Component<Props, {}> {
                             displayType={'text'}
                             thousandSeparator={true}
                             decimalPrecision={2}
-
                         />
                     </span>
 
@@ -93,7 +92,7 @@ export class WalletPanel extends React.Component<Props, {}> {
                             <stop offset="100%" stopColor="#2978A0" stopOpacity={0} />
                         </linearGradient>
                     </defs>
-                    {/*<CartesianGrid strokeDasharray="1 1" />*/}
+
                     <Area 
                         type="linear" 
                         dataKey="pv" 
@@ -117,8 +116,7 @@ export class WalletPanel extends React.Component<Props, {}> {
                             <span className="note">{tx.note}</span>
                             <i className={`amount-change`}></i>
                             <span className={`amount ${this.getAmountClass(tx.amount)}`}>
-                                {tx.amount}
-                                {this.getTransactionCurrency(tx)}
+                                {this.renderTransactionAmount(tx)}
                             </span>
                         </div>
                     )}
@@ -140,6 +138,33 @@ export class WalletPanel extends React.Component<Props, {}> {
     private getTransactionCurrency(tx: Transaction): string {
         return 'BTC'
     }
+
+    private renderTransactionAmount(tx: Transaction) {
+        
+        let amount = Money.fromStringDecimal(tx.amount, tx.currency)
+        
+        if (amount.currency === 'USD') {
+            return (
+                <span>
+                    <span className="currency">
+                        {Currencies[tx.currency].symbol}
+                    </span>
+                    {amount.toString()}
+                </span>
+            )
+        }
+        else {
+            return (
+                <span>
+                    {amount.toDecimal()}
+                    <span className="currency">
+                        {Currencies[tx.currency].symbol_native}
+                    </span>
+                </span>
+            )
+        }
+    }
+
 
     private paymentTypeIcon(p: PaymentDestination) {
         switch(p) {
