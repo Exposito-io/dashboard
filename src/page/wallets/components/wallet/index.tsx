@@ -1,10 +1,11 @@
 import * as React from 'react'
 import * as _ from 'lodash'
 import * as moment from 'moment'
+import * as BigNumber from 'bignumber.js'
 
 import { Panel } from 'react-blur-admin'
 import { bind } from 'bind-decorator'
-import { Wallet, BitcoinWallet, Transaction } from 'models'
+import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
 import * as NumberFormat from 'react-number-format'
 import { LineChart, AreaChart, Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts'
 //import {}
@@ -40,7 +41,7 @@ export class WalletPanel extends React.Component<Props, {}> {
 
 
     get wallet() { return this.props.wallet }
-    get transactions() { return _(this.props.transactions).sortBy('creationDate').values() }
+    get transactions() { return _(this.props.transactions).sortBy('creationDate').value() }
 
     render() {
         return (
@@ -83,18 +84,50 @@ export class WalletPanel extends React.Component<Props, {}> {
 
                 <div className="transactions">
                     {this.transactions.map((tx, i) =>
-                        <div className="tx">
-                            <i className={`source-type`}></i>
-                            <span className="date">{moment(tx.creationDate).format('MM/DD')}</span>
-                            <span>{tx.note}</span>
+                        <div className="tx" key={i}>
+                            <i 
+                                className={`source-type`} 
+                                style={{ 
+                                    backgroundImage: `url(${this.paymentTypeIcon(tx.sourceType)})`
+                                }}
+                            />
+                            <span className="date">{moment(tx.creationDate).format('MMM DD')}</span>
+                            <span className="note">{tx.note}</span>
                             <i className={`amount-change`}></i>
-                            <span className="amount"></span>
+                            <span className={`amount ${this.getAmountClass(tx.amount)}`}>
+                                {tx.amount}
+                                {this.getTransactionCurrency(tx)}
+                            </span>
                         </div>
                     )}
                 </div>
             </Panel>
 
         )
+    }
+
+
+    private getAmountClass(amount: string): string {
+        let num = new BigNumber(amount)
+        if (num.isNegative())
+            return 'neg'
+        else
+            return 'pos'
+    }
+
+    private getTransactionCurrency(tx: Transaction): string {
+        return 'BTC'
+    }
+
+    private paymentTypeIcon(p: PaymentDestination) {
+        switch(p) {
+            case PaymentDestination.BITCOIN_ADDRESS:
+                return require('./images/bitcoin.svg')
+            case PaymentDestination.ETHEREUM_ADDRESS:
+                return require('./images/ethereum.svg')
+            default: 
+                return require('./images/credit-cards2.png')
+        }
     }
 }
 

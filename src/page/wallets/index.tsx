@@ -23,7 +23,7 @@ let transactions: Transaction[] = [
     creationDate: new Date('2017-02-04'),
     endDate: new Date('2017-02-04'),
     currency: 'BTC',
-    note: '',
+    note: 'awef awefawe fawe',
     amount: '0.5',
     sourceType: PaymentDestination.BITCOIN_ADDRESS,
     sourceWalletId: 'afew',

@@ -40,15 +40,64 @@ body.badmin-transparent .wallet-panel.panel.panel-blur {
 }
 
 
+
+
+.wallet-panel .transactions {
+    margin-top: 20px;
+}
+
 .wallet-panel .transactions .tx {
+    box-sizing: border-box;
     display: flex;
+    padding: 4px 14px;
+    align-items: center;
 }
 
-.wallet-panel .transactions .tx .source-type {
+
+.wallet-panel .transactions .tx i.source-type {
     width: 26px;
+    min-width: 26px;
     height: 26px;
+    background-size: cover;
+    margin-right: 10px;
 }
 
-.wallet-panel .transactions .tx date {
+.wallet-panel .transactions .tx .date {
+    color: #999;
+    /*font-size: 12px;*/
+    margin-right: 10px;
+    text-align: center;
+    min-width: 29px;
+    max-width: 30px;
+}
 
+.wallet-panel .transactions .tx .note {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+}
+
+.wallet-panel .transactions .tx i.amount-change {
+
+}
+
+.wallet-panel .transactions .tx .amount {
+    justify-content: right;
+    font-size: 24px;
+    font-family: 'Marvel', sans-serif;  
+
+
+}
+
+.wallet-panel .transactions .tx .amount.pos {
+    color: green;
+}
+
+.wallet-panel .transactions .tx .amount.pos:before {
+    content: '+';
+}
+
+.wallet-panel .transactions .tx .amount.neg {
+    color: red;
 }
