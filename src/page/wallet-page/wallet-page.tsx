@@ -8,18 +8,34 @@ import { Page } from '../../components/page'
 import { Link } from 'react-router-dom'
 import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
 import { EditWallet } from './pages/edit-wallet/edit-wallet'
-import { Submenu } from './comonents/submenu/submenu'
+import { Submenu } from '../../components/submenu/submenu'
 
 
 
 import './wallet-page.css'  
 
 @observer
-export class WalletPage extends React.Component {
+export class WalletPage extends React.Component<any> {
 
   renderMenu() {
     return (
-      <Submenu />
+      <Submenu items={[
+        {
+          text: 'General',
+          link: `/wallet/${this.props.match.params.id}/general`,
+          icon: '',          
+        },
+        {
+          text: 'Periodic Transfers',
+          link: `/wallet/${this.props.match.params.id}/periodic-transfers`,
+          icon: '',          
+        },
+        {
+          text: 'Payment Widget',
+          link: `/wallet/${this.props.match.params.id}/payment-widget`,
+          icon: '',          
+        }          
+      ]}/>
     )
   }
 
