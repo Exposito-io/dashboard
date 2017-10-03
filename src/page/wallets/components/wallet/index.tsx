@@ -56,9 +56,10 @@ export class WalletPanel extends React.Component<Props, {}> {
                 <h3 className='panel-title'>
                     {this.wallet.name}
                 </h3>
+                {this.renderPeriodicTransferIcon(2)}
                 <Link
                     to="/"
-                    className="fa fa-cogs"
+                    className="fa fa-cog"
                     title="Wallet settings"
                 />
             </div>
@@ -163,6 +164,20 @@ export class WalletPanel extends React.Component<Props, {}> {
                 </span>
             )
         }
+    }
+
+
+    private renderPeriodicTransferIcon(count: number) {
+        let ico = require('./images/periodic-transfer-icon2.svg')
+        return (
+            <Link 
+                to="/" 
+                className="periodic-payment-ico"
+                title={`${count} periodic transactions`}>
+                <img src={ico} alt=""/>
+                <span className="count">{count}</span>
+            </Link>
+        )
     }
 
 

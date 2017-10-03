@@ -18,7 +18,8 @@ body.badmin-transparent .wallet-panel.panel.panel-blur {
 .wallet-panel .wallet-header a {
     color: white;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 24px;
+    margin-top: -4px;
 }
 
 .wallet-panel .amount-container {
@@ -127,4 +128,35 @@ body.badmin-transparent .wallet-panel.panel.panel-blur {
 
 
 
+
+
+/*** Periodic payment icon ***/
+
+.wallet-panel .periodic-payment-ico {
+    min-width: 24px;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    margin: -4px 16px 0 16px;
+    position: relative;
+}
+
+.wallet-panel .periodic-payment-ico > img {
+    width: 100%;  
+}
+
+.wallet-panel .periodic-payment-ico .count {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 18px;
+    /*background-color: #445064;*/
+    color: #60A5C7;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 800;
+}
 
