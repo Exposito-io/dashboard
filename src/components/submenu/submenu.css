@@ -2,6 +2,7 @@
     display: flex;
     height: 122px;
     justify-content: flex-end;
+    margin-top: -19px;
 }
 
 .submenu a.submenu-item {
