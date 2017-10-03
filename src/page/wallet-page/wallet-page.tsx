@@ -8,6 +8,7 @@ import { Page } from '../../components/page'
 import { Link } from 'react-router-dom'
 import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
 import { EditWallet } from './pages/edit-wallet/edit-wallet'
+import { Submenu } from './comonents/submenu/submenu'
 
 
 
@@ -18,7 +19,7 @@ export class WalletPage extends React.Component {
 
   renderMenu() {
     return (
-      <div></div>
+      <Submenu />
     )
   }
 
