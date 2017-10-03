@@ -17,6 +17,7 @@ const Main = () => (
       <Route exact path="/" component={Dashboard}/>
       <Route exact path="/instances" component={Instances}/>
       <Route exact path="/wallets" component={Wallets}/>
+      <Route exact path="/wallet/new" component={WalletPage}/>
       <Route exact path="/wallet/:id" component={WalletPage}/>
       <Route exact path="/wallet/:id/*" component={WalletPage}/>
       <Route exact path="/periodic-payments" component={PeriodicPayments}/>

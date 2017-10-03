@@ -14,8 +14,8 @@
     border: 1px solid transparent;
     text-align: center;
     position: relative;
-    transition: border-color 0.25s ease-out,
-                box-shadow 0.25s ease-out;
+    transition: border-color 0.35s var(--ease-out-cubic),
+                box-shadow 0.35s var(--ease-out-cubic);
 }
 
 .submenu a.submenu-item > img {
@@ -38,7 +38,7 @@
     color: #ddd;   
     text-align: center; 
     transition: color 0.25s ease-out,
-                top 0.25s ease-out;
+                top 0.35s var(--ease-out-cubic);
 }
 
 .submenu a.submenu-item > span {
@@ -50,7 +50,7 @@
     color: #ddd;
     line-height: 17px;
     transition: color 0.25s ease-out,
-                top 0.25s ease-out;
+                top 0.35s var(--ease-out-cubic);
 }
 
 

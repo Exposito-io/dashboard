@@ -8,6 +8,8 @@ import { Page } from '../../components/page'
 import { Link } from 'react-router-dom'
 import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
 import { EditWallet } from './pages/edit-wallet/edit-wallet'
+import { PeriodicTransfers } from './pages/periodic-transfers/periodic-transfers'
+import { PaymentWidgetPage } from './pages/payment-widget-page/payment-widget-page'
 import { Submenu } from '../../components/submenu/submenu'
 
 
@@ -44,7 +46,10 @@ export class WalletPage extends React.Component<any> {
       <Page actionBar={this.renderMenu()} title='Wallet' className="wallet-page">
         <div className="wallet-container">
         <Switch>
-          <Route exact path="/wallet/:id/general" component={EditWallet}/>          
+          <Route exact path="/wallet/new" component={EditWallet}/>   
+          <Route exact path="/wallet/:id/general" component={EditWallet}/>
+          <Route exact path="/wallet/:id/periodic-transfers" component={PeriodicTransfers}/>   
+          <Route exact path="/wallet/:id/payment-widget" component={PaymentWidgetPage}/>   
         </Switch>
         </div>
       </Page>
