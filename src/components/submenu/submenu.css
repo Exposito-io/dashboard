@@ -1,13 +1,14 @@
 .submenu {
     display: flex;
     height: 122px;
+    justify-content: flex-end;
 }
 
 .submenu a.submenu-item {
     width: 122px;
     height: 122px;
-    margin: 0 30px;
-    font-size: 16px;
+    margin: 0 16px;
+    font-size: 15px;
     font-weight: 400;
     border-radius: 61px;
     border: 1px solid transparent;
@@ -31,7 +32,7 @@
     width: auto;
     height: 30px;
     left: 50%;
-    top: 31px;
+    top: 32px;
     transform: translateX(-50%);
     font-size: 22px;
     color: #ddd;   
@@ -43,9 +44,9 @@
 .submenu a.submenu-item > span {
     position: absolute;
     display: block;
-    left: 2px;
-    right: 2px;
-    top: 62px;
+    left: 6px;
+    right: 6px;
+    top: 63px;
     color: #ddd;
     transition: color 0.25s ease-out,
                 top 0.25s ease-out;
@@ -59,12 +60,12 @@
 
 .submenu a.submenu-item.active > i {
     color: white;
-    top: 28px;
+    top: 29px;
 }
 
 .submenu a.submenu-item.active > span {
     color: white;
-    top: 65px;
+    top: 66px;
 }
 
 .submenu a.submenu-item:hover {

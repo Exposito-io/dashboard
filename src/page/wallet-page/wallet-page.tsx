@@ -28,12 +28,12 @@ export class WalletPage extends React.Component<any> {
         {
           text: 'Periodic Transfers',
           link: `/wallet/${this.props.match.params.id}/periodic-transfers`,
-          icon: '',          
+          faIcon: 'fa-credit-card',          
         },
         {
           text: 'Payment Widget',
           link: `/wallet/${this.props.match.params.id}/payment-widget`,
-          icon: '',          
+          faIcon: 'fa-cube',          
         }          
       ]}/>
     )
