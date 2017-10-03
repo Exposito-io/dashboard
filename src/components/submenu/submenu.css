@@ -1,13 +1,78 @@
 .submenu {
     display: flex;
     height: 122px;
-    background: white;
 }
 
 .submenu a.submenu-item {
+    width: 122px;
+    height: 122px;
+    margin: 0 30px;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 100%;
+    border: 1px solid transparent;
+    text-align: center;
+    position: relative;
+    transition: border-color 0.25s ease-out;
+}
+
+.submenu a.submenu-item > img {
+    position: absolute;
+    width: auto;
+    height: 30px;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);    
+}
+
+.submenu a.submenu-item > i.fa {
+    position: absolute;
+    width: auto;
+    height: 30px;
+    left: 50%;
+    top: 31px;
+    transform: translateX(-50%);
+    font-size: 22px;
+    color: #ddd;   
+    text-align: center; 
+    transition: color 0.25s ease-out,
+                top 0.25s ease-out;
+}
+
+.submenu a.submenu-item > span {
+    position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    top: 62px;
+    color: #ddd;
+    transition: color 0.25s ease-out,
+                top 0.25s ease-out;
+}
+
+
+.submenu a.submenu-item.active {
+    border-color: white;
+}
+
+.submenu a.submenu-item.active > i {
+    color: white;
+    top: 28px;
+}
+
+.submenu a.submenu-item.active > span {
+    color: white;
+    top: 65px;
+}
+
+.submenu a.submenu-item:hover {
 
 }
 
-.submenu a.submenu-item.active {
+.submenu a.submenu-item:hover > i {
+    color: white;
+}
 
+.submenu a.submenu-item:hover > span {
+    color: white;
 }

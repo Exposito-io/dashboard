@@ -23,7 +23,7 @@ export class WalletPage extends React.Component<any> {
         {
           text: 'General',
           link: `/wallet/${this.props.match.params.id}/general`,
-          icon: '',          
+          faIcon: 'fa-cogs',          
         },
         {
           text: 'Periodic Transfers',
