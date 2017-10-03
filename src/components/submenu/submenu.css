@@ -48,6 +48,7 @@
     right: 6px;
     top: 63px;
     color: #ddd;
+    line-height: 17px;
     transition: color 0.25s ease-out,
                 top 0.25s ease-out;
 }
