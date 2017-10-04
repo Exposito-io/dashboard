@@ -26,6 +26,11 @@ export class WalletPage extends React.Component<any> {
         super(props)
 
         this.store = new EditWalletStore(props.match.params.id)
+
+        if (this.store.isNewWallet) {
+            //setTimeout(() => this.props.history.push('/wallet/faewfwe/general'), 5000)
+        }
+
     }
 
     renderMenu() {
@@ -56,8 +61,16 @@ export class WalletPage extends React.Component<any> {
             <Page actionBar={this.renderMenu()} title={this.store.pageTitle} className="wallet-page">
                 <div className="wallet-container">
                     <Switch>
-                        <Route exact path="/wallet/new" component={EditWallet} />
-                        <Route exact path="/wallet/:id/general" component={EditWallet} />
+                        <Route 
+                            exact 
+                            path="/wallet/new" 
+                            render={props => <EditWallet store={this.store} {...props} />} 
+                        />
+                        <Route 
+                            exact 
+                            path="/wallet/:id/general" 
+                            render={props => <EditWallet store={this.store} {...props} />} 
+                        />
                         <Route exact path="/wallet/:id/periodic-transfers" component={PeriodicTransfers} />
                         <Route exact path="/wallet/:id/payment-widget" component={PaymentWidgetPage} />
                     </Switch>

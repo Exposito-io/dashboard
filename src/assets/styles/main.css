@@ -26,3 +26,83 @@ h1#logo {
     flex: 1;
     margin: 5px;
 }
+
+
+
+input {
+    display: inline-block;
+    margin: 0;
+    padding: 0 0 4px 0;
+    min-width: 100px;
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    background-color: transparent;
+    color: #fff;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    font-weight: 300;
+    /*font-size: 50px;*/
+    border-radius: 0;
+    outline: 0 none;
+}
+
+input:focus {
+    border-color: white;
+}
+
+body.badmin-transparent .panel.dark.panel-blur {
+    background-image: none;
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+
+
+
+
+/*** Buttons ***/
+
+.btn {
+	border-radius: 16px;
+	font-family: Roboto, sans-serif;
+    font-weight: 300;
+}
+
+button.btn.btn-default {
+    border-width: 1px;
+    color: #d6d6d6;
+    background: transparent;
+	border-color: #d6d6d6;
+	transition: background-color 0.3s ease-out,
+				color 0.3s ease-out;    
+}
+
+button.btn.btn-main {
+	border-width: 1px;
+	background-color: rgb(12, 61, 86);
+	color: white;
+	border-color: rgb(12, 61, 86);
+	text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+	transition: background-color 0.3s ease-out,
+				color 0.3s ease-out;   
+}
+
+.btn-lg, .btn-group-lg > .btn {
+	padding: 14px 20px;
+	font-size: 23px;
+	min-width: 200px;
+}
+
+.btn:hover {
+	transform: none;
+}
+
+button.btn.btn-default:hover {
+	background-color: rgba(255,255,255,0.8);
+	color: #111;
+}
+
+button.btn.btn-main:hover {
+	background-color: #2978A0;
+    color: white;
+    border-color: rgb(12, 61, 86);
+}

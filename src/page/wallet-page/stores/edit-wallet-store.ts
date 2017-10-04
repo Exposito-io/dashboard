@@ -34,6 +34,30 @@ export class EditWalletStore extends Store {
         }
     }
 
+    @computed get isModified(): boolean {
+        if (this.isNewWallet)
+            return true
+        else if (!this.originalWallet)
+            return false // Data not loaded yet
+        else {
+            return this.originalWallet.name !== this.editedWallet.name
+                || this.originalWallet.labels.length !== this.editedWallet.labels.length
+                || !this.originalWallet.labels.every(label => this.editedWallet.labels.includes(label))
+        }
+    }
+
+
+    @action setWalletName(name: string) {
+        this.editedWallet.name = name
+    }
+
+    @action setWalletDescription(description: string) {
+        this.editedWallet.name = description
+    }
+
+    @action setWalletLables(labels: string[]) {
+        this.editedWallet.labels = labels
+    }    
 
     @action save() {
         // TODO
@@ -60,6 +84,8 @@ export class EditWalletStore extends Store {
         }
         else {
             this.isNewWallet = true
+            this.originalWallet = { labels: [] } as BitcoinWallet
+            this.editedWallet = new BitcoinWallet({ name: '', labels: [], projectId: null })
         }
 
         this.isLoading = false

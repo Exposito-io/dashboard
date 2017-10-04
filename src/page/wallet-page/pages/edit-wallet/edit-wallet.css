@@ -1,0 +1,76 @@
+.edit-wallet {
+
+}
+
+.edit-wallet .panel {
+    padding-top: 40px;
+    /*
+    width: 900px;
+    margin: auto;*/
+}
+
+.edit-wallet input[type=text] {
+    font-size: 20px;
+    width: 400px;
+}
+
+.edit-wallet input[type=text]::placeholder {
+    color: #aaa;
+}
+
+
+
+
+
+/*** Labels ***/
+
+.react-tagsinput {
+    /*
+    background-color: #fff;
+    border: 1px solid #ccc;*/
+    overflow: hidden;
+    padding-top: 5px;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    width: 400px;
+    cursor: text;
+  }
+  
+  .react-tagsinput--focused {
+    border-color: white;
+  }
+  
+  .react-tagsinput-tag {
+    background-color: #C6E0FF;
+    border-radius: 4px;
+    border: 1px solid #2978A0;
+    color: #222;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding: 10px;
+  }
+  
+  .react-tagsinput-remove {
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .react-tagsinput-tag a::before {
+    content: " ×";
+    margin-left: 8px;
+    font-size: 18px;
+  }
+  
+  input.react-tagsinput-input[type=text] {
+    background: transparent;
+    border: 0;
+    color: white;
+    margin-bottom: 6px;
+    margin-top: 1px;
+    outline: none;
+    padding: 5px;
+    width: 80px;
+  }
+  
