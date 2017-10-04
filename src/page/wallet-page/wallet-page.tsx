@@ -12,49 +12,59 @@ import { PeriodicTransfers } from './pages/periodic-transfers/periodic-transfers
 import { PaymentWidgetPage } from './pages/payment-widget-page/payment-widget-page'
 import { Submenu } from '../../components/submenu/submenu'
 
+import { EditWalletStore } from './stores/edit-wallet-store'
 
 
-import './wallet-page.css'  
+import './wallet-page.css'
 
 @observer
 export class WalletPage extends React.Component<any> {
 
-  renderMenu() {
-    return (
-      <Submenu items={[
-        {
-          text: 'General',
-          link: `/wallet/${this.props.match.params.id}/general`,
-          faIcon: 'fa-cogs',          
-        },
-        {
-          text: 'Periodic Transfers',
-          link: `/wallet/${this.props.match.params.id}/periodic-transfers`,
-          faIcon: 'fa-credit-card',          
-        },
-        {
-          text: 'Payment Widget',
-          link: `/wallet/${this.props.match.params.id}/payment-widget`,
-          faIcon: 'fa-cube',          
-        }          
-      ]}/>
-    )
-  }
+    private store: EditWalletStore
 
-  render() {
-    return (
-      <Page actionBar={this.renderMenu()} title='Wallet' className="wallet-page">
-        <div className="wallet-container">
-        <Switch>
-          <Route exact path="/wallet/new" component={EditWallet}/>   
-          <Route exact path="/wallet/:id/general" component={EditWallet}/>
-          <Route exact path="/wallet/:id/periodic-transfers" component={PeriodicTransfers}/>   
-          <Route exact path="/wallet/:id/payment-widget" component={PaymentWidgetPage}/>   
-        </Switch>
-        </div>
-      </Page>
-    )
-  }
+    constructor(props: any) {
+        super(props)
+
+        this.store = new EditWalletStore(props.match.params.id)
+    }
+
+    renderMenu() {
+        return (
+            <Submenu items={[
+                {
+                    text: 'General',
+                    link: `/wallet/${this.props.match.params.id}/general`,
+                    faIcon: 'fa-cogs',
+                },
+                {
+                    text: 'Periodic Transfers',
+                    link: `/wallet/${this.props.match.params.id}/periodic-transfers`,
+                    faIcon: 'fa-credit-card',
+                },
+                {
+                    text: 'Payment Widget',
+                    link: `/wallet/${this.props.match.params.id}/payment-widget`,
+                    faIcon: 'fa-cube',
+                }
+            ]} />
+        )
+    }
+
+
+    render() {
+        return (
+            <Page actionBar={this.renderMenu()} title={this.store.pageTitle} className="wallet-page">
+                <div className="wallet-container">
+                    <Switch>
+                        <Route exact path="/wallet/new" component={EditWallet} />
+                        <Route exact path="/wallet/:id/general" component={EditWallet} />
+                        <Route exact path="/wallet/:id/periodic-transfers" component={PeriodicTransfers} />
+                        <Route exact path="/wallet/:id/payment-widget" component={PaymentWidgetPage} />
+                    </Switch>
+                </div>
+            </Page>
+        )
+    }
 
 
 }

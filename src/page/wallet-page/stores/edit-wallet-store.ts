@@ -1,8 +1,8 @@
 import { autorun, observable, computed, action } from 'mobx'
 import { Project, BitcoinWallet, Wallet } from 'models'
 import { ExpositoClient } from 'exposito-client'
-import { Store } from '../../../../stores/store'
-import config from '../../../../config'
+import { Store } from '../../../stores/store'
+import config from '../../../config'
 
 
 export class EditWalletStore extends Store {
@@ -21,6 +21,27 @@ export class EditWalletStore extends Store {
      * Wallet being edited
      */
     @observable editedWallet: Wallet
+
+
+    @computed get pageTitle(): string {
+        if (this.isNewWallet)
+            return 'New Wallet'
+        else {
+            if (this.originalWallet)
+                return this.originalWallet.name
+            else 
+                return ''
+        }
+    }
+
+
+    @action save() {
+        // TODO
+    }
+
+    @action cancel() {
+        // TODO
+    }
 
     private client: ExpositoClient
 
