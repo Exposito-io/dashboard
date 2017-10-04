@@ -29,16 +29,20 @@ export class EditWallet extends React.Component<{ store: EditWalletStore }, { ta
             <div className="edit-wallet">
                 <Panel className="dark">
                     <input type="text" placeholder="Wallet name" />
-                    <br/><br /><br />
+                    <br/>
                     <input type="text" placeholder="Wallet description" />
-                    <br/><br /><br />
-                    <TagsInput inputProps={{placeholder: 'Labels'}} value={this.state.tags} onChange={tags => this.handleChange(tags)} />
+                    <br/>
+                    <TagsInput 
+                        inputProps={{placeholder: 'Labels'}} 
+                        value={this.state.tags} 
+                        onChange={tags => this.handleChange(tags)} 
+                    />
 
-                    <br/><br/><br/>
-                    <br/><br/>
                     
-                    <button className="btn btn-default btn-main btn-lg ">Save</button>
-                    <button className="btn btn-default btn-lg ">Cancel</button>
+                    <div className="btn-container">
+                        <button className="btn btn-default btn-main btn-md">Save</button>
+                        <button className="btn btn-default btn-md ">Cancel</button>
+                    </div>
                 </Panel>
             </div>
         )

@@ -1,9 +1,11 @@
 .edit-wallet {
-
+    --input-width: 440px;
+    --input-spacing: 40px;
 }
 
 .edit-wallet .panel {
-    padding-top: 40px;
+    padding-top: 20px;
+    text-align: center;
     /*
     width: 900px;
     margin: auto;*/
@@ -11,11 +13,23 @@
 
 .edit-wallet input[type=text] {
     font-size: 20px;
-    width: 400px;
+    width: var(--input-width);
+    margin-top: var(--input-spacing);
 }
 
 .edit-wallet input[type=text]::placeholder {
     color: #aaa;
+}
+
+
+.edit-wallet .btn-container {
+    margin-top: calc(1.5 * var(--input-spacing));
+    margin-bottom: var(--input-spacing);
+}
+
+.edit-wallet .btn-md {
+    min-width: 160px;
+    margin: 0 10px;
 }
 
 
@@ -29,10 +43,12 @@
     background-color: #fff;
     border: 1px solid #ccc;*/
     overflow: hidden;
-    padding-top: 5px;
     border-bottom: 2px solid rgba(255,255,255,0.2);
-    width: 400px;
+    width: var(--input-width);
     cursor: text;
+    display: inline-block;
+    text-align: left;
+    margin-top: var(--input-spacing);
   }
   
   .react-tagsinput--focused {
@@ -67,10 +83,9 @@
     background: transparent;
     border: 0;
     color: white;
-    margin-bottom: 6px;
+    margin-bottom: 0;
     margin-top: 1px;
     outline: none;
-    padding: 5px;
     width: 80px;
   }
   

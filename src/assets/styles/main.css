@@ -92,6 +92,11 @@ button.btn.btn-main {
 	min-width: 200px;
 }
 
+.btn-md {
+	padding: 12px 20px;
+	font-size: 21px;
+}
+
 .btn:hover {
 	transform: none;
 }
