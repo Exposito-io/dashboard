@@ -18,7 +18,12 @@ export class EditWalletStore extends Store {
      */
     originalWallet: Wallet
 
-    /**
+
+    @observable walletName: string
+    @observable walletDescription: string
+    @observable walletLabels: string[] = []
+
+    /*
      * Wallet being edited
      */
     @observable editedWallet: Wallet
@@ -49,15 +54,15 @@ export class EditWalletStore extends Store {
 
 
     @action setWalletName(name: string) {
-        this.editedWallet.name = name
+        this.walletName = name
     }
 
     @action setWalletDescription(description: string) {
-        this.editedWallet.name = description
+        this.walletDescription = description
     }
 
-    @action setWalletLables(labels: string[]) {
-        this.editedWallet.labels = labels
+    @action setWalletLabels(labels: string[]) {
+        this.walletLabels = labels
     }    
 
     @action save() {
@@ -78,7 +83,8 @@ export class EditWalletStore extends Store {
         super()
         this.init(walletId)
 
-        setInterval(() => this.alertStore.alert({ message: 'testttt', type: AlertType.Success }), 7000)
+        //setInterval(() => this.editedWallet.name = 'owef ' + Math.random(), 1000)
+        //setInterval(() => this.alertStore.alert({ message: 'testttt', type: AlertType.Success }), 7000)
     }
 
     private async init(walletId?: string) {
@@ -88,6 +94,8 @@ export class EditWalletStore extends Store {
             let wallet = await this.client.wallets.getWallet({ walletId: walletId })
             this.originalWallet = Object.assign({}, wallet)
             this.editedWallet = wallet
+            this.walletName = wallet.name
+            this.walletLabels = wallet.labels
         }
         else {
             this.isNewWallet = true

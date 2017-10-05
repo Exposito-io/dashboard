@@ -46,9 +46,9 @@ export class AlertStore extends Store {
         alert = Object.assign(new Alert(), alert)
         this.alerts.push(alert)
         
-        setTimeout(() => {
-            this.alerts = this.alerts.filter(a => a !== alert)
-        }, Math.max(0, alert.delay))
+        setTimeout(() => 
+            (this.alerts as any).remove(alert)
+        , Math.max(0, alert.delay))
     }
 
 
