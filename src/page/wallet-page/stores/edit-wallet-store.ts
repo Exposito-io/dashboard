@@ -2,6 +2,7 @@ import { autorun, observable, computed, action } from 'mobx'
 import { Project, BitcoinWallet, Wallet } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../../stores/store'
+import { AlertStore, AlertType } from '../../../stores/alert-store'
 import config from '../../../config'
 
 
@@ -60,7 +61,10 @@ export class EditWalletStore extends Store {
     }    
 
     @action save() {
-        // TODO
+        this.alertStore.alert({
+            message: 'fewaf',
+            type: AlertType.Success
+        })
     }
 
     @action cancel() {
@@ -68,10 +72,13 @@ export class EditWalletStore extends Store {
     }
 
     private client: ExpositoClient
+    private alertStore: AlertStore = AlertStore.getStore()
 
     constructor(walletId?: string) {
         super()
         this.init(walletId)
+
+        setInterval(() => this.alertStore.alert({ message: 'testttt', type: AlertType.Success }), 7000)
     }
 
     private async init(walletId?: string) {

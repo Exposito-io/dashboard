@@ -1,3 +1,4 @@
+import * as _ from 'lodash'
 import { autorun, observable, computed, action } from 'mobx'
 import { Project } from 'models'
 import { Store } from './store'
@@ -15,7 +16,7 @@ export enum AlertType {
 export class Alert {
     type: AlertType
     message: string = ''
-    delay: number = 5000
+    delay?: number = 5000
 }
 
 
@@ -29,7 +30,7 @@ export class AlertStore extends Store {
     private static instance: AlertStore
 
 
-    @observable alerts: Alert[] = []
+    @observable.shallow alerts: Alert[] = []
 
 
     static getStore(): AlertStore {
@@ -38,6 +39,16 @@ export class AlertStore extends Store {
             this.instance = new AlertStore()
 
         return this.instance
+    }
+
+
+    public alert(alert: Alert): void {
+        alert = Object.assign(new Alert(), alert)
+        this.alerts.push(alert)
+        
+        setTimeout(() => {
+            this.alerts = this.alerts.filter(a => a !== alert)
+        }, Math.max(0, alert.delay))
     }
 
 

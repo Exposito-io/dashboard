@@ -15,6 +15,7 @@ import { Submenu } from '../../components/submenu/submenu'
 import { EditWalletStore } from './stores/edit-wallet-store'
 
 
+
 import './wallet-page.css'
 
 @observer
