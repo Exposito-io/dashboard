@@ -72,8 +72,14 @@ export class WalletPage extends React.Component<any> {
                             path="/wallet/:id/general" 
                             render={props => <EditWallet store={this.store} {...props} />} 
                         />
+                        <Route 
+                            exact 
+                            path="/wallet/:id" 
+                            render={props => <EditWallet store={this.store} {...props} />} 
+                        />                        
                         <Route exact path="/wallet/:id/periodic-transfers" component={PeriodicTransfers} />
                         <Route exact path="/wallet/:id/payment-widget" component={PaymentWidgetPage} />
+                        
                     </Switch>
                 </div>
             </Page>
