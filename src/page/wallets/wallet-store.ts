@@ -41,9 +41,12 @@ export class WalletStore extends Store {
         //let w = 
 
         this.wallets = (await this.client.wallets.getWallets())
-                                        .map(wallet => ({ wallet: wallet, transactions: [] }))
+                                        .map(w => ({ wallet: w, transactions: [] }))
 
-        this.wallets = [{ wallet: wallet as Wallet, transactions: transactions }].concat(this.wallets)
+        this.wallets = [{ wallet: wallet as Wallet, transactions: transactions }]
+                        .concat((this.wallets as any).toJS())
+
+        console.log('wallets: ', this.wallets)
 
         this.isLoading = false
     }

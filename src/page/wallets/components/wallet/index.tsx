@@ -54,7 +54,7 @@ export class WalletPanel extends React.Component<Props, {}> {
         return (
             <div className="wallet-header">
                 <h3 className='panel-title'>
-                    {this.wallet.name}
+                    {this.wallet && this.wallet.name}
                 </h3>
                 {this.renderPeriodicTransferIcon(2)}
                 <Link
