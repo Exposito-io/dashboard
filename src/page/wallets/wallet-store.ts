@@ -38,6 +38,8 @@ export class WalletStore extends Store {
     private async init() {
         this.client = new ExpositoClient({ url: config.apiUrl, version: config.apiVersion })
 
+        //let w = 
+
         this.wallets = (await this.client.wallets.getWallets())
                                         .map(wallet => ({ wallet: wallet, transactions: [] }))
 

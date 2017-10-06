@@ -7,7 +7,7 @@ import { Page } from '../../components/page'
 import { Link } from 'react-router-dom'
 import { WalletPanel } from './components/wallet'
 import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
-import { WalletStore } from '../../stores/wallet-store'
+import { WalletStore } from './wallet-store'
 
 
 let wallet = new BitcoinWallet({
@@ -76,6 +76,9 @@ import './wallets.css'
 @observer
 export class Wallets extends React.Component {
 
+    private store: WalletStore = WalletStore.getStore()
+
+
     renderMenu() {
         return (
             <div></div>
@@ -86,7 +89,13 @@ export class Wallets extends React.Component {
         return (
             <Page actionBar={this.renderMenu()} title='Wallets' className="wallets-page">
                 <div className="wallets-container">
-                    <WalletPanel wallet={wallet} transactions={transactions}></WalletPanel>
+                    {this.store.wallets.map((walletData, i) => 
+                        <WalletPanel 
+                            key={i} 
+                            wallet={walletData.wallet} 
+                            transactions={walletData.transactions}
+                        />
+                    )}
                     {this.renderAddButton()}
                 </div>
             </Page>
