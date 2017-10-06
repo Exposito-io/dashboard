@@ -93,7 +93,7 @@ export class Wallets extends React.Component {
 
   private renderAddButton() {
     return (
-      <div className="add-btn">
+      <Link className="add-btn" to="/wallet/new">
         <div className="content">
           <span>New Wallet</span>
           <svg 
@@ -110,7 +110,7 @@ export class Wallets extends React.Component {
               <path d="M15,6h-5V1c0-0.55-0.45-1-1-1H7C6.45,0,6,0.45,6,1v5H1C0.45,6,0,6.45,0,7v2c0,0.55,0.45,1,1,1h5v5c0,0.55,0.45,1,1,1h2  c0.55,0,1-0.45,1-1v-5h5c0.55,0,1-0.45,1-1V7C16,6.45,15.55,6,15,6z"/>
           </svg>
         </div>
-      </div>
+      </Link>
     )
   }
 }
