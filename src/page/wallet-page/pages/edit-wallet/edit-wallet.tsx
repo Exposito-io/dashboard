@@ -49,7 +49,11 @@ export class EditWallet extends React.Component<{ store: EditWalletStore }, { }>
 
                     
                     <div className="btn-container">
-                        <button className="btn btn-default btn-main btn-md">Save</button>
+                        <button 
+                            onClick={() => this.props.store.save()}
+                            className="btn btn-default btn-main btn-md">
+                            Save
+                        </button>
                         <button className="btn btn-default btn-md ">Cancel</button>
                     </div>
                 </Panel>

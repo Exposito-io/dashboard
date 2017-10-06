@@ -65,9 +65,17 @@ export class EditWalletStore extends Store {
         this.walletLabels = labels
     }    
 
-    @action save() {
+    @action async save() {
+        let wallet = await this.client.wallets.createWallet({
+            name: this.walletName,
+            labels: this.walletLabels,
+            projectId: "59ae0f2e1b7aa4500ae089fe"
+        })
+
+        console.log('New wallet: ', wallet)
+        
         this.alertStore.alert({
-            message: 'fewaf',
+            message: 'Success!',
             type: AlertType.Success
         })
     }
