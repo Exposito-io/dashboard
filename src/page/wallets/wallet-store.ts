@@ -1,8 +1,8 @@
 import { autorun, observable, computed } from 'mobx'
 import { Wallet } from 'models'
 import { ExpositoClient } from 'exposito-client'
-import { Store } from './store'
-import config from '../config'
+import { Store } from '../../stores/store'
+import config from '../../config'
 
 
 export class WalletStore extends Store {
