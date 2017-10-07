@@ -43,7 +43,7 @@ export class WalletStore extends Store {
         let wallets = (await this.client.wallets.getWallets())
                                         .map(w => ({ wallet: w, transactions: [] }))
 
-        for (let walletData of this.wallets) {
+        for (let walletData of wallets) {
             walletData.transactions = await this.client.transactions.getTransactionsForWallet(walletData.wallet.id)
         }
 

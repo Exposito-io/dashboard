@@ -90,12 +90,14 @@ export class Wallets extends React.Component {
         return (
             <Page actionBar={this.renderMenu()} title='Wallets' className="wallets-page">
                 <div className="wallets-container">
-                    {this.store.wallets.map((walletData, i) => 
-                        <WalletPanel 
+                    {this.store.wallets.map((walletData, i) => {
+                        console.log(`Wallet ${walletData.wallet.name}: `, (walletData.transactions as any).toJS())
+                        return <WalletPanel 
                             key={i} 
                             wallet={walletData.wallet} 
-                            transactions={walletData.transactions}
+                            transactions={(walletData.transactions as any).toJS()}
                         />
+                        }
                     )}
                     {this.renderAddButton()}
                 </div>
