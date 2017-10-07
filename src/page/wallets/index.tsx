@@ -9,6 +9,7 @@ import { WalletPanel } from './components/wallet'
 import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
 import { WalletStore } from './wallet-store'
 
+(window as any).walletStore = WalletStore
 
 let wallet = new BitcoinWallet({
     coreWallet: {},
