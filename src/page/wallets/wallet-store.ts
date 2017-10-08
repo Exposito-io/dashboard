@@ -75,9 +75,11 @@ let wallet = new BitcoinWallet({
     coreWallet: {},
     labels: [],
     name: 'Main Wallet',
-    projectId: 'gge',
-
+    projectId: 'gge'
 })
+
+wallet.amount = '430'
+wallet.currency = 'BTC'
 
 let t1 = new Transaction()
 

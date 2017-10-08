@@ -75,7 +75,7 @@ export class WalletPanel extends React.Component<Props, {}> {
                         <span className="currency">$</span>
                         <NumberFormat
                             className="amount-fmt"
-                            value={430}
+                            value={parseFloat(this.wallet.amount)}
                             displayType={'text'}
                             thousandSeparator={true}
                             decimalPrecision={2}
