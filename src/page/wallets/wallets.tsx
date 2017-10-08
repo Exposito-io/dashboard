@@ -9,68 +9,6 @@ import { WalletPanel } from './components/wallet'
 import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
 import { WalletStore } from './wallet-store'
 
-(window as any).walletStore = WalletStore
-
-let wallet = new BitcoinWallet({
-    coreWallet: {},
-    labels: [],
-    name: 'Main Wallet',
-    projectId: 'gge',
-
-})
-
-let t1 = new Transaction()
-
-let transactions: Transaction[] = [
-    {
-        creationDate: new Date('2017-02-04'),
-        endDate: new Date('2017-02-04'),
-        currency: 'BTC',
-        note: 'Transfer from personnal account',
-        amount: '0.53123',
-        sourceType: PaymentDestination.BITCOIN_ADDRESS,
-        sourceWalletId: 'afew',
-        destination: 'awf',
-        destinationType: PaymentDestination.EXPOSITO_WALLET,
-        status: 1
-    },
-    {
-        creationDate: new Date('2017-02-21'),
-        endDate: new Date('2017-02-21'),
-        currency: 'BTC',
-        note: 'Design of the intro page',
-        amount: '-0.145',
-        sourceType: PaymentDestination.BITCOIN_ADDRESS,
-        sourceWalletId: 'afew',
-        destination: 'awf',
-        destinationType: PaymentDestination.EXPOSITO_WALLET,
-        status: 1
-    }, /* 
-  {
-    creationDate: new Date('2017-03-14'),
-    endDate: new Date('2017-03-14'),
-    currency: 'ETH',
-    note: 'Donation',
-    amount: '0.318',
-    sourceType: PaymentDestination.ETHEREUM_ADDRESS,
-    sourceWalletId: 'afew',
-    destination: 'awf',
-    destinationType: PaymentDestination.EXPOSITO_WALLET,
-    status: 1
-  }, */
-    {
-        creationDate: new Date('2017-04-03'),
-        endDate: new Date('2017-04-03'),
-        currency: 'BTC',
-        note: 'Mathew\'s deposit',
-        amount: '0.293',
-        sourceType: PaymentDestination.BITCOIN_ADDRESS,
-        sourceWalletId: 'afew',
-        destination: 'awf',
-        destinationType: PaymentDestination.EXPOSITO_WALLET,
-        status: 1
-    }
-]
 
 import './wallets.css'
 
@@ -90,14 +28,12 @@ export class Wallets extends React.Component {
         return (
             <Page actionBar={this.renderMenu()} title='Wallets' className="wallets-page">
                 <div className="wallets-container">
-                    {this.store.wallets.map((walletData, i) => {
-                        console.log(`Wallet ${walletData.wallet.name}: `, (walletData.transactions as any).toJS())
-                        return <WalletPanel 
+                    {this.store.wallets.map((walletData, i) =>                         
+                        <WalletPanel 
                             key={i} 
                             wallet={walletData.wallet} 
                             transactions={(walletData.transactions as any).toJS()}
-                        />
-                        }
+                        />                        
                     )}
                     {this.renderAddButton()}
                 </div>
