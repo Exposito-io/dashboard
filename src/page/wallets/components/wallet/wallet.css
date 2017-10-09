@@ -5,6 +5,7 @@ body.badmin-transparent .wallet-panel.panel.panel-blur {
     background-color: rgba(0, 0, 0, 0.45);
     height: 434px;
     margin-right: 40px;
+    overflow: hidden;
 }
 
 .wallet-panel > .panel-body {

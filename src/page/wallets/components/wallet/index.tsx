@@ -66,6 +66,7 @@ export class WalletPanel extends React.Component<Props, {}> {
         )
     }
 
+
     render() {
         return (
 
@@ -136,9 +137,6 @@ export class WalletPanel extends React.Component<Props, {}> {
             return 'pos'
     }
 
-    private getTransactionCurrency(tx: Transaction): string {
-        return 'BTC'
-    }
 
     private renderTransactionAmount(tx: Transaction) {
         
@@ -187,6 +185,8 @@ export class WalletPanel extends React.Component<Props, {}> {
                 return require('./images/bitcoin.svg')
             case PaymentDestination.ETHEREUM_ADDRESS:
                 return require('./images/ethereum.svg')
+            case PaymentDestination.EXPOSITO_WALLET:
+                return require('./images/exposito-logo.svg')
             default: 
                 return require('./images/credit-cards2.png')
         }
