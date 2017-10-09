@@ -85,7 +85,7 @@ export class WalletPanel extends React.Component<Props, {}> {
 
                 </div>
 
-                <AreaChart width={380} height={150} data={data}
+                <AreaChart width={380} height={150} data={this.getChartData()}
                     margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
                     <defs>
                         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -115,7 +115,7 @@ export class WalletPanel extends React.Component<Props, {}> {
                                 }}
                             />
                             <span className="date">{moment(tx.endDate).format('MMM DD')}</span>
-                            <span className="note">{tx.note}</span>
+                            <span className="note">{this.getTxDescription(tx)}</span>
                             <i className={`amount-change`}></i>
                             <span className={`amount ${this.getAmountClass(tx.amount)}`}>
                                 {this.renderTransactionAmount(tx)}
@@ -135,6 +135,13 @@ export class WalletPanel extends React.Component<Props, {}> {
             return 'neg'
         else
             return 'pos'
+    }
+
+    private getTxDescription(tx: Transaction): string {
+        if (tx.note)
+            return tx.note
+        else
+            return ''
     }
 
 
@@ -179,6 +186,56 @@ export class WalletPanel extends React.Component<Props, {}> {
     }
 
 
+    private getChartData() {
+        if (this.props.wallet.name.toLowerCase() === 'main wallet') {
+            return [
+                { name: 'Page A', pv: 2400, amt: 2400 },
+                { name: 'Page B', pv: 1398, amt: 2210 },
+                { name: 'Page C', pv: 1800, amt: 2290 },
+                { name: 'Page D', pv: 908, amt: 2000 },
+                { name: 'Page D', pv: 3008, amt: 2000 },
+                { name: 'Page D', pv: 2508, amt: 2000 },
+                { name: 'Page E', pv: 4800, amt: 2181 },
+                { name: 'Page F', pv: 3800, amt: 2500 },
+                { name: 'Page G', pv: 4300, amt: 2100 },
+                { name: 'Page G', pv: 3900, amt: 2100 },
+                { name: 'Page G', pv: 4000, amt: 2100 },
+                { name: 'Page G', pv: 5000, amt: 2100 },
+            ]
+        }
+        else {
+            let amount = Money.fromStringDecimal(this.wallet.amount, this.wallet.currency)
+
+            let chartData = this.props.transactions
+                        .slice(0, 12)
+                        .map(tx => {
+                            let txAmount = Money.fromStringDecimal(tx.amount, tx.currency)
+
+                            if (tx.currency === 'USD' && this.wallet.currency === 'BTC')
+                                txAmount = convertUsdToBtc(txAmount)
+
+                            if (tx.currency === 'BTC' && this.wallet.currency === 'USD')
+                                txAmount = convertBtcToUsd(txAmount)
+
+                            amount = amount.subtract(txAmount)
+
+                            return {
+                                name: '',
+                                pv: amount.toDecimal()
+                            }
+                        })
+                        .reverse()
+
+            chartData.push({ 
+                name: '',
+                pv: parseFloat(this.wallet.amount)
+            })
+
+            return chartData
+        }
+    }
+
+
     private paymentTypeIcon(p: PaymentDestination) {
         switch(p) {
             case PaymentDestination.BITCOIN_ADDRESS:
@@ -191,5 +248,16 @@ export class WalletPanel extends React.Component<Props, {}> {
                 return require('./images/credit-cards2.png')
         }
     }
+}
+
+
+
+function convertBtcToUsd(btcAmount: Money) {
+    return Money.fromStringDecimal(btcAmount.multiply(4526).toString(), 'USD') as Money
+}
+
+
+function convertUsdToBtc(usdAmount: Money) {    
+    return Money.fromStringDecimal(usdAmount.toString(), 'BTC').divide(4526) as Money
 }
 
