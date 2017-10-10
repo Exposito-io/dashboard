@@ -206,7 +206,9 @@ export class WalletPanel extends React.Component<Props, {}> {
         else {
             let amount = Money.fromStringDecimal(this.wallet.amount, this.wallet.currency)
 
-            let chartData = this.props.transactions
+            console.log('transactions: ', this.props.transactions)
+
+            let chartData = this.transactions
                         .slice(0, 12)
                         .map(tx => {
                             let txAmount = Money.fromStringDecimal(tx.amount, tx.currency)
@@ -225,11 +227,14 @@ export class WalletPanel extends React.Component<Props, {}> {
                             }
                         })
                         .reverse()
-
+                        
+            
             chartData.push({ 
                 name: '',
                 pv: parseFloat(this.wallet.amount)
             })
+
+            console.log(`chart data for ${this.wallet.name}`, chartData)
 
             return chartData
         }
