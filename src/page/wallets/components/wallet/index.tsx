@@ -102,7 +102,7 @@ export class WalletPanel extends React.Component<Props, {}> {
                         stroke="#2978A0" 
                         dot={false} 
                         activeDot={{ r: 0 }} 
-                    />
+                    />import * as history from 'history'
                 </AreaChart>
 
                 <div className="transactions">

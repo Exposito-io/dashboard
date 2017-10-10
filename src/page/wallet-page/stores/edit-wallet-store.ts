@@ -4,6 +4,7 @@ import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../../stores/store'
 import { AlertStore, AlertType } from '../../../stores/alert-store'
 import config from '../../../config'
+import * as history from 'history'
 
 
 export class EditWalletStore extends Store {
@@ -78,6 +79,8 @@ export class EditWalletStore extends Store {
             message: 'Success!',
             type: AlertType.Success
         })
+
+        history.createHashHistory().push("")
     }
 
     @action cancel() {
