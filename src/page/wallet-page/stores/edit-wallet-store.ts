@@ -5,12 +5,13 @@ import { Store } from '../../../stores/store'
 import { AlertStore, AlertType } from '../../../stores/alert-store'
 import config from '../../../config'
 //import * as history from 'history'
-import { createHashHistory } from 'history'
+import { History } from 'history'
 
 
 export class EditWalletStore extends Store {
+    history: History;
 
-    /** 
+    /**
      * True if the store is creating a new wallet
      */
     @observable isNewWallet: boolean
@@ -79,7 +80,7 @@ export class EditWalletStore extends Store {
             type: AlertType.Success
         })
 
-        createHashHistory().push(`/wallet/${wallet.id}`)
+        this.history.push(`/wallet/${wallet.id}`)
     }
 
     @action cancel() {
@@ -89,8 +90,9 @@ export class EditWalletStore extends Store {
     private client: ExpositoClient
     private alertStore: AlertStore = AlertStore.getStore()
 
-    constructor(walletId?: string) {
+    constructor(walletId: string, history: History) {
         super()
+        this.history = history
         this.init(walletId)
 
         //setInterval(() => this.editedWallet.name = 'owef ' + Math.random(), 1000)

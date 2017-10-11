@@ -13,6 +13,7 @@ export class MenuItem {
     icon?: string
     faIcon?: string
     className?: string
+    disabled?: boolean
 }
 
 
@@ -31,6 +32,7 @@ export class Submenu extends React.Component<{ items: MenuItem[] }> {
                             submenu-item 
                             ${item.className ? item.className : ''}
                             ${location.pathname === item.link ? 'active' : ''}
+                            ${item.disabled ? 'disabled' : ''}
                         `}
                     >   
                         {item.icon ?

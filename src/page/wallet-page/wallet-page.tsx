@@ -26,7 +26,14 @@ export class WalletPage extends React.Component<any> {
     constructor(props: any) {
         super(props)
 
-        this.store = new EditWalletStore(props.match.params.id)
+        this.store = new EditWalletStore(props.match.params.id, props.history)
+        console.log('history', props.history)
+
+        if (this.store.isNewWallet) {
+            setTimeout(() => {
+                //props.history.push('/wallet/59d69c4c38013a731c7a6ef3')
+            }, 5000)
+        }
 
         if (this.store.isNewWallet) {
             //setTimeout(() => this.props.history.push('/wallet/faewfwe/general'), 5000)
@@ -41,16 +48,19 @@ export class WalletPage extends React.Component<any> {
                     text: 'General',
                     link: `/wallet/${this.props.match.params.id}/general`,
                     faIcon: 'fa-cogs',
+                    disabled: !this.props.match.params.id
                 },
                 {
                     text: 'Periodic Transfers',
                     link: `/wallet/${this.props.match.params.id}/periodic-transfers`,
                     faIcon: 'fa-credit-card',
+                    disabled: !this.props.match.params.id
                 },
                 {
                     text: 'Payment Widget',
                     link: `/wallet/${this.props.match.params.id}/payment-widget`,
                     faIcon: 'fa-cube',
+                    disabled: !this.props.match.params.id
                 }
             ]} />
         )
@@ -61,6 +71,7 @@ export class WalletPage extends React.Component<any> {
         return (
             <Page actionBar={this.renderMenu()} title={this.store.pageTitle} className="wallet-page">
                 <div className="wallet-container">
+                    <Link to="/wallet/59d69c4c38013a731c7a6ef3">rhdhd</Link>
                     <Switch>
                         <Route 
                             exact 

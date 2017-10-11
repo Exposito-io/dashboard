@@ -17,6 +17,7 @@ export class EditWallet extends React.Component<{ store: EditWalletStore }, { }>
 
     constructor(props) {
         super(props)
+        console.log('new wallet-edit')
 
     }
 

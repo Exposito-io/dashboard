@@ -16,7 +16,8 @@
     text-align: center;
     position: relative;
     transition: border-color 0.35s var(--ease-out-cubic),
-                box-shadow 0.35s var(--ease-out-cubic);
+                box-shadow 0.35s var(--ease-out-cubic),
+                opacity 0.5s var(--ease-out-cubic);
 }
 
 .submenu a.submenu-item > img {
@@ -80,4 +81,12 @@
 
 .submenu a.submenu-item:hover > span {
     color: white;
+}
+
+
+
+
+.submenu a.submenu-item.disabled {
+    opacity: 0.3;
+    pointer-events: none;
 }
