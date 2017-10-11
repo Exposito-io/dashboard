@@ -23,6 +23,7 @@
     "react-flex-proto": "^1.0.0",
     "react-number-format": "^2.0.4",
     "react-rangeslider": "^2.1.0",
+    "react-router": "^4.2.0",
     "react-router-dom": "^4.1.2",
     "react-scripts-ts": "2.4.0",
     "react-selectize": "^2.1.0",

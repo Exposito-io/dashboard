@@ -4,7 +4,8 @@ import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../../stores/store'
 import { AlertStore, AlertType } from '../../../stores/alert-store'
 import config from '../../../config'
-import * as history from 'history'
+//import * as history from 'history'
+import { createHashHistory } from 'history'
 
 
 export class EditWalletStore extends Store {
@@ -72,15 +73,13 @@ export class EditWalletStore extends Store {
             labels: this.walletLabels,
             projectId: "59ae0f2e1b7aa4500ae089fe"
         })
-
-        console.log('New wallet: ', wallet)
         
         this.alertStore.alert({
-            message: 'Success!',
+            message: 'Wallet successfully created',
             type: AlertType.Success
         })
 
-        history.createHashHistory().push("")
+        createHashHistory().push(`/wallet/${wallet.id}`)
     }
 
     @action cancel() {
