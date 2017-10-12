@@ -58,7 +58,7 @@ export class WalletPanel extends React.Component<Props, {}> {
                 </h3>
                 {this.renderPeriodicTransferIcon(2)}
                 <Link
-                    to="/"
+                    to={`/wallet/${this.wallet.id}`}
                     className="fa fa-cog"
                     title="Wallet settings"
                 />
