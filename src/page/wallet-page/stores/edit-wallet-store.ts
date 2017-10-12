@@ -15,10 +15,8 @@ export class EditWalletStore extends Store {
      * True if the store is creating a new wallet
      */
     @computed get isNewWallet(): boolean {
-        return !this.walletId
+        return !this.editedWallet.id
     }
-
-    @observable walletId: string
 
     /**
      * Unedited wallet, for cancel purpose
@@ -74,7 +72,7 @@ export class EditWalletStore extends Store {
     }    
 
     @action async setWalletId(walletId: string) {
-        if (walletId !== this.walletId)
+        if (walletId !== this.editedWallet.id)
             this.init(walletId)
     }
 
@@ -113,7 +111,6 @@ export class EditWalletStore extends Store {
         }
         else {
             this.originalWallet = { labels: [] } as ExpositoWallet
-            this.walletId = undefined
             this.editedWallet = { 
                 name: '', 
                 description: '', 
@@ -128,7 +125,6 @@ export class EditWalletStore extends Store {
 
     private async fetchWallet(walletId: string) {
         let wallet = await this.client.wallets.getWallet({ walletId: walletId })
-        this.walletId = wallet.id
         this.originalWallet = Object.assign({}, wallet)
         this.editedWallet = wallet
     }
