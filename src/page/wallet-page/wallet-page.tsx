@@ -27,17 +27,6 @@ export class WalletPage extends React.Component<any> {
         super(props)
 
         this.store = new EditWalletStore(props.match.params.id, props.history)
-        console.log('history', props.history)
-
-        if (this.store.isNewWallet) {
-            setTimeout(() => {
-                //props.history.push('/wallet/59d69c4c38013a731c7a6ef3')
-            }, 5000)
-        }
-
-        if (this.store.isNewWallet) {
-            //setTimeout(() => this.props.history.push('/wallet/faewfwe/general'), 5000)
-        }
 
     }
 
@@ -51,7 +40,7 @@ export class WalletPage extends React.Component<any> {
             <Submenu items={[
                 {
                     text: 'General',
-                    link: `/wallet/${this.props.match.params.id}/general`,
+                    link: `/wallet/${this.props.match.params.id}`,
                     faIcon: 'fa-cogs',
                     disabled: this.store.isNewWallet
                 },
