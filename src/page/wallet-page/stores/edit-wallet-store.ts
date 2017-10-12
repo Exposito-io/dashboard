@@ -1,5 +1,5 @@
 import { autorun, observable, computed, action } from 'mobx'
-import { Project, BitcoinWallet, Wallet } from 'models'
+import { Project, BitcoinWallet, ExpositoWallet, Wallet } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../../stores/store'
 import { AlertStore, AlertType } from '../../../stores/alert-store'
@@ -26,14 +26,15 @@ export class EditWalletStore extends Store {
     originalWallet: Wallet
 
 
-    @observable walletName: string
-    @observable walletDescription: string
-    @observable walletLabels: string[] = []
-
     /*
      * Wallet being edited
      */
-    @observable editedWallet: Wallet
+    @observable editedWallet: Wallet = { 
+        name: '',  
+        description: '',
+        labels: [],
+        projectId: "59ae0f2e1b7aa4500ae089fe"
+    } as Wallet
 
 
     @computed get pageTitle(): string {
@@ -61,15 +62,15 @@ export class EditWalletStore extends Store {
 
 
     @action setWalletName(name: string) {
-        this.walletName = name
+        this.editedWallet.name = name
     }
 
     @action setWalletDescription(description: string) {
-        this.walletDescription = description
+        this.editedWallet.description = description
     }
 
     @action setWalletLabels(labels: string[]) {
-        this.walletLabels = labels
+        this.editedWallet.labels = labels
     }    
 
     @action async setWalletId(walletId: string) {
@@ -78,11 +79,7 @@ export class EditWalletStore extends Store {
     }
 
     @action async save() {
-        let wallet = await this.client.wallets.createWallet({
-            name: this.walletName,
-            labels: this.walletLabels,
-            projectId: "59ae0f2e1b7aa4500ae089fe"
-        })
+        let wallet = await this.client.wallets.createWallet(this.editedWallet)
         
         this.alertStore.alert({
             message: 'Wallet successfully created',
@@ -115,12 +112,15 @@ export class EditWalletStore extends Store {
             await this.fetchWallet(walletId)
         }
         else {
-            this.originalWallet = { labels: [] } as BitcoinWallet
+            this.originalWallet = { labels: [] } as ExpositoWallet
             this.walletId = undefined
-            this.walletName = ''
-            this.walletDescription = ''
-            this.walletLabels = []
-            this.editedWallet = new BitcoinWallet({ name: '', labels: [], projectId: null })
+            this.editedWallet = { 
+                name: '', 
+                description: '', 
+                labels: [], 
+                projectId: '59ae0f2e1b7aa4500ae089fe' 
+            } as Wallet
+            
         }
 
         this.isLoading = false
@@ -131,8 +131,6 @@ export class EditWalletStore extends Store {
         this.walletId = wallet.id
         this.originalWallet = Object.assign({}, wallet)
         this.editedWallet = wallet
-        this.walletName = wallet.name
-        this.walletLabels = wallet.labels
     }
 
 }

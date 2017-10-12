@@ -17,8 +17,6 @@ export class EditWallet extends React.Component<{ store: EditWalletStore }, { }>
 
     constructor(props) {
         super(props)
-        console.log('new wallet-edit')
-
     }
 
     
@@ -31,20 +29,20 @@ export class EditWallet extends React.Component<{ store: EditWalletStore }, { }>
                     <input 
                         type="text" 
                         placeholder="Wallet name" 
-                        value={this.props.store.walletName} 
+                        value={this.props.store.editedWallet.name} 
                         onChange={e => this.props.store.setWalletName(e.target.value)}
                     />
                     <br/>
                     <input 
                         type="text" 
                         placeholder="Wallet description" 
-                        value={this.props.store.walletDescription} 
+                        value={this.props.store.editedWallet.description} 
                         onChange={e => this.props.store.setWalletDescription(e.target.value)}
                     />
                     <br/>
                     <TagsInput 
                         inputProps={{placeholder: 'Add labels'}} 
-                        value={this.props.store.walletLabels} 
+                        value={this.props.store.editedWallet.labels} 
                         onChange={tags => this.props.store.setWalletLabels(tags)} 
                     />
 

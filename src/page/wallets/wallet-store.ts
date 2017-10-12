@@ -75,6 +75,7 @@ let wallet = new BitcoinWallet({
     coreWallet: {},
     labels: [],
     name: 'Main Wallet',
+    description: '',
     projectId: 'gge'
 })
 
