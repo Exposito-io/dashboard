@@ -14,7 +14,11 @@ export class EditWalletStore extends Store {
     /**
      * True if the store is creating a new wallet
      */
-    @observable isNewWallet: boolean
+    @computed get isNewWallet(): boolean {
+        return !this.walletId
+    }
+
+    @observable walletId: string
 
     /**
      * Unedited wallet, for cancel purpose
@@ -68,6 +72,11 @@ export class EditWalletStore extends Store {
         this.walletLabels = labels
     }    
 
+    @action async setWalletId(walletId: string) {
+        if (walletId !== this.walletId)
+            this.init(walletId)
+    }
+
     @action async save() {
         let wallet = await this.client.wallets.createWallet({
             name: this.walletName,
@@ -103,19 +112,27 @@ export class EditWalletStore extends Store {
         this.client = new ExpositoClient({ url: config.apiUrl, version: config.apiVersion  })
 
         if (walletId) {
-            let wallet = await this.client.wallets.getWallet({ walletId: walletId })
-            this.originalWallet = Object.assign({}, wallet)
-            this.editedWallet = wallet
-            this.walletName = wallet.name
-            this.walletLabels = wallet.labels
+            await this.fetchWallet(walletId)
         }
         else {
-            this.isNewWallet = true
             this.originalWallet = { labels: [] } as BitcoinWallet
+            this.walletId = undefined
+            this.walletName = ''
+            this.walletDescription = ''
+            this.walletLabels = []
             this.editedWallet = new BitcoinWallet({ name: '', labels: [], projectId: null })
         }
 
         this.isLoading = false
+    }
+
+    private async fetchWallet(walletId: string) {
+        let wallet = await this.client.wallets.getWallet({ walletId: walletId })
+        this.walletId = wallet.id
+        this.originalWallet = Object.assign({}, wallet)
+        this.editedWallet = wallet
+        this.walletName = wallet.name
+        this.walletLabels = wallet.labels
     }
 
 }

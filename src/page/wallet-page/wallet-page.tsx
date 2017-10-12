@@ -41,6 +41,11 @@ export class WalletPage extends React.Component<any> {
 
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (this.props.match.params.id !== nextProps.match.params.id)
+            this.store.setWalletId(nextProps.match.params.id)
+    }    
+
     renderMenu() {
         return (
             <Submenu items={[
@@ -48,19 +53,19 @@ export class WalletPage extends React.Component<any> {
                     text: 'General',
                     link: `/wallet/${this.props.match.params.id}/general`,
                     faIcon: 'fa-cogs',
-                    disabled: !this.props.match.params.id
+                    disabled: this.store.isNewWallet
                 },
                 {
                     text: 'Periodic Transfers',
                     link: `/wallet/${this.props.match.params.id}/periodic-transfers`,
                     faIcon: 'fa-credit-card',
-                    disabled: !this.props.match.params.id
+                    disabled: this.store.isNewWallet
                 },
                 {
                     text: 'Payment Widget',
                     link: `/wallet/${this.props.match.params.id}/payment-widget`,
                     faIcon: 'fa-cube',
-                    disabled: !this.props.match.params.id
+                    disabled: this.store.isNewWallet
                 }
             ]} />
         )
