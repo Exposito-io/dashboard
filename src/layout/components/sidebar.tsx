@@ -4,13 +4,6 @@ import { Link } from 'react-router-dom';
 
 export class Sidebar extends React.Component {
 
-  static propTypes = {
-    location: React.PropTypes.shape({
-      pathname: React.PropTypes.string.isRequired,
-      query: React.PropTypes.object.isRequired,
-    }),
-  }
-
   state = {
     navItems: [
       { pathname: '/', label: 'Home', icon: 'home' },

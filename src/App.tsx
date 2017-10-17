@@ -28,14 +28,6 @@ class App extends React.Component {
 
     props
 
-    static propTypes = {
-        //router: React.PropTypes.object.isRequired,
-        location: React.PropTypes.shape({
-            pathname: React.PropTypes.string.isRequired,
-            query: React.PropTypes.object.isRequired,
-        }),
-    }
-
     state = {
         idToken: null, // Token indicating user is logged in
         user: null, // Full user for that logged in user, if exists
@@ -66,10 +58,7 @@ class App extends React.Component {
     }
 
     redirectToLogin() {
-        this.props.router.push({
-            pathname: '/login',
-            query: { redirectUri: encodeURIComponent(this.props.location.pathname) },
-        });
+
     }
 
     setUser() {

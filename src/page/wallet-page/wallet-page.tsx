@@ -65,7 +65,6 @@ export class WalletPage extends React.Component<any> {
         return (
             <Page actionBar={this.renderMenu()} title={this.store.pageTitle} className="wallet-page">
                 <div className="wallet-container">
-                    <Link to="/wallet/59d69c4c38013a731c7a6ef3">rhdhd</Link>
                     <Switch>
                         <Route 
                             exact 

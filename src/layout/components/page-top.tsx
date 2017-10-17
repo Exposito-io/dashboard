@@ -140,7 +140,7 @@ export class PageTop extends React.Component<{}, {}> {
 
   render() {
     return (
-      <div className="page-top clearfix" scroll-position="scrolled" max-height="50">
+      <div className="page-top clearfix">
         <a href="" className="collapse-menu-link ion-navicon"></a>
 
         <h1 id="logo">exposito</h1>
