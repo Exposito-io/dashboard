@@ -1,0 +1,15 @@
+.payment-widget-page {
+    display: flex;
+}
+
+.payment-widget-page .options {
+    width: 50%;
+
+}
+
+.payment-widget-page .widget-preview {
+    width: 460px;
+    height: 520px;
+    border: none;
+    margin-left: 100px;
+}

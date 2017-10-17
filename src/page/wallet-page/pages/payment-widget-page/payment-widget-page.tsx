@@ -19,6 +19,11 @@ export class PaymentWidgetPage extends React.Component {
                 <Panel className="dark options" title="Options">
                     
                 </Panel>
+
+               <iframe 
+                    src="http://dev.widget.exposito.io" 
+                    className="widget-preview">
+               </iframe> 
             </div>
         )
     }
