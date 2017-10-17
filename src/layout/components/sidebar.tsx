@@ -1,6 +1,12 @@
-import * as _ from 'lodash';
-import * as React from 'react';
-import { Link } from 'react-router-dom';
+import * as _ from 'lodash'
+import * as React from 'react'
+import { Link } from 'react-router-dom'
+
+class NavItem {
+    pathname: string
+    label: string
+    icon: string
+}
 
 export class Sidebar extends React.Component {
 
@@ -15,7 +21,7 @@ export class Sidebar extends React.Component {
     ],
   }
 
-  isSelected(navItem) {
+  isSelected(navItem: NavItem) {
     return location.pathname === navItem.pathname ? 'selected' : ''
   }
 

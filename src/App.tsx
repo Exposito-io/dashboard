@@ -15,15 +15,6 @@ import { BitcoinWallet } from 'models'
 import config from './config'
 
 
-setTimeout(async () => {
-    let client = new ExpositoClient({
-        url: config.apiUrl,
-        version: config.apiVersion,
-        //token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OTEyNzlhMjNiMTRkOTNiZGJlZDhhNjEiLCJpYXQiOjE0OTg5NjI3ODksImV4cCI6MTUzMDQ5ODc4OX0.5JIIUnRjmLLnfFcuz2Hx4jT4_U1lCYzrDLcffwHSx_A' 
-    })
-
-}, 10000)
-
 class App extends React.Component {
 
     props
@@ -33,7 +24,7 @@ class App extends React.Component {
         user: null, // Full user for that logged in user, if exists
     }
 
-    lock: any
+    lock
 
     componentWillMount() {
         if (process.env.AUTH0_PUB_KEY) {
@@ -58,7 +49,7 @@ class App extends React.Component {
     }
 
     redirectToLogin() {
-
+        // TODO
     }
 
     setUser() {

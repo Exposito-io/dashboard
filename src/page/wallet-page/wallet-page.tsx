@@ -1,11 +1,12 @@
 import * as React from 'react'
 import { Switch, Route } from 'react-router-dom'
-
+import { History } from 'history'
 import { bind } from 'bind-decorator'
 import { observer } from 'mobx-react'
 import { Panel, Breadcrumbs } from 'react-blur-admin'
-import { Page } from '../../components/page'
 import { Link } from 'react-router-dom'
+
+import { Page } from '../../components/page'
 import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
 import { EditWallet } from './pages/edit-wallet/edit-wallet'
 import { PeriodicTransfers } from './pages/periodic-transfers/periodic-transfers'
@@ -18,19 +19,24 @@ import { EditWalletStore } from './stores/edit-wallet-store'
 
 import './wallet-page.css'
 
+type Props = { 
+    match: { params: { id?: string } }, 
+    history: History
+}
+
 @observer
-export class WalletPage extends React.Component<any> {
+export class WalletPage extends React.Component<Props> {
 
     private store: EditWalletStore
 
-    constructor(props: any) {
+    constructor(props: Props) {
         super(props)
 
         this.store = new EditWalletStore(props.match.params.id, props.history)
 
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: Props) {
         if (this.props.match.params.id !== nextProps.match.params.id)
             this.store.setWalletId(nextProps.match.params.id)
     }    

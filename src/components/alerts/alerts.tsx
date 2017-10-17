@@ -15,23 +15,6 @@ export class Alerts extends React.Component {
     private store: AlertStore = AlertStore.getStore()
 
 
-    constructor(props: any) {
-        super(props)
-
-        //this.img = require('../../page/new-project/images/aws.png')
-
-        //this.img = require(this.props.img)
-        //setTimeout(() => this.init(), 1000)
-
-        //setTimeout(() => this.nextEntry(), 2000)
-    }
-
-    componentDidMount() {
-
-    }
-
-
-
     render() {
         return (
             <div className="alerts-container">

@@ -1,6 +1,6 @@
-import * as Autosuggest from 'react-autosuggest';
-import * as React from 'react';
-import { Row, Col } from 'react-flex-proto';
+import * as Autosuggest from 'react-autosuggest'
+import * as React from 'react'
+import { Row, Col } from 'react-flex-proto'
 
 const suggestionExamples = [
   {
@@ -35,8 +35,7 @@ const suggestionExamples = [
   },
 ];
 
-export class SearchBar extends React.Component {
-  state: any
+export class SearchBar extends React.Component<any, any> {
 
   constructor() {
     super();

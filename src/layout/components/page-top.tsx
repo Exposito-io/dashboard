@@ -8,8 +8,6 @@ var person = require('../../assets/img/person.svg')
 
 import { SearchBar } from './search-bar'
 
-// Lib
-// import eventBus from 'src/lib/event-bus';
 import { NotificationsAlert, NotificationAlert } from 'react-blur-admin'
 import { Row, Col } from 'react-flex-proto'
 
@@ -40,7 +38,7 @@ export class PageTop extends React.Component<{}, {}> {
   private preferencesStore: PreferencesStore
   private notificationStore: NotificationStore
 
-  constructor(props) {
+  constructor(props: {}) {
     super(props)
 
     this.projectStore = ProjectStore.getStore()
@@ -57,7 +55,7 @@ export class PageTop extends React.Component<{}, {}> {
   }
 
   onProjectClick = (projectId: string) => {
-    
+    // TODO
   }
 
   onToggleMenu = () => {
@@ -114,7 +112,9 @@ export class PageTop extends React.Component<{}, {}> {
           <ul className="top-dropdown-menu profile-dropdown dropdown-menu">
             <li><i className="dropdown-arr"></i></li>
             {this.projectStore.availableProjects.map(project => (
-              <li key={project.id}><a className="fa" onClick={() => this.onProjectClick(project.id)}>{project.name}</a></li>
+              <li key={project.id}>
+                <a className="fa" onClick={() => this.onProjectClick(project.id)}>{project.name}</a>
+              </li>
             ))}
             <li>
               <Link to="/new-project" className="signout">
@@ -135,7 +135,7 @@ export class PageTop extends React.Component<{}, {}> {
         </Row>
    
       </div>
-    );
+    )
   }
 
   render() {

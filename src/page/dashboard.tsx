@@ -1,16 +1,9 @@
 import * as React from 'react'
-import { autorun, observable, computed, action,Reaction } from 'mobx'
+import { autorun, observable, computed, action, Reaction } from 'mobx'
 import { observer } from 'mobx-react'
 import { Page, Panel, Breadcrumbs } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
 import { WalletStore } from '../stores/wallet-store'
-
-
-
-/*
-setInterval(() => {
-  observableTodoStore.addTodo('read MobX tutorial');
-}, 5000)*/
 
 
 @observer
