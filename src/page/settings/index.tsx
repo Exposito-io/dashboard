@@ -50,7 +50,6 @@ export class SettingsPage extends React.Component {
             <Panel title="General">
               Default Project: <Select
                 placeholder='Select a project'
-                className="project-select"
                 options={projectStore.allProjects.map(project => ({ label: project.name, value: project }))}
                 onChange={value => this.setState({ selectTwo: value })}
                 value={prefStore.preferences.selectedProject} />

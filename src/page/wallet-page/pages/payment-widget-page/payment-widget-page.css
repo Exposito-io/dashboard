@@ -1,5 +1,6 @@
 .payment-widget-page {
     display: flex;
+    font-size: 17px;
 }
 
 .payment-widget-page .options {
@@ -7,9 +8,59 @@
 
 }
 
+
+.payment-widget-page .options h3 {
+    font-weight: 300;
+}
+
+.payment-widget-page .preview-container {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 100px;
+    margin-top: -8px;
+}
+
+.payment-widget-page .preview-container h3 {
+    text-align: center;
+    font-weight: 300;
+    margin-left: 25px;
+    margin-bottom: 5px;
+}
+
 .payment-widget-page .widget-preview {
     width: 460px;
     height: 520px;
     border: none;
-    margin-left: 100px;
+    
 }
+
+.payment-widget-page .form-group {
+    border-radius: 17px;
+    overflow: hidden;
+    display: inline-block;
+    width: 300px;
+    vertical-align: middle;
+    margin-top: 10px;
+    margin-left: 14px;
+}
+
+.payment-widget-page .react-toggle--checked .react-toggle-track {
+    background-color: #820263;
+    /*background-color: #2978A0;*/
+ }
+
+.payment-widget-page .has-success label.custom-checkbox > span:before, .has-success label.custom-radio > span:before {
+    color: white;
+    margin-right: 8px;
+    border-radius: 3px;
+}
+
+ .payment-widget-page .custom-checkbox {
+     font-size: 16px;
+ }
+
+ .payment-widget-page .form-group.has-feedback {
+     display: block;
+     margin-left: 0;
+     margin-bottom: 3px;
+ }
