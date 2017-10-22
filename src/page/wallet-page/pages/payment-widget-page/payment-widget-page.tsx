@@ -4,6 +4,7 @@ import { observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import { Select, Input } from 'react-blur-admin'
 import SyntaxHighlighter from 'react-syntax-highlighter'
+import { bind } from 'bind-decorator'
 
 
 import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
@@ -14,8 +15,22 @@ import './payment-widget-page.css'
 import { docco, darkula, atomOneDark } from 'react-syntax-highlighter/dist/styles'
 const codeString = '(num) => num + 1';
 
-export class PaymentWidgetPage extends React.Component {
+export class PaymentWidgetPage extends React.Component<{}, { src: string }> {
 
+    constructor(props: {}) {
+        super(props)
+        this.state = { src: '' }
+    }
+
+    componentDidMount() {
+        setTimeout(() => this.setState({ src: 'http://dev.widget.exposito.io' }), 200)
+    }
+
+
+    @bind codeClick() {
+        // TODO
+    }
+    
 
     render() {
         return (
@@ -58,6 +73,7 @@ export class PaymentWidgetPage extends React.Component {
                     <SyntaxHighlighter 
                         language='html' 
                         style={atomOneDark}
+                        onClick={this.codeClick}
                         showLineNumbers={true}>
                         {
 `<!-- Exposito Payment Widget start. Replace [price] and [currency] parameters with the requested price and currency -->
@@ -75,7 +91,8 @@ export class PaymentWidgetPage extends React.Component {
                 <div className="preview-container">
                     <h3>Preview</h3>
                     <iframe
-                        src="http://dev.widget.exposito.io"
+                        ref="code"
+                        src={this.state.src}
                         className="widget-preview">
                     </iframe>
                 </div>
@@ -85,3 +102,4 @@ export class PaymentWidgetPage extends React.Component {
 
 
 }
+
