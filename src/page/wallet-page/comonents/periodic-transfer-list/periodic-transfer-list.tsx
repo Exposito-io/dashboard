@@ -5,17 +5,21 @@ import { Link } from 'react-router-dom'
 import { bind } from 'bind-decorator'
 
 
-import {  } from 'models'
+import { PeriodicPayment } from 'models'
 import { Panel } from '../../../../components/panel/panel'
 
 
 import './periodic-transfer-list.css'
 
+type Props = {
+    list: PeriodicPayment[]
+    onItemSelect: (item: PeriodicPayment) => any
+}
 
 @observer
-export class PeriodicTransferList extends React.Component<{}, {}> {
+export class PeriodicTransferList extends React.Component<Props, {}> {
 
-    constructor(props: {}) {
+    constructor(props: Props) {
         super(props)
     }
 
