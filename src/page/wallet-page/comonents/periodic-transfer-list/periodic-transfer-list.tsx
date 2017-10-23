@@ -1,0 +1,39 @@
+import * as React from 'react'
+
+import { observer } from 'mobx-react'
+import { Link } from 'react-router-dom'
+import { bind } from 'bind-decorator'
+
+
+import {  } from 'models'
+import { Panel } from '../../../../components/panel/panel'
+
+
+import './periodic-transfer-list.css'
+
+
+@observer
+export class PeriodicTransferList extends React.Component<{}, {}> {
+
+    constructor(props: {}) {
+        super(props)
+    }
+
+    componentDidMount() {
+    }
+
+    
+
+    render() {
+        return (
+            <div className="periodic-transfer-list">
+                <Panel className="dark">
+                    
+                </Panel>
+            </div>
+        )
+    }
+
+
+}
+
