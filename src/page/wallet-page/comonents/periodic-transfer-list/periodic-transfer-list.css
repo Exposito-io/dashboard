@@ -1,0 +1,14 @@
+.periodic-transfer-list {
+    width: 350px;
+}
+
+.periodic-transfer-list .periodic-transfer {
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+.periodic-transfer-list .periodic-transfer:hover {
+    background-color: rgba(0,0,0,0.3);
+}
