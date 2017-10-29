@@ -14,6 +14,7 @@ import './periodic-transfer-list.css'
 type Props = {
     list: PeriodicPayment[]
     onItemClick?: (item: PeriodicPayment) => any
+    selectedPeriodicTransfer?: PeriodicPayment
 }
 
 @observer
@@ -39,14 +40,26 @@ export default class PeriodicTransferList extends React.Component<Props, {}> {
         return (
             <div className="periodic-transfer-list">
                 <Panel className="dark">
-                    {this.props.list.map((periodicPayment, i) => 
-                        <div className="periodic-transfer" onClick={() => this.onItemClick(periodicPayment)}>
-                            {periodicPayment.schedule}: {periodicPayment.amount}
+                    {this.props.list.map((periodicTransfer, i) => 
+                        <div 
+                            key={i}
+                            className={`periodic-transfer ${this.isItemSelected(periodicTransfer) ? 'active' : ''}`}
+                            onClick={() => this.onItemClick(periodicTransfer)}
+                        >
+                            {periodicTransfer.schedule}: {periodicTransfer.amount}
                         </div>
                     )}
                 </Panel>
             </div>
         )
+    }
+
+
+    private isItemSelected(periodicTransfer: PeriodicPayment): boolean {
+        if (this.props.selectedPeriodicTransfer && this.props.selectedPeriodicTransfer._id === periodicTransfer._id)
+            return true
+        else
+            return false
     }
 
 

@@ -9,6 +9,11 @@ import config from '../../../config'
 export class PeriodicTransfersStore extends Store {
 
     @observable periodicPayments: PeriodicPayment[] = []
+    @observable selectedPeriodicTransfer: PeriodicPayment
+
+    @action selectPeriodicTransfer(periodicTransfer: PeriodicPayment) {
+        this.selectedPeriodicTransfer = periodicTransfer
+    }
 
     @action async save() {
         // TODO

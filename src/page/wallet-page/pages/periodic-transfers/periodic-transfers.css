@@ -1,0 +1,7 @@
+.periodic-transfers-section {
+    display: flex;
+}
+
+.periodic-transfers-section > div {
+    flex: 1 1 auto;
+}

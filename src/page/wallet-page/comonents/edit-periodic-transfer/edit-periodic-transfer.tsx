@@ -5,17 +5,23 @@ import { Link } from 'react-router-dom'
 import { bind } from 'bind-decorator'
 
 
-import {  } from 'models'
+import { PeriodicPayment } from 'models'
 import { Panel } from '../../../../components/panel/panel'
 
 
 import './edit-periodic-transfer.css'
 
 
-@observer
-export class EditPeriodicTransfer extends React.Component<{}, {}> {
+type Props = {
+    periodicTransfer: PeriodicPayment
+}
 
-    constructor(props: {}) {
+@observer
+export default class EditPeriodicTransfer extends React.Component<Props, {}> {
+
+    get periodicTransfer() { return this.props.periodicTransfer }
+
+    constructor(props: Props) {
         super(props)
     }
 
@@ -28,7 +34,11 @@ export class EditPeriodicTransfer extends React.Component<{}, {}> {
         return (
             <div className="edit-periodic-transfer">
                 <Panel className="dark">
-
+                    {this.periodicTransfer ? 
+                        this.periodicTransfer._id
+                    :
+                        ''
+                    }
                 </Panel>
             </div>
         )

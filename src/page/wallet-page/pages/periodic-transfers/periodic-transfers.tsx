@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 import { PeriodicTransfersStore } from '../../stores/periodic-transfers-store'
 
 import PeriodicTransferList from '../../comonents/periodic-transfer-list/periodic-transfer-list'
-import { Wallet, BitcoinWallet, Transaction, PaymentDestination } from 'models'
+import EditPeriodicTransfer from '../../comonents/edit-periodic-transfer/edit-periodic-transfer'
+import { PeriodicPayment } from 'models'
 
 
 import './periodic-transfers.css'
@@ -30,12 +31,22 @@ export class PeriodicTransfers extends React.Component<Props> {
             this.store = new PeriodicTransfersStore(props.walletId)
     }
 
+    
+
 
     render() {
         return (
             <div className="periodic-transfers-section">
-                Periodic transfers
-                <PeriodicTransferList list={this.store.periodicPayments} />
+                <PeriodicTransferList 
+                    list={this.store.periodicPayments} 
+                    selectedPeriodicTransfer={this.store.selectedPeriodicTransfer}
+                    onItemClick={periodicTransfer => this.store.selectPeriodicTransfer(periodicTransfer)}
+                />
+                {this.store.selectedPeriodicTransfer ?
+                    <EditPeriodicTransfer periodicTransfer={this.store.selectedPeriodicTransfer} />
+                :
+                    ''
+                }
             </div>
         )
     }

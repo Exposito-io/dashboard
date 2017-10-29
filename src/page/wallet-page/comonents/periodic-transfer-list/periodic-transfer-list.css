@@ -1,5 +1,6 @@
 .periodic-transfer-list {
     width: 350px;
+    max-width: 350px;
 }
 
 .periodic-transfer-list .periodic-transfer {
@@ -9,6 +10,7 @@
     vertical-align: middle;
 }
 
-.periodic-transfer-list .periodic-transfer:hover {
+.periodic-transfer-list .periodic-transfer:hover,
+.periodic-transfer-list .periodic-transfer.active {
     background-color: rgba(0,0,0,0.3);
 }
