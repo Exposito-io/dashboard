@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
+import { If } from 'babel-plugin-jsx-control-statements'
 
 
 import { PeriodicTransfersStore } from '../../stores/periodic-transfers-store'
@@ -42,11 +43,9 @@ export class PeriodicTransfers extends React.Component<Props> {
                     selectedPeriodicTransfer={this.store.selectedPeriodicTransfer}
                     onItemClick={periodicTransfer => this.store.selectPeriodicTransfer(periodicTransfer)}
                 />
-                {this.store.selectedPeriodicTransfer ?
-                    <EditPeriodicTransfer periodicTransfer={this.store.selectedPeriodicTransfer} />
-                :
-                    ''
-                }
+                <If condition={this.store.selectedPeriodicTransfer}> 
+                    {/*<EditPeriodicTransfer periodicTransfer={this.store.selectedPeriodicTransfer} />*/}
+                </If>
             </div>
         )
     }
