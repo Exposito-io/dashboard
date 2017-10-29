@@ -43,9 +43,9 @@ export class PeriodicTransfers extends React.Component<Props> {
                     selectedPeriodicTransfer={this.store.selectedPeriodicTransfer}
                     onItemClick={periodicTransfer => this.store.selectPeriodicTransfer(periodicTransfer)}
                 />
-                <If condition={this.store.selectedPeriodicTransfer}> 
-                    {/*<EditPeriodicTransfer periodicTransfer={this.store.selectedPeriodicTransfer} />*/}
-                </If>
+                {this.store.selectedPeriodicTransfer &&
+                    <EditPeriodicTransfer periodicTransfer={this.store.selectedPeriodicTransfer} />                
+                }
             </div>
         )
     }
