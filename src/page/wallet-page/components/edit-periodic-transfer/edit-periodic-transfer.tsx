@@ -37,6 +37,30 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                     {this.periodicTransfer && 
                         <div>
                             <input type="text" placeholder="Description" />
+
+                            <div className="repeat-choices">
+                                <div className="repeat-btn">
+                                    <img src={require('./images/hourly.svg')} alt=""/>
+                                    <span>Repeat hourly</span>
+                                </div>                                
+                                <div className="repeat-btn">
+                                    <img src={require('./images/day.svg')} alt=""/>
+                                    <span>Repeat daily</span>
+                                </div>
+                                <div className="repeat-btn">
+                                    <img src={require('./images/week.svg')} alt="" />
+                                    <span>Repeat weekly</span>
+                                </div>  
+                                <div className="repeat-btn">
+                                    <img src={require('./images/month.svg')} alt=""/>
+                                    <span>Repeat monthly</span>
+                                </div>  
+                                <div className="repeat-btn">
+                                    <img src={require('./images/year.svg')} alt=""/>
+                                    <span>Repeat yearly</span>
+                                </div>                                                                                            
+                            </div>
+
                         </div>
                     }
                 </Panel>
