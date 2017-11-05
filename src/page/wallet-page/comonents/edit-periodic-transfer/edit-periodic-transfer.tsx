@@ -34,10 +34,10 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
         return (
             <div className="edit-periodic-transfer">
                 <Panel className="dark">
-                    {this.periodicTransfer ? 
-                        this.periodicTransfer._id
-                    :
-                        ''
+                    {this.periodicTransfer && 
+                        <div>
+                            <input type="text" placeholder="Description" />
+                        </div>
                     }
                 </Panel>
             </div>

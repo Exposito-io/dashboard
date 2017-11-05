@@ -5,3 +5,7 @@
 .periodic-transfers-section > div {
     flex: 1 1 auto;
 }
+
+.periodic-transfers-section .edit-periodic-transfer {
+    margin-left: 24px;
+}
