@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 
 import { PeriodicTransfersStore } from '../../stores/periodic-transfers-store'
 
-import PeriodicTransferList from '../../comonents/periodic-transfer-list/periodic-transfer-list'
-import EditPeriodicTransfer from '../../comonents/edit-periodic-transfer/edit-periodic-transfer'
+import PeriodicTransferList from '../../components/periodic-transfer-list/periodic-transfer-list'
+import EditPeriodicTransfer from '../../components/edit-periodic-transfer/edit-periodic-transfer'
 import { PeriodicPayment } from 'models'
 
 
