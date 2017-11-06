@@ -2,6 +2,12 @@
     max-width: 500px;
 }
 
+.edit-periodic-transfer .description {
+    font-size: 20px;
+    width: calc(100%);
+    margin: 8px 0;
+}
+
 .edit-periodic-transfer .repeat-choices {
     display: flex;
     margin-top: 20px;

@@ -4,7 +4,7 @@ import { observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import { bind } from 'bind-decorator'
 
-
+import { EditPeriodicTransferStore, RepeatPeriod } from '../../stores/edit-periodic-transfer-store'
 import { PeriodicPayment } from 'models'
 import { Panel } from '../../../../components/panel/panel'
 
@@ -14,6 +14,7 @@ import './edit-periodic-transfer.css'
 
 type Props = {
     periodicTransfer: PeriodicPayment
+    store: EditPeriodicTransferStore
 }
 
 @observer
@@ -36,7 +37,7 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                 <Panel className="dark">
                     {this.periodicTransfer && 
                         <div>
-                            <input type="text" placeholder="Description" />
+                            <input type="text" placeholder="Enter a description" className="description" />
 
                             <div className="repeat-choices">
                                 <div className="repeat-btn">
@@ -58,8 +59,14 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                                 <div className="repeat-btn">
                                     <img src={require('./images/year.svg')} alt=""/>
                                     <span>Repeat yearly</span>
-                                </div>                                                                                            
+                                </div>
                             </div>
+
+                            {
+                            <div className="days-container">
+
+                            </div>
+                            }
 
                         </div>
                     }
