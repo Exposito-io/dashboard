@@ -28,6 +28,7 @@ export class PeriodicTransfersStore extends Store {
     constructor(walletId: string) {
         super()
         this.init(walletId)
+        ;(window as any).store = this
     }
 
     private async init(walletId: string) {

@@ -1,5 +1,7 @@
 import { autorun, observable, computed, action } from 'mobx'
-import { Project, BitcoinWallet, ExpositoWallet, Wallet, PeriodicPayment } from 'models'
+
+
+import { Project, BitcoinWallet, ExpositoWallet, Wallet, PeriodicPayment, PaymentDestination, Money } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../../stores/store'
 import { AlertStore, AlertType } from '../../../stores/alert-store'
@@ -13,9 +15,15 @@ export class EditPeriodicTransferStore extends Store {
 
 
     @observable selectedRepeatPeriod: RepeatPeriod
+    @observable description: string
 
-    @observable editedPeriodicTransfer: PeriodicPayment
-
+    @observable editedPeriodicTransfer: PeriodicPayment = {
+        amount: '',
+        projectId: '',
+        destination: '',
+        description: '',
+        schedule: ''
+    } as PeriodicPayment
 
 
     @action async save() {
@@ -26,28 +34,31 @@ export class EditPeriodicTransferStore extends Store {
         // TODO
     }
 
-    @action async setPeriodicTransfer() {
-        
+    @action async setPeriodicTransfer(periodicTransfer?: PeriodicPayment) {
+        this.isLoading = true
+
+        if (periodicTransfer) {
+            this.editedPeriodicTransfer = Object.assign({}, periodicTransfer)
+            this.originalPeriodicTransfer = periodicTransfer
+        }
+
+        this.isLoading = false
     }
 
     private client: ExpositoClient
 
 
 
-    constructor(periodicTransferId?: string) {
+    constructor(periodicTransfer?: PeriodicPayment) {
         super()
-        this.init(periodicTransferId)
+        this.init(periodicTransfer)
+        ;(window as any).editStore = this
     }
 
-    private async init(periodicTransferId?: string) {
+    private async init(periodicTransfer?: PeriodicPayment) {
         this.client = new ExpositoClient({ url: config.apiUrl, version: config.apiVersion  })
 
-        let periodicTransfer = await this.client.periodicPayments.getPeriodicPayment(periodicTransferId)
-        
-        this.editedPeriodicTransfer = Object.assign({}, periodicTransfer)
-        this.originalPeriodicTransfer = periodicTransfer
-
-        this.isLoading = false
+        this.setPeriodicTransfer(periodicTransfer)
     }
 
 

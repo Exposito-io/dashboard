@@ -1,5 +1,4 @@
 import * as React from 'react'
-
 import { observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import { bind } from 'bind-decorator'
@@ -20,7 +19,8 @@ type Props = {
 @observer
 export default class EditPeriodicTransfer extends React.Component<Props, {}> {
 
-    get periodicTransfer() { return this.props.periodicTransfer }
+    get periodicTransfer() { return this.props.store.editedPeriodicTransfer }
+    get store() { return this.props.store }
 
     constructor(props: Props) {
         super(props)
@@ -37,7 +37,13 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                 <Panel className="dark">
                     {this.periodicTransfer && 
                         <div>
-                            <input type="text" placeholder="Enter a description" className="description" />
+                            <input 
+                                onChange={e => this.periodicTransfer.description = e.currentTarget.value}
+                                value={this.periodicTransfer.description}
+                                type="text" 
+                                placeholder="Enter a description" 
+                                className="description"
+                            />
 
                             <div className="repeat-choices">
                                 <div className="repeat-btn">
