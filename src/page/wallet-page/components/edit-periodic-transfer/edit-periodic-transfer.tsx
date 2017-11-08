@@ -6,6 +6,7 @@ import * as classnames from 'classnames'
 
 import { EditPeriodicTransferStore, RepeatPeriod } from '../../stores/edit-periodic-transfer-store'
 import { PeriodicPayment } from 'models'
+import RepeatChoice from './components/repeat-choice/repeat-choice'
 import { Panel } from '../../../../components/panel/panel'
 
 
@@ -47,51 +48,11 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                             />
 
                             <div className="repeat-choices">
-                                <div className={classnames(
-                                                 "repeat-btn", 
-                                                 { 'active': this.store.selectedRepeatPeriod === RepeatPeriod.Hourly}
-                                                )}
-                                      onClick={e => this.store.selectedRepeatPeriod = RepeatPeriod.Hourly}
-                                >
-                                    <img src={require('./images/hourly.svg')} alt=""/>
-                                    <span>Repeat hourly</span>
-                                </div>                                
-                                <div className={classnames(
-                                                 "repeat-btn", 
-                                                 { 'active': this.store.selectedRepeatPeriod === RepeatPeriod.Daily}
-                                                )}
-                                      onClick={e => this.store.selectedRepeatPeriod = RepeatPeriod.Daily}
-                                >
-                                    <img src={require('./images/day.svg')} alt=""/>
-                                    <span>Repeat daily</span>
-                                </div>
-                                <div className={classnames(
-                                                 "repeat-btn", 
-                                                 { 'active': this.store.selectedRepeatPeriod === RepeatPeriod.Weekly}
-                                                )}
-                                      onClick={e => this.store.selectedRepeatPeriod = RepeatPeriod.Weekly}
-                                >
-                                    <img src={require('./images/week.svg')} alt="" />
-                                    <span>Repeat weekly</span>
-                                </div>  
-                                <div className={classnames(
-                                                 "repeat-btn", 
-                                                 { 'active': this.store.selectedRepeatPeriod === RepeatPeriod.Monthly}
-                                                )}
-                                      onClick={e => this.store.selectedRepeatPeriod = RepeatPeriod.Monthly}
-                                >
-                                    <img src={require('./images/month.svg')} alt=""/>
-                                    <span>Repeat monthly</span>
-                                </div>  
-                                <div className={classnames(
-                                                 "repeat-btn", 
-                                                 { 'active': this.store.selectedRepeatPeriod === RepeatPeriod.Yearly}
-                                                )}
-                                      onClick={e => this.store.selectedRepeatPeriod = RepeatPeriod.Yearly}
-                                >
-                                    <img src={require('./images/year.svg')} alt=""/>
-                                    <span>Repeat yearly</span>
-                                </div>
+                                <RepeatChoice period={RepeatPeriod.Hourly} store={this.store} />
+                                <RepeatChoice period={RepeatPeriod.Daily} store={this.store} />
+                                <RepeatChoice period={RepeatPeriod.Weekly} store={this.store} />
+                                <RepeatChoice period={RepeatPeriod.Monthly} store={this.store} />
+                                <RepeatChoice period={RepeatPeriod.Yearly} store={this.store} />
                             </div>
 
                             {

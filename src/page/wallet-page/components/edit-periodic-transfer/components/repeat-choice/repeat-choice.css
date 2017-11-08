@@ -1,0 +1,35 @@
+
+.edit-periodic-transfer .repeat-btn {
+    flex: 1 1 auto;
+    margin: 0 6px;
+    max-width: 80px;
+    height: 120px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.edit-periodic-transfer .repeat-btn img {
+    width: calc(100% - 30px);
+    position: relative;
+    opacity: 0.25;
+    transition: opacity 0.25s ease-in;
+}
+
+.edit-periodic-transfer .repeat-btn span {
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: 400;
+    opacity: 0.6;
+    transition: opacity 0.25s ease-in;    
+}
+
+.edit-periodic-transfer .repeat-btn:hover img,
+.edit-periodic-transfer .repeat-btn.active img {
+    opacity: 1;
+}
+
+
+.edit-periodic-transfer .repeat-btn:hover span,
+.edit-periodic-transfer .repeat-btn.active span {
+    opacity: 1;
+}
