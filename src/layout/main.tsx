@@ -6,7 +6,7 @@ import { WalletPage } from '../page/wallet-page/wallet-page'
 import { Wallets } from '../page/wallets/wallets'
 import { PeriodicPayments } from '../page/periodic-payments'
 import { Contributors } from '../page/contributors'
-import { NewProject } from '../page/new-project'
+import { NewProject } from '../page/new-project/new-project'
 import { SettingsPage } from '../page/settings'
 import { NotFound } from '../page/not-found'
 

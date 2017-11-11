@@ -14,7 +14,7 @@ import { EquityChart } from './components/equity-chart/equity-chart'
 import { SuccessIcon } from '../../components/success-icon/success-icon'
 import * as Spinner from 'react-spinkit'
 
-import './main.css'
+import './new-project.css'
 
 
 const layoutStore = new LayoutStore()
