@@ -37,9 +37,10 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
     render() {
         return (
             <div className="edit-periodic-transfer">
-                <Panel className="dark">
-                    {this.periodicTransfer && 
-                        <div>
+                {this.periodicTransfer && 
+                    <Panel className="dark">
+                        <div className="options">
+                            <h3><i>1</i> General options</h3>
                             <input 
                                 onChange={e => this.periodicTransfer.description = e.currentTarget.value}
                                 value={this.periodicTransfer.description}
@@ -71,16 +72,15 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                                 <WeekdayChoice store={this.store} weekday={WeekDay.Saturday} />
 
                             </div>
-
-                            
-                            <div className="recipient-container">
-                                <input type="text" placeholder="Add a recipient" />
-                            </div>
-                            
+                           
 
                         </div>
-                    }
-                </Panel>
+                        <div className="add-recipients">
+                            <h3><i>2</i> Add recipients</h3>
+                            <input type="text" placeholder="Add a recipient" style={{width: '100%'}} />
+                        </div>
+                    </Panel>
+                }
             </div>
         )
     }
