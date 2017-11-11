@@ -7,7 +7,7 @@ import { setRef } from '../../../../lib/tools'
 import { observer } from 'mobx-react'
 import { NewProjectStore } from '../../new-project-store'
 
-import { SearchResult } from '../search-result'
+import { SearchResult } from '../search-result/search-result'
 
 
 import './searchbar.css'

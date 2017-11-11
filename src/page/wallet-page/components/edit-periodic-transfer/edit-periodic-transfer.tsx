@@ -72,11 +72,11 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
 
                             </div>
 
-                            {
-                            <div className="days-container">
-
+                            
+                            <div className="recipient-container">
+                                <input type="text" placeholder="Add a recipient" />
                             </div>
-                            }
+                            
 
                         </div>
                     }
