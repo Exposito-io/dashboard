@@ -53,7 +53,7 @@ export default class RepeatChoice extends React.Component<Props, {}> {
         return (
         <div className={c(
                     "repeat-btn", 
-                    { 'active': this.selectedRepeatPeriod === this.props.period}
+                   {'active': this.selectedRepeatPeriod === this.props.period}
              )}
              onClick={this.onClick}>
             <img src={this.getIcon()} alt={this.getText()} />

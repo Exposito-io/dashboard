@@ -17,6 +17,8 @@ export class EditPeriodicTransferStore extends Store {
     @observable selectedRepeatPeriod: RepeatPeriod
     @observable description: string
 
+    @observable weekdays: WeekDay[] = []
+
     @observable editedPeriodicTransfer: PeriodicPayment = {
         amount: '',
         projectId: '',
@@ -25,6 +27,12 @@ export class EditPeriodicTransferStore extends Store {
         schedule: ''
     } as PeriodicPayment
 
+    @action toggleWeekday(day: WeekDay) {
+        if (this.weekdays.includes(day))
+            this.weekdays.splice(this.weekdays.indexOf(day), 1)
+        else
+            this.weekdays.push(day)
+    }
 
     @action async save() {
         // TODO
@@ -71,4 +79,14 @@ export enum RepeatPeriod {
     Weekly = 'Weekly',
     Monthly = 'Monthly',
     Yearly = 'Yearly'
+}
+
+export enum WeekDay {
+    Sunday = 0,
+    Monday = 1,
+    Tuesday = 2,
+    Wednesday = 3,
+    Thursday = 4,
+    Friday = 5,
+    Saturday = 6
 }

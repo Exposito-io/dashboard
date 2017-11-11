@@ -2,9 +2,9 @@ import * as React from 'react'
 import { observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import { bind } from 'bind-decorator'
-import * as classnames from 'classnames'
+import * as c from 'classnames'
 
-import { EditPeriodicTransferStore, RepeatPeriod } from '../../stores/edit-periodic-transfer-store'
+import { EditPeriodicTransferStore, RepeatPeriod, WeekDay } from '../../stores/edit-periodic-transfer-store'
 import { PeriodicPayment } from 'models'
 import RepeatChoice from './components/repeat-choice/repeat-choice'
 import { Panel } from '../../../../components/panel/panel'
@@ -53,6 +53,68 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                                 <RepeatChoice period={RepeatPeriod.Weekly} store={this.store} />
                                 <RepeatChoice period={RepeatPeriod.Monthly} store={this.store} />
                                 <RepeatChoice period={RepeatPeriod.Yearly} store={this.store} />
+                            </div>
+
+                            <div className={c(
+                                'repeat-options',
+                                'week-days',
+                              { 'visible': this.store.selectedRepeatPeriod === RepeatPeriod.Weekly }
+                                )}>
+                                <div 
+                                    className={c(
+                                        'week-day',
+                                      { 'active': this.store.weekdays.includes(WeekDay.Sunday)}  
+                                    )}
+                                    onClick={() => this.store.toggleWeekday(WeekDay.Sunday)}
+                                >
+                                    Sun
+                                </div>
+                                <div 
+                                    className={c(
+                                        'week-day',
+                                      { 'active': this.store.weekdays.includes(WeekDay.Monday)}  
+                                    )}
+                                    onClick={() => this.store.toggleWeekday(WeekDay.Monday)}
+                                >
+                                    Mon
+                                </div>
+                                <div 
+                                    className={c(
+                                        'week-day',
+                                      { 'active': this.store.weekdays.includes(WeekDay.Tuesday)}  
+                                    )}
+                                    onClick={() => this.store.toggleWeekday(WeekDay.Tuesday)}
+                                >
+                                    Tue
+                                </div>
+                                <div 
+                                    className={c(
+                                        'week-day',
+                                      { 'active': this.store.weekdays.includes(WeekDay.Wednesday)}  
+                                    )}
+                                    onClick={() => this.store.toggleWeekday(WeekDay.Wednesday)}
+                                >Wed</div>
+                                <div 
+                                    className={c(
+                                        'week-day',
+                                      { 'active': this.store.weekdays.includes(WeekDay.Thursday)}  
+                                    )}
+                                    onClick={() => this.store.toggleWeekday(WeekDay.Thursday)}
+                                >Thu</div>
+                                <div 
+                                    className={c(
+                                        'week-day',
+                                      { 'active': this.store.weekdays.includes(WeekDay.Friday)}  
+                                    )}
+                                    onClick={() => this.store.toggleWeekday(WeekDay.Friday)}
+                                >Fri</div>
+                                <div 
+                                    className={c(
+                                        'week-day',
+                                      { 'active': this.store.weekdays.includes(WeekDay.Saturday)}  
+                                    )}
+                                    onClick={() => this.store.toggleWeekday(WeekDay.Saturday)}
+                                >Sat</div>
                             </div>
 
                             {
