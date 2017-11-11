@@ -28,27 +28,3 @@
     justify-content: center;
     padding: 0 30px;
 }
-
-.edit-periodic-transfer .week-day {
-    --size: 58px;
-    width: var(--size);
-    height: var(--size);
-    max-width: var(--size);
-    margin: 8px 12px 12px 12px;
-    border-radius: 50%;
-    border: 1px solid #ccc;
-    text-align: center;
-    line-height: var(--size);
-    flex: 1 1 auto;
-    cursor: pointer;
-    font-weight: 400;
-    transition: background 0.2s ease-in,
-                color 0.2s ease-in;
-    /*font-size: 18px;*/
-}
-
-.edit-periodic-transfer .week-day:hover,
-.edit-periodic-transfer .week-day.active {
-    background: #ccc;
-    color: #333;
-}

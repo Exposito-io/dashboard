@@ -6,9 +6,10 @@ import * as c from 'classnames'
 
 import { EditPeriodicTransferStore, RepeatPeriod, WeekDay } from '../../stores/edit-periodic-transfer-store'
 import { PeriodicPayment } from 'models'
-import RepeatChoice from './components/repeat-choice/repeat-choice'
-import { Panel } from '../../../../components/panel/panel'
 
+import { Panel } from '../../../../components/panel/panel'
+import RepeatChoice from './components/repeat-choice/repeat-choice'
+import WeekdayChoice from './components/weekday-choice/weekday-choice'
 
 import './edit-periodic-transfer.css'
 
@@ -60,61 +61,15 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                                 'week-days',
                               { 'visible': this.store.selectedRepeatPeriod === RepeatPeriod.Weekly }
                                 )}>
-                                <div 
-                                    className={c(
-                                        'week-day',
-                                      { 'active': this.store.weekdays.includes(WeekDay.Sunday)}  
-                                    )}
-                                    onClick={() => this.store.toggleWeekday(WeekDay.Sunday)}
-                                >
-                                    Sun
-                                </div>
-                                <div 
-                                    className={c(
-                                        'week-day',
-                                      { 'active': this.store.weekdays.includes(WeekDay.Monday)}  
-                                    )}
-                                    onClick={() => this.store.toggleWeekday(WeekDay.Monday)}
-                                >
-                                    Mon
-                                </div>
-                                <div 
-                                    className={c(
-                                        'week-day',
-                                      { 'active': this.store.weekdays.includes(WeekDay.Tuesday)}  
-                                    )}
-                                    onClick={() => this.store.toggleWeekday(WeekDay.Tuesday)}
-                                >
-                                    Tue
-                                </div>
-                                <div 
-                                    className={c(
-                                        'week-day',
-                                      { 'active': this.store.weekdays.includes(WeekDay.Wednesday)}  
-                                    )}
-                                    onClick={() => this.store.toggleWeekday(WeekDay.Wednesday)}
-                                >Wed</div>
-                                <div 
-                                    className={c(
-                                        'week-day',
-                                      { 'active': this.store.weekdays.includes(WeekDay.Thursday)}  
-                                    )}
-                                    onClick={() => this.store.toggleWeekday(WeekDay.Thursday)}
-                                >Thu</div>
-                                <div 
-                                    className={c(
-                                        'week-day',
-                                      { 'active': this.store.weekdays.includes(WeekDay.Friday)}  
-                                    )}
-                                    onClick={() => this.store.toggleWeekday(WeekDay.Friday)}
-                                >Fri</div>
-                                <div 
-                                    className={c(
-                                        'week-day',
-                                      { 'active': this.store.weekdays.includes(WeekDay.Saturday)}  
-                                    )}
-                                    onClick={() => this.store.toggleWeekday(WeekDay.Saturday)}
-                                >Sat</div>
+                                
+                                <WeekdayChoice store={this.store} weekday={WeekDay.Sunday} />
+                                <WeekdayChoice store={this.store} weekday={WeekDay.Monday} />
+                                <WeekdayChoice store={this.store} weekday={WeekDay.Tuesday} />
+                                <WeekdayChoice store={this.store} weekday={WeekDay.Wednesday} />
+                                <WeekdayChoice store={this.store} weekday={WeekDay.Thursday} />
+                                <WeekdayChoice store={this.store} weekday={WeekDay.Friday} />
+                                <WeekdayChoice store={this.store} weekday={WeekDay.Saturday} />
+
                             </div>
 
                             {
