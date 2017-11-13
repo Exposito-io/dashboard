@@ -29,7 +29,8 @@ h1#logo {
 
 
 
-input {
+input,
+.react-autosuggest__input .input {
     display: inline-block;
     margin: 0;
     padding: 0 0 4px 0;

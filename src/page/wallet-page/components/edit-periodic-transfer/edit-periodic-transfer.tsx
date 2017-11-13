@@ -3,6 +3,7 @@ import { observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import { bind } from 'bind-decorator'
 import * as c from 'classnames'
+import * as Autosuggest from 'react-autosuggest'
 
 import { EditPeriodicTransferStore, RepeatPeriod, WeekDay } from '../../stores/edit-periodic-transfer-store'
 import { PeriodicPayment } from 'models'
@@ -10,6 +11,7 @@ import { PeriodicPayment } from 'models'
 import { Panel } from '../../../../components/panel/panel'
 import RepeatChoice from './components/repeat-choice/repeat-choice'
 import WeekdayChoice from './components/weekday-choice/weekday-choice'
+import { RecipientsComponent } from './components/recipients-component/recipients-component'
 
 import './edit-periodic-transfer.css'
 
@@ -36,7 +38,7 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
 
     render() {
         return (
-            <div className="edit-periodic-transfer">
+            <div className={c('edit-periodic-transfer', { 'expand': this.store.weekdays.length > 0 })}>
                 {this.periodicTransfer && 
                     <Panel className="dark">
                         <div className="options">
@@ -58,9 +60,9 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                             </div>
 
                             <div className={c(
-                                'repeat-options',
-                                'week-days',
-                              { 'visible': this.store.selectedRepeatPeriod === RepeatPeriod.Weekly }
+                                    'repeat-options',
+                                    'week-days',
+                                  { 'visible': this.store.selectedRepeatPeriod === RepeatPeriod.Weekly }
                                 )}>
                                 
                                 <WeekdayChoice store={this.store} weekday={WeekDay.Sunday} />
@@ -77,7 +79,7 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                         </div>
                         <div className="add-recipients">
                             <h3><i>2</i> Add recipients</h3>
-                            <input type="text" placeholder="Add a recipient" style={{width: '100%'}} />
+                            <RecipientsComponent store={this.store} />
                         </div>
                     </Panel>
                 }

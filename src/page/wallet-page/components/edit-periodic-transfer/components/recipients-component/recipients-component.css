@@ -1,0 +1,25 @@
+.recipients-component {
+
+}
+
+.recipients-component .react-autosuggest__container .input {
+    width: 100%;
+    font-size: 20px;
+    margin: 8px 0;
+    padding-left: 36px;
+}
+
+.recipients-component .react-autosuggest__container:after {
+    font-family: Ionicons;
+    content: "\F4A4";
+    display: inline-block;
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    font-size: 28px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-top: -3px;
+    color: #bbb;
+}

@@ -57,7 +57,7 @@
 
 .edit-periodic-transfer .repeat-options {
     opacity: 0;
-    transition: opacity 0.25s ease-in;
+    transition: opacity 0.4s var(--ease-out-quart);
 }
 
 .edit-periodic-transfer .repeat-options.visible {
