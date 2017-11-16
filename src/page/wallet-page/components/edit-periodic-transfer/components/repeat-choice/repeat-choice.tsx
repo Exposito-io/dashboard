@@ -35,7 +35,9 @@ export default class RepeatChoice extends React.Component<Props, {}> {
             case RepeatPeriod.Monthly: return require(`${imgPath}/month.svg`)
             case RepeatPeriod.Yearly: return require(`${imgPath}/year.svg`)
             default: return require(`${imgPath}/hourly.svg`)
+            
         }
+        
     }
 
     getText() {

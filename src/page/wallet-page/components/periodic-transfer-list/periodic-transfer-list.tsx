@@ -34,6 +34,10 @@ export default class PeriodicTransferList extends React.Component<Props, {}> {
             this.props.onItemClick(periodicTransfer)
     }
 
+    getIcon(periodicTransfer: PeriodicPayment) {
+        return require('../../images/periodic-transfers/week.svg')
+    }
+
     
 
     render() {
@@ -46,6 +50,7 @@ export default class PeriodicTransferList extends React.Component<Props, {}> {
                             className={`periodic-transfer ${this.isItemSelected(periodicTransfer) ? 'active' : ''}`}
                             onClick={() => this.onItemClick(periodicTransfer)}
                         >
+                            <img className="period-icon" src={this.getIcon(periodicTransfer)} alt=""/>
                             {periodicTransfer.schedule}: {periodicTransfer.amount}
                         </div>
                     )}
