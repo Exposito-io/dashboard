@@ -2,6 +2,7 @@ import * as React from 'react'
 import { observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import { bind } from 'bind-decorator'
+import styled from 'styled-components'
 
 
 import { PeriodicTransfersStore } from '../../stores/periodic-transfers-store'
@@ -13,6 +14,7 @@ import { PeriodicPayment } from 'models'
 
 
 import './periodic-transfers.css'
+
 
 
 type Props = {
@@ -48,16 +50,29 @@ export class PeriodicTransfers extends React.Component<Props> {
     render() {
         return (
             <div className="periodic-transfers-section">
-                <PeriodicTransferList 
-                    list={this.store.periodicPayments} 
-                    selectedPeriodicTransfer={this.store.selectedPeriodicTransfer}
-                    onItemClick={this.onPeriodicTransferClick}
-                />
+                <div className="main-container">
+                    <PeriodicTransferList 
+                        list={this.store.periodicPayments} 
+                        selectedPeriodicTransfer={this.store.selectedPeriodicTransfer}
+                        onItemClick={this.onPeriodicTransferClick}
+                    />
+                    {this.store.selectedPeriodicTransfer &&
+                        <EditPeriodicTransfer 
+                            periodicTransfer={this.store.selectedPeriodicTransfer} 
+                            store={this.editStore}
+                        />                
+                    }
+                </div>   
+
                 {this.store.selectedPeriodicTransfer &&
-                    <EditPeriodicTransfer 
-                        periodicTransfer={this.store.selectedPeriodicTransfer} 
-                        store={this.editStore}
-                    />                
+                <div className="btn-container">
+                    <button 
+                        onClick={() => {}}
+                        className="btn btn-default btn-main btn-md">
+                        Save
+                    </button>
+                    <button className="btn btn-default btn-md ">Cancel</button>
+                </div>   
                 }
             </div>
         )

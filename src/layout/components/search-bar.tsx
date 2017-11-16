@@ -118,11 +118,12 @@ export class SearchBar extends React.Component<any, any> {
           <i className='ion-ios-search-strong'></i>
         </Col>
         <Col padding={0}>
+          {/*}
           <Autosuggest suggestions={suggestions}
             onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
             getSuggestionValue={this.getSuggestionValue}
             renderSuggestion={this.renderSuggestion}
-            inputProps={inputProps} />
+            inputProps={inputProps} />*/}
         </Col>
       </Row>
     );

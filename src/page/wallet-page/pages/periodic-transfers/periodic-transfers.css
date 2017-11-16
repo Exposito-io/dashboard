@@ -1,11 +1,28 @@
 .periodic-transfers-section {
-    display: flex;
 }
 
-.periodic-transfers-section > div {
+.periodic-transfers-section .main-container {
+    display: flex;
+    min-height: 400px;
+    
+}
+
+.periodic-transfers-section .main-container > div {
     flex: 1 1 auto;
 }
 
 .periodic-transfers-section .edit-periodic-transfer {
     margin-left: 24px;
+}
+
+.periodic-transfers-section .btn-container {
+    text-align: center;
+    margin-top: 30px;
+    margin-left: -216px;
+    width: calc(100% + 246px);    
+}
+
+.periodic-transfers-section .btn-md {
+    min-width: 160px;
+    margin: 0 10px;
 }
