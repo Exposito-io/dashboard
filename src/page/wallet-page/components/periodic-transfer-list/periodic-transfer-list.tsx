@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { bind } from 'bind-decorator'
 
 
-import { PeriodicPayment, FixedPayment } from 'models'
+import { PeriodicPayment, FixedPayment, Money, Currencies } from 'models'
 import { Panel } from '../../../../components/panel/panel'
 
 
@@ -51,7 +51,13 @@ export default class PeriodicTransferList extends React.Component<Props, {}> {
                             onClick={() => this.onItemClick(periodicTransfer)}
                         >
                             <img className="period-icon" src={this.getIcon(periodicTransfer)} alt=""/>
-                            {periodicTransfer.schedule}: {periodicTransfer.amount}
+                            <span className="description">
+                                {periodicTransfer.description}
+                            </span> 
+                            <span className="amount">
+                                <span className="currency">{this.getAmountCurrency(periodicTransfer.currency)}</span>
+                                {periodicTransfer.amount}
+                            </span>
                         </div>
                     )}
                 </Panel>
@@ -59,6 +65,9 @@ export default class PeriodicTransferList extends React.Component<Props, {}> {
         )
     }
 
+    private getAmountCurrency(currency: string) {
+        return Currencies[currency].symbol_native
+    }
 
     private isItemSelected(periodicTransfer: PeriodicPayment): boolean {
         if (this.props.selectedPeriodicTransfer && this.props.selectedPeriodicTransfer._id === periodicTransfer._id)

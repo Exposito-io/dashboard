@@ -3,15 +3,46 @@
     max-width: 350px;
 }
 
-.periodic-transfer-list .periodic-transfer {
-    cursor: pointer;
-    height: 30px;
-    line-height: 30px;
-    vertical-align: middle;
+.periodic-transfer-list .panel-body {
+    padding: 15px 0;
 }
 
-.periodic-transfer-list .periodic-transfer .period-icon {
+.periodic-transfer-list .periodic-transfer {
+    cursor: pointer;
+    height: 50px;
+    line-height: 30px;
+    vertical-align: middle;
+    font-size: 16px;
+    display: flex;
+    padding: 6px 22px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-content: center;
+}
+
+.periodic-transfer-list .period-icon {
+    max-width: 24px;
     width: 24px;
+    margin-right: 12px;
+    vertical-align: middle;
+    margin-bottom: 2px;
+    flex: 1 1 auto;
+}
+
+.periodic-transfer-list .description {
+    flex: 1 1 auto;
+    line-height: 38px;
+}
+
+.periodic-transfer-list .amount {
+    flex: 1 1 auto;
+    text-align: right;
+    line-height: 38px;
+}
+
+.periodic-transfer-list .currency {
+    display: inline-block;
+    margin-right: 4px;
 }
 
 .periodic-transfer-list .periodic-transfer:hover,
