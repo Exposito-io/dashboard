@@ -15,11 +15,57 @@
     display: inline-block;
     position: absolute;
     left: 4px;
-    top: 50%;
+    top: 12px;
     font-size: 28px;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    margin-top: -3px;
     color: #bbb;
+}
+
+.recipients-component .react-autosuggest__suggestions-container {
+    margin-left: 0px;
+    position: absolute;
+    width: 100%;
+    height: 332px;
+    overflow: auto;    
+}
+
+
+
+
+
+/** Suggestion components **/
+
+.recipients-component .react-autosuggest__suggestion {
+    padding: 0;
+}
+
+.recipients-component .suggestion {
+    display: flex;
+    height: 60px;
+    align-items: center;
+}
+
+.recipients-component .suggestion i {
+    --size: 40px;
+    flex: 1 1 auto;
+    display: block;
+    width: var(--size);
+    height: var(--size);
+    max-width: var(--size);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    margin: 0 16px;
+}
+
+.recipients-component .suggestion .desc {
+    flex: 1 1 auto;
+}
+
+
+.recipients-component .suggestion.github-repo i {
+    background-image: url('./images/github.svg');
+}
+
+.recipients-component .suggestion.exposito-project i {
+    background-image: url('./images/exposito-logo.svg');
 }

@@ -1,4 +1,5 @@
 import { autorun, observable, computed, action } from 'mobx'
+import { debounce } from 'lodash-decorators'
 
 
 import { Project, BitcoinWallet, ExpositoWallet, Wallet, PeriodicPayment, PaymentDestination, Money } from 'models'
@@ -17,6 +18,9 @@ export class EditPeriodicTransferStore extends Store {
     @observable selectedRepeatPeriod: RepeatPeriod
     @observable description: string
 
+    @observable searchQuery: string = ''
+    @observable searchSuggestions: any[] = []
+
     @observable weekdays: WeekDay[] = []
 
     @observable editedPeriodicTransfer: PeriodicPayment = {
@@ -26,6 +30,16 @@ export class EditPeriodicTransferStore extends Store {
         description: '',
         schedule: ''
     } as PeriodicPayment
+
+
+    @debounce(500)
+    @action 
+    async fetchSearchSuggestions() {
+        let suggestions = await this.client.search(this.searchQuery)
+        
+        if (suggestions instanceof Array)
+            this.searchSuggestions = suggestions
+    }
 
     @action toggleWeekday(day: WeekDay) {
         if (this.weekdays.includes(day))
