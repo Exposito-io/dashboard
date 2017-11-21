@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { bind } from 'bind-decorator'
 import * as c from 'classnames'
 import * as Autosuggest from 'react-autosuggest'
-
+import Toggle from 'react-toggle'
 
 
 import { EditPeriodicTransferStore, RepeatPeriod, WeekDay } from '../../../../stores/edit-periodic-transfer-store'
@@ -12,6 +12,7 @@ import { PeriodicPayment } from 'models'
 
 
 
+import 'react-toggle/style.css'
 import './recipients-component.css'
 
 

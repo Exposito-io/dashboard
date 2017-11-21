@@ -7,7 +7,7 @@ import { Wallets } from '../page/wallets/wallets'
 import { PeriodicPayments } from '../page/periodic-payments'
 import { Contributors } from '../page/contributors'
 import { NewProject } from '../page/new-project/new-project'
-import { SettingsPage } from '../page/settings'
+import { SettingsPage } from '../page/settings/settings'
 import { NotFound } from '../page/not-found'
 
 
