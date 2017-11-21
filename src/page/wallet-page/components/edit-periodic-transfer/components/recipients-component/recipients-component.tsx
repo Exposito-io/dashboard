@@ -85,6 +85,15 @@ const ExpositoProjectSuggestion = ({ suggestion }) => (
         <div className="desc">
             {suggestion.name}
         </div>
+        <div className="tokenholders">
+            {suggestion.latestTokenholdersSnapshot.tokenholders.map((tokenholder, i) => 
+                <div 
+                    key={i}
+                    className="tokenholder"
+                    style={{ backgroundImage: `url(${tokenholder.picture})` }}>
+                </div>
+            )}
+        </div>
     </div>
 )
 
