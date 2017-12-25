@@ -35,10 +35,12 @@ export class EditPeriodicTransferStore extends Store {
     @debounce(500)
     @action 
     async fetchSearchSuggestions() {
-        let suggestions = await this.client.search(this.searchQuery)
-        
-        if (suggestions instanceof Array)
-            this.searchSuggestions = suggestions
+        if (this.searchQuery && this.searchQuery.length > 1) {
+            let suggestions = await this.client.search(this.searchQuery)
+            
+            if (suggestions instanceof Array)
+                this.searchSuggestions = suggestions
+        }
     }
 
     @action toggleWeekday(day: WeekDay) {

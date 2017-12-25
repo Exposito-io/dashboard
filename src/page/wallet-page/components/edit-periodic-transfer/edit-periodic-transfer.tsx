@@ -29,6 +29,7 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
 
     constructor(props: Props) {
         super(props)
+        ;(window as any).editStore = this
     }
 
     componentDidMount() {

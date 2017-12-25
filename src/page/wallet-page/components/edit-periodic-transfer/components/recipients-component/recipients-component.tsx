@@ -41,10 +41,20 @@ export class RecipientsComponent extends React.Component<Props, {}> {
         }
     }
 
+    renderRecipient(suggestion) {
+        switch(suggestion.searchItemType) {
+            case 'GithubRepo': return <GithubRepoSuggestion suggestion={suggestion} />
+            case 'ExpositoProject': return <ExpositoProjectSuggestion suggestion={suggestion} />
+            case 'ExpositoUser': return <UserSuggestion suggestion={suggestion} />
+            default: return <div></div>
+        }
+    }    
+
 
 
     @bind onQueryChange(e) {
-        this.store.searchQuery = (e.target as any).value
+        this.store.searchQuery = (e.target as any).value || ''
+
         this.store.fetchSearchSuggestions()
     }
     
@@ -56,7 +66,9 @@ export class RecipientsComponent extends React.Component<Props, {}> {
                     suggestions={(this.store.searchSuggestions as any).toJS()}
                     onSuggestionsFetchRequested={e => e}
                     onSuggestionsClearRequested={() => this.store.searchSuggestions = []}
-                    getSuggestionValue={s => s.score}
+                    onSuggestionSelected={s => console.log('Selection suggested ', s)}
+                    onSuggestionHighlighted={() => ''}
+                    getSuggestionValue={s => s.name}
                     renderSuggestion={this.renderSuggestion}
                     inputProps={{ 
                         className: 'input',
@@ -65,6 +77,10 @@ export class RecipientsComponent extends React.Component<Props, {}> {
                         onChange: this.onQueryChange
                     }}
                 />
+
+                <div className="recipients">
+                    {}
+                </div>
             </div>
         )
     }
