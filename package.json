@@ -55,6 +55,10 @@
     "@types/socket.io-client": "^1.4.30",
     "react-tap-event-plugin": "^2.0.1"
   },
+  "engines": {
+    "npm": "^4.6.1",
+    "node": "^8.9.3"
+  },
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
