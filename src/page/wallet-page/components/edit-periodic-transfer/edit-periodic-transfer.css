@@ -50,6 +50,12 @@
     margin: 8px 0;
 }
 
+.edit-periodic-transfer .amount {
+    font-size: 20px;
+    width: calc(100% - 80px);
+    margin: 8px 0;
+}
+
 .edit-periodic-transfer .repeat-choices {
     display: flex;
     margin-top: 20px;

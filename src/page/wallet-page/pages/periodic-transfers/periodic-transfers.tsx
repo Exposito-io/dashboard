@@ -2,7 +2,6 @@ import * as React from 'react'
 import { observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import { bind } from 'bind-decorator'
-import styled from 'styled-components'
 
 
 import { PeriodicTransfersStore } from '../../stores/periodic-transfers-store'

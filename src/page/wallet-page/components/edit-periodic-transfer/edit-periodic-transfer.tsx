@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { bind } from 'bind-decorator'
 import * as c from 'classnames'
 import * as Autosuggest from 'react-autosuggest'
+import * as NumberFormat from 'react-number-format'
+//import SimpleSelect from 'react-selectize'
 
 import { EditPeriodicTransferStore, RepeatPeriod, WeekDay } from '../../stores/edit-periodic-transfer-store'
 import { PeriodicPayment } from 'models'
@@ -43,7 +45,7 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                 {this.periodicTransfer && 
                     <Panel className="dark">
                         <div className="options">
-                            <h3><i>1</i> General options</h3>
+                            <h3><i>1</i> Description and amount</h3>
                             <input 
                                 onChange={e => this.periodicTransfer.description = e.currentTarget.value}
                                 value={this.periodicTransfer.description}
@@ -51,7 +53,30 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                                 placeholder="Enter a description" 
                                 className="description"
                             />
+                            <br />
+                            <NumberFormat 
+                                value={0} 
+                                className="amount"
+                                displayType={'input'} 
+                                placeholder="Transfer Amount"
+                                prefix="$ "
+                                thousandSeparator={true} 
+                                onChange={() => undefined}
+                            />
+                            {/*}
+                            <SimpleSelect 
+                                theme="material"
+                                options={[
+                                    { label: 'USD', value: 'USD' },
+                                    { label: '%', value: 'PCT' },
+                                    { label: 'BTC', value: 'BTC' }
+                                ]} 
+                                
+                            />*/}
 
+                            <br/> <br/><br />
+
+                            <h3><i>2</i> Transfer frequency</h3>
                             <div className="repeat-choices">
                                 <RepeatChoice period={RepeatPeriod.Hourly} store={this.store} />
                                 <RepeatChoice period={RepeatPeriod.Daily} store={this.store} />
