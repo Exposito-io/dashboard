@@ -109,7 +109,7 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
 
                         </div>
                         <div className="add-recipients">
-                            <h3><i>2</i> Recipients</h3>
+                            <h3><i>3</i> Recipients</h3>
                             <RecipientsComponent store={this.store} />
                         </div>
                     </Panel>

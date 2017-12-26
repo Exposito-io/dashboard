@@ -64,19 +64,62 @@ div.Select {
     display: inline-block;
 }
 
-div.Select .Select-control {
+div.Select .Select-control,
+div.Select.is-focused .Select-control,
+div.Select.is-open .Select-control,
+div.Select.is-focused:not(.is-open) > .Select-control {
     background-color: transparent;
     border-width: 2px;
     border-color: rgba(255,255,255,0.2);
     border: none;
-    border-bottom: 2px solid rgba(255,255,255,0.2);;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    box-shadow: none;
 }
+
 
 div.Select .Select-value {
     color: white;
 }
 
+
 div.Select.has-value.Select--single > .Select-control .Select-value .Select-value-label, .Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+    color: white;
+}
+
+div.Select .Select-input {
+    background: transparent !important;
+}
+
+div.Select .Select-menu-outer {
+    background: transparent !important;
+    border: none;
+}
+
+div.Select.has-value.Select--single > .Select-control .Select-value a.Select-value-label:focus,
+.Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label:focus {
+  background: transparent;
+}
+
+div.Select .Select-placeholder,
+.Select--single > .Select-control .Select-value {
+    color: white !important;
+}
+
+div.Select .Select-option {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+div.Select .Select-option.is-selected {
+    background-color: rgba(0, 0, 0, 0.7);;
+    color: white;
+}
+div.Select .Select-option.is-selected.is-focused {
+    background-color: #222;
+    color: white;
+}
+div.Select .Select-option.is-focused {
+    background-color: #222;
     color: white;
 }
 
