@@ -52,8 +52,17 @@
 
 .edit-periodic-transfer .amount {
     font-size: 20px;
-    width: calc(100% - 80px);
+    width: calc(100% - 140px);
     margin: 8px 0;
+}
+
+.edit-periodic-transfer .amount-currency {
+    vertical-align: middle;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-bottom: 13px;
+    font-size: 20px;
+    width: 130px;
 }
 
 .edit-periodic-transfer .repeat-choices {

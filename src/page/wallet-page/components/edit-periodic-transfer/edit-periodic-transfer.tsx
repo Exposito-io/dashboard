@@ -5,7 +5,7 @@ import { bind } from 'bind-decorator'
 import * as c from 'classnames'
 import * as Autosuggest from 'react-autosuggest'
 import * as NumberFormat from 'react-number-format'
-//import SimpleSelect from 'react-selectize'
+import Select from 'react-select'
 
 import { EditPeriodicTransferStore, RepeatPeriod, WeekDay } from '../../stores/edit-periodic-transfer-store'
 import { PeriodicPayment } from 'models'
@@ -15,6 +15,7 @@ import RepeatChoice from './components/repeat-choice/repeat-choice'
 import WeekdayChoice from './components/weekday-choice/weekday-choice'
 import { RecipientsComponent } from './components/recipients-component/recipients-component'
 
+import 'react-select/dist/react-select.css'
 import './edit-periodic-transfer.css'
 
 
@@ -63,16 +64,20 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                                 thousandSeparator={true} 
                                 onChange={() => undefined}
                             />
-                            {/*}
-                            <SimpleSelect 
-                                theme="material"
+                            
+                            <Select
+                                className="amount-currency"  
+                                value={'USD'}
+                                onChange={() => null}
                                 options={[
                                     { label: 'USD', value: 'USD' },
                                     { label: '%', value: 'PCT' },
                                     { label: 'BTC', value: 'BTC' }
                                 ]} 
-                                
-                            />*/}
+                                clearable={false}
+                                searchable={false} 
+                                                             
+                            />
 
                             <br/> <br/><br />
 
@@ -104,7 +109,7 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
 
                         </div>
                         <div className="add-recipients">
-                            <h3><i>2</i> Add recipients</h3>
+                            <h3><i>2</i> Recipients</h3>
                             <RecipientsComponent store={this.store} />
                         </div>
                     </Panel>

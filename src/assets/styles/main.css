@@ -58,6 +58,28 @@ body.badmin-transparent .panel.dark.panel-blur {
 
 
 
+/*** Select ***/
+
+div.Select {
+    display: inline-block;
+}
+
+div.Select .Select-control {
+    background-color: transparent;
+    border-width: 2px;
+    border-color: rgba(255,255,255,0.2);
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255,0.2);;
+}
+
+div.Select .Select-value {
+    color: white;
+}
+
+div.Select.has-value.Select--single > .Select-control .Select-value .Select-value-label, .Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+    color: white;
+}
+
 
 
 /*** Buttons ***/
