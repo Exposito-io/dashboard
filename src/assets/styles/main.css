@@ -74,6 +74,7 @@ div.Select.is-focused:not(.is-open) > .Select-control {
     border: none;
     border-bottom: 2px solid rgba(255,255,255,0.2);
     box-shadow: none;
+    border-radius: 0;
 }
 
 
@@ -83,7 +84,7 @@ div.Select .Select-value {
 
 
 div.Select.has-value.Select--single > .Select-control .Select-value .Select-value-label, .Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
-    color: white;
+    color: white !important;
 }
 
 div.Select .Select-input {

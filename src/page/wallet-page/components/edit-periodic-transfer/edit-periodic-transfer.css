@@ -60,8 +60,8 @@
     vertical-align: middle;
     margin-top: 8px;
     margin-left: 8px;
-    margin-bottom: 13px;
-    font-size: 20px;
+    margin-bottom: 14px;
+    font-size: 18px;
     width: 130px;
 }
 
@@ -72,11 +72,15 @@
 
 .edit-periodic-transfer .repeat-options {
     opacity: 0;
-    transition: opacity 0.4s var(--ease-out-quart);
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.4s var(--ease-out-quart),
+                max-height 0.6s var(--ease-out-quart);
 }
 
 .edit-periodic-transfer .repeat-options.visible {
     opacity: 1;
+    max-height: 200px;
 }
 
 .edit-periodic-transfer .repeat-options.week-days {

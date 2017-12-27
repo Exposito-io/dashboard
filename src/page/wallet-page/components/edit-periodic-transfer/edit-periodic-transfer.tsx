@@ -56,23 +56,25 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                             />
                             <br />
                             <NumberFormat 
-                                value={0} 
+                                value={this.store.editedPeriodicTransfer.amount} 
                                 className="amount"
                                 displayType={'input'} 
                                 placeholder="Transfer Amount"
-                                prefix="$ "
+                                prefix={this.store.amountPrefix}
+                                suffix={this.store.amountSuffix}
                                 thousandSeparator={true} 
-                                onChange={() => undefined}
+                                onChange={(e,values) => this.store.editedPeriodicTransfer.amount = values.amount}
                             />
                             
                             <Select
                                 className="amount-currency"  
-                                value={'USD'}
-                                onChange={() => null}
+                                value={this.store.editedPeriodicTransfer.currency}
+                                onChange={option => this.store.setAmountType((option as any).value)}
                                 options={[
-                                    { label: 'USD', value: 'USD' },
-                                    { label: '%', value: 'PCT' },
-                                    { label: 'BTC', value: 'BTC' }
+                                    { label: 'US Dollar', value: 'USD' },
+                                    { label: 'Percentage', value: 'PCT' },
+                                    { label: 'Bitcoin', value: 'BTC' },
+                                    { label: 'Ether', value: 'ETH' }
                                 ]} 
                                 clearable={false}
                                 searchable={false} 

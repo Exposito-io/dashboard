@@ -2,7 +2,17 @@ import { autorun, observable, computed, action } from 'mobx'
 import { debounce } from 'lodash-decorators'
 
 
-import { Project, BitcoinWallet, ExpositoWallet, Wallet, PeriodicPayment, PaymentDestination, Money } from 'models'
+import { 
+    Project, 
+    BitcoinWallet, 
+    ExpositoWallet, 
+    Wallet, 
+    PeriodicPayment, 
+    PaymentDestination, 
+    Money,
+    Currencies,
+    Currency
+} from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../../stores/store'
 import { AlertStore, AlertType } from '../../../stores/alert-store'
@@ -24,13 +34,38 @@ export class EditPeriodicTransferStore extends Store {
     @observable weekdays: WeekDay[] = []
 
     @observable editedPeriodicTransfer: PeriodicPayment = {
-        amount: '',
+        amount: '0',
+        currency: 'USD',
+        isAmountPct: false,
         projectId: '',
         destination: '',
         description: '',
         schedule: ''
     } as PeriodicPayment
 
+
+    @computed get amountPrefix() { 
+        if (!this.editedPeriodicTransfer.isAmountPct && Money.isValidCurrency(this.editedPeriodicTransfer.currency))
+            return Money.getCurrencyObject(this.editedPeriodicTransfer.currency).symbol_native + ' '
+        else
+            return ''
+    }
+
+    @computed get amountSuffix() {
+        if (this.editedPeriodicTransfer.isAmountPct)
+            return ' %'
+        else
+            return ''
+    }
+
+    @action setAmountType(currencyOrPct: string) {
+        if (currencyOrPct === 'PCT') 
+            this.editedPeriodicTransfer.isAmountPct = true
+        else 
+            this.editedPeriodicTransfer.isAmountPct = false
+        
+        this.editedPeriodicTransfer.currency = currencyOrPct 
+    }
 
     @debounce(500)
     @action 
