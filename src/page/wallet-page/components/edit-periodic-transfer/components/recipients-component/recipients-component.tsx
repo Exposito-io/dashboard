@@ -10,6 +10,8 @@ import Toggle from 'react-toggle'
 import { EditPeriodicTransferStore, RepeatPeriod, WeekDay } from '../../../../stores/edit-periodic-transfer-store'
 import { PeriodicPayment } from 'models'
 
+import { TransferRecipients } from '../../../../../../components/transfer-recipients/transfer-recipients'
+
 
 
 import 'react-toggle/style.css'
@@ -79,7 +81,7 @@ export class RecipientsComponent extends React.Component<Props, {}> {
                 />
 
                 <div className="recipients">
-                    {}
+                    <TransferRecipients amount="fawe" destinations={[]} />
                 </div>
             </div>
         )
