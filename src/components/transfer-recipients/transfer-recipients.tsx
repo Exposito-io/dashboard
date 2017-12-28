@@ -3,6 +3,8 @@ import * as BigNumber from 'bignumber.js'
 
 import { Panel } from 'react-blur-admin'
 import { observer } from 'mobx-react'
+import * as Switch from 'literal-switch'
+
 //import { ShareholderUser } from './components/shareholder-user'
 //import { ShareholderRepo } from './components/shareholder-repo'
 import { 
@@ -19,7 +21,7 @@ import './transfer-recipients.css'
 
 class TransferRecipientsProps {
     amount?: string
-    destinations: DestinationOptions[]
+    destinations: any
 }
 
 
@@ -37,38 +39,13 @@ export class TransferRecipients extends React.Component<TransferRecipientsProps>
         return (
             <div className="transfer-recipients">
                 {
-                    this.destinations.map(dest => {
-                        if (UserDestination.runtimeType().is(dest)) 
+                    (() => {
+                        if (UserDestination.runtimeType().is(this.destinations)) 
                             return <div>UserDestination</div>
                         else
-                            return <div>nope</div>
-                    })
+                            return <div></div>
+                    })()
                 }
-            {/*}
-                             
-                {store.shareholders.map(shareholder => {
-                    if (ShareholderDescriptionView.is(shareholder)) {
-                        let s = shareholder as ShareholderDescriptionView
-                        return <ShareholderUser 
-                                  key={s.userId}
-                                  user={s}>
-                               </ShareholderUser>                    
-                    }
-                    else if (GithubShareholdersDescription.validate(shareholder)) {
-                        let s = shareholder as GithubShareholdersDescriptionView
-                        return <ShareholderRepo
-                                   key={s.githubProject}
-                                   repo={s} >
-                               </ShareholderRepo>
-                    }
-                    else {
-                        console.log('wrong shareholder data', shareholder)
-                        return <div></div>
-                    }
-
-                })}
-            </Panel>
-            */}
             </div>
         )
     }

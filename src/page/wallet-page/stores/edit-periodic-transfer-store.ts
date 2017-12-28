@@ -8,10 +8,13 @@ import {
     ExpositoWallet, 
     Wallet, 
     PeriodicPayment, 
+    DestinationOptions,
     PaymentDestination, 
+    UserDestination,
     Money,
     Currencies,
-    Currency
+    Currency,
+    User
 } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../../stores/store'
@@ -56,6 +59,15 @@ export class EditPeriodicTransferStore extends Store {
             return ' %'
         else
             return ''
+    }
+
+
+    @action addRecipient(recipient: any) {
+        let destination = convertSearchResultToDestination(recipient)
+
+        this.editedPeriodicTransfer.destination = destination.destination
+        this.editedPeriodicTransfer.destinationType = destination.destinationType
+
     }
 
     @action setAmountType(currencyOrPct: string) {
@@ -140,4 +152,25 @@ export enum WeekDay {
     Thursday = 4,
     Friday = 5,
     Saturday = 6
+}
+
+
+
+function convertSearchResultToDestination(searchResult: any): DestinationOptions {
+    if (User.runtimeType().is(searchResult)) 
+        return convertUserToDestination(searchResult)
+    else {
+        throw('')
+    }   
+}
+
+
+function convertUserToDestination(user): DestinationOptions {
+    return {
+        destination: {
+            userId: user.id,
+            destination: user.defaultWallet.address
+        },
+        destinationType: 1 // TODO: Remove hardcoded destinationType
+    }
 }

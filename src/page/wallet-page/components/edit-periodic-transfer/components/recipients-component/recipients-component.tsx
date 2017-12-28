@@ -68,7 +68,7 @@ export class RecipientsComponent extends React.Component<Props, {}> {
                     suggestions={(this.store.searchSuggestions as any).toJS()}
                     onSuggestionsFetchRequested={e => e}
                     onSuggestionsClearRequested={() => this.store.searchSuggestions = []}
-                    onSuggestionSelected={s => console.log('Selection suggested ', s)}
+                    onSuggestionSelected={(e,value) => this.store.addRecipient(value.suggestion)}
                     onSuggestionHighlighted={() => ''}
                     getSuggestionValue={s => s.name}
                     renderSuggestion={this.renderSuggestion}
@@ -81,7 +81,7 @@ export class RecipientsComponent extends React.Component<Props, {}> {
                 />
 
                 <div className="recipients">
-                    <TransferRecipients amount="fawe" destinations={[]} />
+                    <TransferRecipients amount="fawe" destinations={this.store.editedPeriodicTransfer.destination} />
                 </div>
             </div>
         )
