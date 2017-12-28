@@ -5,8 +5,9 @@ import { Panel } from 'react-blur-admin'
 import { observer } from 'mobx-react'
 import * as Switch from 'literal-switch'
 
-//import { ShareholderUser } from './components/shareholder-user'
+import { UserRecipientComponent } from './components/user-recipient-component/user-recipient-component'
 //import { ShareholderRepo } from './components/shareholder-repo'
+
 import { 
     ShareholderDescription, 
     InvitedShareholderDescription, 
@@ -41,7 +42,7 @@ export class TransferRecipients extends React.Component<TransferRecipientsProps>
                 {
                     (() => {
                         if (UserDestination.runtimeType().is(this.destinations)) 
-                            return <div>UserDestination</div>
+                            return <UserRecipientComponent recipient={this.destinations} />
                         else
                             return <div></div>
                     })()

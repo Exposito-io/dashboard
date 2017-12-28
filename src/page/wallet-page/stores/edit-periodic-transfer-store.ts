@@ -169,7 +169,8 @@ function convertUserToDestination(user): DestinationOptions {
     return {
         destination: {
             userId: user.id,
-            destination: user.defaultWallet.address
+            destination: user.defaultWallet.address,
+            user: user
         },
         destinationType: 1 // TODO: Remove hardcoded destinationType
     }
