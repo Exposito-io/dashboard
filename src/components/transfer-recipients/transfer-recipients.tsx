@@ -9,7 +9,9 @@ import {
     ShareholderDescription, 
     InvitedShareholderDescription, 
     GithubShareholdersDescription,
-    DestinationOptions
+    DestinationOptions,
+    ProjectShareholdersDistribution,
+    UserDestination
 } from 'models'
 
 import './transfer-recipients.css'
@@ -24,21 +26,26 @@ class TransferRecipientsProps {
 @observer
 export class TransferRecipients extends React.Component<TransferRecipientsProps> {
 
-    
+    get amount() { return this.props.amount }
+    get destinations() { return this.props.destinations }
 
     constructor(props: any) {
         super(props)
-
     }
 
     render() {
         return (
-            <div>
-                hello
+            <div className="transfer-recipients">
+                {
+                    this.destinations.map(dest => {
+                        if (UserDestination.runtimeType().is(dest)) 
+                            return <div>UserDestination</div>
+                        else
+                            return <div>nope</div>
+                    })
+                }
             {/*}
-            <Panel className={`new-project-shareholders fs-anim-lower
-                               ${store.hasShareholders ? 'has-shareholders' : ''}`}>
-                               
+                             
                 {store.shareholders.map(shareholder => {
                     if (ShareholderDescriptionView.is(shareholder)) {
                         let s = shareholder as ShareholderDescriptionView
