@@ -4,11 +4,11 @@ import * as BigNumber from 'bignumber.js'
 import { Panel } from 'react-blur-admin'
 import { observer } from 'mobx-react'
 import { NewProjectStore } from '../../new-project-store'
-import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../../shareholders'
+import { TokenholderDescriptionView, GithubTokenholdersDescriptionView } from '../../shareholders'
 import { ShareholderUser } from '../shareholder-user'
 import { ShareholderRepo } from '../shareholder-repo'
 import { ShareholderUnallocated } from '../shareholder-unallocated'
-import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
+import { TokenholderDescription, InvitedTokenholderDescription, GithubTokenholdersDescription } from 'models'
 
 import './shareholders.css'
 
@@ -32,15 +32,15 @@ export class Shareholders extends React.Component {
                                ${store.hasShareholders ? 'has-shareholders' : ''}`}>
                                
                 {store.shareholders.map(shareholder => {
-                    if (ShareholderDescriptionView.is(shareholder)) {
-                        let s = shareholder as ShareholderDescriptionView
+                    if (TokenholderDescriptionView.is(shareholder)) {
+                        let s = shareholder as TokenholderDescriptionView
                         return <ShareholderUser 
                                   key={s.userId}
                                   user={s}>
                                </ShareholderUser>                    
                     }
-                    else if (GithubShareholdersDescription.validate(shareholder)) {
-                        let s = shareholder as GithubShareholdersDescriptionView
+                    else if (GithubTokenholdersDescription.validate(shareholder)) {
+                        let s = shareholder as GithubTokenholdersDescriptionView
                         return <ShareholderRepo
                                    key={s.githubProject}
                                    repo={s} >

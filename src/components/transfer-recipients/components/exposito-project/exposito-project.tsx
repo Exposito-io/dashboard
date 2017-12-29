@@ -13,9 +13,9 @@ import 'react-rangeslider/lib/index.css'
 import { observer } from 'mobx-react'
 import * as Spinner from 'react-spinkit'
 import {
-    ShareholderDescription,
-    InvitedShareholderDescription,
-    GithubShareholdersDescription,
+    TokenholderDescription,
+    InvitedTokenholderDescription,
+    GithubTokenholdersDescription,
     RepoAuthor
 } from 'models'
 

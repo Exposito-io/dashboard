@@ -1,8 +1,8 @@
-import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription, RepoStats } from 'models'
+import { TokenholderDescription, InvitedTokenholderDescription, GithubTokenholdersDescription, RepoStats } from 'models'
 import { SearchResultType } from './search-result-type'
 
 
-export class ShareholderDescriptionView extends ShareholderDescription {
+export class TokenholderDescriptionView extends TokenholderDescription {
     name: string
     image: string
     email: string
@@ -16,12 +16,12 @@ export class ShareholderDescriptionView extends ShareholderDescription {
 
 }
 
-export class InvitedShareholderDescriptionView extends InvitedShareholderDescription {
+export class InvitedTokenholderDescriptionView extends InvitedTokenholderDescription {
     
 }
 
 
-export class GithubShareholdersDescriptionView extends GithubShareholdersDescription {
+export class GithubTokenholdersDescriptionView extends GithubTokenholdersDescription {
     name: string
     description: string
     pct: number

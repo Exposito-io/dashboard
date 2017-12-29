@@ -13,11 +13,11 @@ import 'react-rangeslider/lib/index.css'
 import { observer } from 'mobx-react'
 import * as Spinner from 'react-spinkit'
 import { NewProjectStore } from '../../new-project-store'
-import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../../shareholders'
+import { TokenholderDescriptionView, GithubTokenholdersDescriptionView } from '../../shareholders'
 import {
-    ShareholderDescription,
-    InvitedShareholderDescription,
-    GithubShareholdersDescription,
+    TokenholderDescription,
+    InvitedTokenholderDescription,
+    GithubTokenholdersDescription,
     RepoAuthor
 } from 'models'
 
@@ -25,7 +25,7 @@ import {
 const store = NewProjectStore.getStore()
 
 type Props = {
-    repo: GithubShareholdersDescriptionView
+    repo: GithubTokenholdersDescriptionView
 }
 
 @observer

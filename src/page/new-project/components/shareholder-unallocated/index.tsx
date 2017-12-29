@@ -7,8 +7,8 @@ import { setRef } from '../../../../lib/tools'
 import { ProgressBar } from 'react-blur-admin'
 import { observer } from 'mobx-react'
 import { NewProjectStore } from '../../new-project-store'
-import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from '../../shareholders'
-import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
+import { TokenholderDescriptionView, GithubTokenholdersDescriptionView } from '../../shareholders'
+import { TokenholderDescription, InvitedTokenholderDescription, GithubTokenholdersDescription } from 'models'
 
 import { toFixed } from '../../../../lib/tools'
 
@@ -26,7 +26,7 @@ const store = NewProjectStore.getStore()
 @observer
 export class ShareholderUnallocated extends React.Component<{  }> {
 
-    user: ShareholderDescriptionView
+    user: TokenholderDescriptionView
     el: HTMLDivElement
 
     constructor(props: any) {

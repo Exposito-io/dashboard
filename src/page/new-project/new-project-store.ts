@@ -1,8 +1,8 @@
 import { autorun, observable, computed, action } from 'mobx'
-import { Project, CreateProjectShareholdersDistributionParams, 
-         ShareholderDescription, InvitedShareholderDescription, 
-         GithubShareholdersDescription, RepoStats } from 'models'
-import { ShareholderDescriptionView, GithubShareholdersDescriptionView } from './shareholders'
+import { Project, CreateProjectTokenholdersDistributionParams, 
+         TokenholderDescription, InvitedTokenholderDescription, 
+         GithubTokenholdersDescription, RepoStats } from 'models'
+import { TokenholderDescriptionView, GithubTokenholdersDescriptionView } from './shareholders'
 import { debounce } from 'lodash-decorators'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../stores/store'
@@ -34,8 +34,8 @@ export class NewProjectStore extends Store {
     @computed get hasSearchResults() { return this.searchResults.length > 0 }
     @observable searchHasFocus: boolean
 
-    @observable newProjectParams: CreateProjectShareholdersDistributionParams
-    @observable shareholders: (ShareholderDescriptionView | GithubShareholdersDescriptionView)[]
+    @observable newProjectParams: CreateProjectTokenholdersDistributionParams
+    @observable shareholders: (TokenholderDescriptionView | GithubTokenholdersDescriptionView)[]
     @computed get hasShareholders() { return this.shareholders.length > 0 }
 
     @computed get unallocatedTokens(): BigNumber.BigNumber {
@@ -126,7 +126,7 @@ export class NewProjectStore extends Store {
                 }
                 // Repo stats are already in server cache
                 else {
-                    this.shareholders.push(await this.createGithubShareholdersDescriptionView(repo, tokens)) 
+                    this.shareholders.push(await this.createGithubTokenholdersDescriptionView(repo, tokens)) 
                 }
                 break
             
@@ -137,7 +137,7 @@ export class NewProjectStore extends Store {
     }
 
 
-    @action removeShareholder(shareholder: ShareholderDescriptionView | GithubShareholdersDescriptionView) {
+    @action removeShareholder(shareholder: TokenholderDescriptionView | GithubTokenholdersDescriptionView) {
         let index = this.shareholders.indexOf(shareholder)
         this.shareholders.splice(index, 1)
     }
@@ -178,7 +178,7 @@ export class NewProjectStore extends Store {
      * @param shareholder 
      * @param value 
      */
-    @action setSharesPct(shareholder: ShareholderDescriptionView | GithubShareholdersDescriptionView, 
+    @action setSharesPct(shareholder: TokenholderDescriptionView | GithubTokenholdersDescriptionView, 
                          value: number): void {
         let totalTokens = new BigNumber(this.totalTokenCount)
         let tokensValue = totalTokens.mul(value / 100)
@@ -209,7 +209,7 @@ export class NewProjectStore extends Store {
     @action reset() {
         this.projectName = ""
         this.searchResults = []
-        this.newProjectParams = new CreateProjectShareholdersDistributionParams()
+        this.newProjectParams = new CreateProjectTokenholdersDistributionParams()
         this.shareholders = []
         this.totalTokenCount = '10000000'
     }
@@ -241,7 +241,7 @@ export class NewProjectStore extends Store {
     }
 
 
-    private async createGithubShareholdersDescriptionView(repo: RepoStats, tokens: string): Promise<GithubShareholdersDescriptionView> {
+    private async createGithubTokenholdersDescriptionView(repo: RepoStats, tokens: string): Promise<GithubTokenholdersDescriptionView> {
         repo.authors = repo.authors
                             .filter(author => new BigNumber(author.linesOfCode).greaterThan(0))
                             .sort((a, b) => (new BigNumber(b.linesOfCode).sub(a.linesOfCode).toNumber()))
@@ -266,7 +266,7 @@ export class NewProjectStore extends Store {
 
             for(let i = 0; i< this.shareholders.length; i++) {
                 if (this.shareholders[i].name === `${data.owner}/${data.repo}`) {
-                    let shareholder = await this.createGithubShareholdersDescriptionView(data, this.shareholders[i].shares)
+                    let shareholder = await this.createGithubTokenholdersDescriptionView(data, this.shareholders[i].shares)
                     let shareholders = this.shareholders.splice(i, 1, shareholder)
                     //this.shareholders = this.shareholders
                 }

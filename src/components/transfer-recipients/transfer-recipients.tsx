@@ -9,11 +9,11 @@ import { UserRecipientComponent } from './components/user-recipient-component/us
 import { ExpositoProject } from './components/exposito-project/exposito-project'
 
 import { 
-    ShareholderDescription, 
-    InvitedShareholderDescription, 
-    GithubShareholdersDescription,
+    TokenholderDescription, 
+    InvitedTokenholderDescription, 
+    GithubTokenholdersDescription,
     DestinationOptions,
-    ProjectShareholdersDistribution,
+    ProjectTokenholdersDistribution,
     UserDestination,
     Money
 } from 'models'
