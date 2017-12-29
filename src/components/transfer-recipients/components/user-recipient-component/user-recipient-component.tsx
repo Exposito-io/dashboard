@@ -32,7 +32,7 @@ export class UserRecipientComponent extends React.Component<{ recipient: any }> 
     
     render() {
         return (
-            <div ref={setRef(this, 'el')} className={`shareholder shareholder-user`}>
+            <div ref={setRef(this, 'el')} className={`recipient recipient-user`}>
                 <i className="ico" style={{backgroundImage: `url(${this.recipient.user.image}`}}></i>
                 <div className="info">
                     <span className="name">{this.recipient.user.name}</span>
