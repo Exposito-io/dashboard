@@ -81,7 +81,11 @@ export class RecipientsComponent extends React.Component<Props, {}> {
                 />
 
                 <div className="recipients">
-                    <TransferRecipients amount="fawe" destinations={this.store.editedPeriodicTransfer.destination} />
+                    <TransferRecipients 
+                        amount={this.store.calculatedAmount} 
+                        approximativeAmount={this.store.approximativeAmount}
+                        destinations={this.store.editedPeriodicTransfer.destination} 
+                    />
                 </div>
             </div>
         )

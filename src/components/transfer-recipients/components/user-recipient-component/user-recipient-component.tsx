@@ -6,7 +6,8 @@ import { bind } from 'bind-decorator'
 import { setRef } from '../../../../lib/tools'
 import { ProgressBar } from 'react-blur-admin'
 import { observer } from 'mobx-react'
-import { ShareholderDescription, InvitedShareholderDescription, GithubShareholdersDescription } from 'models'
+
+import { UserDestination, Money } from 'models'
 
 import { toFixed } from '../../../../lib/tools'
 
@@ -15,14 +16,19 @@ import Slider from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'
 
 
+class UserRecipientComponentProps {
+    recipient: UserDestination
+    amount: Money
+    approximateAmount? = false
+}
 
 
 @observer
-export class UserRecipientComponent extends React.Component<{ recipient: any }> {
+export class UserRecipientComponent extends React.Component<UserRecipientComponentProps> {
 
     el: HTMLDivElement
 
-    get recipient() { console.log(this.props.recipient); return this.props.recipient }
+    get recipient() { return this.props.recipient }
 
     componentDidMount() {
         setTimeout(() => this.el.classList.add('show'), 1)
@@ -36,14 +42,12 @@ export class UserRecipientComponent extends React.Component<{ recipient: any }> 
                 <i className="ico" style={{backgroundImage: `url(${this.recipient.user.image}`}}></i>
                 <div className="info">
                     <span className="name">{this.recipient.user.name}</span>
-                    <span className="pct">{toFixed(this.pct(), 0)}%</span><br/>
+                    <span className="pct">
+                    {this.props.approximateAmount && <span>~ </span>}
+                    {this.props.amount.getCurrencyInfo().symbol_native} {this.props.amount.toString()}
+                    </span><br/>
                     
-                    <Slider
-                        min={0}
-                        max={100}
-                        value={this.pct()}
-                        onChange={e => null}
-                    />
+                    <ProgressBar percentage={100} striped={true}></ProgressBar>
 
                 </div> 
             </div>

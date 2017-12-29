@@ -20,6 +20,7 @@ import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../../stores/store'
 import { AlertStore, AlertType } from '../../../stores/alert-store'
 import config from '../../../config'
+import { MockObserver } from 'rx';
 
 
 export class EditPeriodicTransferStore extends Store {
@@ -45,6 +46,15 @@ export class EditPeriodicTransferStore extends Store {
         description: '',
         schedule: ''
     } as PeriodicPayment
+
+    @computed get calculatedAmount() { 
+        if (this.editedPeriodicTransfer.isAmountPct)
+            return Money.fromStringDecimal('0', 'USD') // TODO: Calculate amount
+        else
+            return Money.fromStringDecimal(this.editedPeriodicTransfer.amount, this.editedPeriodicTransfer.currency)
+    }
+
+    @computed get approximativeAmount() { return this.editedPeriodicTransfer.isAmountPct }
 
 
     @computed get amountPrefix() { 

@@ -14,15 +14,17 @@ import {
     GithubShareholdersDescription,
     DestinationOptions,
     ProjectShareholdersDistribution,
-    UserDestination
+    UserDestination,
+    Money
 } from 'models'
 
 import './transfer-recipients.css'
 
 
 class TransferRecipientsProps {
-    amount?: string
+    amount?: Money
     destinations: any
+    approximativeAmount? = false
 }
 
 
@@ -42,7 +44,11 @@ export class TransferRecipients extends React.Component<TransferRecipientsProps>
                 {
                     (() => {
                         if (UserDestination.runtimeType().is(this.destinations)) 
-                            return <UserRecipientComponent recipient={this.destinations} />
+                            return <UserRecipientComponent 
+                                        recipient={this.destinations} 
+                                        amount={this.amount} 
+                                        approximateAmount={this.props.approximativeAmount}
+                                    />
                         else
                             return <div></div>
                     })()

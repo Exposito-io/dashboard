@@ -63,7 +63,7 @@ export default class EditPeriodicTransfer extends React.Component<Props, {}> {
                                 prefix={this.store.amountPrefix}
                                 suffix={this.store.amountSuffix}
                                 thousandSeparator={true} 
-                                onChange={(e, values) => this.store.editedPeriodicTransfer.amount = values.amount}
+                                onChange={(e, values) => this.store.editedPeriodicTransfer.amount = values.value || '0' }
                             />
                             
                             <Select
