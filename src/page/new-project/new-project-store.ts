@@ -220,6 +220,8 @@ export class NewProjectStore extends Store {
     private constructor() {
         super()
         this.init()
+
+        ;(window as any).newProjectStore = this
     }
 
 

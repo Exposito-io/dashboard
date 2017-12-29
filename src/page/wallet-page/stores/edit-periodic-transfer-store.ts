@@ -169,9 +169,10 @@ export enum WeekDay {
 function convertSearchResultToDestination(searchResult: any): DestinationOptions {
     if (User.runtimeType().is(searchResult)) 
         return convertUserToDestination(searchResult)
-    else {
+    else if (Project.runtimeType().is(searchResult)) 
+        return convertProjectToDestination(searchResult)
+    else
         throw('')
-    }   
 }
 
 
@@ -184,4 +185,57 @@ function convertUserToDestination(user): DestinationOptions {
         },
         destinationType: 1 // TODO: Remove hardcoded destinationType
     }
+}
+
+function convertProjectToDestination(project): DestinationOptions {
+    return {
+        destination: {
+            id: '',
+            projectId: project.id,
+            lastSnapshot: sampleSnapshot,
+            tokenholders: []
+        }
+    }
+}
+
+let sampleSnapshot = {
+    id: "83",
+    projectId: "5a469f55b8dc496167b7a057", 
+    date: new Date(), 
+    tokenholders: [
+        /*
+        { 
+            "userId" : "591279a23b14d93bdbed8a61", 
+            "shares" : "2000000" 
+        }, */
+        { 
+            "userId" : "59bd5e63a258fa9e23f6c51c", 
+            "name" : "Robert B. Youngs", 
+            "email" : "robert@gmail.com", 
+            "picture" : "http://www.drtoddcase.com/images/istock-images/istock_000018535175xsmall.jpg",
+            walletAddresses: [],
+            "shares" : "1500000"
+        },
+        { 
+            "email": "nathan.schmidt987@gmail.com", 
+            "name": "Julia Allison", 
+            "picture": "https://avatars0.githubusercontent.com/u/26845852?v=4", 
+            walletAddresses: [],
+            "shares": "5200000" 
+        }, 
+        { 
+            "email": "mathew@exposito.io", 
+            "name": "Tommy Simons", 
+            "picture": "https://avatars2.githubusercontent.com/u/31804070?v=4", 
+            walletAddresses: [],
+            "shares": "1027000" 
+        }, 
+        { 
+            "email": "mathew.corm@gmail.com", 
+            "name": "Mathew Cormier", 
+            "picture": "https://avatars3.githubusercontent.com/u/642515?v=4", 
+            walletAddresses: [],
+            "shares": "2273000" 
+        }
+    ]
 }
