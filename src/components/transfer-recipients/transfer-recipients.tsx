@@ -6,7 +6,7 @@ import { observer } from 'mobx-react'
 import * as Switch from 'literal-switch'
 
 import { UserRecipientComponent } from './components/user-recipient-component/user-recipient-component'
-//import { ShareholderRepo } from './components/shareholder-repo'
+import { ExpositoProject } from './components/exposito-project/exposito-project'
 
 import { 
     ShareholderDescription, 
@@ -49,8 +49,8 @@ export class TransferRecipients extends React.Component<TransferRecipientsProps>
                                         amount={this.amount} 
                                         approximateAmount={this.props.approximativeAmount}
                                     />
-                        else
-                            return <div></div>
+                        else if (true)
+                            return <ExpositoProject />
                     })()
                 }
             </div>
