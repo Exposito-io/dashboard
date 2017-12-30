@@ -18,7 +18,8 @@ import {
     GithubTokenholdersDescription,
     RepoAuthor,
     Project,
-    Money
+    Money,
+    Tokenholder
 } from 'models'
 
 
@@ -64,16 +65,15 @@ export class ExpositoProject extends React.Component<ExpositoProjectProps, Expos
                 {
                     
                     this.props.project.lastTokenholdersSnapshot.tokenholders.map((tokenholder, i) => 
-                        <div key={i} className="shareholder developer" style={{ zIndex: 100 - i }}>
+                        <div key={i} className="shareholder recipient developer" style={{ zIndex: 100 - i }}>
                             <i className="ico github" style={{ backgroundImage: `url(${tokenholder.picture})` }}></i>
                             <div className="info">
                                 <span className="name">
                                     {tokenholder.name}
                                 </span>
-                                <span className="pct">{toFixed(this.authorPct(tokenholder), 0)}%</span><br />
-                                <i className="info-icon fa fa-code" data-tip data-for={`info-tooltip-${i}`}></i>
+                                <span className="pct">{this.tokenholderAmount(tokenholder)}</span><br />
 
-                                <ProgressBar percentage={this.authorPct(tokenholder)} striped={true}></ProgressBar>
+                                <ProgressBar percentage={this.tokenholderPct(tokenholder) * 100} striped={true}></ProgressBar>
 
                             </div>
                         </div>
@@ -85,24 +85,25 @@ export class ExpositoProject extends React.Component<ExpositoProjectProps, Expos
 
 
     /**
-     * Returns the shareholder tokens in percentage of
+     * Returns the tokenholder percentage of
      * the total token number
      */
-    private pct() {
-        /*
-        let total = new BigNumber(store.totalTokenCount)
-        let shareholderTokens = new BigNumber(this.props.repo.shares)
+    private tokenholderPct(tokenholder: Tokenholder) {
+        let totalTokens = new BigNumber(0)
 
-        return shareholderTokens.dividedBy(total).toNumber() * 100*/
-        return 100
+        for(var auth of this.props.project.lastTokenholdersSnapshot.tokenholders) 
+            totalTokens = totalTokens.add(auth.shares)        
+
+        let tokenholderRatio = new BigNumber(tokenholder.shares).dividedBy(totalTokens)
+
+        return tokenholderRatio.toNumber()
     }
 
-    private authorPct(author: any): number {
-        /*
-        let pctOfCode = new BigNumber(author.linesOfCode).dividedBy(this.props.repo.stats.totalLinesOfCode).toNumber()
+    private tokenholderAmount(tokenholder: Tokenholder): string {
 
-        return pctOfCode * this.pct()*/
-        return 100
+        const authorAmount = this.props.amount.multiply(this.tokenholderPct(tokenholder))
+
+        return authorAmount.getCurrencyInfo().symbol_native + ' ' + authorAmount.toString() 
     }
 }
 
