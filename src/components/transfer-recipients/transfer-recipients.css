@@ -69,6 +69,10 @@
     background-image: url('./images/github.png'); 
 }
 
+.transfer-recipients i.ico.exposito {
+    background-image: url('./images/exposito-logo.svg'); 
+}
+
 .transfer-recipients .progress {
     margin-top: 12px;
     margin-bottom: 0px;

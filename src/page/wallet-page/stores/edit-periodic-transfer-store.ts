@@ -83,7 +83,7 @@ export class EditPeriodicTransferStore extends Store {
         */
         this.destination = recipient
 
-        if (Project.runtimeType().is(recipient))
+        if (Project.runtimeType().is(recipient)) 
             (recipient as any).lastTokenholdersSnapshot = sampleSnapshot
 
     }
@@ -217,6 +217,20 @@ let sampleSnapshot = {
             "shares" : "2000000" 
         }, */
         { 
+            "email": "nathan.schmidt987@gmail.com", 
+            "name": "Julia Allison", 
+            "picture": "https://avatars0.githubusercontent.com/u/26845852?v=4", 
+            walletAddresses: [],
+            "shares": "5200000" 
+        },    
+        { 
+            "email": "mathew.corm@gmail.com", 
+            "name": "Mathew Cormier", 
+            "picture": "https://avatars3.githubusercontent.com/u/642515?v=4", 
+            walletAddresses: [],
+            "shares": "2273000" 
+        },             
+        { 
             "userId" : "59bd5e63a258fa9e23f6c51c", 
             "name" : "Robert B. Youngs", 
             "email" : "robert@gmail.com", 
@@ -225,25 +239,11 @@ let sampleSnapshot = {
             "shares" : "1500000"
         },
         { 
-            "email": "nathan.schmidt987@gmail.com", 
-            "name": "Julia Allison", 
-            "picture": "https://avatars0.githubusercontent.com/u/26845852?v=4", 
-            walletAddresses: [],
-            "shares": "5200000" 
-        }, 
-        { 
             "email": "mathew@exposito.io", 
             "name": "Tommy Simons", 
             "picture": "https://avatars2.githubusercontent.com/u/31804070?v=4", 
             walletAddresses: [],
             "shares": "1027000" 
-        }, 
-        { 
-            "email": "mathew.corm@gmail.com", 
-            "name": "Mathew Cormier", 
-            "picture": "https://avatars3.githubusercontent.com/u/642515?v=4", 
-            walletAddresses: [],
-            "shares": "2273000" 
         }
     ]
 }

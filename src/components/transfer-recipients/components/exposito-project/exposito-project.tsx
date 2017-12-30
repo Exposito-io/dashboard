@@ -50,7 +50,7 @@ export class ExpositoProject extends React.Component<ExpositoProjectProps, Expos
         return (
             <div className={`shareholder shareholder-repo 
                             ${this.state.isVisible ? 'show' : ''}`}>
-                <i className="ico github"></i>
+                <i className="ico exposito"></i>
                 <div className="info">
                     <span className="name">{this.props.project.name}</span>
                     <span className="pct main">
