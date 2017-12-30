@@ -14,7 +14,8 @@ import {
     Money,
     Currencies,
     Currency,
-    User
+    User,
+    WalletType
 } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../../stores/store'
@@ -48,6 +49,20 @@ export class EditPeriodicTransferStore extends Store {
     } as PeriodicPayment
 
     @observable destination: User | Project
+
+    
+    @observable sourceWalletId: string
+    @observable sourceWallet: Wallet = {
+        amount: '',
+        currency: '',
+        description: '',
+        name: '',
+        projectId: '',
+        id: '',
+        labels: [],
+        type: WalletType.EXPOSITO,
+    } as Wallet
+
 
     @computed get calculatedAmount() { 
         if (this.editedPeriodicTransfer.isAmountPct)
@@ -94,7 +109,7 @@ export class EditPeriodicTransferStore extends Store {
             amount: '0',
             currency: 'USD',
             isAmountPct: false,
-            projectId: '',
+            sourceWalletId: this.sourceWalletId,
             destination: '',
             description: '',
             schedule: ''
@@ -141,31 +156,38 @@ export class EditPeriodicTransferStore extends Store {
         // TODO
     }
 
-    @action async setPeriodicTransfer(periodicTransfer?: PeriodicPayment) {
-        this.isLoading = true
+    @action async setPeriodicTransfer(periodicTransfer?: PeriodicPayment) {        
 
         if (periodicTransfer) {
             this.editedPeriodicTransfer = Object.assign({}, periodicTransfer)
             this.originalPeriodicTransfer = periodicTransfer
         }
 
-        this.isLoading = false
     }
 
     private client: ExpositoClient
 
 
 
-    constructor(periodicTransfer?: PeriodicPayment) {
+    constructor(sourceWalletId?: string) {
         super()
-        this.init(periodicTransfer)
-        ;(window as any).editStore = this
+        
+        this.init(sourceWalletId)
+        ;(window as any).editStore1 = this
     }
 
-    private async init(periodicTransfer?: PeriodicPayment) {
+    private async init(sourceWalletId?: string) {
+        this.isLoading = true
+
+        this.sourceWalletId = sourceWalletId
         this.client = new ExpositoClient({ url: config.apiUrl, version: config.apiVersion  })
 
-        this.setPeriodicTransfer(periodicTransfer)
+        if (sourceWalletId) 
+            this.sourceWallet = await this.client.wallets.getWallet({ walletId: sourceWalletId })
+        
+        this.setPeriodicTransfer()
+
+        this.isLoading = false
     }
 
 

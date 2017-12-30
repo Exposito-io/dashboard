@@ -34,7 +34,7 @@ export class PeriodicTransfers extends React.Component<Props> {
         if (props.walletId)
             this.store = new PeriodicTransfersStore(props.walletId)
 
-        this.editStore = new EditPeriodicTransferStore()
+        this.editStore = new EditPeriodicTransferStore(props.walletId)
     }
 
 
