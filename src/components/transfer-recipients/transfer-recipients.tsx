@@ -52,7 +52,11 @@ export class TransferRecipients extends React.Component<TransferRecipientsProps>
                                         approximateAmount={this.props.approximativeAmount}
                                     />
                         else if (Project.runtimeType().is(this.recipient))
-                            return <ExpositoProject />
+                            return <ExpositoProject 
+                                        project={this.recipient}
+                                        amount={this.amount}
+                                        approximateAmount={this.props.approximativeAmount}
+                                    />
                         else
                             return <div></div>
                     })()

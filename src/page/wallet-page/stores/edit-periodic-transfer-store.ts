@@ -83,6 +83,9 @@ export class EditPeriodicTransferStore extends Store {
         */
         this.destination = recipient
 
+        if (Project.runtimeType().is(recipient))
+            (recipient as any).lastTokenholdersSnapshot = sampleSnapshot
+
     }
 
     @action setAmountType(currencyOrPct: string) {

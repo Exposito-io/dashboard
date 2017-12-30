@@ -16,14 +16,18 @@ import {
     TokenholderDescription,
     InvitedTokenholderDescription,
     GithubTokenholdersDescription,
-    RepoAuthor
+    RepoAuthor,
+    Project,
+    Money
 } from 'models'
 
 
 
 
 class ExpositoProjectProps {
-    
+    project: Project
+    amount: Money
+    approximateAmount? = false    
 }
 
 class ExpositoProjectState {
@@ -47,37 +51,33 @@ export class ExpositoProject extends React.Component<ExpositoProjectProps, Expos
                             ${this.state.isVisible ? 'show' : ''}`}>
                 <i className="ico github"></i>
                 <div className="info">
-                    <span className="name">{/*this.props.repo.githubProject*/}</span>
-                    <span className="pct main">{100}%</span><br />
+                    <span className="name">{this.props.project.name}</span>
+                    <span className="pct main">
+                    {this.props.approximateAmount && <span>~ </span>}
+                    {this.props.amount.getCurrencyInfo().symbol_native} {this.props.amount.toString()}
+                    </span><br />
 
                     <ProgressBar percentage={100} striped={true}></ProgressBar>
 
                 </div>
 
                 {
-                    /*
-                    this.props.repo.stats && this.props.repo.stats.authors.map((author, i) => {
-                        return <div key={i} className="shareholder developer" style={{ zIndex: 100 - i }}>
-                            <i className="ico github" style={{ backgroundImage: `url(${author.image})` }}></i>
+                    
+                    this.props.project.lastTokenholdersSnapshot.tokenholders.map((tokenholder, i) => 
+                        <div key={i} className="shareholder developer" style={{ zIndex: 100 - i }}>
+                            <i className="ico github" style={{ backgroundImage: `url(${tokenholder.picture})` }}></i>
                             <div className="info">
                                 <span className="name">
-                                    {author.name}
+                                    {tokenholder.name}
                                 </span>
-                                <span className="pct">{toFixed(this.authorPct(author), 0)}%</span><br />
+                                <span className="pct">{toFixed(this.authorPct(tokenholder), 0)}%</span><br />
                                 <i className="info-icon fa fa-code" data-tip data-for={`info-tooltip-${i}`}></i>
-                                <ReactTooltip 
-                                    className="info-tooltip" 
-                                    id={`info-tooltip-${i}`}
-                                    place="bottom" 
-                                    effect="solid">
-                                    <strong>{author.linesOfCode}</strong> lines of code<br/>
-                                    <strong>{author.fileCount}</strong> files modified
-                                </ReactTooltip>
-                                <ProgressBar percentage={this.authorPct(author)} striped={true}></ProgressBar>
+
+                                <ProgressBar percentage={this.authorPct(tokenholder)} striped={true}></ProgressBar>
 
                             </div>
                         </div>
-                    })*/
+                    )
                 }
             </div>
         )
@@ -97,7 +97,7 @@ export class ExpositoProject extends React.Component<ExpositoProjectProps, Expos
         return 100
     }
 
-    private authorPct(author: RepoAuthor): number {
+    private authorPct(author: any): number {
         /*
         let pctOfCode = new BigNumber(author.linesOfCode).dividedBy(this.props.repo.stats.totalLinesOfCode).toNumber()
 
