@@ -1,5 +1,6 @@
 import { autorun, observable, computed, action } from 'mobx'
 import { debounce } from 'lodash-decorators'
+import * as BigNumber from 'bignumber.js'
 
 
 import { 
@@ -65,8 +66,12 @@ export class EditPeriodicTransferStore extends Store {
 
 
     @computed get calculatedAmount() { 
-        if (this.editedPeriodicTransfer.isAmountPct)
-            return Money.fromStringDecimal('0', 'USD') // TODO: Calculate amount
+        if (this.editedPeriodicTransfer.isAmountPct) {
+            const pct = new BigNumber(this.editedPeriodicTransfer.amount).dividedBy(100)
+            const estimatedAmount = pct.mul(this.sourceWallet.amount)
+
+            return Money.fromStringDecimal(estimatedAmount.toString(), 'USD') // TODO: Calculate amount
+        }
         else
             return Money.fromStringDecimal(this.editedPeriodicTransfer.amount, this.editedPeriodicTransfer.currency)
     }

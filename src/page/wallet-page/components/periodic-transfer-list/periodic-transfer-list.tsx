@@ -66,7 +66,10 @@ export default class PeriodicTransferList extends React.Component<Props, {}> {
     }
 
     private getAmountCurrency(currency: string) {
-        return Currencies[currency].symbol_native
+        if (Currencies[currency])
+            return Currencies[currency].symbol_native
+        else
+            return ''
     }
 
     private isItemSelected(periodicTransfer: PeriodicPayment): boolean {
