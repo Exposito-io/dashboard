@@ -47,6 +47,8 @@ export class EditPeriodicTransferStore extends Store {
         schedule: ''
     } as PeriodicPayment
 
+    @observable destination: User | Project
+
     @computed get calculatedAmount() { 
         if (this.editedPeriodicTransfer.isAmountPct)
             return Money.fromStringDecimal('0', 'USD') // TODO: Calculate amount
@@ -73,10 +75,13 @@ export class EditPeriodicTransferStore extends Store {
 
 
     @action addRecipient(recipient: any) {
+        /*
         let destination = convertSearchResultToDestination(recipient)
 
         this.editedPeriodicTransfer.destination = destination.destination
         this.editedPeriodicTransfer.destinationType = destination.destinationType
+        */
+        this.destination = recipient
 
     }
 

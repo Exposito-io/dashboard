@@ -84,7 +84,7 @@ export class RecipientsComponent extends React.Component<Props, {}> {
                     <TransferRecipients 
                         amount={this.store.calculatedAmount} 
                         approximativeAmount={this.store.approximativeAmount}
-                        destinations={this.store.editedPeriodicTransfer.destination} 
+                        recipient={this.store.destination} 
                     />
                 </div>
             </div>

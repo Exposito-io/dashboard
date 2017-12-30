@@ -7,7 +7,7 @@ import { setRef } from '../../../../lib/tools'
 import { ProgressBar } from 'react-blur-admin'
 import { observer } from 'mobx-react'
 
-import { UserDestination, Money } from 'models'
+import { UserDestination, Money, User  } from 'models'
 
 import { toFixed } from '../../../../lib/tools'
 
@@ -17,9 +17,19 @@ import 'react-rangeslider/lib/index.css'
 
 
 class UserRecipientComponentProps {
-    recipient: UserDestination
+    recipient: UserInfo
     amount: Money
     approximateAmount? = false
+}
+
+
+export class UserInfo {
+
+    id?: string
+    name?: string
+    email?: string
+
+    image?: string
 }
 
 
@@ -30,6 +40,11 @@ export class UserRecipientComponent extends React.Component<UserRecipientCompone
 
     get recipient() { return this.props.recipient }
 
+    get recipientDescription() { 
+        return this.recipient.name 
+            || this.recipient.email
+    }
+
     componentDidMount() {
         setTimeout(() => this.el.classList.add('show'), 1)
     }
@@ -39,9 +54,9 @@ export class UserRecipientComponent extends React.Component<UserRecipientCompone
     render() {
         return (
             <div ref={setRef(this, 'el')} className={`recipient recipient-user`}>
-                <i className="ico" style={{backgroundImage: `url(${this.recipient.user.image}`}}></i>
+                <i className="ico" style={{backgroundImage: `url(${this.recipient.image}`}}></i>
                 <div className="info">
-                    <span className="name">{this.recipient.user.name}</span>
+                    <span className="name">{this.recipientDescription}</span>
                     <span className="pct">
                     {this.props.approximateAmount && <span>~ </span>}
                     {this.props.amount.getCurrencyInfo().symbol_native} {this.props.amount.toString()}

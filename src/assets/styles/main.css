@@ -47,6 +47,12 @@ input,
     outline: 0 none;
 }
 
+.react-autosuggest__suggestions-container {
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+
 input:focus {
     border-color: white;
 }

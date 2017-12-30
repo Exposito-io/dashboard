@@ -14,6 +14,8 @@ import {
     GithubTokenholdersDescription,
     DestinationOptions,
     ProjectTokenholdersDistribution,
+    Project,
+    User,
     UserDestination,
     Money
 } from 'models'
@@ -23,7 +25,7 @@ import './transfer-recipients.css'
 
 class TransferRecipientsProps {
     amount?: Money
-    destinations: any
+    recipient: User | Project
     approximativeAmount? = false
 }
 
@@ -32,7 +34,7 @@ class TransferRecipientsProps {
 export class TransferRecipients extends React.Component<TransferRecipientsProps> {
 
     get amount() { return this.props.amount }
-    get destinations() { return this.props.destinations }
+    get recipient() { return this.props.recipient }
 
     constructor(props: any) {
         super(props)
@@ -43,14 +45,16 @@ export class TransferRecipients extends React.Component<TransferRecipientsProps>
             <div className="transfer-recipients">
                 {
                     (() => {
-                        if (UserDestination.runtimeType().is(this.destinations)) 
+                        if (User.runtimeType().is(this.recipient)) 
                             return <UserRecipientComponent 
-                                        recipient={this.destinations} 
+                                        recipient={this.recipient} 
                                         amount={this.amount} 
                                         approximateAmount={this.props.approximativeAmount}
                                     />
-                        else if (true)
+                        else if (Project.runtimeType().is(this.recipient))
                             return <ExpositoProject />
+                        else
+                            return <div></div>
                     })()
                 }
             </div>
