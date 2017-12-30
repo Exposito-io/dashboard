@@ -4,11 +4,45 @@
 .periodic-transfers-section .main-container {
     display: flex;
     min-height: 400px;
-    
+    margin-top: -24px;
+}
+
+.periodic-transfers-section .add-btn {
+    cursor: pointer;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 20px;
+    opacity: 0.8;
+    line-height: 28px;
+    margin-bottom: 8px;
+    margin-left: 4px;
+    transition: oopacity 0.45s var(--ease-in-quad);
+}
+
+.periodic-transfers-section .add-btn span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.periodic-transfers-section .plus-icon {
+    cursor: pointer;
+    fill: white;
+    width: 28px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.periodic-transfers-section .add-btn:hover {
+    opacity: 1;
 }
 
 .periodic-transfers-section .main-container > div {
     flex: 1 1 auto;
+}
+
+.periodic-transfers-section .periodic-transfer-list-container {
+    max-width: 350px;
+    width: 350px;
 }
 
 .periodic-transfers-section .edit-periodic-transfer {
