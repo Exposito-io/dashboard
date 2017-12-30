@@ -16,7 +16,8 @@ import {
     Currencies,
     Currency,
     User,
-    WalletType
+    WalletType,
+    ProjectTokenholdersDistribution
 } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../../stores/store'
@@ -95,12 +96,12 @@ export class EditPeriodicTransferStore extends Store {
 
 
     @action addRecipient(recipient: any) {
-        /*
-        let destination = convertSearchResultToDestination(recipient)
+        
+        const destination = convertSearchResultToDestination(recipient)
 
         this.editedPeriodicTransfer.destination = destination.destination
         this.editedPeriodicTransfer.destinationType = destination.destinationType
-        */
+        
         this.destination = recipient
 
         if (Project.runtimeType().is(recipient)) 
@@ -196,6 +197,7 @@ export class EditPeriodicTransferStore extends Store {
     }
 
 
+ 
 }
 
 
@@ -233,8 +235,7 @@ function convertUserToDestination(user): DestinationOptions {
     return {
         destination: {
             userId: user.id,
-            destination: user.defaultWallet.address,
-            user: user
+            destination: user.defaultWallet.address || ''
         },
         destinationType: 1 // TODO: Remove hardcoded destinationType
     }
@@ -243,11 +244,8 @@ function convertUserToDestination(user): DestinationOptions {
 function convertProjectToDestination(project): DestinationOptions {
     return {
         destination: {
-            id: '',
-            projectId: project.id,
-            lastSnapshot: sampleSnapshot,
-            tokenholders: []
-        }
+            projectId: project.id
+        } as ProjectTokenholdersDistribution
     }
 }
 
