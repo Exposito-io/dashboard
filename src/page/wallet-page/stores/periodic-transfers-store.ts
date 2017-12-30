@@ -11,6 +11,11 @@ export class PeriodicTransfersStore extends Store {
     @observable periodicPayments: PeriodicPayment[] = []
     @observable selectedPeriodicTransfer: PeriodicPayment
 
+    @action addPeriodicTransfer(periodicTransfer: PeriodicPayment) {
+        this.periodicPayments.push(periodicTransfer)
+        this.selectPeriodicTransfer(periodicTransfer)
+    }
+
     @action selectPeriodicTransfer(periodicTransfer: PeriodicPayment) {
         this.selectedPeriodicTransfer = periodicTransfer
     }

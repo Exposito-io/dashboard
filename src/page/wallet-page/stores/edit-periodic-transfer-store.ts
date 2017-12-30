@@ -88,6 +88,24 @@ export class EditPeriodicTransferStore extends Store {
 
     }
 
+    @action createPeriodicTransfer() {
+        
+        const periodicTransfer = {
+            amount: '0',
+            currency: 'USD',
+            isAmountPct: false,
+            projectId: '',
+            destination: '',
+            description: '',
+            schedule: ''
+        } as PeriodicPayment
+
+        this.originalPeriodicTransfer = Object.assign({}, periodicTransfer)
+        this.editedPeriodicTransfer = periodicTransfer
+
+        return this.editedPeriodicTransfer
+    }
+
     @action setAmountType(currencyOrPct: string) {
         if (currencyOrPct === 'PCT') 
             this.editedPeriodicTransfer.isAmountPct = true
