@@ -43,16 +43,6 @@ export class RecipientsComponent extends React.Component<Props, {}> {
         }
     }
 
-    renderRecipient(suggestion) {
-        switch(suggestion.searchItemType) {
-            case 'GithubRepo': return <GithubRepoSuggestion suggestion={suggestion} />
-            case 'ExpositoProject': return <ExpositoProjectSuggestion suggestion={suggestion} />
-            case 'ExpositoUser': return <UserSuggestion suggestion={suggestion} />
-            default: return <div></div>
-        }
-    }    
-
-
 
     @bind onQueryChange(e) {
         this.store.searchQuery = (e.target as any).value || ''
@@ -109,7 +99,7 @@ const ExpositoProjectSuggestion = ({ suggestion }) => (
             {suggestion.name}
         </div>
         <div className="tokenholders">
-            {suggestion.latestTokenholdersSnapshot.tokenholders.map((tokenholder, i) => 
+            {suggestion.lastTokenholdersSnapshot && suggestion.lastTokenholdersSnapshot.tokenholders.map((tokenholder, i) => 
                 <div 
                     key={i}
                     className="tokenholder"

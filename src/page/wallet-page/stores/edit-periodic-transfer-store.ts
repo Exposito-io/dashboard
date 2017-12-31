@@ -126,6 +126,7 @@ export class EditPeriodicTransferStore extends Store {
 
         this.selectedRepeatPeriod = null
         this.weekdays = []
+        this.destination = null
 
         return this.editedPeriodicTransfer
     }
@@ -145,6 +146,11 @@ export class EditPeriodicTransferStore extends Store {
         if (this.searchQuery && this.searchQuery.length > 1) {
             let suggestions = await this.client.search(this.searchQuery)
             
+            for (let suggestion of suggestions) {
+                if (Project.runtimeType().is(suggestion) && suggestion.name === 'Project 2')
+                    (suggestion as Project).lastTokenholdersSnapshot = sampleSnapshot
+            }
+
             if (suggestions instanceof Array)
                 this.searchSuggestions = suggestions
         }
