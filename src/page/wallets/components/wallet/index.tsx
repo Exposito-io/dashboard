@@ -46,7 +46,7 @@ export class WalletPanel extends React.Component<WalletPanelProps, {}> {
     get wallet() { return this.props.wallet }
     get transactions() { 
         return _(this.props.transactions)
-               .sortBy('creationDate')
+               .sortBy('endDate')
                .reverse()
                .value() 
     }
@@ -255,11 +255,11 @@ export class WalletPanel extends React.Component<WalletPanelProps, {}> {
 
 
 function convertBtcToUsd(btcAmount: Money) {
-    return Money.fromStringDecimal(btcAmount.multiply(4526).toString(), 'USD') as Money
+    return Money.fromStringDecimal(btcAmount.multiply(14000).toDecimal().toFixed(2), 'USD') as Money
 }
 
 
 function convertUsdToBtc(usdAmount: Money) {    
-    return Money.fromStringDecimal(usdAmount.toString(), 'BTC').divide(4526) as Money
+    return Money.fromStringDecimal(usdAmount.toString(), 'BTC').divide(14000) as Money
 }
 

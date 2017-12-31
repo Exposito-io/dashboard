@@ -56,10 +56,6 @@ export class WalletStore extends Store {
             walletData.periodicTransferCount = (await this.client.periodicPayments.getPeriodicPaymentsForWallet(walletData.wallet.id)).length
         }
 
-
-        wallets = [{ wallet: wallet as Wallet, transactions: transactions, periodicTransferCount: 0 } as WalletData]
-                    .concat(wallets)
-
         this.wallets = wallets
 
         this.isLoading = false
@@ -78,67 +74,3 @@ export class WalletStore extends Store {
 
 }
 
-
-let wallet = new BitcoinWallet({
-    coreWallet: {},
-    labels: [],
-    name: 'Main Wallet',
-    description: '',
-    projectId: 'gge'
-})
-
-wallet.amount = '430'
-wallet.currency = 'BTC'
-
-let t1 = new Transaction()
-
-let transactions: Transaction[] = [
-    {
-        creationDate: new Date('2017-02-04'),
-        endDate: new Date('2017-02-04'),
-        currency: 'BTC',
-        note: 'Transfer from personnal account',
-        amount: '0.53123',
-        sourceType: PaymentDestination.BITCOIN_ADDRESS,
-        sourceWalletId: 'afew',
-        destination: 'awf',
-        destinationType: PaymentDestination.EXPOSITO_WALLET,
-        status: 1
-    },
-    {
-        creationDate: new Date('2017-02-21'),
-        endDate: new Date('2017-02-21'),
-        currency: 'BTC',
-        note: 'Design of the intro page',
-        amount: '-0.145',
-        sourceType: PaymentDestination.BITCOIN_ADDRESS,
-        sourceWalletId: 'afew',
-        destination: 'awf',
-        destinationType: PaymentDestination.EXPOSITO_WALLET,
-        status: 1
-    }, /* 
-  {
-    creationDate: new Date('2017-03-14'),
-    endDate: new Date('2017-03-14'),
-    currency: 'ETH',
-    note: 'Donation',
-    amount: '0.318',
-    sourceType: PaymentDestination.ETHEREUM_ADDRESS,
-    sourceWalletId: 'afew',
-    destination: 'awf',
-    destinationType: PaymentDestination.EXPOSITO_WALLET,
-    status: 1
-  }, */
-    {
-        creationDate: new Date('2017-04-03'),
-        endDate: new Date('2017-04-03'),
-        currency: 'BTC',
-        note: 'Mathew\'s deposit',
-        amount: '0.293',
-        sourceType: PaymentDestination.BITCOIN_ADDRESS,
-        sourceWalletId: 'afew',
-        destination: 'awf',
-        destinationType: PaymentDestination.EXPOSITO_WALLET,
-        status: 1
-    }
-]
