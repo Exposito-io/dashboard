@@ -13,9 +13,8 @@ export class Sidebar extends React.Component {
   state = {
     navItems: [
       { pathname: '/', label: 'Home', icon: 'home' },
-      { pathname: '/instances', label: 'Instances', icon: 'server' },
       { pathname: '/wallets', label: 'Wallets', icon: 'university' },
-      { pathname: '/periodic-payments', label: 'Periodic Payments', icon: 'credit-card' },
+      { pathname: '/periodic-payments', label: 'Periodic Transfers', icon: 'credit-card' },
       { pathname: '/contributors', label: 'Contributors', icon: 'users' },
       { pathname: '/settings', label: 'Settings', icon: 'cog' },
     ],
