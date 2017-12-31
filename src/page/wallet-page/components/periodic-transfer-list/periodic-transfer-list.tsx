@@ -57,6 +57,7 @@ export default class PeriodicTransferList extends React.Component<Props, {}> {
                             <span className="amount">
                                 <span className="currency">{this.getAmountCurrency(periodicTransfer.currency)}</span>
                                 {periodicTransfer.amount}
+                                {periodicTransfer.isAmountPct && ' %'}
                             </span>
                         </div>
                     )}

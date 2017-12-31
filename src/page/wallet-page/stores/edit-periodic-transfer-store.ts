@@ -71,7 +71,7 @@ export class EditPeriodicTransferStore extends Store {
             const pct = new BigNumber(this.editedPeriodicTransfer.amount).dividedBy(100)
             const estimatedAmount = pct.mul(this.sourceWallet.amount)
 
-            return Money.fromStringDecimal(estimatedAmount.toString(), 'USD') // TODO: Calculate amount
+            return Money.fromStringDecimal(estimatedAmount.toFixed(2), 'USD') // TODO: Calculate amount
         }
         else
             return Money.fromStringDecimal(this.editedPeriodicTransfer.amount, this.editedPeriodicTransfer.currency)
@@ -156,6 +156,7 @@ export class EditPeriodicTransferStore extends Store {
 
     @action async save() {
         await this.client.periodicPayments.createPeriodicTransfer(this.editedPeriodicTransfer)
+        AlertStore.getStore().success("Periodic transfer created")
     }
 
     @action cancel() {

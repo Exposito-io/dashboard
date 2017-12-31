@@ -5,6 +5,8 @@ import { Store } from './store'
 import config from '../config'
 
 
+const DEFAULT_DELAY = 5000
+
 
 export enum AlertType {
     Info = 'info',
@@ -16,7 +18,7 @@ export enum AlertType {
 export class Alert {
     type: AlertType
     message: string = ''
-    delay?: number = 5000
+    delay?: number = DEFAULT_DELAY
 }
 
 
@@ -41,7 +43,15 @@ export class AlertStore extends Store {
         return this.instance
     }
 
+    /** Show a success message to the user */
+    public success(message: string, delay: number = DEFAULT_DELAY) {
+        this.alert({
+            message,
+            type: AlertType.Success
+        })
+    }
 
+    /** Show a message to the user */
     public alert(alert: Alert): void {
         alert = Object.assign(new Alert(), alert)
         this.alerts.push(alert)
