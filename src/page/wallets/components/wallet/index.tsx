@@ -33,13 +33,14 @@ const data = [
 ]
 
 
-type Props = {
-    wallet: Wallet,
+class WalletPanelProps {
+    wallet: Wallet
     transactions: Transaction[]
+    periodicTransferCount: number = 0
 }
 
 
-export class WalletPanel extends React.Component<Props, {}> {
+export class WalletPanel extends React.Component<WalletPanelProps, {}> {
 
 
     get wallet() { return this.props.wallet }
@@ -56,7 +57,7 @@ export class WalletPanel extends React.Component<Props, {}> {
                 <h3 className='panel-title'>
                     {this.wallet && this.wallet.name}
                 </h3>
-                {this.renderPeriodicTransferIcon(2)}
+                {this.renderPeriodicTransferIcon(this.props.periodicTransferCount)}
                 <Link
                     to={`/wallet/${this.wallet.id}`}
                     className="fa fa-cog"

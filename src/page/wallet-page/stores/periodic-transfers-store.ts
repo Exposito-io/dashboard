@@ -13,6 +13,7 @@ export class PeriodicTransfersStore extends Store {
 
     @action addPeriodicTransfer(periodicTransfer: PeriodicPayment) {
         this.periodicPayments.push(periodicTransfer)
+        this.unselectPeriodicTransfer()
         this.selectPeriodicTransfer(periodicTransfer)
     }
 
@@ -25,7 +26,7 @@ export class PeriodicTransfersStore extends Store {
     }
 
     @action async save() {
-        this.unselectPeriodicTransfer()
+        //this.unselectPeriodicTransfer()
     }
 
     @action cancel() {

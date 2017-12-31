@@ -10,11 +10,18 @@ import { Store } from '../../stores/store'
 import config from '../../config'
 
 
+class WalletData {
+    wallet: Wallet
+    transactions: Transaction[] = []
+    periodicTransferCount? = 0
+}
+
+
 export class WalletStore extends Store {
 
     private static instance: WalletStore
 
-    @observable wallets: { wallet: Wallet, transactions: Transaction[] }[] = []
+    @observable wallets: WalletData[] = []
 
     private client: ExpositoClient
 
@@ -41,18 +48,19 @@ export class WalletStore extends Store {
         
 
         let wallets = (await this.client.wallets.getWallets())
-                                        .map(w => ({ wallet: w, transactions: [] }))
+                                        .map(w => ({ wallet: w, transactions: [], periodicTransferCount: 0 }) as WalletData)
 
         for (let walletData of wallets) {
             walletData.transactions = await this.client.transactions.getTransactionsForWallet(walletData.wallet.id)
+            walletData.periodicTransferCount = (await this.client.periodicPayments.getPeriodicPaymentsForWallet(walletData.wallet.id)).length
         }
 
-        wallets = [{ wallet: wallet as Wallet, transactions: transactions }]
+
+
+        wallets = [{ wallet: wallet as Wallet, transactions: transactions, periodicTransferCount: 0 } as WalletData]
                     .concat(wallets)
 
         this.wallets = wallets
-
-        console.log('wallets: ', this.wallets)
 
         this.isLoading = false
     }
