@@ -156,7 +156,7 @@ export class EditPeriodicTransferStore extends Store {
 
     @action async save() {
         await this.client.periodicPayments.createPeriodicTransfer(this.editedPeriodicTransfer)
-        AlertStore.getStore().success("Periodic transfer created")
+        AlertStore.getStore().success("Periodic transfer created successfully")
     }
 
     @action cancel() {

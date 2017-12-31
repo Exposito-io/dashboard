@@ -47,7 +47,8 @@ export class AlertStore extends Store {
     public success(message: string, delay: number = DEFAULT_DELAY) {
         this.alert({
             message,
-            type: AlertType.Success
+            type: AlertType.Success,
+            delay
         })
     }
 
@@ -66,6 +67,7 @@ export class AlertStore extends Store {
     private constructor() {
         super()
         this.init()
+        ;(window as any).alertStore = this
     }
 
     private async init() {

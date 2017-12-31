@@ -1,16 +1,19 @@
 .alerts-container {
     position: fixed;
-    top: 8px;
+    top: 30px;
     margin: auto;
     max-width: 600px;
     width: 600px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
 }
 
 .alert {
-    padding: 15px;
+    padding: 30px;
     margin-bottom: 20px;
     border: 1px solid transparent;
     border-radius: 4px
@@ -48,9 +51,9 @@
 }
 
 .alert-success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6
+    color: #ddd;
+    background-color: rgba(0,0,0,0.8);
+    border-color: rgb(41, 31, 66)
 }
 
 .alert-success hr {
