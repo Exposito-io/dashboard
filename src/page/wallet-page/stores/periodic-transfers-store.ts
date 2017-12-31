@@ -20,12 +20,16 @@ export class PeriodicTransfersStore extends Store {
         this.selectedPeriodicTransfer = periodicTransfer
     }
 
+    @action unselectPeriodicTransfer() {
+        this.selectedPeriodicTransfer = undefined
+    }
+
     @action async save() {
-        // TODO
+        this.unselectPeriodicTransfer()
     }
 
     @action cancel() {
-        // TODO
+        this.unselectPeriodicTransfer()
     }
 
     private client: ExpositoClient

@@ -155,7 +155,7 @@ export class EditPeriodicTransferStore extends Store {
     }
 
     @action async save() {
-        // TODO
+        await this.client.periodicPayments.createPeriodicTransfer(this.editedPeriodicTransfer)
     }
 
     @action cancel() {
@@ -244,7 +244,7 @@ function convertUserToDestination(user): DestinationOptions {
 function convertProjectToDestination(project): DestinationOptions {
     return {
         destination: {
-            projectId: project.id
+            projectId: project.id || project._id
         } as ProjectTokenholdersDistribution
     }
 }

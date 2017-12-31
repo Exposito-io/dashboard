@@ -39,8 +39,17 @@ export class PeriodicTransfers extends React.Component<Props> {
 
 
     @bind onPeriodicTransferClick(periodicTransfer: PeriodicPayment) {
-        this.editStore.setPeriodicTransfer()
+        this.editStore.setPeriodicTransfer(periodicTransfer)
         this.store.selectPeriodicTransfer(periodicTransfer)
+    }
+
+    @bind saveClick() {
+        this.editStore.save()
+        this.store.save()
+    }
+
+    @bind cancelClick() {
+        this.store.cancel()
     }
 
     @bind createPeriodicTransfer() {
@@ -85,11 +94,14 @@ export class PeriodicTransfers extends React.Component<Props> {
                 {this.store.selectedPeriodicTransfer &&
                 <div className="btn-container">
                     <button 
-                        onClick={() => {}}
+                        onClick={this.saveClick}
                         className="btn btn-default btn-main btn-md">
                         Save
                     </button>
-                    <button className="btn btn-default btn-md ">Cancel</button>
+                    <button 
+                        onClick={this.cancelClick}
+                        className="btn btn-default btn-md "
+                    >Cancel</button>
                 </div>   
                 }
             </div>

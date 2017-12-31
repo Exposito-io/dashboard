@@ -15,21 +15,22 @@
     opacity: 0.8;
     line-height: 28px;
     margin-bottom: 8px;
-    margin-left: 4px;
+    margin-left: 23px;
     transition: oopacity 0.45s var(--ease-in-quad);
 }
 
 .periodic-transfers-section .add-btn span {
     display: inline-block;
     vertical-align: middle;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
 }
 
 .periodic-transfers-section .plus-icon {
     cursor: pointer;
     fill: white;
-    width: 28px;
+    width: 22px;
     vertical-align: middle;
-    margin-right: 8px;
+    margin-right: 11px;
 }
 
 .periodic-transfers-section .add-btn:hover {
