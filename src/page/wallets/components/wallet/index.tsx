@@ -177,9 +177,9 @@ export class WalletPanel extends React.Component<WalletPanelProps, {}> {
         let ico = require('./images/periodic-transfer-icon2.svg')
         return (
             <Link 
-                to="/" 
+                to={`/wallet/${this.props.wallet.id}/periodic-transfers`}
                 className="periodic-payment-ico"
-                title={`${count} periodic transactions`}>
+                title={`${count} periodic transfers`}>
                 <img src={ico} alt=""/>
                 <span className="count">{count}</span>
             </Link>

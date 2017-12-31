@@ -1,4 +1,4 @@
-import { autorun, observable, computed } from 'mobx'
+import { autorun, observable, computed, extendObservable } from 'mobx'
 import { 
     Wallet,
     BitcoinWallet,
@@ -8,6 +8,7 @@ import {
 import { ExpositoClient } from 'exposito-client'
 import { Store } from '../../stores/store'
 import config from '../../config'
+import { Observable } from 'rx';
 
 
 class WalletData {
@@ -54,7 +55,6 @@ export class WalletStore extends Store {
             walletData.transactions = await this.client.transactions.getTransactionsForWallet(walletData.wallet.id)
             walletData.periodicTransferCount = (await this.client.periodicPayments.getPeriodicPaymentsForWallet(walletData.wallet.id)).length
         }
-
 
 
         wallets = [{ wallet: wallet as Wallet, transactions: transactions, periodicTransferCount: 0 } as WalletData]
