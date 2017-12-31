@@ -53,6 +53,7 @@ export class PeriodicTransfers extends React.Component<Props> {
     }
 
     @bind createPeriodicTransfer() {
+        this.store.unselectPeriodicTransfer()
         const periodicTransfer = this.editStore.createPeriodicTransfer()
         this.store.addPeriodicTransfer(periodicTransfer)
     }

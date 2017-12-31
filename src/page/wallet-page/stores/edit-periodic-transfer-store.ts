@@ -124,6 +124,9 @@ export class EditPeriodicTransferStore extends Store {
         this.originalPeriodicTransfer = Object.assign({}, periodicTransfer)
         this.editedPeriodicTransfer = periodicTransfer
 
+        this.selectedRepeatPeriod = null
+        this.weekdays = []
+
         return this.editedPeriodicTransfer
     }
 

@@ -79,7 +79,7 @@ export class PaymentWidgetPage extends React.Component<{}, { src: string }> {
 `<!-- Exposito Payment Widget start. Replace [price] and [currency] parameters with the requested price and currency -->
 <iframe 
     style="width: 460px; height: 520px; border: none;"
-    src="https://dev.widget.exposito.io?theme=light&payments=[2,1,3]&price=[price]&currency=[currency]">
+    src="http://dev.widget.exposito.io?theme=light&payments=[2,1,3]&price=[price]&currency=[currency]">
 </iframe>
 <!-- Exposito Payment Widget end -->
 `
