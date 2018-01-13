@@ -27,6 +27,7 @@ export class NewProjectStore extends Store {
     private static instance: NewProjectStore
 
     @observable projectName: string
+    @observable projectDescription: string
 
     @observable searchQuery: string
     @observable searchResults: any[] = []
@@ -191,8 +192,14 @@ export class NewProjectStore extends Store {
         shareholder.pct = this.calculatePct(shareholder.shares)
     }
 
-    @action submit() {
+    @action async submit() {
         this.isSubmitting = true
+
+        /*
+        await this.client.projects.createProject({
+            name: this.projectName,
+            description: this.
+        })*/
 
         setTimeout(() => {
             this.submitted()

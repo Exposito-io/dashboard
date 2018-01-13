@@ -142,6 +142,8 @@ export class NewProject extends React.Component {
                   className="fs-anim-lower" 
                   type="text" 
                   placeholder="Project name" 
+                  value={store.projectName}
+                  onChange={e => store.projectName = e.target.value}
                 />
                 <br />
                 <textarea 
@@ -149,8 +151,8 @@ export class NewProject extends React.Component {
                   ref={setRef(this, 'projectDescInput')} 
                   className="project-desc fs-anim-lower" 
                   placeholder="Project description" 
-                >                
-                </textarea>
+                  onChange={e => store.projectDescription = e.target.value}
+                >{store.projectDescription}</textarea>
               </div>
               {/**/}
               {/*
