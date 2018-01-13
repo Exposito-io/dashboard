@@ -195,15 +195,17 @@ export class NewProjectStore extends Store {
     @action async submit() {
         this.isSubmitting = true
 
-        /*
+        
         await this.client.projects.createProject({
             name: this.projectName,
-            description: this.
-        })*/
+            description: this.projectDescription,
+            shareholders: this.shareholders,
+            members: [],
+            hosting: 1,
+            githubProjects: []
+        })
 
-        setTimeout(() => {
-            this.submitted()
-        }, 5000)
+        this.submitted()
     }
 
     @action submitted() {
