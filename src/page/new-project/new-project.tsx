@@ -134,7 +134,6 @@ export class NewProject extends React.Component {
             
             <div className="form fs-fields" ref={setRef(this, 'fieldsList')}>
               
-              {/**/}
               <div className="entry project-description">
                 <h2 className="fs-anim-upper">Enter your project info</h2>
                 <input 
@@ -153,20 +152,7 @@ export class NewProject extends React.Component {
                   placeholder="Project description" 
                   onChange={e => store.projectDescription = e.target.value}
                 >{store.projectDescription}</textarea>
-              </div>
-              {/**/}
-              {/*
-              <div className="entry">
-                <h2 className="fs-anim-upper">Select a cloud provider</h2>
-                <div className="fs-anim-lower">
-                  <ImageRadioButton inputId="aws" img={require('./images/aws.png')}></ImageRadioButton>
-                  <ImageRadioButton inputId="gcloud" img={require('./images/gcloud-white.png')}></ImageRadioButton>
-                  <ImageRadioButton 
-                    inputId="digital-ocean" 
-                    img={require('./images/digital-ocean.png')}>
-                  </ImageRadioButton>
-                </div>
-              </div> */}    
+              </div>  
               
               <div className="entry equity">
                 <h2 className="fs-anim-upper">Customize your project's equity</h2>
