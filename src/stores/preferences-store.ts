@@ -39,7 +39,7 @@ export class PreferencesStore extends Store {
       name: "Project 2",
       description: "fawef",
       githubProjects: [],
-      hosting: HostingType.GoogleCloud,
+      contractAddress: '',
       members: []
     }
     

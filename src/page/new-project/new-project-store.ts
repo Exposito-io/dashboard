@@ -201,7 +201,6 @@ export class NewProjectStore extends Store {
             description: this.projectDescription,
             shareholders: this.shareholders,
             members: [],
-            hosting: 1,
             githubProjects: []
         })
 
