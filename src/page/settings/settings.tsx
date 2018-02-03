@@ -6,7 +6,7 @@ import { Panel, Breadcrumbs, Select, Switch, Input } from 'react-blur-admin'
 import { Link } from 'react-router-dom'
 
 import { Page } from '../../components/page'
-import { PreferencesStore } from '../../stores/preferences-store'
+import { preferencesStore } from '../../stores/preferences-store'
 import { UserStore } from '../../stores/user-store'
 import { ProjectStore } from '../../stores/project-store'
 import Toggle from 'react-toggle'
@@ -17,7 +17,7 @@ import './settings.css'
 
 
 
-const prefStore = PreferencesStore.getStore()
+const prefStore = preferencesStore
 const userStore = UserStore.getStore()
 const projectStore = ProjectStore.getStore()
 

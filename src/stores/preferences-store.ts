@@ -2,12 +2,11 @@ import { autorun, observable, computed } from 'mobx'
 import { User, UserPreferences, HostingType, NotificationPreferences } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from './store'
+import config from '../config'
 
 
 
 export class PreferencesStore extends Store {
-
-  private static instance: PreferencesStore
 
   @observable preferences: UserPreferences = { selectedProject: {}, notifications: {} } as UserPreferences
 
@@ -15,49 +14,24 @@ export class PreferencesStore extends Store {
 
   private client: ExpositoClient
 
-
-  static getStore(): PreferencesStore {
-
-    if (!this.instance)
-      this.instance = new PreferencesStore()
-
-    return this.instance
-  }
-
-
-
-
-  private constructor() {
+  constructor() {
     super()
 
-    this.client = new ExpositoClient()
+    this.client = new ExpositoClient({ url: config.apiUrl, version: config.apiVersion })
 
-    //setTimeout(() => {
-    let pref = new UserPreferences()
-    pref.selectedProject = {
-      id: '597637b500992d7e78edd894',
-      name: "Project 2",
-      description: "fawef",
-      githubProjects: [],
-      contractAddress: '',
-      members: []
-    }
-    
-    pref.notifications = {
-      n1: false,
-      n2: true,
-      n3: true,
-      n4: false,
-      n5: true,
-      n6: false,
-      n7: false
-    }
-
-    this.preferences = pref
-    this.notifications = pref.notifications
-
-    //}, 100)
+    this.init()
   }
 
 
+
+  private async init() {
+
+    this.preferences = await this.client.users.getPreferences() 
+
+
+  }
+
 }
+
+
+export const preferencesStore = new PreferencesStore()

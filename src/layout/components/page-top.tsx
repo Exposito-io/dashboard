@@ -12,7 +12,7 @@ import { NotificationsAlert, NotificationAlert } from 'react-blur-admin'
 import { Row, Col } from 'react-flex-proto'
 
 import { ProjectStore } from '../../stores/project-store'
-import { PreferencesStore } from '../../stores/preferences-store'
+import { preferencesStore, PreferencesStore } from '../../stores/preferences-store'
 import { NotificationStore } from '../../stores/notification-store'
 
 
@@ -42,7 +42,7 @@ export class PageTop extends React.Component<{}, {}> {
     super(props)
 
     this.projectStore = ProjectStore.getStore()
-    this.preferencesStore = PreferencesStore.getStore()
+    this.preferencesStore = preferencesStore
     this.notificationStore = NotificationStore.getStore()
 
   }

@@ -2,6 +2,7 @@ import { autorun, observable, computed } from 'mobx'
 import { User } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from './store'
+import config from '../config'
 
 export class UserStore extends Store {
   
@@ -27,7 +28,7 @@ export class UserStore extends Store {
 
     console.log('wallet store')
 
-    this.client = new ExpositoClient()
+    this.client = new ExpositoClient({ url: config.apiUrl, version: config.apiVersion })
   }
 
 

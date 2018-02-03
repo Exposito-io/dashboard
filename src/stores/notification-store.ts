@@ -3,10 +3,9 @@ import { Project } from 'models'
 import { ExpositoClient } from 'exposito-client'
 import { Store } from './store'
 import config from '../config'
-import { PreferencesStore } from './preferences-store'
+import { preferencesStore } from './preferences-store'
 import * as moment from 'moment'
 
-let preferencesStore = PreferencesStore.getStore()
 
 export class NotificationStore extends Store {
 

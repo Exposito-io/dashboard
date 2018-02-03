@@ -11,11 +11,10 @@ import { getGithubRepoFromFullName, isQueueJob } from '../../lib/tools'
 import config from '../../config'
 import * as BigNumber from 'bignumber.js'
 import { bind } from 'bind-decorator'
-import { PreferencesStore } from '../../stores/preferences-store'
+import { preferencesStore } from '../../stores/preferences-store'
 import { JobManager } from '../../lib/job-manager'
 
 
-const preferencesStore = PreferencesStore.getStore()
 const jobManager = JobManager.getManager()
 
 
